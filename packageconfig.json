@@ -1,0 +1,12 @@
+﻿{
+  "artifactVersion": "1.3.5",
+  "invokerPackage": "barcode_api_client_invoke",
+  "modelPackage": "barcode_api_client_model",
+  "apiPackage": "barcode_api_client_api",
+  "gitUserId": "Cloudmersive",
+  "gitRepoId": "Cloudmersive.APIClient.PHP.Barcode",
+  "composerVendorName": "cloudmersive",
+  "composerProjectName": "barcode_api_client",
+  "packagePath": "barcode_api_client"
+  
+}  
