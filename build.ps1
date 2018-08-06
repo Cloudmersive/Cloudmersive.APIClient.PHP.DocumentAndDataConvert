@@ -3,4 +3,10 @@
 #(Get-Content ./client/package.json).replace('v1', '1.0.1') | Set-Content ./client/package.json
 Copy-Item ./cloudmersive_document_convert_api_client/* -Destination . -Recurse -Force
 Remove-Item –path ./cloudmersive_document_convert_api_client –recurse
+
+# Bug fix
+
+(Get-Content ./vendor/guzzlehttp/guzzle/src/Client.php).replace("'verify'          => true,", "'verify'          => false,") | Set-Content ./vendor/guzzlehttp/guzzle/src/Client.php
+
+
 & php C:\ProgramData\ComposerSetup\bin\composer.phar install
