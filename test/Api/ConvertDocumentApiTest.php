@@ -82,9 +82,29 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentCsvToXlsx
+     *
+     * CSV to Excel XLSX.
+     *
+     */
+    public function testConvertDocumentCsvToXlsx()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentDocToDocx
+     *
+     * Word DOC (97-03) to DOCX.
+     *
+     */
+    public function testConvertDocumentDocToDocx()
+    {
+    }
+
+    /**
      * Test case for convertDocumentDocToPdf
      *
-     * Word DOC (97-2003) to PDF.
+     * Word DOC (97-03) to PDF.
      *
      */
     public function testConvertDocumentDocToPdf()
@@ -102,12 +122,32 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentPdfToPngArray
+     *
+     * PDF to PNG Array.
+     *
+     */
+    public function testConvertDocumentPdfToPngArray()
+    {
+    }
+
+    /**
      * Test case for convertDocumentPptToPdf
      *
-     * PowerPoint PPT (97-2003) to PDF.
+     * PowerPoint PPT (97-03) to PDF.
      *
      */
     public function testConvertDocumentPptToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentPptToPptx
+     *
+     * PowerPoint PPT (97-03) to PPTX.
+     *
+     */
+    public function testConvertDocumentPptToPptx()
     {
     }
 
@@ -124,10 +164,20 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentXlsToPdf
      *
-     * Excel XLS (97-2003) to PDF.
+     * Excel XLS (97-03) to PDF.
      *
      */
     public function testConvertDocumentXlsToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentXlsToXlsx
+     *
+     * Excel XLS (97-03) to XLSX.
+     *
+     */
+    public function testConvertDocumentXlsToXlsx()
     {
     }
 

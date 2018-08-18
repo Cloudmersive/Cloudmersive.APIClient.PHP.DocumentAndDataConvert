@@ -1,6 +1,6 @@
 <?php
 /**
- * MergeDocumentApiTest
+ * ViewerToolsApiTest
  * PHP version 5
  *
  * @category Class
@@ -33,14 +33,14 @@ use \Swagger\Client\ApiException;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * MergeDocumentApiTest Class Doc Comment
+ * ViewerToolsApiTest Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
+class ViewerToolsApiTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -72,32 +72,12 @@ class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for mergeDocumentDocx
+     * Test case for viewerToolsCreateSimple
      *
-     * Merge Multple Word DOCX Together.
-     *
-     */
-    public function testMergeDocumentDocx()
-    {
-    }
-
-    /**
-     * Test case for mergeDocumentPptx
-     *
-     * Merge Multple PowerPoint PPTX Together.
+     * Create a web-based viewer.
      *
      */
-    public function testMergeDocumentPptx()
-    {
-    }
-
-    /**
-     * Test case for mergeDocumentXlsx
-     *
-     * Merge Multple Excel XLSX Together.
-     *
-     */
-    public function testMergeDocumentXlsx()
+    public function testViewerToolsCreateSimple()
     {
     }
 }

@@ -1,20 +1,20 @@
-# Swagger\Client\MergeDocumentApi
+# Swagger\Client\EditDocumentApi
 
 All URIs are relative to *https://api.cloudmersive.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**mergeDocumentDocx**](MergeDocumentApi.md#mergeDocumentDocx) | **POST** /convert/merge/docx | Merge Multple Word DOCX Together
-[**mergeDocumentPptx**](MergeDocumentApi.md#mergeDocumentPptx) | **POST** /convert/merge/pptx | Merge Multple PowerPoint PPTX Together
-[**mergeDocumentXlsx**](MergeDocumentApi.md#mergeDocumentXlsx) | **POST** /convert/merge/xlsx | Merge Multple Excel XLSX Together
+[**editDocumentBeginEditing**](EditDocumentApi.md#editDocumentBeginEditing) | **POST** /convert/edit/begin-editing | Begin editing a document
+[**editDocumentDocxReplace**](EditDocumentApi.md#editDocumentDocxReplace) | **POST** /convert/edit/docx/replace-all | Replace string in DOCX
+[**editDocumentPptxReplace**](EditDocumentApi.md#editDocumentPptxReplace) | **POST** /convert/edit/pptx/replace-all | Replace string in PPTX
 
 
-# **mergeDocumentDocx**
-> string mergeDocumentDocx($input_file1, $input_file2)
+# **editDocumentBeginEditing**
+> string editDocumentBeginEditing($input_file)
 
-Merge Multple Word DOCX Together
+Begin editing a document
 
-Combine multiple Office Word Documents (docx) into one single Office Word document
+Uploads a document to Cloudmersive to begin a series of one or more editing operations
 
 ### Example
 ```php
@@ -26,20 +26,19 @@ $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Ap
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
 
-$apiInstance = new Swagger\Client\Api\MergeDocumentApi(
+$apiInstance = new Swagger\Client\Api\EditDocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$input_file1 = "/path/to/file.txt"; // \SplFileObject | First input file to perform the operation on.
-$input_file2 = "/path/to/file.txt"; // \SplFileObject | Second input file to perform the operation on (more than 2 can be supplied).
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
 
 try {
-    $result = $apiInstance->mergeDocumentDocx($input_file1, $input_file2);
+    $result = $apiInstance->editDocumentBeginEditing($input_file);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MergeDocumentApi->mergeDocumentDocx: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EditDocumentApi->editDocumentBeginEditing: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -48,8 +47,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input_file1** | **\SplFileObject**| First input file to perform the operation on. |
- **input_file2** | **\SplFileObject**| Second input file to perform the operation on (more than 2 can be supplied). |
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
 
 ### Return type
 
@@ -66,12 +64,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **mergeDocumentPptx**
-> string mergeDocumentPptx($input_file1, $input_file2)
+# **editDocumentDocxReplace**
+> string editDocumentDocxReplace($req_config)
 
-Merge Multple PowerPoint PPTX Together
+Replace string in DOCX
 
-Combine multiple Office PowerPoint presentations (pptx) into one single Office PowerPoint presentation
+Replace all instances of a string in an Office Word Document (docx)
 
 ### Example
 ```php
@@ -83,20 +81,19 @@ $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Ap
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
 
-$apiInstance = new Swagger\Client\Api\MergeDocumentApi(
+$apiInstance = new Swagger\Client\Api\EditDocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$input_file1 = "/path/to/file.txt"; // \SplFileObject | First input file to perform the operation on.
-$input_file2 = "/path/to/file.txt"; // \SplFileObject | Second input file to perform the operation on (more than 2 can be supplied).
+$req_config = new \Swagger\Client\Model\ReplaceStringRequest(); // \Swagger\Client\Model\ReplaceStringRequest | 
 
 try {
-    $result = $apiInstance->mergeDocumentPptx($input_file1, $input_file2);
+    $result = $apiInstance->editDocumentDocxReplace($req_config);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MergeDocumentApi->mergeDocumentPptx: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EditDocumentApi->editDocumentDocxReplace: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -105,8 +102,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input_file1** | **\SplFileObject**| First input file to perform the operation on. |
- **input_file2** | **\SplFileObject**| Second input file to perform the operation on (more than 2 can be supplied). |
+ **req_config** | [**\Swagger\Client\Model\ReplaceStringRequest**](../Model/ReplaceStringRequest.md)|  |
 
 ### Return type
 
@@ -118,17 +114,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
  - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **mergeDocumentXlsx**
-> string mergeDocumentXlsx($input_file1, $input_file2)
+# **editDocumentPptxReplace**
+> string editDocumentPptxReplace($req_config)
 
-Merge Multple Excel XLSX Together
+Replace string in PPTX
 
-Combine multiple Office Excel spreadsheets (xlsx) into a single Office Excel spreadsheet
+Replace all instances of a string in an Office PowerPoint Document (pptx)
 
 ### Example
 ```php
@@ -140,20 +136,19 @@ $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Ap
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
 
-$apiInstance = new Swagger\Client\Api\MergeDocumentApi(
+$apiInstance = new Swagger\Client\Api\EditDocumentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$input_file1 = "/path/to/file.txt"; // \SplFileObject | First input file to perform the operation on.
-$input_file2 = "/path/to/file.txt"; // \SplFileObject | Second input file to perform the operation on (more than 2 can be supplied).
+$req_config = new \Swagger\Client\Model\ReplaceStringRequest(); // \Swagger\Client\Model\ReplaceStringRequest | 
 
 try {
-    $result = $apiInstance->mergeDocumentXlsx($input_file1, $input_file2);
+    $result = $apiInstance->editDocumentPptxReplace($req_config);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MergeDocumentApi->mergeDocumentXlsx: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EditDocumentApi->editDocumentPptxReplace: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -162,8 +157,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input_file1** | **\SplFileObject**| First input file to perform the operation on. |
- **input_file2** | **\SplFileObject**| Second input file to perform the operation on (more than 2 can be supplied). |
+ **req_config** | [**\Swagger\Client\Model\ReplaceStringRequest**](../Model/ReplaceStringRequest.md)|  |
 
 ### Return type
 
@@ -175,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
  - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

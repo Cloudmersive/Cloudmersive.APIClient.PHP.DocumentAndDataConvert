@@ -1,6 +1,6 @@
 <?php
 /**
- * MergeDocumentApiTest
+ * EditDocumentApiTest
  * PHP version 5
  *
  * @category Class
@@ -33,14 +33,14 @@ use \Swagger\Client\ApiException;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * MergeDocumentApiTest Class Doc Comment
+ * EditDocumentApiTest Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
+class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -72,32 +72,32 @@ class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for mergeDocumentDocx
+     * Test case for editDocumentBeginEditing
      *
-     * Merge Multple Word DOCX Together.
+     * Begin editing a document.
      *
      */
-    public function testMergeDocumentDocx()
+    public function testEditDocumentBeginEditing()
     {
     }
 
     /**
-     * Test case for mergeDocumentPptx
+     * Test case for editDocumentDocxReplace
      *
-     * Merge Multple PowerPoint PPTX Together.
+     * Replace string in DOCX.
      *
      */
-    public function testMergeDocumentPptx()
+    public function testEditDocumentDocxReplace()
     {
     }
 
     /**
-     * Test case for mergeDocumentXlsx
+     * Test case for editDocumentPptxReplace
      *
-     * Merge Multple Excel XLSX Together.
+     * Replace string in PPTX.
      *
      */
-    public function testMergeDocumentXlsx()
+    public function testEditDocumentPptxReplace()
     {
     }
 }

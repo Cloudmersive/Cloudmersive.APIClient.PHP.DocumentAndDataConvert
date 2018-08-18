@@ -1,6 +1,6 @@
 <?php
 /**
- * ConvertWebApi
+ * EditDocumentApi
  * PHP version 5
  *
  * @category Class
@@ -40,14 +40,14 @@ use Swagger\Client\HeaderSelector;
 use Swagger\Client\ObjectSerializer;
 
 /**
- * ConvertWebApi Class Doc Comment
+ * EditDocumentApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ConvertWebApi
+class EditDocumentApi
 {
     /**
      * @var ClientInterface
@@ -83,37 +83,37 @@ class ConvertWebApi
     }
 
     /**
-     * Operation convertWebHtmlToDocx
+     * Operation editDocumentBeginEditing
      *
-     * HTML to DOCX
+     * Begin editing a document
      *
-     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request input_request (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function convertWebHtmlToDocx($input_request)
+    public function editDocumentBeginEditing($input_file)
     {
-        list($response) = $this->convertWebHtmlToDocxWithHttpInfo($input_request);
+        list($response) = $this->editDocumentBeginEditingWithHttpInfo($input_file);
         return $response;
     }
 
     /**
-     * Operation convertWebHtmlToDocxWithHttpInfo
+     * Operation editDocumentBeginEditingWithHttpInfo
      *
-     * HTML to DOCX
+     * Begin editing a document
      *
-     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function convertWebHtmlToDocxWithHttpInfo($input_request)
+    public function editDocumentBeginEditingWithHttpInfo($input_file)
     {
         $returnType = 'string';
-        $request = $this->convertWebHtmlToDocxRequest($input_request);
+        $request = $this->editDocumentBeginEditingRequest($input_file);
 
         try {
             $options = $this->createHttpClientOption();
@@ -175,18 +175,18 @@ class ConvertWebApi
     }
 
     /**
-     * Operation convertWebHtmlToDocxAsync
+     * Operation editDocumentBeginEditingAsync
      *
-     * HTML to DOCX
+     * Begin editing a document
      *
-     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertWebHtmlToDocxAsync($input_request)
+    public function editDocumentBeginEditingAsync($input_file)
     {
-        return $this->convertWebHtmlToDocxAsyncWithHttpInfo($input_request)
+        return $this->editDocumentBeginEditingAsyncWithHttpInfo($input_file)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -195,19 +195,19 @@ class ConvertWebApi
     }
 
     /**
-     * Operation convertWebHtmlToDocxAsyncWithHttpInfo
+     * Operation editDocumentBeginEditingAsyncWithHttpInfo
      *
-     * HTML to DOCX
+     * Begin editing a document
      *
-     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertWebHtmlToDocxAsyncWithHttpInfo($input_request)
+    public function editDocumentBeginEditingAsyncWithHttpInfo($input_file)
     {
         $returnType = 'string';
-        $request = $this->convertWebHtmlToDocxRequest($input_request);
+        $request = $this->editDocumentBeginEditingRequest($input_file);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -247,547 +247,23 @@ class ConvertWebApi
     }
 
     /**
-     * Create request for operation 'convertWebHtmlToDocx'
-     *
-     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function convertWebHtmlToDocxRequest($input_request)
-    {
-        // verify the required parameter 'input_request' is set
-        if ($input_request === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $input_request when calling convertWebHtmlToDocx'
-            );
-        }
-
-        $resourcePath = '/convert/html/to/docx';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // body params
-        $_tempBody = null;
-        if (isset($input_request)) {
-            $_tempBody = $input_request;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/octet-stream']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/octet-stream'],
-                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
-        if ($apiKey !== null) {
-            $headers['Apikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation convertWebHtmlToPdf
-     *
-     * Convert HTML string to PDF
-     *
-     * @param  \Swagger\Client\Model\HtmlToPdfRequest $input HTML to PDF request parameters (required)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return object
-     */
-    public function convertWebHtmlToPdf($input)
-    {
-        list($response) = $this->convertWebHtmlToPdfWithHttpInfo($input);
-        return $response;
-    }
-
-    /**
-     * Operation convertWebHtmlToPdfWithHttpInfo
-     *
-     * Convert HTML string to PDF
-     *
-     * @param  \Swagger\Client\Model\HtmlToPdfRequest $input HTML to PDF request parameters (required)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function convertWebHtmlToPdfWithHttpInfo($input)
-    {
-        $returnType = 'object';
-        $request = $this->convertWebHtmlToPdfRequest($input);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation convertWebHtmlToPdfAsync
-     *
-     * Convert HTML string to PDF
-     *
-     * @param  \Swagger\Client\Model\HtmlToPdfRequest $input HTML to PDF request parameters (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function convertWebHtmlToPdfAsync($input)
-    {
-        return $this->convertWebHtmlToPdfAsyncWithHttpInfo($input)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation convertWebHtmlToPdfAsyncWithHttpInfo
-     *
-     * Convert HTML string to PDF
-     *
-     * @param  \Swagger\Client\Model\HtmlToPdfRequest $input HTML to PDF request parameters (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function convertWebHtmlToPdfAsyncWithHttpInfo($input)
-    {
-        $returnType = 'object';
-        $request = $this->convertWebHtmlToPdfRequest($input);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'convertWebHtmlToPdf'
-     *
-     * @param  \Swagger\Client\Model\HtmlToPdfRequest $input HTML to PDF request parameters (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function convertWebHtmlToPdfRequest($input)
-    {
-        // verify the required parameter 'input' is set
-        if ($input === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $input when calling convertWebHtmlToPdf'
-            );
-        }
-
-        $resourcePath = '/convert/web/html/to/pdf';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // body params
-        $_tempBody = null;
-        if (isset($input)) {
-            $_tempBody = $input;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'text/json', 'application/xml', 'text/xml']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'text/json', 'application/xml', 'text/xml'],
-                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
-        if ($apiKey !== null) {
-            $headers['Apikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation convertWebMdToHtml
-     *
-     * Convert Markdown to HTML
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\HtmlMdResult
-     */
-    public function convertWebMdToHtml($input_file)
-    {
-        list($response) = $this->convertWebMdToHtmlWithHttpInfo($input_file);
-        return $response;
-    }
-
-    /**
-     * Operation convertWebMdToHtmlWithHttpInfo
-     *
-     * Convert Markdown to HTML
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\HtmlMdResult, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function convertWebMdToHtmlWithHttpInfo($input_file)
-    {
-        $returnType = '\Swagger\Client\Model\HtmlMdResult';
-        $request = $this->convertWebMdToHtmlRequest($input_file);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\HtmlMdResult',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation convertWebMdToHtmlAsync
-     *
-     * Convert Markdown to HTML
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function convertWebMdToHtmlAsync($input_file)
-    {
-        return $this->convertWebMdToHtmlAsyncWithHttpInfo($input_file)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation convertWebMdToHtmlAsyncWithHttpInfo
-     *
-     * Convert Markdown to HTML
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function convertWebMdToHtmlAsyncWithHttpInfo($input_file)
-    {
-        $returnType = '\Swagger\Client\Model\HtmlMdResult';
-        $request = $this->convertWebMdToHtmlRequest($input_file);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'convertWebMdToHtml'
+     * Create request for operation 'editDocumentBeginEditing'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function convertWebMdToHtmlRequest($input_file)
+    protected function editDocumentBeginEditingRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $input_file when calling convertWebMdToHtml'
+                'Missing the required parameter $input_file when calling editDocumentBeginEditing'
             );
         }
 
-        $resourcePath = '/convert/web/md/to/html';
+        $resourcePath = '/convert/edit/begin-editing';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -871,37 +347,37 @@ class ConvertWebApi
     }
 
     /**
-     * Operation convertWebUrlToPdf
+     * Operation editDocumentDocxReplace
      *
-     * Convert a URL to PDF
+     * Replace string in DOCX
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input URL to PDF request parameters (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config req_config (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function convertWebUrlToPdf($input)
+    public function editDocumentDocxReplace($req_config)
     {
-        list($response) = $this->convertWebUrlToPdfWithHttpInfo($input);
+        list($response) = $this->editDocumentDocxReplaceWithHttpInfo($req_config);
         return $response;
     }
 
     /**
-     * Operation convertWebUrlToPdfWithHttpInfo
+     * Operation editDocumentDocxReplaceWithHttpInfo
      *
-     * Convert a URL to PDF
+     * Replace string in DOCX
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input URL to PDF request parameters (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function convertWebUrlToPdfWithHttpInfo($input)
+    public function editDocumentDocxReplaceWithHttpInfo($req_config)
     {
         $returnType = 'string';
-        $request = $this->convertWebUrlToPdfRequest($input);
+        $request = $this->editDocumentDocxReplaceRequest($req_config);
 
         try {
             $options = $this->createHttpClientOption();
@@ -963,18 +439,18 @@ class ConvertWebApi
     }
 
     /**
-     * Operation convertWebUrlToPdfAsync
+     * Operation editDocumentDocxReplaceAsync
      *
-     * Convert a URL to PDF
+     * Replace string in DOCX
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input URL to PDF request parameters (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertWebUrlToPdfAsync($input)
+    public function editDocumentDocxReplaceAsync($req_config)
     {
-        return $this->convertWebUrlToPdfAsyncWithHttpInfo($input)
+        return $this->editDocumentDocxReplaceAsyncWithHttpInfo($req_config)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -983,19 +459,19 @@ class ConvertWebApi
     }
 
     /**
-     * Operation convertWebUrlToPdfAsyncWithHttpInfo
+     * Operation editDocumentDocxReplaceAsyncWithHttpInfo
      *
-     * Convert a URL to PDF
+     * Replace string in DOCX
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input URL to PDF request parameters (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertWebUrlToPdfAsyncWithHttpInfo($input)
+    public function editDocumentDocxReplaceAsyncWithHttpInfo($req_config)
     {
         $returnType = 'string';
-        $request = $this->convertWebUrlToPdfRequest($input);
+        $request = $this->editDocumentDocxReplaceRequest($req_config);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1035,23 +511,23 @@ class ConvertWebApi
     }
 
     /**
-     * Create request for operation 'convertWebUrlToPdf'
+     * Create request for operation 'editDocumentDocxReplace'
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input URL to PDF request parameters (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function convertWebUrlToPdfRequest($input)
+    protected function editDocumentDocxReplaceRequest($req_config)
     {
-        // verify the required parameter 'input' is set
-        if ($input === null) {
+        // verify the required parameter 'req_config' is set
+        if ($req_config === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $input when calling convertWebUrlToPdf'
+                'Missing the required parameter $req_config when calling editDocumentDocxReplace'
             );
         }
 
-        $resourcePath = '/convert/web/url/to/pdf';
+        $resourcePath = '/convert/edit/docx/replace-all';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1062,17 +538,17 @@ class ConvertWebApi
 
         // body params
         $_tempBody = null;
-        if (isset($input)) {
-            $_tempBody = $input;
+        if (isset($req_config)) {
+            $_tempBody = $req_config;
         }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'text/json', 'application/xml', 'text/xml']
+                ['application/octet-stream']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/octet-stream'],
                 ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
             );
         }
@@ -1133,37 +609,37 @@ class ConvertWebApi
     }
 
     /**
-     * Operation convertWebUrlToScreenshot
+     * Operation editDocumentPptxReplace
      *
-     * Take screenshot of URL
+     * Replace string in PPTX
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input Screenshot request parameters (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config req_config (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function convertWebUrlToScreenshot($input)
+    public function editDocumentPptxReplace($req_config)
     {
-        list($response) = $this->convertWebUrlToScreenshotWithHttpInfo($input);
+        list($response) = $this->editDocumentPptxReplaceWithHttpInfo($req_config);
         return $response;
     }
 
     /**
-     * Operation convertWebUrlToScreenshotWithHttpInfo
+     * Operation editDocumentPptxReplaceWithHttpInfo
      *
-     * Take screenshot of URL
+     * Replace string in PPTX
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input Screenshot request parameters (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function convertWebUrlToScreenshotWithHttpInfo($input)
+    public function editDocumentPptxReplaceWithHttpInfo($req_config)
     {
         $returnType = 'string';
-        $request = $this->convertWebUrlToScreenshotRequest($input);
+        $request = $this->editDocumentPptxReplaceRequest($req_config);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1225,18 +701,18 @@ class ConvertWebApi
     }
 
     /**
-     * Operation convertWebUrlToScreenshotAsync
+     * Operation editDocumentPptxReplaceAsync
      *
-     * Take screenshot of URL
+     * Replace string in PPTX
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input Screenshot request parameters (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertWebUrlToScreenshotAsync($input)
+    public function editDocumentPptxReplaceAsync($req_config)
     {
-        return $this->convertWebUrlToScreenshotAsyncWithHttpInfo($input)
+        return $this->editDocumentPptxReplaceAsyncWithHttpInfo($req_config)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1245,19 +721,19 @@ class ConvertWebApi
     }
 
     /**
-     * Operation convertWebUrlToScreenshotAsyncWithHttpInfo
+     * Operation editDocumentPptxReplaceAsyncWithHttpInfo
      *
-     * Take screenshot of URL
+     * Replace string in PPTX
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input Screenshot request parameters (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertWebUrlToScreenshotAsyncWithHttpInfo($input)
+    public function editDocumentPptxReplaceAsyncWithHttpInfo($req_config)
     {
         $returnType = 'string';
-        $request = $this->convertWebUrlToScreenshotRequest($input);
+        $request = $this->editDocumentPptxReplaceRequest($req_config);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1297,23 +773,23 @@ class ConvertWebApi
     }
 
     /**
-     * Create request for operation 'convertWebUrlToScreenshot'
+     * Create request for operation 'editDocumentPptxReplace'
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input Screenshot request parameters (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function convertWebUrlToScreenshotRequest($input)
+    protected function editDocumentPptxReplaceRequest($req_config)
     {
-        // verify the required parameter 'input' is set
-        if ($input === null) {
+        // verify the required parameter 'req_config' is set
+        if ($req_config === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $input when calling convertWebUrlToScreenshot'
+                'Missing the required parameter $req_config when calling editDocumentPptxReplace'
             );
         }
 
-        $resourcePath = '/convert/web/url/to/screenshot';
+        $resourcePath = '/convert/edit/pptx/replace-all';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1324,17 +800,17 @@ class ConvertWebApi
 
         // body params
         $_tempBody = null;
-        if (isset($input)) {
-            $_tempBody = $input;
+        if (isset($req_config)) {
+            $_tempBody = $req_config;
         }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'text/json', 'application/xml', 'text/xml']
+                ['application/octet-stream']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/octet-stream'],
                 ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
             );
         }

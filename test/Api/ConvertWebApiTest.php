@@ -72,6 +72,16 @@ class ConvertWebApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertWebHtmlToDocx
+     *
+     * HTML to DOCX.
+     *
+     */
+    public function testConvertWebHtmlToDocx()
+    {
+    }
+
+    /**
      * Test case for convertWebHtmlToPdf
      *
      * Convert HTML string to PDF.
