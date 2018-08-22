@@ -82,12 +82,102 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxGetHeadersAndFooters
+     *
+     * Get content of a footer from a DOCX.
+     *
+     */
+    public function testEditDocumentDocxGetHeadersAndFooters()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxGetStyles
+     *
+     * Get styles from a DOCX.
+     *
+     */
+    public function testEditDocumentDocxGetStyles()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxGetTables
+     *
+     * Get tables in DOCX.
+     *
+     */
+    public function testEditDocumentDocxGetTables()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxInsertImage
+     *
+     * Insert image into a DOCX.
+     *
+     */
+    public function testEditDocumentDocxInsertImage()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxInsertTable
+     *
+     * Insert a new table into a DOCX.
+     *
+     */
+    public function testEditDocumentDocxInsertTable()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxRemoveHeadersAndFooters
+     *
+     * Remove headers and footers from DOCX.
+     *
+     */
+    public function testEditDocumentDocxRemoveHeadersAndFooters()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxReplace
      *
      * Replace string in DOCX.
      *
      */
     public function testEditDocumentDocxReplace()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxSetFooter
+     *
+     * Set the footer in a DOCX.
+     *
+     */
+    public function testEditDocumentDocxSetFooter()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxSetHeader
+     *
+     * Set the header in a DOCX.
+     *
+     */
+    public function testEditDocumentDocxSetHeader()
+    {
+    }
+
+    /**
+     * Test case for editDocumentFinishEditing
+     *
+     * Download result from document editing.
+     *
+     */
+    public function testEditDocumentFinishEditing()
     {
     }
 
