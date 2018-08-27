@@ -82,12 +82,42 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxBody
+     *
+     * Get body from a DOCX.
+     *
+     */
+    public function testEditDocumentDocxBody()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxGetHeadersAndFooters
      *
      * Get content of a footer from a DOCX.
      *
      */
     public function testEditDocumentDocxGetHeadersAndFooters()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxGetImages
+     *
+     * Get images from a DOCX.
+     *
+     */
+    public function testEditDocumentDocxGetImages()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxGetSections
+     *
+     * Get sections from a DOCX.
+     *
+     */
+    public function testEditDocumentDocxGetSections()
     {
     }
 
@@ -122,6 +152,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxInsertParagraph
+     *
+     * Insert a new paragraph into a DOCX.
+     *
+     */
+    public function testEditDocumentDocxInsertParagraph()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxInsertTable
      *
      * Insert a new table into a DOCX.
@@ -138,6 +178,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentDocxRemoveHeadersAndFooters()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxRemoveObject
+     *
+     * Delete any object in a DOCX.
+     *
+     */
+    public function testEditDocumentDocxRemoveObject()
     {
     }
 
@@ -188,6 +238,66 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentPptxReplace()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxGetColumns
+     *
+     * Get rows and cells from a XLSX worksheet.
+     *
+     */
+    public function testEditDocumentXlsxGetColumns()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxGetImages
+     *
+     * Get images from a XLSX worksheet.
+     *
+     */
+    public function testEditDocumentXlsxGetImages()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxGetRowsAndCells
+     *
+     * Get rows and cells from a XLSX worksheet.
+     *
+     */
+    public function testEditDocumentXlsxGetRowsAndCells()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxGetStyles
+     *
+     * Get styles from a XLSX worksheet.
+     *
+     */
+    public function testEditDocumentXlsxGetStyles()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxGetWorksheets
+     *
+     * Get worksheets from a XLSX.
+     *
+     */
+    public function testEditDocumentXlsxGetWorksheets()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxInsertWorksheet
+     *
+     * Insert a new worksheet into an XLSX spreadsheet.
+     *
+     */
+    public function testEditDocumentXlsxInsertWorksheet()
     {
     }
 }

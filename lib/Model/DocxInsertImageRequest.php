@@ -62,8 +62,9 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
         'input_document_file_url' => 'string',
         'input_image_file_bytes' => 'string',
         'input_image_file_url' => 'string',
-        'image_width' => 'int',
-        'image_height' => 'int'
+        'image_to_add' => '\Swagger\Client\Model\DocxImage',
+        'insert_placement' => 'string',
+        'insert_path' => 'string'
     ];
 
     /**
@@ -76,8 +77,9 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
         'input_document_file_url' => null,
         'input_image_file_bytes' => 'byte',
         'input_image_file_url' => null,
-        'image_width' => 'int64',
-        'image_height' => 'int64'
+        'image_to_add' => null,
+        'insert_placement' => null,
+        'insert_path' => null
     ];
 
     /**
@@ -111,8 +113,9 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
         'input_document_file_url' => 'InputDocumentFileUrl',
         'input_image_file_bytes' => 'InputImageFileBytes',
         'input_image_file_url' => 'InputImageFileUrl',
-        'image_width' => 'ImageWidth',
-        'image_height' => 'ImageHeight'
+        'image_to_add' => 'ImageToAdd',
+        'insert_placement' => 'InsertPlacement',
+        'insert_path' => 'InsertPath'
     ];
 
     /**
@@ -125,8 +128,9 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
         'input_document_file_url' => 'setInputDocumentFileUrl',
         'input_image_file_bytes' => 'setInputImageFileBytes',
         'input_image_file_url' => 'setInputImageFileUrl',
-        'image_width' => 'setImageWidth',
-        'image_height' => 'setImageHeight'
+        'image_to_add' => 'setImageToAdd',
+        'insert_placement' => 'setInsertPlacement',
+        'insert_path' => 'setInsertPath'
     ];
 
     /**
@@ -139,8 +143,9 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
         'input_document_file_url' => 'getInputDocumentFileUrl',
         'input_image_file_bytes' => 'getInputImageFileBytes',
         'input_image_file_url' => 'getInputImageFileUrl',
-        'image_width' => 'getImageWidth',
-        'image_height' => 'getImageHeight'
+        'image_to_add' => 'getImageToAdd',
+        'insert_placement' => 'getInsertPlacement',
+        'insert_path' => 'getInsertPath'
     ];
 
     /**
@@ -207,8 +212,9 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
         $this->container['input_document_file_url'] = isset($data['input_document_file_url']) ? $data['input_document_file_url'] : null;
         $this->container['input_image_file_bytes'] = isset($data['input_image_file_bytes']) ? $data['input_image_file_bytes'] : null;
         $this->container['input_image_file_url'] = isset($data['input_image_file_url']) ? $data['input_image_file_url'] : null;
-        $this->container['image_width'] = isset($data['image_width']) ? $data['image_width'] : null;
-        $this->container['image_height'] = isset($data['image_height']) ? $data['image_height'] : null;
+        $this->container['image_to_add'] = isset($data['image_to_add']) ? $data['image_to_add'] : null;
+        $this->container['insert_placement'] = isset($data['insert_placement']) ? $data['insert_placement'] : null;
+        $this->container['insert_path'] = isset($data['insert_path']) ? $data['insert_path'] : null;
     }
 
     /**
@@ -316,7 +322,7 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
     /**
      * Sets input_image_file_bytes
      *
-     * @param string $input_image_file_bytes Optional: Bytes of the input image file to operate on
+     * @param string $input_image_file_bytes Optional: Bytes of the input image file to operate on; if you supply this value do not supply InputImageFileUrl or ImageToAdd.
      *
      * @return $this
      */
@@ -345,7 +351,7 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
     /**
      * Sets input_image_file_url
      *
-     * @param string $input_image_file_url Optional: URL of an image file to operate on as input.  This can be a public URL, or you can also use the begin-editing API to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public).
+     * @param string $input_image_file_url Optional: URL of an image file to operate on as input; if you supply this value do not supply InputImageFileBytes or ImageToAdd.  This can be a public URL, or you can also use the begin-editing API to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public).
      *
      * @return $this
      */
@@ -357,49 +363,73 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets image_width
+     * Gets image_to_add
      *
-     * @return int
+     * @return \Swagger\Client\Model\DocxImage
      */
-    public function getImageWidth()
+    public function getImageToAdd()
     {
-        return $this->container['image_width'];
+        return $this->container['image_to_add'];
     }
 
     /**
-     * Sets image_width
+     * Sets image_to_add
      *
-     * @param int $image_width Width in points of the image, set to 0 for default
+     * @param \Swagger\Client\Model\DocxImage $image_to_add Optional: Image to add; if you supply in this object, do not supply InputImageFileBytes or InputImageFileUrl.
      *
      * @return $this
      */
-    public function setImageWidth($image_width)
+    public function setImageToAdd($image_to_add)
     {
-        $this->container['image_width'] = $image_width;
+        $this->container['image_to_add'] = $image_to_add;
 
         return $this;
     }
 
     /**
-     * Gets image_height
+     * Gets insert_placement
      *
-     * @return int
+     * @return string
      */
-    public function getImageHeight()
+    public function getInsertPlacement()
     {
-        return $this->container['image_height'];
+        return $this->container['insert_placement'];
     }
 
     /**
-     * Sets image_height
+     * Sets insert_placement
      *
-     * @param int $image_height Height in point of the image, set to 0 for default
+     * @param string $insert_placement Optional; default is DocumentEnd.  Placement Type of the insert; possible values are: DocumentStart (very beginning of the document), DocumentEnd (very end of the document), BeforeExistingObject (right before an existing object - fill in the InsertPath field using the Path value from an existing object), AfterExistingObject (right after an existing object - fill in the InsertPath field using the Path value from an existing object)
      *
      * @return $this
      */
-    public function setImageHeight($image_height)
+    public function setInsertPlacement($insert_placement)
     {
-        $this->container['image_height'] = $image_height;
+        $this->container['insert_placement'] = $insert_placement;
+
+        return $this;
+    }
+
+    /**
+     * Gets insert_path
+     *
+     * @return string
+     */
+    public function getInsertPath()
+    {
+        return $this->container['insert_path'];
+    }
+
+    /**
+     * Sets insert_path
+     *
+     * @param string $insert_path Optional; location within the document to insert the object; fill in the InsertPath field using the Path value from an existing object.  Used with InsertPlacement of BeforeExistingObject or AfterExistingObject
+     *
+     * @return $this
+     */
+    public function setInsertPath($insert_path)
+    {
+        $this->container['insert_path'] = $insert_path;
 
         return $this;
     }

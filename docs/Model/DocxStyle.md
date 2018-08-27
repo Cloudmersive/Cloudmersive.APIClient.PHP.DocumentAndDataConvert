@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **style_id** | **string** | ID of the style | [optional] 
+**path** | **string** | The Path of the location of this object; leave blank for new tables | [optional] 
 **bold** | **bool** | Style applies bold formatting | [optional] 
 **italic** | **bool** | Style applies italic formatting | [optional] 
 **underline** | **bool** | Style applies underline formatting | [optional] 

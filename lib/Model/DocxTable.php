@@ -59,6 +59,7 @@ class DocxTable implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'table_id' => 'string',
+        'path' => 'string',
         'width' => 'string',
         'width_type' => 'string',
         'table_rows' => '\Swagger\Client\Model\DocxTableRow[]',
@@ -105,6 +106,7 @@ class DocxTable implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'table_id' => null,
+        'path' => null,
         'width' => null,
         'width_type' => null,
         'table_rows' => null,
@@ -172,6 +174,7 @@ class DocxTable implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'table_id' => 'TableID',
+        'path' => 'Path',
         'width' => 'Width',
         'width_type' => 'WidthType',
         'table_rows' => 'TableRows',
@@ -218,6 +221,7 @@ class DocxTable implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'table_id' => 'setTableId',
+        'path' => 'setPath',
         'width' => 'setWidth',
         'width_type' => 'setWidthType',
         'table_rows' => 'setTableRows',
@@ -264,6 +268,7 @@ class DocxTable implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'table_id' => 'getTableId',
+        'path' => 'getPath',
         'width' => 'getWidth',
         'width_type' => 'getWidthType',
         'table_rows' => 'getTableRows',
@@ -364,6 +369,7 @@ class DocxTable implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['table_id'] = isset($data['table_id']) ? $data['table_id'] : null;
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
         $this->container['width'] = isset($data['width']) ? $data['width'] : null;
         $this->container['width_type'] = isset($data['width_type']) ? $data['width_type'] : null;
         $this->container['table_rows'] = isset($data['table_rows']) ? $data['table_rows'] : null;
@@ -441,13 +447,37 @@ class DocxTable implements ModelInterface, ArrayAccess
     /**
      * Sets table_id
      *
-     * @param string $table_id The ID of the table
+     * @param string $table_id The ID of the table; leave blank for new tables
      *
      * @return $this
      */
     public function setTableId($table_id)
     {
         $this->container['table_id'] = $table_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string $path The Path of the location of this object; leave blank for new tables
+     *
+     * @return $this
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
 
         return $this;
     }

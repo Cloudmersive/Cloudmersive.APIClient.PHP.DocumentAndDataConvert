@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **run_index** | **int** | Index of the run, 0-based | [optional] 
+**path** | **string** | The Path of the location of this object; leave blank for new tables | [optional] 
 **text_items** | [**\Swagger\Client\Model\DocxText[]**](DocxText.md) | Text items inside the run; this is where the actual text content is stored | [optional] 
 **bold** | **bool** | True to make the text bold, false otherwise | [optional] 
 **italic** | **bool** | True to make the text italic, false otherwise | [optional] 

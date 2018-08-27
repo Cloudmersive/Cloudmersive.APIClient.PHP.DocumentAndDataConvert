@@ -58,6 +58,7 @@ class DocxHeader implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'path' => 'string',
         'paragraphs' => '\Swagger\Client\Model\DocxParagraph[]',
         'sections_with_header' => '\Swagger\Client\Model\DocxSection[]'
     ];
@@ -68,6 +69,7 @@ class DocxHeader implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'path' => null,
         'paragraphs' => null,
         'sections_with_header' => null
     ];
@@ -99,6 +101,7 @@ class DocxHeader implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'path' => 'Path',
         'paragraphs' => 'Paragraphs',
         'sections_with_header' => 'SectionsWithHeader'
     ];
@@ -109,6 +112,7 @@ class DocxHeader implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'path' => 'setPath',
         'paragraphs' => 'setParagraphs',
         'sections_with_header' => 'setSectionsWithHeader'
     ];
@@ -119,6 +123,7 @@ class DocxHeader implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'path' => 'getPath',
         'paragraphs' => 'getParagraphs',
         'sections_with_header' => 'getSectionsWithHeader'
     ];
@@ -183,6 +188,7 @@ class DocxHeader implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
         $this->container['paragraphs'] = isset($data['paragraphs']) ? $data['paragraphs'] : null;
         $this->container['sections_with_header'] = isset($data['sections_with_header']) ? $data['sections_with_header'] : null;
     }
@@ -211,6 +217,30 @@ class DocxHeader implements ModelInterface, ArrayAccess
         return true;
     }
 
+
+    /**
+     * Gets path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string $path The Path of the location of this object; leave blank for new tables
+     *
+     * @return $this
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
+
+        return $this;
+    }
 
     /**
      * Gets paragraphs

@@ -59,6 +59,7 @@ class DocxStyle implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'style_id' => 'string',
+        'path' => 'string',
         'bold' => 'bool',
         'italic' => 'bool',
         'underline' => 'bool',
@@ -73,6 +74,7 @@ class DocxStyle implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'style_id' => null,
+        'path' => null,
         'bold' => null,
         'italic' => null,
         'underline' => null,
@@ -108,6 +110,7 @@ class DocxStyle implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'style_id' => 'StyleID',
+        'path' => 'Path',
         'bold' => 'Bold',
         'italic' => 'Italic',
         'underline' => 'Underline',
@@ -122,6 +125,7 @@ class DocxStyle implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'style_id' => 'setStyleId',
+        'path' => 'setPath',
         'bold' => 'setBold',
         'italic' => 'setItalic',
         'underline' => 'setUnderline',
@@ -136,6 +140,7 @@ class DocxStyle implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'style_id' => 'getStyleId',
+        'path' => 'getPath',
         'bold' => 'getBold',
         'italic' => 'getItalic',
         'underline' => 'getUnderline',
@@ -204,6 +209,7 @@ class DocxStyle implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['style_id'] = isset($data['style_id']) ? $data['style_id'] : null;
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
         $this->container['bold'] = isset($data['bold']) ? $data['bold'] : null;
         $this->container['italic'] = isset($data['italic']) ? $data['italic'] : null;
         $this->container['underline'] = isset($data['underline']) ? $data['underline'] : null;
@@ -256,6 +262,30 @@ class DocxStyle implements ModelInterface, ArrayAccess
     public function setStyleId($style_id)
     {
         $this->container['style_id'] = $style_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string $path The Path of the location of this object; leave blank for new tables
+     *
+     * @return $this
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
 
         return $this;
     }

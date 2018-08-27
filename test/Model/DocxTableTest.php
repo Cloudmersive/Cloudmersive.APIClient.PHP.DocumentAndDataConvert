@@ -85,6 +85,13 @@ class DocxTableTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "path"
+     */
+    public function testPropertyPath()
+    {
+    }
+
+    /**
      * Test attribute "width"
      */
     public function testPropertyWidth()

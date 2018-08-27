@@ -85,6 +85,13 @@ class DocxStyleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "path"
+     */
+    public function testPropertyPath()
+    {
+    }
+
+    /**
      * Test attribute "bold"
      */
     public function testPropertyBold()

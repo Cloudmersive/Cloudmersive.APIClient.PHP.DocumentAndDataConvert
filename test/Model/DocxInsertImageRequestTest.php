@@ -106,16 +106,23 @@ class DocxInsertImageRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "image_width"
+     * Test attribute "image_to_add"
      */
-    public function testPropertyImageWidth()
+    public function testPropertyImageToAdd()
     {
     }
 
     /**
-     * Test attribute "image_height"
+     * Test attribute "insert_placement"
      */
-    public function testPropertyImageHeight()
+    public function testPropertyInsertPlacement()
+    {
+    }
+
+    /**
+     * Test attribute "insert_path"
+     */
+    public function testPropertyInsertPath()
     {
     }
 }

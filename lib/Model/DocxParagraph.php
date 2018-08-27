@@ -59,6 +59,7 @@ class DocxParagraph implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'paragraph_index' => 'int',
+        'path' => 'string',
         'content_runs' => '\Swagger\Client\Model\DocxRun[]',
         'style_id' => 'string'
     ];
@@ -70,6 +71,7 @@ class DocxParagraph implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'paragraph_index' => 'int32',
+        'path' => null,
         'content_runs' => null,
         'style_id' => null
     ];
@@ -102,6 +104,7 @@ class DocxParagraph implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'paragraph_index' => 'ParagraphIndex',
+        'path' => 'Path',
         'content_runs' => 'ContentRuns',
         'style_id' => 'StyleID'
     ];
@@ -113,6 +116,7 @@ class DocxParagraph implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'paragraph_index' => 'setParagraphIndex',
+        'path' => 'setPath',
         'content_runs' => 'setContentRuns',
         'style_id' => 'setStyleId'
     ];
@@ -124,6 +128,7 @@ class DocxParagraph implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'paragraph_index' => 'getParagraphIndex',
+        'path' => 'getPath',
         'content_runs' => 'getContentRuns',
         'style_id' => 'getStyleId'
     ];
@@ -189,6 +194,7 @@ class DocxParagraph implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['paragraph_index'] = isset($data['paragraph_index']) ? $data['paragraph_index'] : null;
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
         $this->container['content_runs'] = isset($data['content_runs']) ? $data['content_runs'] : null;
         $this->container['style_id'] = isset($data['style_id']) ? $data['style_id'] : null;
     }
@@ -238,6 +244,30 @@ class DocxParagraph implements ModelInterface, ArrayAccess
     public function setParagraphIndex($paragraph_index)
     {
         $this->container['paragraph_index'] = $paragraph_index;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string $path The Path of the location of this object; leave blank for new tables
+     *
+     * @return $this
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
 
         return $this;
     }

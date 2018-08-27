@@ -59,6 +59,7 @@ class DocxText implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'text_index' => 'int',
+        'path' => 'string',
         'text_content' => 'string'
     ];
 
@@ -69,6 +70,7 @@ class DocxText implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'text_index' => 'int32',
+        'path' => null,
         'text_content' => null
     ];
 
@@ -100,6 +102,7 @@ class DocxText implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'text_index' => 'TextIndex',
+        'path' => 'Path',
         'text_content' => 'TextContent'
     ];
 
@@ -110,6 +113,7 @@ class DocxText implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'text_index' => 'setTextIndex',
+        'path' => 'setPath',
         'text_content' => 'setTextContent'
     ];
 
@@ -120,6 +124,7 @@ class DocxText implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'text_index' => 'getTextIndex',
+        'path' => 'getPath',
         'text_content' => 'getTextContent'
     ];
 
@@ -184,6 +189,7 @@ class DocxText implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['text_index'] = isset($data['text_index']) ? $data['text_index'] : null;
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
         $this->container['text_content'] = isset($data['text_content']) ? $data['text_content'] : null;
     }
 
@@ -232,6 +238,30 @@ class DocxText implements ModelInterface, ArrayAccess
     public function setTextIndex($text_index)
     {
         $this->container['text_index'] = $text_index;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string $path The Path of the location of this object; leave blank for new tables
+     *
+     * @return $this
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
 
         return $this;
     }

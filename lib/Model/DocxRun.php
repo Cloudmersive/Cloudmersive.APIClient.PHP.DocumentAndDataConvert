@@ -59,6 +59,7 @@ class DocxRun implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'run_index' => 'int',
+        'path' => 'string',
         'text_items' => '\Swagger\Client\Model\DocxText[]',
         'bold' => 'bool',
         'italic' => 'bool',
@@ -74,6 +75,7 @@ class DocxRun implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'run_index' => 'int32',
+        'path' => null,
         'text_items' => null,
         'bold' => null,
         'italic' => null,
@@ -110,6 +112,7 @@ class DocxRun implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'run_index' => 'RunIndex',
+        'path' => 'Path',
         'text_items' => 'TextItems',
         'bold' => 'Bold',
         'italic' => 'Italic',
@@ -125,6 +128,7 @@ class DocxRun implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'run_index' => 'setRunIndex',
+        'path' => 'setPath',
         'text_items' => 'setTextItems',
         'bold' => 'setBold',
         'italic' => 'setItalic',
@@ -140,6 +144,7 @@ class DocxRun implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'run_index' => 'getRunIndex',
+        'path' => 'getPath',
         'text_items' => 'getTextItems',
         'bold' => 'getBold',
         'italic' => 'getItalic',
@@ -209,6 +214,7 @@ class DocxRun implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['run_index'] = isset($data['run_index']) ? $data['run_index'] : null;
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
         $this->container['text_items'] = isset($data['text_items']) ? $data['text_items'] : null;
         $this->container['bold'] = isset($data['bold']) ? $data['bold'] : null;
         $this->container['italic'] = isset($data['italic']) ? $data['italic'] : null;
@@ -262,6 +268,30 @@ class DocxRun implements ModelInterface, ArrayAccess
     public function setRunIndex($run_index)
     {
         $this->container['run_index'] = $run_index;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string $path The Path of the location of this object; leave blank for new tables
+     *
+     * @return $this
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
 
         return $this;
     }

@@ -59,6 +59,7 @@ class DocxTableCell implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'cell_index' => 'int',
+        'path' => 'string',
         'paragraphs' => '\Swagger\Client\Model\DocxParagraph[]',
         'cell_shading_color' => 'string',
         'cell_shading_fill' => 'string',
@@ -74,6 +75,7 @@ class DocxTableCell implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'cell_index' => 'int32',
+        'path' => null,
         'paragraphs' => null,
         'cell_shading_color' => null,
         'cell_shading_fill' => null,
@@ -110,6 +112,7 @@ class DocxTableCell implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'cell_index' => 'CellIndex',
+        'path' => 'Path',
         'paragraphs' => 'Paragraphs',
         'cell_shading_color' => 'CellShadingColor',
         'cell_shading_fill' => 'CellShadingFill',
@@ -125,6 +128,7 @@ class DocxTableCell implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'cell_index' => 'setCellIndex',
+        'path' => 'setPath',
         'paragraphs' => 'setParagraphs',
         'cell_shading_color' => 'setCellShadingColor',
         'cell_shading_fill' => 'setCellShadingFill',
@@ -140,6 +144,7 @@ class DocxTableCell implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'cell_index' => 'getCellIndex',
+        'path' => 'getPath',
         'paragraphs' => 'getParagraphs',
         'cell_shading_color' => 'getCellShadingColor',
         'cell_shading_fill' => 'getCellShadingFill',
@@ -209,6 +214,7 @@ class DocxTableCell implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['cell_index'] = isset($data['cell_index']) ? $data['cell_index'] : null;
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
         $this->container['paragraphs'] = isset($data['paragraphs']) ? $data['paragraphs'] : null;
         $this->container['cell_shading_color'] = isset($data['cell_shading_color']) ? $data['cell_shading_color'] : null;
         $this->container['cell_shading_fill'] = isset($data['cell_shading_fill']) ? $data['cell_shading_fill'] : null;
@@ -262,6 +268,30 @@ class DocxTableCell implements ModelInterface, ArrayAccess
     public function setCellIndex($cell_index)
     {
         $this->container['cell_index'] = $cell_index;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string $path The Path of the location of this object; leave blank for new tables
+     *
+     * @return $this
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
 
         return $this;
     }

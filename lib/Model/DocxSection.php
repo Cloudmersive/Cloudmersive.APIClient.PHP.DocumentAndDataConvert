@@ -58,7 +58,8 @@ class DocxSection implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'starting_page_numbers' => 'int[]'
+        'starting_page_numbers' => 'int[]',
+        'path' => 'string'
     ];
 
     /**
@@ -67,7 +68,8 @@ class DocxSection implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'starting_page_numbers' => 'int32'
+        'starting_page_numbers' => 'int32',
+        'path' => null
     ];
 
     /**
@@ -97,7 +99,8 @@ class DocxSection implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'starting_page_numbers' => 'StartingPageNumbers'
+        'starting_page_numbers' => 'StartingPageNumbers',
+        'path' => 'Path'
     ];
 
     /**
@@ -106,7 +109,8 @@ class DocxSection implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'starting_page_numbers' => 'setStartingPageNumbers'
+        'starting_page_numbers' => 'setStartingPageNumbers',
+        'path' => 'setPath'
     ];
 
     /**
@@ -115,7 +119,8 @@ class DocxSection implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'starting_page_numbers' => 'getStartingPageNumbers'
+        'starting_page_numbers' => 'getStartingPageNumbers',
+        'path' => 'getPath'
     ];
 
     /**
@@ -179,6 +184,7 @@ class DocxSection implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['starting_page_numbers'] = isset($data['starting_page_numbers']) ? $data['starting_page_numbers'] : null;
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
     }
 
     /**
@@ -226,6 +232,30 @@ class DocxSection implements ModelInterface, ArrayAccess
     public function setStartingPageNumbers($starting_page_numbers)
     {
         $this->container['starting_page_numbers'] = $starting_page_numbers;
+
+        return $this;
+    }
+
+    /**
+     * Gets path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string $path The Path of the location of this object; leave blank for new tables
+     *
+     * @return $this
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
 
         return $this;
     }

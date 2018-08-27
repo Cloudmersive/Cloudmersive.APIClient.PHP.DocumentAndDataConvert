@@ -60,7 +60,9 @@ class InsertDocxTablesRequest implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'input_file_bytes' => 'string',
         'input_file_url' => 'string',
-        'table_to_insert' => '\Swagger\Client\Model\DocxTable'
+        'table_to_insert' => '\Swagger\Client\Model\DocxTable',
+        'insert_placement' => 'string',
+        'insert_path' => 'string'
     ];
 
     /**
@@ -71,7 +73,9 @@ class InsertDocxTablesRequest implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'input_file_bytes' => 'byte',
         'input_file_url' => null,
-        'table_to_insert' => null
+        'table_to_insert' => null,
+        'insert_placement' => null,
+        'insert_path' => null
     ];
 
     /**
@@ -103,7 +107,9 @@ class InsertDocxTablesRequest implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'input_file_bytes' => 'InputFileBytes',
         'input_file_url' => 'InputFileUrl',
-        'table_to_insert' => 'TableToInsert'
+        'table_to_insert' => 'TableToInsert',
+        'insert_placement' => 'InsertPlacement',
+        'insert_path' => 'InsertPath'
     ];
 
     /**
@@ -114,7 +120,9 @@ class InsertDocxTablesRequest implements ModelInterface, ArrayAccess
     protected static $setters = [
         'input_file_bytes' => 'setInputFileBytes',
         'input_file_url' => 'setInputFileUrl',
-        'table_to_insert' => 'setTableToInsert'
+        'table_to_insert' => 'setTableToInsert',
+        'insert_placement' => 'setInsertPlacement',
+        'insert_path' => 'setInsertPath'
     ];
 
     /**
@@ -125,7 +133,9 @@ class InsertDocxTablesRequest implements ModelInterface, ArrayAccess
     protected static $getters = [
         'input_file_bytes' => 'getInputFileBytes',
         'input_file_url' => 'getInputFileUrl',
-        'table_to_insert' => 'getTableToInsert'
+        'table_to_insert' => 'getTableToInsert',
+        'insert_placement' => 'getInsertPlacement',
+        'insert_path' => 'getInsertPath'
     ];
 
     /**
@@ -191,6 +201,8 @@ class InsertDocxTablesRequest implements ModelInterface, ArrayAccess
         $this->container['input_file_bytes'] = isset($data['input_file_bytes']) ? $data['input_file_bytes'] : null;
         $this->container['input_file_url'] = isset($data['input_file_url']) ? $data['input_file_url'] : null;
         $this->container['table_to_insert'] = isset($data['table_to_insert']) ? $data['table_to_insert'] : null;
+        $this->container['insert_placement'] = isset($data['insert_placement']) ? $data['insert_placement'] : null;
+        $this->container['insert_path'] = isset($data['insert_path']) ? $data['insert_path'] : null;
     }
 
     /**
@@ -298,6 +310,54 @@ class InsertDocxTablesRequest implements ModelInterface, ArrayAccess
     public function setTableToInsert($table_to_insert)
     {
         $this->container['table_to_insert'] = $table_to_insert;
+
+        return $this;
+    }
+
+    /**
+     * Gets insert_placement
+     *
+     * @return string
+     */
+    public function getInsertPlacement()
+    {
+        return $this->container['insert_placement'];
+    }
+
+    /**
+     * Sets insert_placement
+     *
+     * @param string $insert_placement Optional; default is DocumentEnd.  Placement Type of the insert; possible values are: DocumentStart (very beginning of the document), DocumentEnd (very end of the document), BeforeExistingObject (right before an existing object - fill in the InsertPath field using the Path value from an existing object), AfterExistingObject (right after an existing object - fill in the InsertPath field using the Path value from an existing object)
+     *
+     * @return $this
+     */
+    public function setInsertPlacement($insert_placement)
+    {
+        $this->container['insert_placement'] = $insert_placement;
+
+        return $this;
+    }
+
+    /**
+     * Gets insert_path
+     *
+     * @return string
+     */
+    public function getInsertPath()
+    {
+        return $this->container['insert_path'];
+    }
+
+    /**
+     * Sets insert_path
+     *
+     * @param string $insert_path Optional; location within the document to insert the object; fill in the InsertPath field using the Path value from an existing object.  Used with InsertPlacement of BeforeExistingObject or AfterExistingObject
+     *
+     * @return $this
+     */
+    public function setInsertPath($insert_path)
+    {
+        $this->container['insert_path'] = $insert_path;
 
         return $this;
     }

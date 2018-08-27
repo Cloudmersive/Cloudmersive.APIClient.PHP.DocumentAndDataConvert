@@ -83,4 +83,11 @@ class DocxSectionTest extends \PHPUnit_Framework_TestCase
     public function testPropertyStartingPageNumbers()
     {
     }
+
+    /**
+     * Test attribute "path"
+     */
+    public function testPropertyPath()
+    {
+    }
 }

@@ -85,6 +85,13 @@ class DocxParagraphTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "path"
+     */
+    public function testPropertyPath()
+    {
+    }
+
+    /**
      * Test attribute "content_runs"
      */
     public function testPropertyContentRuns()

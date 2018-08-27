@@ -85,6 +85,13 @@ class DocxTextTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "path"
+     */
+    public function testPropertyPath()
+    {
+    }
+
+    /**
      * Test attribute "text_content"
      */
     public function testPropertyTextContent()

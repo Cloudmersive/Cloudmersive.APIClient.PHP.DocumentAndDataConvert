@@ -97,4 +97,18 @@ class InsertDocxTablesRequestTest extends \PHPUnit_Framework_TestCase
     public function testPropertyTableToInsert()
     {
     }
+
+    /**
+     * Test attribute "insert_placement"
+     */
+    public function testPropertyInsertPlacement()
+    {
+    }
+
+    /**
+     * Test attribute "insert_path"
+     */
+    public function testPropertyInsertPath()
+    {
+    }
 }

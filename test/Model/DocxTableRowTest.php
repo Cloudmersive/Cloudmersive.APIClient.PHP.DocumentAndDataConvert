@@ -85,6 +85,13 @@ class DocxTableRowTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "path"
+     */
+    public function testPropertyPath()
+    {
+    }
+
+    /**
      * Test attribute "row_cells"
      */
     public function testPropertyRowCells()

@@ -3,7 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**table_id** | **string** | The ID of the table | [optional] 
+**table_id** | **string** | The ID of the table; leave blank for new tables | [optional] 
+**path** | **string** | The Path of the location of this object; leave blank for new tables | [optional] 
 **width** | **string** | The Width of the table, or 0 if not specified | [optional] 
 **width_type** | **string** | The Width configuration type of the table | [optional] 
 **table_rows** | [**\Swagger\Client\Model\DocxTableRow[]**](DocxTableRow.md) | Rows in the table; this is where the contents is located | [optional] 
