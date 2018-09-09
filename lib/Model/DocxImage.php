@@ -69,7 +69,7 @@ class DocxImage implements ModelInterface, ArrayAccess
         'image_data_content_type' => 'string',
         'image_internal_file_name' => 'string',
         'image_contents_url' => 'string',
-        'inline' => 'bool'
+        'inline_with_text' => 'bool'
     ];
 
     /**
@@ -90,7 +90,7 @@ class DocxImage implements ModelInterface, ArrayAccess
         'image_data_content_type' => null,
         'image_internal_file_name' => null,
         'image_contents_url' => null,
-        'inline' => null
+        'inline_with_text' => null
     ];
 
     /**
@@ -132,7 +132,7 @@ class DocxImage implements ModelInterface, ArrayAccess
         'image_data_content_type' => 'ImageDataContentType',
         'image_internal_file_name' => 'ImageInternalFileName',
         'image_contents_url' => 'ImageContentsURL',
-        'inline' => 'Inline'
+        'inline_with_text' => 'InlineWithText'
     ];
 
     /**
@@ -153,7 +153,7 @@ class DocxImage implements ModelInterface, ArrayAccess
         'image_data_content_type' => 'setImageDataContentType',
         'image_internal_file_name' => 'setImageInternalFileName',
         'image_contents_url' => 'setImageContentsUrl',
-        'inline' => 'setInline'
+        'inline_with_text' => 'setInlineWithText'
     ];
 
     /**
@@ -174,7 +174,7 @@ class DocxImage implements ModelInterface, ArrayAccess
         'image_data_content_type' => 'getImageDataContentType',
         'image_internal_file_name' => 'getImageInternalFileName',
         'image_contents_url' => 'getImageContentsUrl',
-        'inline' => 'getInline'
+        'inline_with_text' => 'getInlineWithText'
     ];
 
     /**
@@ -249,7 +249,7 @@ class DocxImage implements ModelInterface, ArrayAccess
         $this->container['image_data_content_type'] = isset($data['image_data_content_type']) ? $data['image_data_content_type'] : null;
         $this->container['image_internal_file_name'] = isset($data['image_internal_file_name']) ? $data['image_internal_file_name'] : null;
         $this->container['image_contents_url'] = isset($data['image_contents_url']) ? $data['image_contents_url'] : null;
-        $this->container['inline'] = isset($data['inline']) ? $data['inline'] : null;
+        $this->container['inline_with_text'] = isset($data['inline_with_text']) ? $data['inline_with_text'] : null;
     }
 
     /**
@@ -566,25 +566,25 @@ class DocxImage implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets inline
+     * Gets inline_with_text
      *
      * @return bool
      */
-    public function getInline()
+    public function getInlineWithText()
     {
-        return $this->container['inline'];
+        return $this->container['inline_with_text'];
     }
 
     /**
-     * Sets inline
+     * Sets inline_with_text
      *
-     * @param bool $inline True if the image is inline with the text; false if it is floating
+     * @param bool $inline_with_text True if the image is inline with the text; false if it is floating
      *
      * @return $this
      */
-    public function setInline($inline)
+    public function setInlineWithText($inline_with_text)
     {
-        $this->container['inline'] = $inline;
+        $this->container['inline_with_text'] = $inline_with_text;
 
         return $this;
     }

@@ -162,9 +162,9 @@ class DocxImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "inline"
+     * Test attribute "inline_with_text"
      */
-    public function testPropertyInline()
+    public function testPropertyInlineWithText()
     {
     }
 }

@@ -72,6 +72,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentAutodetectGetInfo
+     *
+     * Get document type information.
+     *
+     */
+    public function testConvertDocumentAutodetectGetInfo()
+    {
+    }
+
+    /**
      * Test case for convertDocumentAutodetectToPdf
      *
      * Convert Document to PDF.
