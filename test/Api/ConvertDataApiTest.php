@@ -82,6 +82,26 @@ class ConvertDataApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDataXlsToJson
+     *
+     * Excel (97-2003) XLS to JSON conversion.
+     *
+     */
+    public function testConvertDataXlsToJson()
+    {
+    }
+
+    /**
+     * Test case for convertDataXlsxToJson
+     *
+     * Excel XLSX to JSON conversion.
+     *
+     */
+    public function testConvertDataXlsxToJson()
+    {
+    }
+
+    /**
      * Test case for convertDataXmlToJson
      *
      * XML to JSON conversion.
