@@ -2731,7 +2731,7 @@ class ConvertDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return string
      */
     public function convertDocumentXlsToPdf($input_file)
     {
@@ -2748,11 +2748,11 @@ class ConvertDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentXlsToPdfWithHttpInfo($input_file)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->convertDocumentXlsToPdfRequest($input_file);
 
         try {
@@ -2804,7 +2804,7 @@ class ConvertDocumentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2846,7 +2846,7 @@ class ConvertDocumentApi
      */
     public function convertDocumentXlsToPdfAsyncWithHttpInfo($input_file)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->convertDocumentXlsToPdfRequest($input_file);
 
         return $this->client

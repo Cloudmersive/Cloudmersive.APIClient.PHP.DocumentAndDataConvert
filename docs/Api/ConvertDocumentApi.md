@@ -571,7 +571,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **convertDocumentXlsToPdf**
-> object convertDocumentXlsToPdf($input_file)
+> string convertDocumentXlsToPdf($input_file)
 
 Excel XLS (97-03) to PDF
 
@@ -612,7 +612,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+**string**
 
 ### Authorization
 
