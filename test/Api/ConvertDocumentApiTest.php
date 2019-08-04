@@ -132,12 +132,32 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentPdfToDocx
+     *
+     * PDF to Word DOCX.
+     *
+     */
+    public function testConvertDocumentPdfToDocx()
+    {
+    }
+
+    /**
      * Test case for convertDocumentPdfToPngArray
      *
      * PDF to PNG Array.
      *
      */
     public function testConvertDocumentPdfToPngArray()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentPdfToPptx
+     *
+     * PDF to PowerPoint PPTX.
+     *
+     */
+    public function testConvertDocumentPdfToPptx()
     {
     }
 

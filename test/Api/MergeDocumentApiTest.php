@@ -82,6 +82,16 @@ class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for mergeDocumentPdf
+     *
+     * Merge Multple PDF Files Together.
+     *
+     */
+    public function testMergeDocumentPdf()
+    {
+    }
+
+    /**
      * Test case for mergeDocumentPptx
      *
      * Merge Multple PowerPoint PPTX Together.
