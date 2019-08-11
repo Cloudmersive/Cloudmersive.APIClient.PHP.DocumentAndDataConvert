@@ -92,6 +92,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentAutodetectToPngArray
+     *
+     * Convert Document to PNG array.
+     *
+     */
+    public function testConvertDocumentAutodetectToPngArray()
+    {
+    }
+
+    /**
      * Test case for convertDocumentCsvToXlsx
      *
      * CSV to Excel XLSX.
