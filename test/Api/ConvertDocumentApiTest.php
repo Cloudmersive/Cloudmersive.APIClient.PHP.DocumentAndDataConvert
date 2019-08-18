@@ -142,6 +142,26 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentHtmlToPdf
+     *
+     * HTML to PDF.
+     *
+     */
+    public function testConvertDocumentHtmlToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentHtmlToPng
+     *
+     * HTML to PNG array.
+     *
+     */
+    public function testConvertDocumentHtmlToPng()
+    {
+    }
+
+    /**
      * Test case for convertDocumentPdfToDocx
      *
      * PDF to Word DOCX.
