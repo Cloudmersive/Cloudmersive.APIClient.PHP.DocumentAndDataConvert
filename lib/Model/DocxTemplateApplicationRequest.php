@@ -1,6 +1,6 @@
 <?php
 /**
- * HtmlToPdfRequest
+ * DocxTemplateApplicationRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * HtmlToPdfRequest Class Doc Comment
+ * DocxTemplateApplicationRequest Class Doc Comment
  *
  * @category Class
- * @description Details of the HTML to PDF request
+ * @description Word DOCX template application request
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class HtmlToPdfRequest implements ModelInterface, ArrayAccess
+class DocxTemplateApplicationRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'HtmlToPdfRequest';
+    protected static $swaggerModelName = 'DocxTemplateApplicationRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'html' => 'string',
-        'extra_loading_wait' => 'int'
+        'operations' => '\Swagger\Client\Model\DocxTemplateOperation[]'
     ];
 
     /**
@@ -68,8 +67,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'html' => null,
-        'extra_loading_wait' => 'int32'
+        'operations' => null
     ];
 
     /**
@@ -99,8 +97,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'html' => 'Html',
-        'extra_loading_wait' => 'ExtraLoadingWait'
+        'operations' => 'Operations'
     ];
 
     /**
@@ -109,8 +106,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'html' => 'setHtml',
-        'extra_loading_wait' => 'setExtraLoadingWait'
+        'operations' => 'setOperations'
     ];
 
     /**
@@ -119,8 +115,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'html' => 'getHtml',
-        'extra_loading_wait' => 'getExtraLoadingWait'
+        'operations' => 'getOperations'
     ];
 
     /**
@@ -183,8 +178,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['html'] = isset($data['html']) ? $data['html'] : null;
-        $this->container['extra_loading_wait'] = isset($data['extra_loading_wait']) ? $data['extra_loading_wait'] : null;
+        $this->container['operations'] = isset($data['operations']) ? $data['operations'] : null;
     }
 
     /**
@@ -213,49 +207,25 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets html
+     * Gets operations
      *
-     * @return string
+     * @return \Swagger\Client\Model\DocxTemplateOperation[]
      */
-    public function getHtml()
+    public function getOperations()
     {
-        return $this->container['html'];
+        return $this->container['operations'];
     }
 
     /**
-     * Sets html
+     * Sets operations
      *
-     * @param string $html HTML to render to PDF
+     * @param \Swagger\Client\Model\DocxTemplateOperation[] $operations Operations to apply to this template
      *
      * @return $this
      */
-    public function setHtml($html)
+    public function setOperations($operations)
     {
-        $this->container['html'] = $html;
-
-        return $this;
-    }
-
-    /**
-     * Gets extra_loading_wait
-     *
-     * @return int
-     */
-    public function getExtraLoadingWait()
-    {
-        return $this->container['extra_loading_wait'];
-    }
-
-    /**
-     * Sets extra_loading_wait
-     *
-     * @param int $extra_loading_wait Optional: Additional number of milliseconds to wait once the web page has finished loading before taking the screenshot.  Can be helpful for highly asynchronous websites.
-     *
-     * @return $this
-     */
-    public function setExtraLoadingWait($extra_loading_wait)
-    {
-        $this->container['extra_loading_wait'] = $extra_loading_wait;
+        $this->container['operations'] = $operations;
 
         return $this;
     }

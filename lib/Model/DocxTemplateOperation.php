@@ -1,6 +1,6 @@
 <?php
 /**
- * HtmlToPdfRequest
+ * DocxTemplateOperation
  *
  * PHP version 5
  *
@@ -33,15 +33,14 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * HtmlToPdfRequest Class Doc Comment
+ * DocxTemplateOperation Class Doc Comment
  *
  * @category Class
- * @description Details of the HTML to PDF request
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class HtmlToPdfRequest implements ModelInterface, ArrayAccess
+class DocxTemplateOperation implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +49,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'HtmlToPdfRequest';
+    protected static $swaggerModelName = 'DocxTemplateOperation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +57,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'html' => 'string',
-        'extra_loading_wait' => 'int'
+        'action' => 'int',
+        'match_against' => 'string',
+        'replace_with' => 'string'
     ];
 
     /**
@@ -68,8 +68,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'html' => null,
-        'extra_loading_wait' => 'int32'
+        'action' => 'int32',
+        'match_against' => null,
+        'replace_with' => null
     ];
 
     /**
@@ -99,8 +100,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'html' => 'Html',
-        'extra_loading_wait' => 'ExtraLoadingWait'
+        'action' => 'Action',
+        'match_against' => 'MatchAgainst',
+        'replace_with' => 'ReplaceWith'
     ];
 
     /**
@@ -109,8 +111,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'html' => 'setHtml',
-        'extra_loading_wait' => 'setExtraLoadingWait'
+        'action' => 'setAction',
+        'match_against' => 'setMatchAgainst',
+        'replace_with' => 'setReplaceWith'
     ];
 
     /**
@@ -119,8 +122,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'html' => 'getHtml',
-        'extra_loading_wait' => 'getExtraLoadingWait'
+        'action' => 'getAction',
+        'match_against' => 'getMatchAgainst',
+        'replace_with' => 'getReplaceWith'
     ];
 
     /**
@@ -164,8 +168,21 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const ACTION_1 = 1;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getActionAllowableValues()
+    {
+        return [
+            self::ACTION_1,
+        ];
+    }
     
 
     /**
@@ -183,8 +200,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['html'] = isset($data['html']) ? $data['html'] : null;
-        $this->container['extra_loading_wait'] = isset($data['extra_loading_wait']) ? $data['extra_loading_wait'] : null;
+        $this->container['action'] = isset($data['action']) ? $data['action'] : null;
+        $this->container['match_against'] = isset($data['match_against']) ? $data['match_against'] : null;
+        $this->container['replace_with'] = isset($data['replace_with']) ? $data['replace_with'] : null;
     }
 
     /**
@@ -195,6 +213,14 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getActionAllowableValues();
+        if (!in_array($this->container['action'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'action', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -208,54 +234,91 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        $allowedValues = $this->getActionAllowableValues();
+        if (!in_array($this->container['action'], $allowedValues)) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets html
+     * Gets action
      *
-     * @return string
+     * @return int
      */
-    public function getHtml()
+    public function getAction()
     {
-        return $this->container['html'];
+        return $this->container['action'];
     }
 
     /**
-     * Sets html
+     * Sets action
      *
-     * @param string $html HTML to render to PDF
+     * @param int $action Operation action to take; possible values are \"Replace\"
      *
      * @return $this
      */
-    public function setHtml($html)
+    public function setAction($action)
     {
-        $this->container['html'] = $html;
+        $allowedValues = $this->getActionAllowableValues();
+        if (!is_null($action) && !in_array($action, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'action', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['action'] = $action;
 
         return $this;
     }
 
     /**
-     * Gets extra_loading_wait
+     * Gets match_against
      *
-     * @return int
+     * @return string
      */
-    public function getExtraLoadingWait()
+    public function getMatchAgainst()
     {
-        return $this->container['extra_loading_wait'];
+        return $this->container['match_against'];
     }
 
     /**
-     * Sets extra_loading_wait
+     * Sets match_against
      *
-     * @param int $extra_loading_wait Optional: Additional number of milliseconds to wait once the web page has finished loading before taking the screenshot.  Can be helpful for highly asynchronous websites.
+     * @param string $match_against For Replace operations, the string to match against (to be replaced with ReplaceWith string)
      *
      * @return $this
      */
-    public function setExtraLoadingWait($extra_loading_wait)
+    public function setMatchAgainst($match_against)
     {
-        $this->container['extra_loading_wait'] = $extra_loading_wait;
+        $this->container['match_against'] = $match_against;
+
+        return $this;
+    }
+
+    /**
+     * Gets replace_with
+     *
+     * @return string
+     */
+    public function getReplaceWith()
+    {
+        return $this->container['replace_with'];
+    }
+
+    /**
+     * Sets replace_with
+     *
+     * @param string $replace_with For Replace operations, the string to Replace the original string with
+     *
+     * @return $this
+     */
+    public function setReplaceWith($replace_with)
+    {
+        $this->container['replace_with'] = $replace_with;
 
         return $this;
     }

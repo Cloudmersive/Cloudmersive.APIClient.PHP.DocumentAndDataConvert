@@ -1,6 +1,6 @@
 <?php
 /**
- * HtmlToPdfRequest
+ * TextConversionResult
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * HtmlToPdfRequest Class Doc Comment
+ * TextConversionResult Class Doc Comment
  *
  * @category Class
- * @description Details of the HTML to PDF request
+ * @description Text conversion result from converting a document to Plain Text (TXT) format
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class HtmlToPdfRequest implements ModelInterface, ArrayAccess
+class TextConversionResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'HtmlToPdfRequest';
+    protected static $swaggerModelName = 'TextConversionResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'html' => 'string',
-        'extra_loading_wait' => 'int'
+        'successful' => 'bool',
+        'text_result' => 'string'
     ];
 
     /**
@@ -68,8 +68,8 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'html' => null,
-        'extra_loading_wait' => 'int32'
+        'successful' => null,
+        'text_result' => null
     ];
 
     /**
@@ -99,8 +99,8 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'html' => 'Html',
-        'extra_loading_wait' => 'ExtraLoadingWait'
+        'successful' => 'Successful',
+        'text_result' => 'TextResult'
     ];
 
     /**
@@ -109,8 +109,8 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'html' => 'setHtml',
-        'extra_loading_wait' => 'setExtraLoadingWait'
+        'successful' => 'setSuccessful',
+        'text_result' => 'setTextResult'
     ];
 
     /**
@@ -119,8 +119,8 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'html' => 'getHtml',
-        'extra_loading_wait' => 'getExtraLoadingWait'
+        'successful' => 'getSuccessful',
+        'text_result' => 'getTextResult'
     ];
 
     /**
@@ -183,8 +183,8 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['html'] = isset($data['html']) ? $data['html'] : null;
-        $this->container['extra_loading_wait'] = isset($data['extra_loading_wait']) ? $data['extra_loading_wait'] : null;
+        $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
+        $this->container['text_result'] = isset($data['text_result']) ? $data['text_result'] : null;
     }
 
     /**
@@ -213,49 +213,49 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets html
+     * Gets successful
      *
-     * @return string
+     * @return bool
      */
-    public function getHtml()
+    public function getSuccessful()
     {
-        return $this->container['html'];
+        return $this->container['successful'];
     }
 
     /**
-     * Sets html
+     * Sets successful
      *
-     * @param string $html HTML to render to PDF
+     * @param bool $successful True if the operation was successful, false otherwise
      *
      * @return $this
      */
-    public function setHtml($html)
+    public function setSuccessful($successful)
     {
-        $this->container['html'] = $html;
+        $this->container['successful'] = $successful;
 
         return $this;
     }
 
     /**
-     * Gets extra_loading_wait
+     * Gets text_result
      *
-     * @return int
+     * @return string
      */
-    public function getExtraLoadingWait()
+    public function getTextResult()
     {
-        return $this->container['extra_loading_wait'];
+        return $this->container['text_result'];
     }
 
     /**
-     * Sets extra_loading_wait
+     * Sets text_result
      *
-     * @param int $extra_loading_wait Optional: Additional number of milliseconds to wait once the web page has finished loading before taking the screenshot.  Can be helpful for highly asynchronous websites.
+     * @param string $text_result Plain Text (TXT) format conversion result of the input document.  The text result is returned as a string.
      *
      * @return $this
      */
-    public function setExtraLoadingWait($extra_loading_wait)
+    public function setTextResult($text_result)
     {
-        $this->container['extra_loading_wait'] = $extra_loading_wait;
+        $this->container['text_result'] = $text_result;
 
         return $this;
     }

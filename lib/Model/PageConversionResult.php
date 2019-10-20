@@ -232,7 +232,7 @@ class PageConversionResult implements ModelInterface, ArrayAccess
     /**
      * Sets filename
      *
-     * @param string $filename filename
+     * @param string $filename File name of the image in the converted file format
      *
      * @return $this
      */
@@ -256,7 +256,7 @@ class PageConversionResult implements ModelInterface, ArrayAccess
     /**
      * Sets file_bytes
      *
-     * @param string $file_bytes file_bytes
+     * @param string $file_bytes File bytes (contents) of the image in converted file format
      *
      * @return $this
      */

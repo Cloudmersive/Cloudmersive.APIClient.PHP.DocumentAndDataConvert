@@ -584,11 +584,11 @@ class ConvertImageApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'text/json', 'application/xml', 'text/xml']
+                ['application/octet-stream']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/octet-stream'],
                 ['multipart/form-data']
             );
         }
@@ -867,11 +867,11 @@ class ConvertImageApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'text/json', 'application/xml', 'text/xml']
+                ['application/octet-stream']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/octet-stream'],
                 ['multipart/form-data']
             );
         }

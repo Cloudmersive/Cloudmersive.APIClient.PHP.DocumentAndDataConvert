@@ -102,6 +102,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentAutodetectToTxt
+     *
+     * Convert Document to Text.
+     *
+     */
+    public function testConvertDocumentAutodetectToTxt()
+    {
+    }
+
+    /**
      * Test case for convertDocumentCsvToXlsx
      *
      * CSV to Excel XLSX.
@@ -138,6 +148,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testConvertDocumentDocxToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentDocxToTxt
+     *
+     * Word DOCX to Text.
+     *
+     */
+    public function testConvertDocumentDocxToTxt()
     {
     }
 
@@ -192,6 +212,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentPdfToTxt
+     *
+     * PDF to Text.
+     *
+     */
+    public function testConvertDocumentPdfToTxt()
+    {
+    }
+
+    /**
      * Test case for convertDocumentPptToPdf
      *
      * PowerPoint PPT (97-03) to PDF.
@@ -218,6 +248,26 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testConvertDocumentPptxToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentPptxToTxt
+     *
+     * PowerPoint PPTX to Text.
+     *
+     */
+    public function testConvertDocumentPptxToTxt()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentXlsToCsv
+     *
+     * Excel XLS (97-03) to CSV.
+     *
+     */
+    public function testConvertDocumentXlsToCsv()
     {
     }
 
@@ -258,6 +308,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testConvertDocumentXlsxToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentXlsxToTxt
+     *
+     * Excel XLSX to Text.
+     *
+     */
+    public function testConvertDocumentXlsxToTxt()
     {
     }
 }

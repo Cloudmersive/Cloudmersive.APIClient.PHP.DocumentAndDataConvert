@@ -255,7 +255,7 @@ class HtmlTemplateOperation implements ModelInterface, ArrayAccess
     /**
      * Sets action
      *
-     * @param int $action action
+     * @param int $action Operation action to take; possible values are \"Replace\"
      *
      * @return $this
      */
@@ -288,7 +288,7 @@ class HtmlTemplateOperation implements ModelInterface, ArrayAccess
     /**
      * Sets match_agsint
      *
-     * @param string $match_agsint match_agsint
+     * @param string $match_agsint For Replace operations, the string to match against (to be replaced with ReplaceWith string)
      *
      * @return $this
      */
@@ -312,7 +312,7 @@ class HtmlTemplateOperation implements ModelInterface, ArrayAccess
     /**
      * Sets replace_with
      *
-     * @param string $replace_with replace_with
+     * @param string $replace_with For Replace operations, the string to Replace the original string with
      *
      * @return $this
      */

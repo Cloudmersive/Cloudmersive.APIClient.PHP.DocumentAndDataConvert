@@ -231,7 +231,7 @@ class HtmlTemplateApplicationRequest implements ModelInterface, ArrayAccess
     /**
      * Sets html_template
      *
-     * @param string $html_template html_template
+     * @param string $html_template HTML template input as a string
      *
      * @return $this
      */
@@ -255,7 +255,7 @@ class HtmlTemplateApplicationRequest implements ModelInterface, ArrayAccess
     /**
      * Sets html_template_url
      *
-     * @param string $html_template_url html_template_url
+     * @param string $html_template_url URL to HTML template input
      *
      * @return $this
      */
@@ -279,7 +279,7 @@ class HtmlTemplateApplicationRequest implements ModelInterface, ArrayAccess
     /**
      * Sets operations
      *
-     * @param \Swagger\Client\Model\HtmlTemplateOperation[] $operations operations
+     * @param \Swagger\Client\Model\HtmlTemplateOperation[] $operations Operations to apply to this template
      *
      * @return $this
      */

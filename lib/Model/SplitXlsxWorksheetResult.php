@@ -1,6 +1,6 @@
 <?php
 /**
- * HtmlToPdfRequest
+ * SplitXlsxWorksheetResult
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * HtmlToPdfRequest Class Doc Comment
+ * SplitXlsxWorksheetResult Class Doc Comment
  *
  * @category Class
- * @description Details of the HTML to PDF request
+ * @description The result of splitting a spreadsheet into individual Excel XLSX worksheets
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class HtmlToPdfRequest implements ModelInterface, ArrayAccess
+class SplitXlsxWorksheetResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'HtmlToPdfRequest';
+    protected static $swaggerModelName = 'SplitXlsxWorksheetResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'html' => 'string',
-        'extra_loading_wait' => 'int'
+        'result_worksheets' => '\Swagger\Client\Model\WorksheetResult[]',
+        'successful' => 'bool'
     ];
 
     /**
@@ -68,8 +68,8 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'html' => null,
-        'extra_loading_wait' => 'int32'
+        'result_worksheets' => null,
+        'successful' => null
     ];
 
     /**
@@ -99,8 +99,8 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'html' => 'Html',
-        'extra_loading_wait' => 'ExtraLoadingWait'
+        'result_worksheets' => 'ResultWorksheets',
+        'successful' => 'Successful'
     ];
 
     /**
@@ -109,8 +109,8 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'html' => 'setHtml',
-        'extra_loading_wait' => 'setExtraLoadingWait'
+        'result_worksheets' => 'setResultWorksheets',
+        'successful' => 'setSuccessful'
     ];
 
     /**
@@ -119,8 +119,8 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'html' => 'getHtml',
-        'extra_loading_wait' => 'getExtraLoadingWait'
+        'result_worksheets' => 'getResultWorksheets',
+        'successful' => 'getSuccessful'
     ];
 
     /**
@@ -183,8 +183,8 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['html'] = isset($data['html']) ? $data['html'] : null;
-        $this->container['extra_loading_wait'] = isset($data['extra_loading_wait']) ? $data['extra_loading_wait'] : null;
+        $this->container['result_worksheets'] = isset($data['result_worksheets']) ? $data['result_worksheets'] : null;
+        $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
     }
 
     /**
@@ -213,49 +213,49 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets html
+     * Gets result_worksheets
      *
-     * @return string
+     * @return \Swagger\Client\Model\WorksheetResult[]
      */
-    public function getHtml()
+    public function getResultWorksheets()
     {
-        return $this->container['html'];
+        return $this->container['result_worksheets'];
     }
 
     /**
-     * Sets html
+     * Sets result_worksheets
      *
-     * @param string $html HTML to render to PDF
+     * @param \Swagger\Client\Model\WorksheetResult[] $result_worksheets result_worksheets
      *
      * @return $this
      */
-    public function setHtml($html)
+    public function setResultWorksheets($result_worksheets)
     {
-        $this->container['html'] = $html;
+        $this->container['result_worksheets'] = $result_worksheets;
 
         return $this;
     }
 
     /**
-     * Gets extra_loading_wait
+     * Gets successful
      *
-     * @return int
+     * @return bool
      */
-    public function getExtraLoadingWait()
+    public function getSuccessful()
     {
-        return $this->container['extra_loading_wait'];
+        return $this->container['successful'];
     }
 
     /**
-     * Sets extra_loading_wait
+     * Sets successful
      *
-     * @param int $extra_loading_wait Optional: Additional number of milliseconds to wait once the web page has finished loading before taking the screenshot.  Can be helpful for highly asynchronous websites.
+     * @param bool $successful True if the operation was successful, false otherwise
      *
      * @return $this
      */
-    public function setExtraLoadingWait($extra_loading_wait)
+    public function setSuccessful($successful)
     {
-        $this->container['extra_loading_wait'] = $extra_loading_wait;
+        $this->container['successful'] = $successful;
 
         return $this;
     }

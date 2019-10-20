@@ -1,6 +1,6 @@
 <?php
 /**
- * ValidateDocumentApiTest
+ * SplitDocumentApiTest
  * PHP version 5
  *
  * @category Class
@@ -33,14 +33,14 @@ use \Swagger\Client\ApiException;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ValidateDocumentApiTest Class Doc Comment
+ * SplitDocumentApiTest Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
+class SplitDocumentApiTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -72,62 +72,12 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for validateDocumentDocxValidation
+     * Test case for splitDocumentXlsx
      *
-     * Validate a Word document (DOCX).
-     *
-     */
-    public function testValidateDocumentDocxValidation()
-    {
-    }
-
-    /**
-     * Test case for validateDocumentJsonValidation
-     *
-     * Validate a JSON file.
+     * Split a single Excel XLSX into Separate Worksheets.
      *
      */
-    public function testValidateDocumentJsonValidation()
-    {
-    }
-
-    /**
-     * Test case for validateDocumentPdfValidation
-     *
-     * Validate a PDF document file.
-     *
-     */
-    public function testValidateDocumentPdfValidation()
-    {
-    }
-
-    /**
-     * Test case for validateDocumentPptxValidation
-     *
-     * Validate a PowerPoint presentation (PPTX).
-     *
-     */
-    public function testValidateDocumentPptxValidation()
-    {
-    }
-
-    /**
-     * Test case for validateDocumentXlsxValidation
-     *
-     * Validate a Excel document (XLSX).
-     *
-     */
-    public function testValidateDocumentXlsxValidation()
-    {
-    }
-
-    /**
-     * Test case for validateDocumentXmlValidation
-     *
-     * Validate an XML file.
-     *
-     */
-    public function testValidateDocumentXmlValidation()
+    public function testSplitDocumentXlsx()
     {
     }
 }

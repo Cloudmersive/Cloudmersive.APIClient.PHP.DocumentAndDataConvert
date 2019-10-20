@@ -1,6 +1,6 @@
 <?php
 /**
- * HtmlToPdfRequest
+ * WorksheetResult
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * HtmlToPdfRequest Class Doc Comment
+ * WorksheetResult Class Doc Comment
  *
  * @category Class
- * @description Details of the HTML to PDF request
+ * @description A single Excel XLSX file corresponding to one worksheet (tab) in the original spreadsheet
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class HtmlToPdfRequest implements ModelInterface, ArrayAccess
+class WorksheetResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'HtmlToPdfRequest';
+    protected static $swaggerModelName = 'WorksheetResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'html' => 'string',
-        'extra_loading_wait' => 'int'
+        'worksheet_number' => 'int',
+        'worksheet_name' => 'string',
+        'url' => 'string'
     ];
 
     /**
@@ -68,8 +69,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'html' => null,
-        'extra_loading_wait' => 'int32'
+        'worksheet_number' => 'int32',
+        'worksheet_name' => null,
+        'url' => null
     ];
 
     /**
@@ -99,8 +101,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'html' => 'Html',
-        'extra_loading_wait' => 'ExtraLoadingWait'
+        'worksheet_number' => 'WorksheetNumber',
+        'worksheet_name' => 'WorksheetName',
+        'url' => 'URL'
     ];
 
     /**
@@ -109,8 +112,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'html' => 'setHtml',
-        'extra_loading_wait' => 'setExtraLoadingWait'
+        'worksheet_number' => 'setWorksheetNumber',
+        'worksheet_name' => 'setWorksheetName',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -119,8 +123,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'html' => 'getHtml',
-        'extra_loading_wait' => 'getExtraLoadingWait'
+        'worksheet_number' => 'getWorksheetNumber',
+        'worksheet_name' => 'getWorksheetName',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -183,8 +188,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['html'] = isset($data['html']) ? $data['html'] : null;
-        $this->container['extra_loading_wait'] = isset($data['extra_loading_wait']) ? $data['extra_loading_wait'] : null;
+        $this->container['worksheet_number'] = isset($data['worksheet_number']) ? $data['worksheet_number'] : null;
+        $this->container['worksheet_name'] = isset($data['worksheet_name']) ? $data['worksheet_name'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
     }
 
     /**
@@ -213,49 +219,73 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets html
+     * Gets worksheet_number
      *
-     * @return string
+     * @return int
      */
-    public function getHtml()
+    public function getWorksheetNumber()
     {
-        return $this->container['html'];
+        return $this->container['worksheet_number'];
     }
 
     /**
-     * Sets html
+     * Sets worksheet_number
      *
-     * @param string $html HTML to render to PDF
+     * @param int $worksheet_number Worksheet number of the converted page, starting with 1 for the left-most worksheet
      *
      * @return $this
      */
-    public function setHtml($html)
+    public function setWorksheetNumber($worksheet_number)
     {
-        $this->container['html'] = $html;
+        $this->container['worksheet_number'] = $worksheet_number;
 
         return $this;
     }
 
     /**
-     * Gets extra_loading_wait
+     * Gets worksheet_name
      *
-     * @return int
+     * @return string
      */
-    public function getExtraLoadingWait()
+    public function getWorksheetName()
     {
-        return $this->container['extra_loading_wait'];
+        return $this->container['worksheet_name'];
     }
 
     /**
-     * Sets extra_loading_wait
+     * Sets worksheet_name
      *
-     * @param int $extra_loading_wait Optional: Additional number of milliseconds to wait once the web page has finished loading before taking the screenshot.  Can be helpful for highly asynchronous websites.
+     * @param string $worksheet_name The name of the worksheet
      *
      * @return $this
      */
-    public function setExtraLoadingWait($extra_loading_wait)
+    public function setWorksheetName($worksheet_name)
     {
-        $this->container['extra_loading_wait'] = $extra_loading_wait;
+        $this->container['worksheet_name'] = $worksheet_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url URL to the XLSX file of this worksheet; file is stored in an in-memory cache and will be deleted
+     *
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
 
         return $this;
     }

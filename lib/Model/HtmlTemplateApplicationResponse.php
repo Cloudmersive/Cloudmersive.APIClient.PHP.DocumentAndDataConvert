@@ -225,7 +225,7 @@ class HtmlTemplateApplicationResponse implements ModelInterface, ArrayAccess
     /**
      * Sets successful
      *
-     * @param bool $successful successful
+     * @param bool $successful True if the operation was successful, false otherwise
      *
      * @return $this
      */
@@ -249,7 +249,7 @@ class HtmlTemplateApplicationResponse implements ModelInterface, ArrayAccess
     /**
      * Sets final_html
      *
-     * @param string $final_html final_html
+     * @param string $final_html Final HTML result of all operations on input
      *
      * @return $this
      */

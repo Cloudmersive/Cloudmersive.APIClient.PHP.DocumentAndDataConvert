@@ -231,7 +231,7 @@ class MultipageImageFormatConversionResult implements ModelInterface, ArrayAcces
     /**
      * Sets successful
      *
-     * @param bool $successful successful
+     * @param bool $successful True if successful, false otherwise
      *
      * @return $this
      */
@@ -255,7 +255,7 @@ class MultipageImageFormatConversionResult implements ModelInterface, ArrayAcces
     /**
      * Sets page_count
      *
-     * @param int $page_count page_count
+     * @param int $page_count The number of pages in the converted output
      *
      * @return $this
      */
@@ -279,7 +279,7 @@ class MultipageImageFormatConversionResult implements ModelInterface, ArrayAcces
     /**
      * Sets pages
      *
-     * @param \Swagger\Client\Model\PageConversionResult[] $pages pages
+     * @param \Swagger\Client\Model\PageConversionResult[] $pages Converted page results
      *
      * @return $this
      */

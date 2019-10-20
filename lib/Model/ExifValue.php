@@ -231,7 +231,7 @@ class ExifValue implements ModelInterface, ArrayAccess
     /**
      * Sets tag
      *
-     * @param string $tag tag
+     * @param string $tag Tag name for the EXIF value
      *
      * @return $this
      */
@@ -255,7 +255,7 @@ class ExifValue implements ModelInterface, ArrayAccess
     /**
      * Sets data_type
      *
-     * @param string $data_type data_type
+     * @param string $data_type Date type of the EXIF value
      *
      * @return $this
      */
@@ -279,7 +279,7 @@ class ExifValue implements ModelInterface, ArrayAccess
     /**
      * Sets data_value
      *
-     * @param string $data_value data_value
+     * @param string $data_value Value, formatted as a string of the EXIF value
      *
      * @return $this
      */

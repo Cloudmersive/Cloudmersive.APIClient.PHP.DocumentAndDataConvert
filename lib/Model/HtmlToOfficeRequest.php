@@ -219,7 +219,7 @@ class HtmlToOfficeRequest implements ModelInterface, ArrayAccess
     /**
      * Sets html
      *
-     * @param string $html html
+     * @param string $html HTML to render to Office format
      *
      * @return $this
      */
