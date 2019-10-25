@@ -212,6 +212,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxSetFooterAddPageNumber
+     *
+     * Add page number to footer in a DOCX.
+     *
+     */
+    public function testEditDocumentDocxSetFooterAddPageNumber()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxSetHeader
      *
      * Set the header in a DOCX.
