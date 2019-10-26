@@ -5896,14 +5896,15 @@ class ConvertDocumentApi
      * Excel XLSX to CSV
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function convertDocumentXlsxToCsv($input_file)
+    public function convertDocumentXlsxToCsv($input_file, $output_encoding = null)
     {
-        list($response) = $this->convertDocumentXlsxToCsvWithHttpInfo($input_file);
+        list($response) = $this->convertDocumentXlsxToCsvWithHttpInfo($input_file, $output_encoding);
         return $response;
     }
 
@@ -5913,15 +5914,16 @@ class ConvertDocumentApi
      * Excel XLSX to CSV
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function convertDocumentXlsxToCsvWithHttpInfo($input_file)
+    public function convertDocumentXlsxToCsvWithHttpInfo($input_file, $output_encoding = null)
     {
         $returnType = 'string';
-        $request = $this->convertDocumentXlsxToCsvRequest($input_file);
+        $request = $this->convertDocumentXlsxToCsvRequest($input_file, $output_encoding);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5988,13 +5990,14 @@ class ConvertDocumentApi
      * Excel XLSX to CSV
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertDocumentXlsxToCsvAsync($input_file)
+    public function convertDocumentXlsxToCsvAsync($input_file, $output_encoding = null)
     {
-        return $this->convertDocumentXlsxToCsvAsyncWithHttpInfo($input_file)
+        return $this->convertDocumentXlsxToCsvAsyncWithHttpInfo($input_file, $output_encoding)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6008,14 +6011,15 @@ class ConvertDocumentApi
      * Excel XLSX to CSV
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertDocumentXlsxToCsvAsyncWithHttpInfo($input_file)
+    public function convertDocumentXlsxToCsvAsyncWithHttpInfo($input_file, $output_encoding = null)
     {
         $returnType = 'string';
-        $request = $this->convertDocumentXlsxToCsvRequest($input_file);
+        $request = $this->convertDocumentXlsxToCsvRequest($input_file, $output_encoding);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6058,11 +6062,12 @@ class ConvertDocumentApi
      * Create request for operation 'convertDocumentXlsxToCsv'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function convertDocumentXlsxToCsvRequest($input_file)
+    protected function convertDocumentXlsxToCsvRequest($input_file, $output_encoding = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
@@ -6078,6 +6083,10 @@ class ConvertDocumentApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($output_encoding !== null) {
+            $headerParams['outputEncoding'] = ObjectSerializer::toHeaderValue($output_encoding);
+        }
 
 
         // form params

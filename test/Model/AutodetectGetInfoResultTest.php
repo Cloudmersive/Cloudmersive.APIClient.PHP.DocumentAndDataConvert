@@ -99,6 +99,27 @@ class AutodetectGetInfoResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "page_count"
+     */
+    public function testPropertyPageCount()
+    {
+    }
+
+    /**
+     * Test attribute "author"
+     */
+    public function testPropertyAuthor()
+    {
+    }
+
+    /**
+     * Test attribute "date_modified"
+     */
+    public function testPropertyDateModified()
+    {
+    }
+
+    /**
      * Test attribute "alternate_file_type_candidates"
      */
     public function testPropertyAlternateFileTypeCandidates()

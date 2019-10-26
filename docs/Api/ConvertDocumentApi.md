@@ -1242,7 +1242,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **convertDocumentXlsxToCsv**
-> string convertDocumentXlsxToCsv($input_file)
+> string convertDocumentXlsxToCsv($input_file, $output_encoding)
 
 Excel XLSX to CSV
 
@@ -1265,9 +1265,10 @@ $apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
     $config
 );
 $input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$output_encoding = "output_encoding_example"; // string | Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32.
 
 try {
-    $result = $apiInstance->convertDocumentXlsxToCsv($input_file);
+    $result = $apiInstance->convertDocumentXlsxToCsv($input_file, $output_encoding);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConvertDocumentApi->convertDocumentXlsxToCsv: ', $e->getMessage(), PHP_EOL;
@@ -1280,6 +1281,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **output_encoding** | **string**| Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32. | [optional]
 
 ### Return type
 

@@ -58,9 +58,9 @@ class DocxSetFooterAddPageNumberRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'prepend_text' => 'string',
         'input_file_bytes' => 'string',
-        'input_file_url' => 'string'
+        'input_file_url' => 'string',
+        'prepend_text' => 'string'
     ];
 
     /**
@@ -69,9 +69,9 @@ class DocxSetFooterAddPageNumberRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'prepend_text' => null,
         'input_file_bytes' => 'byte',
-        'input_file_url' => null
+        'input_file_url' => null,
+        'prepend_text' => null
     ];
 
     /**
@@ -101,9 +101,9 @@ class DocxSetFooterAddPageNumberRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'prepend_text' => 'PrependText',
         'input_file_bytes' => 'InputFileBytes',
-        'input_file_url' => 'InputFileUrl'
+        'input_file_url' => 'InputFileUrl',
+        'prepend_text' => 'PrependText'
     ];
 
     /**
@@ -112,9 +112,9 @@ class DocxSetFooterAddPageNumberRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'prepend_text' => 'setPrependText',
         'input_file_bytes' => 'setInputFileBytes',
-        'input_file_url' => 'setInputFileUrl'
+        'input_file_url' => 'setInputFileUrl',
+        'prepend_text' => 'setPrependText'
     ];
 
     /**
@@ -123,9 +123,9 @@ class DocxSetFooterAddPageNumberRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'prepend_text' => 'getPrependText',
         'input_file_bytes' => 'getInputFileBytes',
-        'input_file_url' => 'getInputFileUrl'
+        'input_file_url' => 'getInputFileUrl',
+        'prepend_text' => 'getPrependText'
     ];
 
     /**
@@ -188,9 +188,9 @@ class DocxSetFooterAddPageNumberRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['prepend_text'] = isset($data['prepend_text']) ? $data['prepend_text'] : null;
         $this->container['input_file_bytes'] = isset($data['input_file_bytes']) ? $data['input_file_bytes'] : null;
         $this->container['input_file_url'] = isset($data['input_file_url']) ? $data['input_file_url'] : null;
+        $this->container['prepend_text'] = isset($data['prepend_text']) ? $data['prepend_text'] : null;
     }
 
     /**
@@ -224,30 +224,6 @@ class DocxSetFooterAddPageNumberRequest implements ModelInterface, ArrayAccess
         return true;
     }
 
-
-    /**
-     * Gets prepend_text
-     *
-     * @return string
-     */
-    public function getPrependText()
-    {
-        return $this->container['prepend_text'];
-    }
-
-    /**
-     * Sets prepend_text
-     *
-     * @param string $prepend_text prepend_text
-     *
-     * @return $this
-     */
-    public function setPrependText($prepend_text)
-    {
-        $this->container['prepend_text'] = $prepend_text;
-
-        return $this;
-    }
 
     /**
      * Gets input_file_bytes
@@ -298,6 +274,30 @@ class DocxSetFooterAddPageNumberRequest implements ModelInterface, ArrayAccess
     public function setInputFileUrl($input_file_url)
     {
         $this->container['input_file_url'] = $input_file_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets prepend_text
+     *
+     * @return string
+     */
+    public function getPrependText()
+    {
+        return $this->container['prepend_text'];
+    }
+
+    /**
+     * Sets prepend_text
+     *
+     * @param string $prepend_text Optional: extra text to add before the page number, for example if you want to show \"Page 1\" then you can set PrependText to \"Page\"
+     *
+     * @return $this
+     */
+    public function setPrependText($prepend_text)
+    {
+        $this->container['prepend_text'] = $prepend_text;
 
         return $this;
     }

@@ -61,6 +61,9 @@ class AutodetectGetInfoResult implements ModelInterface, ArrayAccess
         'successful' => 'bool',
         'detected_file_extension' => 'string',
         'detected_mime_type' => 'string',
+        'page_count' => 'int',
+        'author' => 'string',
+        'date_modified' => '\DateTime',
         'alternate_file_type_candidates' => '\Swagger\Client\Model\AlternateFileFormatCandidate[]'
     ];
 
@@ -73,6 +76,9 @@ class AutodetectGetInfoResult implements ModelInterface, ArrayAccess
         'successful' => null,
         'detected_file_extension' => null,
         'detected_mime_type' => null,
+        'page_count' => 'int64',
+        'author' => null,
+        'date_modified' => 'date-time',
         'alternate_file_type_candidates' => null
     ];
 
@@ -106,6 +112,9 @@ class AutodetectGetInfoResult implements ModelInterface, ArrayAccess
         'successful' => 'Successful',
         'detected_file_extension' => 'DetectedFileExtension',
         'detected_mime_type' => 'DetectedMimeType',
+        'page_count' => 'PageCount',
+        'author' => 'Author',
+        'date_modified' => 'DateModified',
         'alternate_file_type_candidates' => 'AlternateFileTypeCandidates'
     ];
 
@@ -118,6 +127,9 @@ class AutodetectGetInfoResult implements ModelInterface, ArrayAccess
         'successful' => 'setSuccessful',
         'detected_file_extension' => 'setDetectedFileExtension',
         'detected_mime_type' => 'setDetectedMimeType',
+        'page_count' => 'setPageCount',
+        'author' => 'setAuthor',
+        'date_modified' => 'setDateModified',
         'alternate_file_type_candidates' => 'setAlternateFileTypeCandidates'
     ];
 
@@ -130,6 +142,9 @@ class AutodetectGetInfoResult implements ModelInterface, ArrayAccess
         'successful' => 'getSuccessful',
         'detected_file_extension' => 'getDetectedFileExtension',
         'detected_mime_type' => 'getDetectedMimeType',
+        'page_count' => 'getPageCount',
+        'author' => 'getAuthor',
+        'date_modified' => 'getDateModified',
         'alternate_file_type_candidates' => 'getAlternateFileTypeCandidates'
     ];
 
@@ -196,6 +211,9 @@ class AutodetectGetInfoResult implements ModelInterface, ArrayAccess
         $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
         $this->container['detected_file_extension'] = isset($data['detected_file_extension']) ? $data['detected_file_extension'] : null;
         $this->container['detected_mime_type'] = isset($data['detected_mime_type']) ? $data['detected_mime_type'] : null;
+        $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
+        $this->container['author'] = isset($data['author']) ? $data['author'] : null;
+        $this->container['date_modified'] = isset($data['date_modified']) ? $data['date_modified'] : null;
         $this->container['alternate_file_type_candidates'] = isset($data['alternate_file_type_candidates']) ? $data['alternate_file_type_candidates'] : null;
     }
 
@@ -292,6 +310,78 @@ class AutodetectGetInfoResult implements ModelInterface, ArrayAccess
     public function setDetectedMimeType($detected_mime_type)
     {
         $this->container['detected_mime_type'] = $detected_mime_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_count
+     *
+     * @return int
+     */
+    public function getPageCount()
+    {
+        return $this->container['page_count'];
+    }
+
+    /**
+     * Sets page_count
+     *
+     * @param int $page_count Number of pages in a page-based document; for presentations, this is the number of slides and for a spreadsheet this is the number of worksheets.  Contains 0 when the page count cannot be determined, or if the concept of page count does not apply (e.g. for an image)
+     *
+     * @return $this
+     */
+    public function setPageCount($page_count)
+    {
+        $this->container['page_count'] = $page_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets author
+     *
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->container['author'];
+    }
+
+    /**
+     * Sets author
+     *
+     * @param string $author User name of the creator/author of the document, if available, null if not available
+     *
+     * @return $this
+     */
+    public function setAuthor($author)
+    {
+        $this->container['author'] = $author;
+
+        return $this;
+    }
+
+    /**
+     * Gets date_modified
+     *
+     * @return \DateTime
+     */
+    public function getDateModified()
+    {
+        return $this->container['date_modified'];
+    }
+
+    /**
+     * Sets date_modified
+     *
+     * @param \DateTime $date_modified The timestamp that the document was last modified, if available, null if not available
+     *
+     * @return $this
+     */
+    public function setDateModified($date_modified)
+    {
+        $this->container['date_modified'] = $date_modified;
 
         return $this;
     }

@@ -78,13 +78,6 @@ class DocxSetFooterAddPageNumberRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "prepend_text"
-     */
-    public function testPropertyPrependText()
-    {
-    }
-
-    /**
      * Test attribute "input_file_bytes"
      */
     public function testPropertyInputFileBytes()
@@ -95,6 +88,13 @@ class DocxSetFooterAddPageNumberRequestTest extends \PHPUnit_Framework_TestCase
      * Test attribute "input_file_url"
      */
     public function testPropertyInputFileUrl()
+    {
+    }
+
+    /**
+     * Test attribute "prepend_text"
+     */
+    public function testPropertyPrependText()
     {
     }
 }
