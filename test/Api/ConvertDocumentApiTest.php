@@ -202,6 +202,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentPdfToPngSingle
+     *
+     * PDF to Single PNG image.
+     *
+     */
+    public function testConvertDocumentPdfToPngSingle()
+    {
+    }
+
+    /**
      * Test case for convertDocumentPdfToPptx
      *
      * PDF to PowerPoint PPTX.
