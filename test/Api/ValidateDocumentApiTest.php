@@ -72,12 +72,32 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentAutodetectValidation
+     *
+     * Autodetect content type and validate.
+     *
+     */
+    public function testValidateDocumentAutodetectValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentDocxValidation
      *
      * Validate a Word document (DOCX).
      *
      */
     public function testValidateDocumentDocxValidation()
+    {
+    }
+
+    /**
+     * Test case for validateDocumentExecutableValidation
+     *
+     * Validate if a file is executable.
+     *
+     */
+    public function testValidateDocumentExecutableValidation()
     {
     }
 
