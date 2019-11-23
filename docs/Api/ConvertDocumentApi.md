@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**convertDocumentPdfToPngSingle**](ConvertDocumentApi.md#convertDocumentPdfToPngSingle) | **POST** /convert/pdf/to/png/merge-single | PDF to Single PNG image
 [**convertDocumentPdfToPptx**](ConvertDocumentApi.md#convertDocumentPdfToPptx) | **POST** /convert/pdf/to/pptx | PDF to PowerPoint PPTX
 [**convertDocumentPdfToTxt**](ConvertDocumentApi.md#convertDocumentPdfToTxt) | **POST** /convert/pdf/to/txt | PDF to Text
+[**convertDocumentPngArrayToPdf**](ConvertDocumentApi.md#convertDocumentPngArrayToPdf) | **POST** /convert/png/to/pdf | PNG Array to PDF
 [**convertDocumentPptToPdf**](ConvertDocumentApi.md#convertDocumentPptToPdf) | **POST** /convert/ppt/to/pdf | PowerPoint PPT (97-03) to PDF
 [**convertDocumentPptToPptx**](ConvertDocumentApi.md#convertDocumentPptToPptx) | **POST** /convert/ppt/to/pptx | PowerPoint PPT (97-03) to PPTX
 [**convertDocumentPptxToPdf**](ConvertDocumentApi.md#convertDocumentPptxToPdf) | **POST** /convert/pptx/to/pdf | PowerPoint PPTX to PDF
@@ -900,6 +901,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\Model\TextConversionResult**](../Model/TextConversionResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentPngArrayToPdf**
+> string convertDocumentPngArrayToPdf($input_file1, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10)
+
+PNG Array to PDF
+
+Convert an array of PNG images, one image per page, into a newly-created PDF.  Supports images of different sizes as input.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file1 = "/path/to/file.txt"; // \SplFileObject | First input file to perform the operation on.
+$input_file2 = "/path/to/file.txt"; // \SplFileObject | Second input file to perform the operation on.
+$input_file3 = "/path/to/file.txt"; // \SplFileObject | Third input file to perform the operation on.
+$input_file4 = "/path/to/file.txt"; // \SplFileObject | Fourth input file to perform the operation on.
+$input_file5 = "/path/to/file.txt"; // \SplFileObject | Fifth input file to perform the operation on.
+$input_file6 = "/path/to/file.txt"; // \SplFileObject | Sixth input file to perform the operation on.
+$input_file7 = "/path/to/file.txt"; // \SplFileObject | Seventh input file to perform the operation on.
+$input_file8 = "/path/to/file.txt"; // \SplFileObject | Eighth input file to perform the operation on.
+$input_file9 = "/path/to/file.txt"; // \SplFileObject | Ninth input file to perform the operation on.
+$input_file10 = "/path/to/file.txt"; // \SplFileObject | Tenth input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentPngArrayToPdf($input_file1, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentPngArrayToPdf: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file1** | **\SplFileObject**| First input file to perform the operation on. |
+ **input_file2** | **\SplFileObject**| Second input file to perform the operation on. |
+ **input_file3** | **\SplFileObject**| Third input file to perform the operation on. | [optional]
+ **input_file4** | **\SplFileObject**| Fourth input file to perform the operation on. | [optional]
+ **input_file5** | **\SplFileObject**| Fifth input file to perform the operation on. | [optional]
+ **input_file6** | **\SplFileObject**| Sixth input file to perform the operation on. | [optional]
+ **input_file7** | **\SplFileObject**| Seventh input file to perform the operation on. | [optional]
+ **input_file8** | **\SplFileObject**| Eighth input file to perform the operation on. | [optional]
+ **input_file9** | **\SplFileObject**| Ninth input file to perform the operation on. | [optional]
+ **input_file10** | **\SplFileObject**| Tenth input file to perform the operation on. | [optional]
+
+### Return type
+
+**string**
 
 ### Authorization
 

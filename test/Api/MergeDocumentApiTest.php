@@ -74,7 +74,7 @@ class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for mergeDocumentDocx
      *
-     * Merge Multple Word DOCX Together.
+     * Merge Two Word DOCX Together.
      *
      */
     public function testMergeDocumentDocx()
@@ -82,12 +82,32 @@ class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for mergeDocumentDocxMulti
+     *
+     * Merge Multple Word DOCX Together.
+     *
+     */
+    public function testMergeDocumentDocxMulti()
+    {
+    }
+
+    /**
      * Test case for mergeDocumentPdf
+     *
+     * Merge Two PDF Files Together.
+     *
+     */
+    public function testMergeDocumentPdf()
+    {
+    }
+
+    /**
+     * Test case for mergeDocumentPdfMulti
      *
      * Merge Multple PDF Files Together.
      *
      */
-    public function testMergeDocumentPdf()
+    public function testMergeDocumentPdfMulti()
     {
     }
 
@@ -104,7 +124,7 @@ class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for mergeDocumentPptx
      *
-     * Merge Multple PowerPoint PPTX Together.
+     * Merge Two PowerPoint PPTX Together.
      *
      */
     public function testMergeDocumentPptx()
@@ -112,12 +132,32 @@ class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for mergeDocumentPptxMulti
+     *
+     * Merge Multple PowerPoint PPTX Together.
+     *
+     */
+    public function testMergeDocumentPptxMulti()
+    {
+    }
+
+    /**
      * Test case for mergeDocumentXlsx
+     *
+     * Merge Two Excel XLSX Together.
+     *
+     */
+    public function testMergeDocumentXlsx()
+    {
+    }
+
+    /**
+     * Test case for mergeDocumentXlsxMulti
      *
      * Merge Multple Excel XLSX Together.
      *
      */
-    public function testMergeDocumentXlsx()
+    public function testMergeDocumentXlsxMulti()
     {
     }
 }

@@ -82,6 +82,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editPdfRasterize
+     *
+     * Rasterize a PDF to an image-based PDF.
+     *
+     */
+    public function testEditPdfRasterize()
+    {
+    }
+
+    /**
      * Test case for editPdfSetPermissions
      *
      * Encrypt, password-protect and set restricted permissions on a PDF.

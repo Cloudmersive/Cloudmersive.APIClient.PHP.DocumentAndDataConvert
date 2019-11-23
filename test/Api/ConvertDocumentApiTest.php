@@ -232,6 +232,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentPngArrayToPdf
+     *
+     * PNG Array to PDF.
+     *
+     */
+    public function testConvertDocumentPngArrayToPdf()
+    {
+    }
+
+    /**
      * Test case for convertDocumentPptToPdf
      *
      * PowerPoint PPT (97-03) to PDF.
