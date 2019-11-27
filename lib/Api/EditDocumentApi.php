@@ -1854,11 +1854,11 @@ class EditDocumentApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/octet-stream']
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/octet-stream'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
                 ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
             );
         }

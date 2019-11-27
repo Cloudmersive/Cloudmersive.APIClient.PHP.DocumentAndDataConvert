@@ -82,12 +82,52 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editPdfGetFormFields
+     *
+     * Gets PDF Form fields and values.
+     *
+     */
+    public function testEditPdfGetFormFields()
+    {
+    }
+
+    /**
+     * Test case for editPdfGetMetadata
+     *
+     * Get PDF document metadata.
+     *
+     */
+    public function testEditPdfGetMetadata()
+    {
+    }
+
+    /**
      * Test case for editPdfRasterize
      *
      * Rasterize a PDF to an image-based PDF.
      *
      */
     public function testEditPdfRasterize()
+    {
+    }
+
+    /**
+     * Test case for editPdfSetFormFields
+     *
+     * Sets ands fills PDF Form field values.
+     *
+     */
+    public function testEditPdfSetFormFields()
+    {
+    }
+
+    /**
+     * Test case for editPdfSetMetadata
+     *
+     * Sets PDF document metadata.
+     *
+     */
+    public function testEditPdfSetMetadata()
     {
     }
 
