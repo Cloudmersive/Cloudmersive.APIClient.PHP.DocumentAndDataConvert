@@ -810,11 +810,11 @@ class ConvertDocumentApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/octet-stream']
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/octet-stream'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
                 ['multipart/form-data']
             );
         }
@@ -1141,7 +1141,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentCsvToXlsx
      *
-     * CSV to Excel XLSX
+     * Convert CSV to Excel XLSX Spreadsheet
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1158,7 +1158,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentCsvToXlsxWithHttpInfo
      *
-     * CSV to Excel XLSX
+     * Convert CSV to Excel XLSX Spreadsheet
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1233,7 +1233,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentCsvToXlsxAsync
      *
-     * CSV to Excel XLSX
+     * Convert CSV to Excel XLSX Spreadsheet
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1253,7 +1253,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentCsvToXlsxAsyncWithHttpInfo
      *
-     * CSV to Excel XLSX
+     * Convert CSV to Excel XLSX Spreadsheet
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1405,7 +1405,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocToDocx
      *
-     * Word DOC (97-03) to DOCX
+     * Convert Word DOC (97-03) Document to DOCX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1422,7 +1422,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocToDocxWithHttpInfo
      *
-     * Word DOC (97-03) to DOCX
+     * Convert Word DOC (97-03) Document to DOCX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1497,7 +1497,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocToDocxAsync
      *
-     * Word DOC (97-03) to DOCX
+     * Convert Word DOC (97-03) Document to DOCX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1517,7 +1517,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocToDocxAsyncWithHttpInfo
      *
-     * Word DOC (97-03) to DOCX
+     * Convert Word DOC (97-03) Document to DOCX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1669,7 +1669,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocToPdf
      *
-     * Word DOC (97-03) to PDF
+     * Convert Word DOC (97-03) Document to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1686,7 +1686,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocToPdfWithHttpInfo
      *
-     * Word DOC (97-03) to PDF
+     * Convert Word DOC (97-03) Document to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1761,7 +1761,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocToPdfAsync
      *
-     * Word DOC (97-03) to PDF
+     * Convert Word DOC (97-03) Document to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1781,7 +1781,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocToPdfAsyncWithHttpInfo
      *
-     * Word DOC (97-03) to PDF
+     * Convert Word DOC (97-03) Document to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1933,7 +1933,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToPdf
      *
-     * Word DOCX to PDF
+     * Convert Word DOCX Document to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -1950,7 +1950,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToPdfWithHttpInfo
      *
-     * Word DOCX to PDF
+     * Convert Word DOCX Document to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2025,7 +2025,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToPdfAsync
      *
-     * Word DOCX to PDF
+     * Convert Word DOCX Document to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2045,7 +2045,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToPdfAsyncWithHttpInfo
      *
-     * Word DOCX to PDF
+     * Convert Word DOCX Document to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2197,7 +2197,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToTxt
      *
-     * Word DOCX to Text
+     * Convert Word DOCX Document to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2214,7 +2214,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToTxtWithHttpInfo
      *
-     * Word DOCX to Text
+     * Convert Word DOCX Document to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2289,7 +2289,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToTxtAsync
      *
-     * Word DOCX to Text
+     * Convert Word DOCX Document to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2309,7 +2309,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToTxtAsyncWithHttpInfo
      *
-     * Word DOCX to Text
+     * Convert Word DOCX Document to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2461,7 +2461,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPdf
      *
-     * HTML to PDF
+     * Convert HTML to PDF Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2478,7 +2478,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPdfWithHttpInfo
      *
-     * HTML to PDF
+     * Convert HTML to PDF Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2553,7 +2553,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPdfAsync
      *
-     * HTML to PDF
+     * Convert HTML to PDF Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2573,7 +2573,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPdfAsyncWithHttpInfo
      *
-     * HTML to PDF
+     * Convert HTML to PDF Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2725,7 +2725,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPng
      *
-     * HTML to PNG array
+     * Convert HTML to PNG image array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2742,7 +2742,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPngWithHttpInfo
      *
-     * HTML to PNG array
+     * Convert HTML to PNG image array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2817,7 +2817,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPngAsync
      *
-     * HTML to PNG array
+     * Convert HTML to PNG image array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2837,7 +2837,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPngAsyncWithHttpInfo
      *
-     * HTML to PNG array
+     * Convert HTML to PNG image array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2922,11 +2922,11 @@ class ConvertDocumentApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/octet-stream']
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/octet-stream'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
                 ['multipart/form-data']
             );
         }
@@ -2989,7 +2989,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToDocx
      *
-     * PDF to Word DOCX
+     * Convert PDF to Word DOCX Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3006,7 +3006,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToDocxWithHttpInfo
      *
-     * PDF to Word DOCX
+     * Convert PDF to Word DOCX Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3081,7 +3081,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToDocxAsync
      *
-     * PDF to Word DOCX
+     * Convert PDF to Word DOCX Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3101,7 +3101,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToDocxAsyncWithHttpInfo
      *
-     * PDF to Word DOCX
+     * Convert PDF to Word DOCX Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3253,7 +3253,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToPngArray
      *
-     * PDF to PNG Array
+     * Convert PDF to PNG Image Array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3270,7 +3270,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToPngArrayWithHttpInfo
      *
-     * PDF to PNG Array
+     * Convert PDF to PNG Image Array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3345,7 +3345,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToPngArrayAsync
      *
-     * PDF to PNG Array
+     * Convert PDF to PNG Image Array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3365,7 +3365,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToPngArrayAsyncWithHttpInfo
      *
-     * PDF to PNG Array
+     * Convert PDF to PNG Image Array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3450,11 +3450,11 @@ class ConvertDocumentApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/octet-stream']
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/octet-stream'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
                 ['multipart/form-data']
             );
         }
@@ -3517,7 +3517,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToPngSingle
      *
-     * PDF to Single PNG image
+     * Convert PDF to Single PNG image
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3534,7 +3534,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToPngSingleWithHttpInfo
      *
-     * PDF to Single PNG image
+     * Convert PDF to Single PNG image
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3609,7 +3609,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToPngSingleAsync
      *
-     * PDF to Single PNG image
+     * Convert PDF to Single PNG image
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3629,7 +3629,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToPngSingleAsyncWithHttpInfo
      *
-     * PDF to Single PNG image
+     * Convert PDF to Single PNG image
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3781,7 +3781,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToPptx
      *
-     * PDF to PowerPoint PPTX
+     * Convert PDF to PowerPoint PPTX Presentation
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3798,7 +3798,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToPptxWithHttpInfo
      *
-     * PDF to PowerPoint PPTX
+     * Convert PDF to PowerPoint PPTX Presentation
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3873,7 +3873,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToPptxAsync
      *
-     * PDF to PowerPoint PPTX
+     * Convert PDF to PowerPoint PPTX Presentation
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3893,7 +3893,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToPptxAsyncWithHttpInfo
      *
-     * PDF to PowerPoint PPTX
+     * Convert PDF to PowerPoint PPTX Presentation
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4045,7 +4045,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToTxt
      *
-     * PDF to Text
+     * Convert PDF Document to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4062,7 +4062,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToTxtWithHttpInfo
      *
-     * PDF to Text
+     * Convert PDF Document to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4137,7 +4137,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToTxtAsync
      *
-     * PDF to Text
+     * Convert PDF Document to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4157,7 +4157,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToTxtAsyncWithHttpInfo
      *
-     * PDF to Text
+     * Convert PDF Document to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4242,11 +4242,11 @@ class ConvertDocumentApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/octet-stream']
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/octet-stream'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
                 ['multipart/form-data']
             );
         }
@@ -4309,7 +4309,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPngArrayToPdf
      *
-     * PNG Array to PDF
+     * Convert PNG Array to PDF
      *
      * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
      * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
@@ -4335,7 +4335,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPngArrayToPdfWithHttpInfo
      *
-     * PNG Array to PDF
+     * Convert PNG Array to PDF
      *
      * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
      * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
@@ -4419,7 +4419,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPngArrayToPdfAsync
      *
-     * PNG Array to PDF
+     * Convert PNG Array to PDF
      *
      * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
      * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
@@ -4448,7 +4448,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPngArrayToPdfAsyncWithHttpInfo
      *
-     * PNG Array to PDF
+     * Convert PNG Array to PDF
      *
      * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
      * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
@@ -4669,7 +4669,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptToPdf
      *
-     * PowerPoint PPT (97-03) to PDF
+     * Convert PowerPoint PPT (97-03) Presentation to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4686,7 +4686,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptToPdfWithHttpInfo
      *
-     * PowerPoint PPT (97-03) to PDF
+     * Convert PowerPoint PPT (97-03) Presentation to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4761,7 +4761,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptToPdfAsync
      *
-     * PowerPoint PPT (97-03) to PDF
+     * Convert PowerPoint PPT (97-03) Presentation to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4781,7 +4781,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptToPdfAsyncWithHttpInfo
      *
-     * PowerPoint PPT (97-03) to PDF
+     * Convert PowerPoint PPT (97-03) Presentation to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4933,7 +4933,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptToPptx
      *
-     * PowerPoint PPT (97-03) to PPTX
+     * Convert PowerPoint PPT (97-03) Presentation to PPTX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4950,7 +4950,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptToPptxWithHttpInfo
      *
-     * PowerPoint PPT (97-03) to PPTX
+     * Convert PowerPoint PPT (97-03) Presentation to PPTX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5025,7 +5025,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptToPptxAsync
      *
-     * PowerPoint PPT (97-03) to PPTX
+     * Convert PowerPoint PPT (97-03) Presentation to PPTX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5045,7 +5045,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptToPptxAsyncWithHttpInfo
      *
-     * PowerPoint PPT (97-03) to PPTX
+     * Convert PowerPoint PPT (97-03) Presentation to PPTX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5197,7 +5197,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptxToPdf
      *
-     * PowerPoint PPTX to PDF
+     * Convert PowerPoint PPTX Presentation to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5214,7 +5214,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptxToPdfWithHttpInfo
      *
-     * PowerPoint PPTX to PDF
+     * Convert PowerPoint PPTX Presentation to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5289,7 +5289,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptxToPdfAsync
      *
-     * PowerPoint PPTX to PDF
+     * Convert PowerPoint PPTX Presentation to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5309,7 +5309,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptxToPdfAsyncWithHttpInfo
      *
-     * PowerPoint PPTX to PDF
+     * Convert PowerPoint PPTX Presentation to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5461,7 +5461,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptxToTxt
      *
-     * PowerPoint PPTX to Text
+     * Convert PowerPoint PPTX Presentation to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5478,7 +5478,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptxToTxtWithHttpInfo
      *
-     * PowerPoint PPTX to Text
+     * Convert PowerPoint PPTX Presentation to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5553,7 +5553,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptxToTxtAsync
      *
-     * PowerPoint PPTX to Text
+     * Convert PowerPoint PPTX Presentation to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5573,7 +5573,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptxToTxtAsyncWithHttpInfo
      *
-     * PowerPoint PPTX to Text
+     * Convert PowerPoint PPTX Presentation to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5725,7 +5725,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsToCsv
      *
-     * Excel XLS (97-03) to CSV
+     * Convert Excel XLS (97-03) Spreadsheet to CSV
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5742,7 +5742,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsToCsvWithHttpInfo
      *
-     * Excel XLS (97-03) to CSV
+     * Convert Excel XLS (97-03) Spreadsheet to CSV
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5817,7 +5817,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsToCsvAsync
      *
-     * Excel XLS (97-03) to CSV
+     * Convert Excel XLS (97-03) Spreadsheet to CSV
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5837,7 +5837,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsToCsvAsyncWithHttpInfo
      *
-     * Excel XLS (97-03) to CSV
+     * Convert Excel XLS (97-03) Spreadsheet to CSV
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5989,7 +5989,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsToPdf
      *
-     * Excel XLS (97-03) to PDF
+     * Convert Excel XLS (97-03) Spreadsheet to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6006,7 +6006,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsToPdfWithHttpInfo
      *
-     * Excel XLS (97-03) to PDF
+     * Convert Excel XLS (97-03) Spreadsheet to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6081,7 +6081,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsToPdfAsync
      *
-     * Excel XLS (97-03) to PDF
+     * Convert Excel XLS (97-03) Spreadsheet to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6101,7 +6101,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsToPdfAsyncWithHttpInfo
      *
-     * Excel XLS (97-03) to PDF
+     * Convert Excel XLS (97-03) Spreadsheet to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6253,7 +6253,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsToXlsx
      *
-     * Excel XLS (97-03) to XLSX
+     * Convert Excel XLS (97-03) Spreadsheet to XLSX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6270,7 +6270,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsToXlsxWithHttpInfo
      *
-     * Excel XLS (97-03) to XLSX
+     * Convert Excel XLS (97-03) Spreadsheet to XLSX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6345,7 +6345,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsToXlsxAsync
      *
-     * Excel XLS (97-03) to XLSX
+     * Convert Excel XLS (97-03) Spreadsheet to XLSX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6365,7 +6365,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsToXlsxAsyncWithHttpInfo
      *
-     * Excel XLS (97-03) to XLSX
+     * Convert Excel XLS (97-03) Spreadsheet to XLSX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6517,7 +6517,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToCsv
      *
-     * Excel XLSX to CSV
+     * Convert Excel XLSX Spreadsheet to CSV
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32. (optional)
@@ -6535,7 +6535,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToCsvWithHttpInfo
      *
-     * Excel XLSX to CSV
+     * Convert Excel XLSX Spreadsheet to CSV
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32. (optional)
@@ -6611,7 +6611,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToCsvAsync
      *
-     * Excel XLSX to CSV
+     * Convert Excel XLSX Spreadsheet to CSV
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32. (optional)
@@ -6632,7 +6632,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToCsvAsyncWithHttpInfo
      *
-     * Excel XLSX to CSV
+     * Convert Excel XLSX Spreadsheet to CSV
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32. (optional)
@@ -6790,7 +6790,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToPdf
      *
-     * Excel XLSX to PDF
+     * Convert Excel XLSX Spreadsheet to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6807,7 +6807,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToPdfWithHttpInfo
      *
-     * Excel XLSX to PDF
+     * Convert Excel XLSX Spreadsheet to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6882,7 +6882,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToPdfAsync
      *
-     * Excel XLSX to PDF
+     * Convert Excel XLSX Spreadsheet to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6902,7 +6902,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToPdfAsyncWithHttpInfo
      *
-     * Excel XLSX to PDF
+     * Convert Excel XLSX Spreadsheet to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7054,7 +7054,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToTxt
      *
-     * Excel XLSX to Text
+     * Convert Excel XLSX Spreadsheet to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7071,7 +7071,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToTxtWithHttpInfo
      *
-     * Excel XLSX to Text
+     * Convert Excel XLSX Spreadsheet to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7146,7 +7146,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToTxtAsync
      *
-     * Excel XLSX to Text
+     * Convert Excel XLSX Spreadsheet to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7166,7 +7166,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToTxtAsyncWithHttpInfo
      *
-     * Excel XLSX to Text
+     * Convert Excel XLSX Spreadsheet to Text
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *

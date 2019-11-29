@@ -104,7 +104,7 @@ class ConvertImageApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertImageMultipageImageFormatConvert
      *
-     * Multi-page format conversion.
+     * Multi-page image format conversion.
      *
      */
     public function testConvertImageMultipageImageFormatConvert()

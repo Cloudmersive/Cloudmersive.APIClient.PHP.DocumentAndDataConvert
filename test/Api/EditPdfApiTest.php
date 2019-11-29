@@ -72,6 +72,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editPdfDeletePages
+     *
+     * Remove / delete pages from a PDF document.
+     *
+     */
+    public function testEditPdfDeletePages()
+    {
+    }
+
+    /**
      * Test case for editPdfEncrypt
      *
      * Encrypt and password-protect a PDF.
@@ -98,6 +108,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditPdfGetMetadata()
+    {
+    }
+
+    /**
+     * Test case for editPdfInsertPages
+     *
+     * Insert / copy pages from one PDF document into another.
+     *
+     */
+    public function testEditPdfInsertPages()
     {
     }
 

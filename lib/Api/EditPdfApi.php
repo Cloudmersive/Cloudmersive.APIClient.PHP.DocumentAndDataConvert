@@ -83,6 +83,300 @@ class EditPdfApi
     }
 
     /**
+     * Operation editPdfDeletePages
+     *
+     * Remove / delete pages from a PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop deleting pages from (inclusive). (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function editPdfDeletePages($input_file, $page_start, $page_end)
+    {
+        list($response) = $this->editPdfDeletePagesWithHttpInfo($input_file, $page_start, $page_end);
+        return $response;
+    }
+
+    /**
+     * Operation editPdfDeletePagesWithHttpInfo
+     *
+     * Remove / delete pages from a PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop deleting pages from (inclusive). (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editPdfDeletePagesWithHttpInfo($input_file, $page_start, $page_end)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfDeletePagesRequest($input_file, $page_start, $page_end);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editPdfDeletePagesAsync
+     *
+     * Remove / delete pages from a PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop deleting pages from (inclusive). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfDeletePagesAsync($input_file, $page_start, $page_end)
+    {
+        return $this->editPdfDeletePagesAsyncWithHttpInfo($input_file, $page_start, $page_end)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editPdfDeletePagesAsyncWithHttpInfo
+     *
+     * Remove / delete pages from a PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop deleting pages from (inclusive). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfDeletePagesAsyncWithHttpInfo($input_file, $page_start, $page_end)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfDeletePagesRequest($input_file, $page_start, $page_end);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editPdfDeletePages'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop deleting pages from (inclusive). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editPdfDeletePagesRequest($input_file, $page_start, $page_end)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling editPdfDeletePages'
+            );
+        }
+        // verify the required parameter 'page_start' is set
+        if ($page_start === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_start when calling editPdfDeletePages'
+            );
+        }
+        // verify the required parameter 'page_end' is set
+        if ($page_end === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_end when calling editPdfDeletePages'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pdf/pages/delete';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($page_start !== null) {
+            $headerParams['pageStart'] = ObjectSerializer::toHeaderValue($page_start);
+        }
+        // header params
+        if ($page_end !== null) {
+            $headerParams['pageEnd'] = ObjectSerializer::toHeaderValue($page_end);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation editPdfEncrypt
      *
      * Encrypt and password-protect a PDF
@@ -893,6 +1187,331 @@ class EditPdfApi
     }
 
     /**
+     * Operation editPdfInsertPages
+     *
+     * Insert / copy pages from one PDF document into another
+     *
+     * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
+     * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
+     * @param  int $page_start_source Page number (1 based) to start copying pages from (inclusive) in the Source file. (required)
+     * @param  int $page_end_source Page number (1 based) to stop copying pages pages from (inclusive) in the Source file. (required)
+     * @param  int $page_insert_before_desitnation Page number (1 based) to insert the pages before in the Destination file. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function editPdfInsertPages($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+    {
+        list($response) = $this->editPdfInsertPagesWithHttpInfo($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation);
+        return $response;
+    }
+
+    /**
+     * Operation editPdfInsertPagesWithHttpInfo
+     *
+     * Insert / copy pages from one PDF document into another
+     *
+     * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
+     * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
+     * @param  int $page_start_source Page number (1 based) to start copying pages from (inclusive) in the Source file. (required)
+     * @param  int $page_end_source Page number (1 based) to stop copying pages pages from (inclusive) in the Source file. (required)
+     * @param  int $page_insert_before_desitnation Page number (1 based) to insert the pages before in the Destination file. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editPdfInsertPagesWithHttpInfo($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfInsertPagesRequest($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editPdfInsertPagesAsync
+     *
+     * Insert / copy pages from one PDF document into another
+     *
+     * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
+     * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
+     * @param  int $page_start_source Page number (1 based) to start copying pages from (inclusive) in the Source file. (required)
+     * @param  int $page_end_source Page number (1 based) to stop copying pages pages from (inclusive) in the Source file. (required)
+     * @param  int $page_insert_before_desitnation Page number (1 based) to insert the pages before in the Destination file. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfInsertPagesAsync($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+    {
+        return $this->editPdfInsertPagesAsyncWithHttpInfo($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editPdfInsertPagesAsyncWithHttpInfo
+     *
+     * Insert / copy pages from one PDF document into another
+     *
+     * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
+     * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
+     * @param  int $page_start_source Page number (1 based) to start copying pages from (inclusive) in the Source file. (required)
+     * @param  int $page_end_source Page number (1 based) to stop copying pages pages from (inclusive) in the Source file. (required)
+     * @param  int $page_insert_before_desitnation Page number (1 based) to insert the pages before in the Destination file. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfInsertPagesAsyncWithHttpInfo($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfInsertPagesRequest($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editPdfInsertPages'
+     *
+     * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
+     * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
+     * @param  int $page_start_source Page number (1 based) to start copying pages from (inclusive) in the Source file. (required)
+     * @param  int $page_end_source Page number (1 based) to stop copying pages pages from (inclusive) in the Source file. (required)
+     * @param  int $page_insert_before_desitnation Page number (1 based) to insert the pages before in the Destination file. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editPdfInsertPagesRequest($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+    {
+        // verify the required parameter 'source_file' is set
+        if ($source_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $source_file when calling editPdfInsertPages'
+            );
+        }
+        // verify the required parameter 'destination_file' is set
+        if ($destination_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $destination_file when calling editPdfInsertPages'
+            );
+        }
+        // verify the required parameter 'page_start_source' is set
+        if ($page_start_source === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_start_source when calling editPdfInsertPages'
+            );
+        }
+        // verify the required parameter 'page_end_source' is set
+        if ($page_end_source === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_end_source when calling editPdfInsertPages'
+            );
+        }
+        // verify the required parameter 'page_insert_before_desitnation' is set
+        if ($page_insert_before_desitnation === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_insert_before_desitnation when calling editPdfInsertPages'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pdf/pages/insert';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($page_start_source !== null) {
+            $headerParams['pageStartSource'] = ObjectSerializer::toHeaderValue($page_start_source);
+        }
+        // header params
+        if ($page_end_source !== null) {
+            $headerParams['pageEndSource'] = ObjectSerializer::toHeaderValue($page_end_source);
+        }
+        // header params
+        if ($page_insert_before_desitnation !== null) {
+            $headerParams['pageInsertBeforeDesitnation'] = ObjectSerializer::toHeaderValue($page_insert_before_desitnation);
+        }
+
+
+        // form params
+        if ($source_file !== null) {
+            $multipart = true;
+            $formParams['sourceFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($source_file), 'rb');
+        }
+        // form params
+        if ($destination_file !== null) {
+            $multipart = true;
+            $formParams['destinationFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($destination_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation editPdfRasterize
      *
      * Rasterize a PDF to an image-based PDF
@@ -1427,7 +2046,7 @@ class EditPdfApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return string
      */
     public function editPdfSetMetadata($request)
     {
@@ -1444,11 +2063,11 @@ class EditPdfApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function editPdfSetMetadataWithHttpInfo($request)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->editPdfSetMetadataRequest($request);
 
         try {
@@ -1500,7 +2119,7 @@ class EditPdfApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1542,7 +2161,7 @@ class EditPdfApi
      */
     public function editPdfSetMetadataAsyncWithHttpInfo($request)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->editPdfSetMetadataRequest($request);
 
         return $this->client

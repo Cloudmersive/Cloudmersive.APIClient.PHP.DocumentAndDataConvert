@@ -85,7 +85,7 @@ class ConvertDataApi
     /**
      * Operation convertDataCsvToJson
      *
-     * CSV to JSON conversion
+     * Convert CSV to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -102,7 +102,7 @@ class ConvertDataApi
     /**
      * Operation convertDataCsvToJsonWithHttpInfo
      *
-     * CSV to JSON conversion
+     * Convert CSV to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -177,7 +177,7 @@ class ConvertDataApi
     /**
      * Operation convertDataCsvToJsonAsync
      *
-     * CSV to JSON conversion
+     * Convert CSV to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -197,7 +197,7 @@ class ConvertDataApi
     /**
      * Operation convertDataCsvToJsonAsyncWithHttpInfo
      *
-     * CSV to JSON conversion
+     * Convert CSV to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -349,7 +349,7 @@ class ConvertDataApi
     /**
      * Operation convertDataXlsToJson
      *
-     * Excel (97-2003) XLS to JSON conversion
+     * Convert Excel (97-2003) XLS to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -366,7 +366,7 @@ class ConvertDataApi
     /**
      * Operation convertDataXlsToJsonWithHttpInfo
      *
-     * Excel (97-2003) XLS to JSON conversion
+     * Convert Excel (97-2003) XLS to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -441,7 +441,7 @@ class ConvertDataApi
     /**
      * Operation convertDataXlsToJsonAsync
      *
-     * Excel (97-2003) XLS to JSON conversion
+     * Convert Excel (97-2003) XLS to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -461,7 +461,7 @@ class ConvertDataApi
     /**
      * Operation convertDataXlsToJsonAsyncWithHttpInfo
      *
-     * Excel (97-2003) XLS to JSON conversion
+     * Convert Excel (97-2003) XLS to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -613,7 +613,7 @@ class ConvertDataApi
     /**
      * Operation convertDataXlsxToJson
      *
-     * Excel XLSX to JSON conversion
+     * Convert Excel XLSX to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -630,7 +630,7 @@ class ConvertDataApi
     /**
      * Operation convertDataXlsxToJsonWithHttpInfo
      *
-     * Excel XLSX to JSON conversion
+     * Convert Excel XLSX to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -705,7 +705,7 @@ class ConvertDataApi
     /**
      * Operation convertDataXlsxToJsonAsync
      *
-     * Excel XLSX to JSON conversion
+     * Convert Excel XLSX to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -725,7 +725,7 @@ class ConvertDataApi
     /**
      * Operation convertDataXlsxToJsonAsyncWithHttpInfo
      *
-     * Excel XLSX to JSON conversion
+     * Convert Excel XLSX to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -877,7 +877,7 @@ class ConvertDataApi
     /**
      * Operation convertDataXmlToJson
      *
-     * XML to JSON conversion
+     * Convert XML to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -894,7 +894,7 @@ class ConvertDataApi
     /**
      * Operation convertDataXmlToJsonWithHttpInfo
      *
-     * XML to JSON conversion
+     * Convert XML to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -969,7 +969,7 @@ class ConvertDataApi
     /**
      * Operation convertDataXmlToJsonAsync
      *
-     * XML to JSON conversion
+     * Convert XML to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -989,7 +989,7 @@ class ConvertDataApi
     /**
      * Operation convertDataXmlToJsonAsyncWithHttpInfo
      *
-     * XML to JSON conversion
+     * Convert XML to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *

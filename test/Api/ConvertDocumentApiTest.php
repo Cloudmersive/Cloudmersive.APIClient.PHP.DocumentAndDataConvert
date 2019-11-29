@@ -114,7 +114,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentCsvToXlsx
      *
-     * CSV to Excel XLSX.
+     * Convert CSV to Excel XLSX Spreadsheet.
      *
      */
     public function testConvertDocumentCsvToXlsx()
@@ -124,7 +124,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentDocToDocx
      *
-     * Word DOC (97-03) to DOCX.
+     * Convert Word DOC (97-03) Document to DOCX.
      *
      */
     public function testConvertDocumentDocToDocx()
@@ -134,7 +134,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentDocToPdf
      *
-     * Word DOC (97-03) to PDF.
+     * Convert Word DOC (97-03) Document to PDF.
      *
      */
     public function testConvertDocumentDocToPdf()
@@ -144,7 +144,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentDocxToPdf
      *
-     * Word DOCX to PDF.
+     * Convert Word DOCX Document to PDF.
      *
      */
     public function testConvertDocumentDocxToPdf()
@@ -154,7 +154,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentDocxToTxt
      *
-     * Word DOCX to Text.
+     * Convert Word DOCX Document to Text.
      *
      */
     public function testConvertDocumentDocxToTxt()
@@ -164,7 +164,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentHtmlToPdf
      *
-     * HTML to PDF.
+     * Convert HTML to PDF Document.
      *
      */
     public function testConvertDocumentHtmlToPdf()
@@ -174,7 +174,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentHtmlToPng
      *
-     * HTML to PNG array.
+     * Convert HTML to PNG image array.
      *
      */
     public function testConvertDocumentHtmlToPng()
@@ -184,7 +184,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentPdfToDocx
      *
-     * PDF to Word DOCX.
+     * Convert PDF to Word DOCX Document.
      *
      */
     public function testConvertDocumentPdfToDocx()
@@ -194,7 +194,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentPdfToPngArray
      *
-     * PDF to PNG Array.
+     * Convert PDF to PNG Image Array.
      *
      */
     public function testConvertDocumentPdfToPngArray()
@@ -204,7 +204,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentPdfToPngSingle
      *
-     * PDF to Single PNG image.
+     * Convert PDF to Single PNG image.
      *
      */
     public function testConvertDocumentPdfToPngSingle()
@@ -214,7 +214,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentPdfToPptx
      *
-     * PDF to PowerPoint PPTX.
+     * Convert PDF to PowerPoint PPTX Presentation.
      *
      */
     public function testConvertDocumentPdfToPptx()
@@ -224,7 +224,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentPdfToTxt
      *
-     * PDF to Text.
+     * Convert PDF Document to Text.
      *
      */
     public function testConvertDocumentPdfToTxt()
@@ -234,7 +234,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentPngArrayToPdf
      *
-     * PNG Array to PDF.
+     * Convert PNG Array to PDF.
      *
      */
     public function testConvertDocumentPngArrayToPdf()
@@ -244,7 +244,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentPptToPdf
      *
-     * PowerPoint PPT (97-03) to PDF.
+     * Convert PowerPoint PPT (97-03) Presentation to PDF.
      *
      */
     public function testConvertDocumentPptToPdf()
@@ -254,7 +254,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentPptToPptx
      *
-     * PowerPoint PPT (97-03) to PPTX.
+     * Convert PowerPoint PPT (97-03) Presentation to PPTX.
      *
      */
     public function testConvertDocumentPptToPptx()
@@ -264,7 +264,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentPptxToPdf
      *
-     * PowerPoint PPTX to PDF.
+     * Convert PowerPoint PPTX Presentation to PDF.
      *
      */
     public function testConvertDocumentPptxToPdf()
@@ -274,7 +274,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentPptxToTxt
      *
-     * PowerPoint PPTX to Text.
+     * Convert PowerPoint PPTX Presentation to Text.
      *
      */
     public function testConvertDocumentPptxToTxt()
@@ -284,7 +284,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentXlsToCsv
      *
-     * Excel XLS (97-03) to CSV.
+     * Convert Excel XLS (97-03) Spreadsheet to CSV.
      *
      */
     public function testConvertDocumentXlsToCsv()
@@ -294,7 +294,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentXlsToPdf
      *
-     * Excel XLS (97-03) to PDF.
+     * Convert Excel XLS (97-03) Spreadsheet to PDF.
      *
      */
     public function testConvertDocumentXlsToPdf()
@@ -304,7 +304,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentXlsToXlsx
      *
-     * Excel XLS (97-03) to XLSX.
+     * Convert Excel XLS (97-03) Spreadsheet to XLSX.
      *
      */
     public function testConvertDocumentXlsToXlsx()
@@ -314,7 +314,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentXlsxToCsv
      *
-     * Excel XLSX to CSV.
+     * Convert Excel XLSX Spreadsheet to CSV.
      *
      */
     public function testConvertDocumentXlsxToCsv()
@@ -324,7 +324,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentXlsxToPdf
      *
-     * Excel XLSX to PDF.
+     * Convert Excel XLSX Spreadsheet to PDF.
      *
      */
     public function testConvertDocumentXlsxToPdf()
@@ -334,7 +334,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentXlsxToTxt
      *
-     * Excel XLSX to Text.
+     * Convert Excel XLSX Spreadsheet to Text.
      *
      */
     public function testConvertDocumentXlsxToTxt()

@@ -349,9 +349,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxBody
      *
-     * Get body from a DOCX
+     * Get body from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxBodyRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxBodyRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -366,9 +366,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxBodyWithHttpInfo
      *
-     * Get body from a DOCX
+     * Get body from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxBodyRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxBodyRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -441,9 +441,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxBodyAsync
      *
-     * Get body from a DOCX
+     * Get body from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxBodyRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxBodyRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -461,9 +461,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxBodyAsyncWithHttpInfo
      *
-     * Get body from a DOCX
+     * Get body from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxBodyRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxBodyRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -513,7 +513,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxBody'
      *
-     * @param  \Swagger\Client\Model\GetDocxBodyRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxBodyRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -611,9 +611,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetHeadersAndFooters
      *
-     * Get content of a footer from a DOCX
+     * Get content of a footer from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxHeadersAndFootersRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxHeadersAndFootersRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -628,9 +628,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetHeadersAndFootersWithHttpInfo
      *
-     * Get content of a footer from a DOCX
+     * Get content of a footer from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxHeadersAndFootersRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxHeadersAndFootersRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -703,9 +703,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetHeadersAndFootersAsync
      *
-     * Get content of a footer from a DOCX
+     * Get content of a footer from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxHeadersAndFootersRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxHeadersAndFootersRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -723,9 +723,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetHeadersAndFootersAsyncWithHttpInfo
      *
-     * Get content of a footer from a DOCX
+     * Get content of a footer from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxHeadersAndFootersRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxHeadersAndFootersRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -775,7 +775,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxGetHeadersAndFooters'
      *
-     * @param  \Swagger\Client\Model\GetDocxHeadersAndFootersRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxHeadersAndFootersRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -873,9 +873,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetImages
      *
-     * Get images from a DOCX
+     * Get images from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxImagesRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxImagesRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -890,9 +890,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetImagesWithHttpInfo
      *
-     * Get images from a DOCX
+     * Get images from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxImagesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxImagesRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -965,9 +965,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetImagesAsync
      *
-     * Get images from a DOCX
+     * Get images from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxImagesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxImagesRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -985,9 +985,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetImagesAsyncWithHttpInfo
      *
-     * Get images from a DOCX
+     * Get images from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxImagesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxImagesRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1037,7 +1037,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxGetImages'
      *
-     * @param  \Swagger\Client\Model\GetDocxImagesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxImagesRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1135,9 +1135,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetSections
      *
-     * Get sections from a DOCX
+     * Get sections from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxSectionsRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxSectionsRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1152,9 +1152,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetSectionsWithHttpInfo
      *
-     * Get sections from a DOCX
+     * Get sections from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxSectionsRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxSectionsRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1227,9 +1227,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetSectionsAsync
      *
-     * Get sections from a DOCX
+     * Get sections from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxSectionsRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxSectionsRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1247,9 +1247,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetSectionsAsyncWithHttpInfo
      *
-     * Get sections from a DOCX
+     * Get sections from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxSectionsRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxSectionsRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1299,7 +1299,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxGetSections'
      *
-     * @param  \Swagger\Client\Model\GetDocxSectionsRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxSectionsRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1397,9 +1397,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetStyles
      *
-     * Get styles from a DOCX
+     * Get styles from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxStylesRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxStylesRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1414,9 +1414,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetStylesWithHttpInfo
      *
-     * Get styles from a DOCX
+     * Get styles from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxStylesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxStylesRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1489,9 +1489,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetStylesAsync
      *
-     * Get styles from a DOCX
+     * Get styles from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxStylesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxStylesRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1509,9 +1509,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetStylesAsyncWithHttpInfo
      *
-     * Get styles from a DOCX
+     * Get styles from a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxStylesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxStylesRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1561,7 +1561,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxGetStyles'
      *
-     * @param  \Swagger\Client\Model\GetDocxStylesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxStylesRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1659,9 +1659,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetTables
      *
-     * Get tables in DOCX
+     * Get tables in Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1676,9 +1676,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetTablesWithHttpInfo
      *
-     * Get tables in DOCX
+     * Get tables in Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1751,9 +1751,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetTablesAsync
      *
-     * Get tables in DOCX
+     * Get tables in Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1771,9 +1771,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetTablesAsyncWithHttpInfo
      *
-     * Get tables in DOCX
+     * Get tables in Word DOCX document
      *
-     * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1823,7 +1823,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxGetTables'
      *
-     * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1921,9 +1921,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxInsertImage
      *
-     * Insert image into a DOCX
+     * Insert image into a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxInsertImageRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\DocxInsertImageRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1938,9 +1938,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxInsertImageWithHttpInfo
      *
-     * Insert image into a DOCX
+     * Insert image into a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxInsertImageRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxInsertImageRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2013,9 +2013,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxInsertImageAsync
      *
-     * Insert image into a DOCX
+     * Insert image into a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxInsertImageRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxInsertImageRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2033,9 +2033,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxInsertImageAsyncWithHttpInfo
      *
-     * Insert image into a DOCX
+     * Insert image into a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxInsertImageRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxInsertImageRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2085,7 +2085,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxInsertImage'
      *
-     * @param  \Swagger\Client\Model\DocxInsertImageRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxInsertImageRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2183,9 +2183,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxInsertParagraph
      *
-     * Insert a new paragraph into a DOCX
+     * Insert a new paragraph into a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\InsertDocxInsertParagraphRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\InsertDocxInsertParagraphRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2200,9 +2200,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxInsertParagraphWithHttpInfo
      *
-     * Insert a new paragraph into a DOCX
+     * Insert a new paragraph into a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\InsertDocxInsertParagraphRequest $req_config (required)
+     * @param  \Swagger\Client\Model\InsertDocxInsertParagraphRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2275,9 +2275,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxInsertParagraphAsync
      *
-     * Insert a new paragraph into a DOCX
+     * Insert a new paragraph into a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\InsertDocxInsertParagraphRequest $req_config (required)
+     * @param  \Swagger\Client\Model\InsertDocxInsertParagraphRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2295,9 +2295,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxInsertParagraphAsyncWithHttpInfo
      *
-     * Insert a new paragraph into a DOCX
+     * Insert a new paragraph into a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\InsertDocxInsertParagraphRequest $req_config (required)
+     * @param  \Swagger\Client\Model\InsertDocxInsertParagraphRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2347,7 +2347,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxInsertParagraph'
      *
-     * @param  \Swagger\Client\Model\InsertDocxInsertParagraphRequest $req_config (required)
+     * @param  \Swagger\Client\Model\InsertDocxInsertParagraphRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2445,9 +2445,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxInsertTable
      *
-     * Insert a new table into a DOCX
+     * Insert a new table into a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\InsertDocxTablesRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\InsertDocxTablesRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2462,9 +2462,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxInsertTableWithHttpInfo
      *
-     * Insert a new table into a DOCX
+     * Insert a new table into a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\InsertDocxTablesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\InsertDocxTablesRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2537,9 +2537,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxInsertTableAsync
      *
-     * Insert a new table into a DOCX
+     * Insert a new table into a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\InsertDocxTablesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\InsertDocxTablesRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2557,9 +2557,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxInsertTableAsyncWithHttpInfo
      *
-     * Insert a new table into a DOCX
+     * Insert a new table into a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\InsertDocxTablesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\InsertDocxTablesRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2609,7 +2609,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxInsertTable'
      *
-     * @param  \Swagger\Client\Model\InsertDocxTablesRequest $req_config (required)
+     * @param  \Swagger\Client\Model\InsertDocxTablesRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2707,9 +2707,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxRemoveHeadersAndFooters
      *
-     * Remove headers and footers from DOCX
+     * Remove headers and footers from Word DOCX document
      *
-     * @param  \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2724,9 +2724,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxRemoveHeadersAndFootersWithHttpInfo
      *
-     * Remove headers and footers from DOCX
+     * Remove headers and footers from Word DOCX document
      *
-     * @param  \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest $req_config (required)
+     * @param  \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2799,9 +2799,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxRemoveHeadersAndFootersAsync
      *
-     * Remove headers and footers from DOCX
+     * Remove headers and footers from Word DOCX document
      *
-     * @param  \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest $req_config (required)
+     * @param  \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2819,9 +2819,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxRemoveHeadersAndFootersAsyncWithHttpInfo
      *
-     * Remove headers and footers from DOCX
+     * Remove headers and footers from Word DOCX document
      *
-     * @param  \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest $req_config (required)
+     * @param  \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2871,7 +2871,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxRemoveHeadersAndFooters'
      *
-     * @param  \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest $req_config (required)
+     * @param  \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2969,9 +2969,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxRemoveObject
      *
-     * Delete any object in a DOCX
+     * Delete any object in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxRemoveObjectRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\DocxRemoveObjectRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2986,9 +2986,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxRemoveObjectWithHttpInfo
      *
-     * Delete any object in a DOCX
+     * Delete any object in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxRemoveObjectRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxRemoveObjectRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3061,9 +3061,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxRemoveObjectAsync
      *
-     * Delete any object in a DOCX
+     * Delete any object in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxRemoveObjectRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxRemoveObjectRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3081,9 +3081,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxRemoveObjectAsyncWithHttpInfo
      *
-     * Delete any object in a DOCX
+     * Delete any object in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxRemoveObjectRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxRemoveObjectRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3133,7 +3133,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxRemoveObject'
      *
-     * @param  \Swagger\Client\Model\DocxRemoveObjectRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxRemoveObjectRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3231,9 +3231,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxReplace
      *
-     * Replace string in DOCX
+     * Replace string in Word DOCX document
      *
-     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config Document string replacement configuration input (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3248,9 +3248,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxReplaceWithHttpInfo
      *
-     * Replace string in DOCX
+     * Replace string in Word DOCX document
      *
-     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config Document string replacement configuration input (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3323,9 +3323,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxReplaceAsync
      *
-     * Replace string in DOCX
+     * Replace string in Word DOCX document
      *
-     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config Document string replacement configuration input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3343,9 +3343,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxReplaceAsyncWithHttpInfo
      *
-     * Replace string in DOCX
+     * Replace string in Word DOCX document
      *
-     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config Document string replacement configuration input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3395,7 +3395,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxReplace'
      *
-     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config Document string replacement configuration input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3493,9 +3493,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxSetFooter
      *
-     * Set the footer in a DOCX
+     * Set the footer in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxSetFooterRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetFooterRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3510,9 +3510,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxSetFooterWithHttpInfo
      *
-     * Set the footer in a DOCX
+     * Set the footer in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxSetFooterRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetFooterRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3585,9 +3585,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxSetFooterAsync
      *
-     * Set the footer in a DOCX
+     * Set the footer in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxSetFooterRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetFooterRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3605,9 +3605,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxSetFooterAsyncWithHttpInfo
      *
-     * Set the footer in a DOCX
+     * Set the footer in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxSetFooterRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetFooterRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3657,7 +3657,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxSetFooter'
      *
-     * @param  \Swagger\Client\Model\DocxSetFooterRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetFooterRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3755,9 +3755,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxSetFooterAddPageNumber
      *
-     * Add page number to footer in a DOCX
+     * Add page number to footer in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3772,9 +3772,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxSetFooterAddPageNumberWithHttpInfo
      *
-     * Add page number to footer in a DOCX
+     * Add page number to footer in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3847,9 +3847,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxSetFooterAddPageNumberAsync
      *
-     * Add page number to footer in a DOCX
+     * Add page number to footer in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3867,9 +3867,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxSetFooterAddPageNumberAsyncWithHttpInfo
      *
-     * Add page number to footer in a DOCX
+     * Add page number to footer in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3919,7 +3919,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxSetFooterAddPageNumber'
      *
-     * @param  \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4017,9 +4017,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxSetHeader
      *
-     * Set the header in a DOCX
+     * Set the header in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxSetHeaderRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetHeaderRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4034,9 +4034,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxSetHeaderWithHttpInfo
      *
-     * Set the header in a DOCX
+     * Set the header in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxSetHeaderRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetHeaderRequest $req_config Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4109,9 +4109,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxSetHeaderAsync
      *
-     * Set the header in a DOCX
+     * Set the header in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxSetHeaderRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetHeaderRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4129,9 +4129,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxSetHeaderAsyncWithHttpInfo
      *
-     * Set the header in a DOCX
+     * Set the header in a Word DOCX document
      *
-     * @param  \Swagger\Client\Model\DocxSetHeaderRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetHeaderRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4181,7 +4181,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentDocxSetHeader'
      *
-     * @param  \Swagger\Client\Model\DocxSetHeaderRequest $req_config (required)
+     * @param  \Swagger\Client\Model\DocxSetHeaderRequest $req_config Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4281,7 +4281,7 @@ class EditDocumentApi
      *
      * Download result from document editing
      *
-     * @param  \Swagger\Client\Model\FinishEditingRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\FinishEditingRequest $req_config Cloudmersive Document URL to complete editing on (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4298,7 +4298,7 @@ class EditDocumentApi
      *
      * Download result from document editing
      *
-     * @param  \Swagger\Client\Model\FinishEditingRequest $req_config (required)
+     * @param  \Swagger\Client\Model\FinishEditingRequest $req_config Cloudmersive Document URL to complete editing on (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4373,7 +4373,7 @@ class EditDocumentApi
      *
      * Download result from document editing
      *
-     * @param  \Swagger\Client\Model\FinishEditingRequest $req_config (required)
+     * @param  \Swagger\Client\Model\FinishEditingRequest $req_config Cloudmersive Document URL to complete editing on (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4393,7 +4393,7 @@ class EditDocumentApi
      *
      * Download result from document editing
      *
-     * @param  \Swagger\Client\Model\FinishEditingRequest $req_config (required)
+     * @param  \Swagger\Client\Model\FinishEditingRequest $req_config Cloudmersive Document URL to complete editing on (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4443,7 +4443,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentFinishEditing'
      *
-     * @param  \Swagger\Client\Model\FinishEditingRequest $req_config (required)
+     * @param  \Swagger\Client\Model\FinishEditingRequest $req_config Cloudmersive Document URL to complete editing on (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4541,9 +4541,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentPptxReplace
      *
-     * Replace string in PPTX
+     * Replace string in PowerPoint PPTX presentation
      *
-     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config req_config (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config Replacement document configuration input (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4558,9 +4558,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentPptxReplaceWithHttpInfo
      *
-     * Replace string in PPTX
+     * Replace string in PowerPoint PPTX presentation
      *
-     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config Replacement document configuration input (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4633,9 +4633,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentPptxReplaceAsync
      *
-     * Replace string in PPTX
+     * Replace string in PowerPoint PPTX presentation
      *
-     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config Replacement document configuration input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4653,9 +4653,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentPptxReplaceAsyncWithHttpInfo
      *
-     * Replace string in PPTX
+     * Replace string in PowerPoint PPTX presentation
      *
-     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config Replacement document configuration input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4705,7 +4705,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentPptxReplace'
      *
-     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config (required)
+     * @param  \Swagger\Client\Model\ReplaceStringRequest $req_config Replacement document configuration input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4803,9 +4803,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetColumns
      *
-     * Get rows and cells from a XLSX worksheet
+     * Get rows and cells from a Excel XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input input (required)
+     * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4820,9 +4820,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetColumnsWithHttpInfo
      *
-     * Get rows and cells from a XLSX worksheet
+     * Get rows and cells from a Excel XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4895,9 +4895,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetColumnsAsync
      *
-     * Get rows and cells from a XLSX worksheet
+     * Get rows and cells from a Excel XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4915,9 +4915,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetColumnsAsyncWithHttpInfo
      *
-     * Get rows and cells from a XLSX worksheet
+     * Get rows and cells from a Excel XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4967,7 +4967,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentXlsxGetColumns'
      *
-     * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5065,9 +5065,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetImages
      *
-     * Get images from a XLSX worksheet
+     * Get images from a Excel XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxImagesRequest $input input (required)
+     * @param  \Swagger\Client\Model\GetXlsxImagesRequest $input Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5082,9 +5082,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetImagesWithHttpInfo
      *
-     * Get images from a XLSX worksheet
+     * Get images from a Excel XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxImagesRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxImagesRequest $input Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5157,9 +5157,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetImagesAsync
      *
-     * Get images from a XLSX worksheet
+     * Get images from a Excel XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxImagesRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxImagesRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5177,9 +5177,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetImagesAsyncWithHttpInfo
      *
-     * Get images from a XLSX worksheet
+     * Get images from a Excel XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxImagesRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxImagesRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5229,7 +5229,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentXlsxGetImages'
      *
-     * @param  \Swagger\Client\Model\GetXlsxImagesRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxImagesRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5327,9 +5327,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetRowsAndCells
      *
-     * Get rows and cells from a XLSX worksheet
+     * Get rows and cells from a Word XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input input (required)
+     * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5344,9 +5344,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetRowsAndCellsWithHttpInfo
      *
-     * Get rows and cells from a XLSX worksheet
+     * Get rows and cells from a Word XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5419,9 +5419,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetRowsAndCellsAsync
      *
-     * Get rows and cells from a XLSX worksheet
+     * Get rows and cells from a Word XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5439,9 +5439,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetRowsAndCellsAsyncWithHttpInfo
      *
-     * Get rows and cells from a XLSX worksheet
+     * Get rows and cells from a Word XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5491,7 +5491,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentXlsxGetRowsAndCells'
      *
-     * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5589,9 +5589,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetStyles
      *
-     * Get styles from a XLSX worksheet
+     * Get styles from a Excel XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxStylesRequest $input input (required)
+     * @param  \Swagger\Client\Model\GetXlsxStylesRequest $input Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5606,9 +5606,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetStylesWithHttpInfo
      *
-     * Get styles from a XLSX worksheet
+     * Get styles from a Excel XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxStylesRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxStylesRequest $input Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5681,9 +5681,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetStylesAsync
      *
-     * Get styles from a XLSX worksheet
+     * Get styles from a Excel XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxStylesRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxStylesRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5701,9 +5701,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetStylesAsyncWithHttpInfo
      *
-     * Get styles from a XLSX worksheet
+     * Get styles from a Excel XLSX spreadsheet, worksheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxStylesRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxStylesRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5753,7 +5753,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentXlsxGetStyles'
      *
-     * @param  \Swagger\Client\Model\GetXlsxStylesRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxStylesRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5851,9 +5851,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetWorksheets
      *
-     * Get worksheets from a XLSX
+     * Get worksheets from a Excel XLSX spreadsheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxWorksheetsRequest $input input (required)
+     * @param  \Swagger\Client\Model\GetXlsxWorksheetsRequest $input Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5868,9 +5868,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetWorksheetsWithHttpInfo
      *
-     * Get worksheets from a XLSX
+     * Get worksheets from a Excel XLSX spreadsheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxWorksheetsRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxWorksheetsRequest $input Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5943,9 +5943,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetWorksheetsAsync
      *
-     * Get worksheets from a XLSX
+     * Get worksheets from a Excel XLSX spreadsheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxWorksheetsRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxWorksheetsRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5963,9 +5963,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetWorksheetsAsyncWithHttpInfo
      *
-     * Get worksheets from a XLSX
+     * Get worksheets from a Excel XLSX spreadsheet
      *
-     * @param  \Swagger\Client\Model\GetXlsxWorksheetsRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxWorksheetsRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6015,7 +6015,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentXlsxGetWorksheets'
      *
-     * @param  \Swagger\Client\Model\GetXlsxWorksheetsRequest $input (required)
+     * @param  \Swagger\Client\Model\GetXlsxWorksheetsRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6113,9 +6113,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxInsertWorksheet
      *
-     * Insert a new worksheet into an XLSX spreadsheet
+     * Insert a new worksheet into an Excel XLSX spreadsheet
      *
-     * @param  \Swagger\Client\Model\InsertXlsxWorksheetRequest $input input (required)
+     * @param  \Swagger\Client\Model\InsertXlsxWorksheetRequest $input Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6130,9 +6130,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxInsertWorksheetWithHttpInfo
      *
-     * Insert a new worksheet into an XLSX spreadsheet
+     * Insert a new worksheet into an Excel XLSX spreadsheet
      *
-     * @param  \Swagger\Client\Model\InsertXlsxWorksheetRequest $input (required)
+     * @param  \Swagger\Client\Model\InsertXlsxWorksheetRequest $input Document input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6205,9 +6205,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxInsertWorksheetAsync
      *
-     * Insert a new worksheet into an XLSX spreadsheet
+     * Insert a new worksheet into an Excel XLSX spreadsheet
      *
-     * @param  \Swagger\Client\Model\InsertXlsxWorksheetRequest $input (required)
+     * @param  \Swagger\Client\Model\InsertXlsxWorksheetRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6225,9 +6225,9 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxInsertWorksheetAsyncWithHttpInfo
      *
-     * Insert a new worksheet into an XLSX spreadsheet
+     * Insert a new worksheet into an Excel XLSX spreadsheet
      *
-     * @param  \Swagger\Client\Model\InsertXlsxWorksheetRequest $input (required)
+     * @param  \Swagger\Client\Model\InsertXlsxWorksheetRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6277,7 +6277,7 @@ class EditDocumentApi
     /**
      * Create request for operation 'editDocumentXlsxInsertWorksheet'
      *
-     * @param  \Swagger\Client\Model\InsertXlsxWorksheetRequest $input (required)
+     * @param  \Swagger\Client\Model\InsertXlsxWorksheetRequest $input Document input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

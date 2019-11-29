@@ -84,7 +84,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxBody
      *
-     * Get body from a DOCX.
+     * Get body from a Word DOCX document.
      *
      */
     public function testEditDocumentDocxBody()
@@ -94,7 +94,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxGetHeadersAndFooters
      *
-     * Get content of a footer from a DOCX.
+     * Get content of a footer from a Word DOCX document.
      *
      */
     public function testEditDocumentDocxGetHeadersAndFooters()
@@ -104,7 +104,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxGetImages
      *
-     * Get images from a DOCX.
+     * Get images from a Word DOCX document.
      *
      */
     public function testEditDocumentDocxGetImages()
@@ -114,7 +114,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxGetSections
      *
-     * Get sections from a DOCX.
+     * Get sections from a Word DOCX document.
      *
      */
     public function testEditDocumentDocxGetSections()
@@ -124,7 +124,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxGetStyles
      *
-     * Get styles from a DOCX.
+     * Get styles from a Word DOCX document.
      *
      */
     public function testEditDocumentDocxGetStyles()
@@ -134,7 +134,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxGetTables
      *
-     * Get tables in DOCX.
+     * Get tables in Word DOCX document.
      *
      */
     public function testEditDocumentDocxGetTables()
@@ -144,7 +144,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxInsertImage
      *
-     * Insert image into a DOCX.
+     * Insert image into a Word DOCX document.
      *
      */
     public function testEditDocumentDocxInsertImage()
@@ -154,7 +154,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxInsertParagraph
      *
-     * Insert a new paragraph into a DOCX.
+     * Insert a new paragraph into a Word DOCX document.
      *
      */
     public function testEditDocumentDocxInsertParagraph()
@@ -164,7 +164,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxInsertTable
      *
-     * Insert a new table into a DOCX.
+     * Insert a new table into a Word DOCX document.
      *
      */
     public function testEditDocumentDocxInsertTable()
@@ -174,7 +174,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxRemoveHeadersAndFooters
      *
-     * Remove headers and footers from DOCX.
+     * Remove headers and footers from Word DOCX document.
      *
      */
     public function testEditDocumentDocxRemoveHeadersAndFooters()
@@ -184,7 +184,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxRemoveObject
      *
-     * Delete any object in a DOCX.
+     * Delete any object in a Word DOCX document.
      *
      */
     public function testEditDocumentDocxRemoveObject()
@@ -194,7 +194,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxReplace
      *
-     * Replace string in DOCX.
+     * Replace string in Word DOCX document.
      *
      */
     public function testEditDocumentDocxReplace()
@@ -204,7 +204,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxSetFooter
      *
-     * Set the footer in a DOCX.
+     * Set the footer in a Word DOCX document.
      *
      */
     public function testEditDocumentDocxSetFooter()
@@ -214,7 +214,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxSetFooterAddPageNumber
      *
-     * Add page number to footer in a DOCX.
+     * Add page number to footer in a Word DOCX document.
      *
      */
     public function testEditDocumentDocxSetFooterAddPageNumber()
@@ -224,7 +224,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxSetHeader
      *
-     * Set the header in a DOCX.
+     * Set the header in a Word DOCX document.
      *
      */
     public function testEditDocumentDocxSetHeader()
@@ -244,7 +244,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentPptxReplace
      *
-     * Replace string in PPTX.
+     * Replace string in PowerPoint PPTX presentation.
      *
      */
     public function testEditDocumentPptxReplace()
@@ -254,7 +254,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentXlsxGetColumns
      *
-     * Get rows and cells from a XLSX worksheet.
+     * Get rows and cells from a Excel XLSX spreadsheet, worksheet.
      *
      */
     public function testEditDocumentXlsxGetColumns()
@@ -264,7 +264,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentXlsxGetImages
      *
-     * Get images from a XLSX worksheet.
+     * Get images from a Excel XLSX spreadsheet, worksheet.
      *
      */
     public function testEditDocumentXlsxGetImages()
@@ -274,7 +274,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentXlsxGetRowsAndCells
      *
-     * Get rows and cells from a XLSX worksheet.
+     * Get rows and cells from a Word XLSX spreadsheet, worksheet.
      *
      */
     public function testEditDocumentXlsxGetRowsAndCells()
@@ -284,7 +284,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentXlsxGetStyles
      *
-     * Get styles from a XLSX worksheet.
+     * Get styles from a Excel XLSX spreadsheet, worksheet.
      *
      */
     public function testEditDocumentXlsxGetStyles()
@@ -294,7 +294,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentXlsxGetWorksheets
      *
-     * Get worksheets from a XLSX.
+     * Get worksheets from a Excel XLSX spreadsheet.
      *
      */
     public function testEditDocumentXlsxGetWorksheets()
@@ -304,7 +304,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentXlsxInsertWorksheet
      *
-     * Insert a new worksheet into an XLSX spreadsheet.
+     * Insert a new worksheet into an Excel XLSX spreadsheet.
      *
      */
     public function testEditDocumentXlsxInsertWorksheet()

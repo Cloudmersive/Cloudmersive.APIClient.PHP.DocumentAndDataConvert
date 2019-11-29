@@ -5,29 +5,29 @@ All URIs are relative to *https://api.cloudmersive.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**editDocumentBeginEditing**](EditDocumentApi.md#editDocumentBeginEditing) | **POST** /convert/edit/begin-editing | Begin editing a document
-[**editDocumentDocxBody**](EditDocumentApi.md#editDocumentDocxBody) | **POST** /convert/edit/docx/get-body | Get body from a DOCX
-[**editDocumentDocxGetHeadersAndFooters**](EditDocumentApi.md#editDocumentDocxGetHeadersAndFooters) | **POST** /convert/edit/docx/get-headers-and-footers | Get content of a footer from a DOCX
-[**editDocumentDocxGetImages**](EditDocumentApi.md#editDocumentDocxGetImages) | **POST** /convert/edit/docx/get-images | Get images from a DOCX
-[**editDocumentDocxGetSections**](EditDocumentApi.md#editDocumentDocxGetSections) | **POST** /convert/edit/docx/get-sections | Get sections from a DOCX
-[**editDocumentDocxGetStyles**](EditDocumentApi.md#editDocumentDocxGetStyles) | **POST** /convert/edit/docx/get-styles | Get styles from a DOCX
-[**editDocumentDocxGetTables**](EditDocumentApi.md#editDocumentDocxGetTables) | **POST** /convert/edit/docx/get-tables | Get tables in DOCX
-[**editDocumentDocxInsertImage**](EditDocumentApi.md#editDocumentDocxInsertImage) | **POST** /convert/edit/docx/insert-image | Insert image into a DOCX
-[**editDocumentDocxInsertParagraph**](EditDocumentApi.md#editDocumentDocxInsertParagraph) | **POST** /convert/edit/docx/insert-paragraph | Insert a new paragraph into a DOCX
-[**editDocumentDocxInsertTable**](EditDocumentApi.md#editDocumentDocxInsertTable) | **POST** /convert/edit/docx/insert-table | Insert a new table into a DOCX
-[**editDocumentDocxRemoveHeadersAndFooters**](EditDocumentApi.md#editDocumentDocxRemoveHeadersAndFooters) | **POST** /convert/edit/docx/remove-headers-and-footers | Remove headers and footers from DOCX
-[**editDocumentDocxRemoveObject**](EditDocumentApi.md#editDocumentDocxRemoveObject) | **POST** /convert/edit/docx/remove-object | Delete any object in a DOCX
-[**editDocumentDocxReplace**](EditDocumentApi.md#editDocumentDocxReplace) | **POST** /convert/edit/docx/replace-all | Replace string in DOCX
-[**editDocumentDocxSetFooter**](EditDocumentApi.md#editDocumentDocxSetFooter) | **POST** /convert/edit/docx/set-footer | Set the footer in a DOCX
-[**editDocumentDocxSetFooterAddPageNumber**](EditDocumentApi.md#editDocumentDocxSetFooterAddPageNumber) | **POST** /convert/edit/docx/set-footer/add-page-number | Add page number to footer in a DOCX
-[**editDocumentDocxSetHeader**](EditDocumentApi.md#editDocumentDocxSetHeader) | **POST** /convert/edit/docx/set-header | Set the header in a DOCX
+[**editDocumentDocxBody**](EditDocumentApi.md#editDocumentDocxBody) | **POST** /convert/edit/docx/get-body | Get body from a Word DOCX document
+[**editDocumentDocxGetHeadersAndFooters**](EditDocumentApi.md#editDocumentDocxGetHeadersAndFooters) | **POST** /convert/edit/docx/get-headers-and-footers | Get content of a footer from a Word DOCX document
+[**editDocumentDocxGetImages**](EditDocumentApi.md#editDocumentDocxGetImages) | **POST** /convert/edit/docx/get-images | Get images from a Word DOCX document
+[**editDocumentDocxGetSections**](EditDocumentApi.md#editDocumentDocxGetSections) | **POST** /convert/edit/docx/get-sections | Get sections from a Word DOCX document
+[**editDocumentDocxGetStyles**](EditDocumentApi.md#editDocumentDocxGetStyles) | **POST** /convert/edit/docx/get-styles | Get styles from a Word DOCX document
+[**editDocumentDocxGetTables**](EditDocumentApi.md#editDocumentDocxGetTables) | **POST** /convert/edit/docx/get-tables | Get tables in Word DOCX document
+[**editDocumentDocxInsertImage**](EditDocumentApi.md#editDocumentDocxInsertImage) | **POST** /convert/edit/docx/insert-image | Insert image into a Word DOCX document
+[**editDocumentDocxInsertParagraph**](EditDocumentApi.md#editDocumentDocxInsertParagraph) | **POST** /convert/edit/docx/insert-paragraph | Insert a new paragraph into a Word DOCX document
+[**editDocumentDocxInsertTable**](EditDocumentApi.md#editDocumentDocxInsertTable) | **POST** /convert/edit/docx/insert-table | Insert a new table into a Word DOCX document
+[**editDocumentDocxRemoveHeadersAndFooters**](EditDocumentApi.md#editDocumentDocxRemoveHeadersAndFooters) | **POST** /convert/edit/docx/remove-headers-and-footers | Remove headers and footers from Word DOCX document
+[**editDocumentDocxRemoveObject**](EditDocumentApi.md#editDocumentDocxRemoveObject) | **POST** /convert/edit/docx/remove-object | Delete any object in a Word DOCX document
+[**editDocumentDocxReplace**](EditDocumentApi.md#editDocumentDocxReplace) | **POST** /convert/edit/docx/replace-all | Replace string in Word DOCX document
+[**editDocumentDocxSetFooter**](EditDocumentApi.md#editDocumentDocxSetFooter) | **POST** /convert/edit/docx/set-footer | Set the footer in a Word DOCX document
+[**editDocumentDocxSetFooterAddPageNumber**](EditDocumentApi.md#editDocumentDocxSetFooterAddPageNumber) | **POST** /convert/edit/docx/set-footer/add-page-number | Add page number to footer in a Word DOCX document
+[**editDocumentDocxSetHeader**](EditDocumentApi.md#editDocumentDocxSetHeader) | **POST** /convert/edit/docx/set-header | Set the header in a Word DOCX document
 [**editDocumentFinishEditing**](EditDocumentApi.md#editDocumentFinishEditing) | **POST** /convert/edit/finish-editing | Download result from document editing
-[**editDocumentPptxReplace**](EditDocumentApi.md#editDocumentPptxReplace) | **POST** /convert/edit/pptx/replace-all | Replace string in PPTX
-[**editDocumentXlsxGetColumns**](EditDocumentApi.md#editDocumentXlsxGetColumns) | **POST** /convert/edit/xlsx/get-columns | Get rows and cells from a XLSX worksheet
-[**editDocumentXlsxGetImages**](EditDocumentApi.md#editDocumentXlsxGetImages) | **POST** /convert/edit/xlsx/get-images | Get images from a XLSX worksheet
-[**editDocumentXlsxGetRowsAndCells**](EditDocumentApi.md#editDocumentXlsxGetRowsAndCells) | **POST** /convert/edit/xlsx/get-rows-and-cells | Get rows and cells from a XLSX worksheet
-[**editDocumentXlsxGetStyles**](EditDocumentApi.md#editDocumentXlsxGetStyles) | **POST** /convert/edit/xlsx/get-styles | Get styles from a XLSX worksheet
-[**editDocumentXlsxGetWorksheets**](EditDocumentApi.md#editDocumentXlsxGetWorksheets) | **POST** /convert/edit/xlsx/get-worksheets | Get worksheets from a XLSX
-[**editDocumentXlsxInsertWorksheet**](EditDocumentApi.md#editDocumentXlsxInsertWorksheet) | **POST** /convert/edit/xlsx/insert-worksheet | Insert a new worksheet into an XLSX spreadsheet
+[**editDocumentPptxReplace**](EditDocumentApi.md#editDocumentPptxReplace) | **POST** /convert/edit/pptx/replace-all | Replace string in PowerPoint PPTX presentation
+[**editDocumentXlsxGetColumns**](EditDocumentApi.md#editDocumentXlsxGetColumns) | **POST** /convert/edit/xlsx/get-columns | Get rows and cells from a Excel XLSX spreadsheet, worksheet
+[**editDocumentXlsxGetImages**](EditDocumentApi.md#editDocumentXlsxGetImages) | **POST** /convert/edit/xlsx/get-images | Get images from a Excel XLSX spreadsheet, worksheet
+[**editDocumentXlsxGetRowsAndCells**](EditDocumentApi.md#editDocumentXlsxGetRowsAndCells) | **POST** /convert/edit/xlsx/get-rows-and-cells | Get rows and cells from a Word XLSX spreadsheet, worksheet
+[**editDocumentXlsxGetStyles**](EditDocumentApi.md#editDocumentXlsxGetStyles) | **POST** /convert/edit/xlsx/get-styles | Get styles from a Excel XLSX spreadsheet, worksheet
+[**editDocumentXlsxGetWorksheets**](EditDocumentApi.md#editDocumentXlsxGetWorksheets) | **POST** /convert/edit/xlsx/get-worksheets | Get worksheets from a Excel XLSX spreadsheet
+[**editDocumentXlsxInsertWorksheet**](EditDocumentApi.md#editDocumentXlsxInsertWorksheet) | **POST** /convert/edit/xlsx/insert-worksheet | Insert a new worksheet into an Excel XLSX spreadsheet
 
 
 # **editDocumentBeginEditing**
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 # **editDocumentDocxBody**
 > \Swagger\Client\Model\GetDocxBodyResponse editDocumentDocxBody($req_config)
 
-Get body from a DOCX
+Get body from a Word DOCX document
 
 Returns the body defined in the Word Document (DOCX) format file; this is the main content part of a DOCX document
 
@@ -108,7 +108,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\GetDocxBodyRequest(); // \Swagger\Client\Model\GetDocxBodyRequest | 
+$req_config = new \Swagger\Client\Model\GetDocxBodyRequest(); // \Swagger\Client\Model\GetDocxBodyRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxBody($req_config);
@@ -123,7 +123,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\GetDocxBodyRequest**](../Model/GetDocxBodyRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\GetDocxBodyRequest**](../Model/GetDocxBodyRequest.md)| Document input request |
 
 ### Return type
 
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 # **editDocumentDocxGetHeadersAndFooters**
 > \Swagger\Client\Model\GetDocxHeadersAndFootersResponse editDocumentDocxGetHeadersAndFooters($req_config)
 
-Get content of a footer from a DOCX
+Get content of a footer from a Word DOCX document
 
 Returns the footer content from a Word Document (DOCX) format file
 
@@ -163,7 +163,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\GetDocxHeadersAndFootersRequest(); // \Swagger\Client\Model\GetDocxHeadersAndFootersRequest | 
+$req_config = new \Swagger\Client\Model\GetDocxHeadersAndFootersRequest(); // \Swagger\Client\Model\GetDocxHeadersAndFootersRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxGetHeadersAndFooters($req_config);
@@ -178,7 +178,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\GetDocxHeadersAndFootersRequest**](../Model/GetDocxHeadersAndFootersRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\GetDocxHeadersAndFootersRequest**](../Model/GetDocxHeadersAndFootersRequest.md)| Document input request |
 
 ### Return type
 
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 # **editDocumentDocxGetImages**
 > \Swagger\Client\Model\GetDocxImagesResponse editDocumentDocxGetImages($req_config)
 
-Get images from a DOCX
+Get images from a Word DOCX document
 
 Returns the images defined in the Word Document (DOCX) format file
 
@@ -218,7 +218,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\GetDocxImagesRequest(); // \Swagger\Client\Model\GetDocxImagesRequest | 
+$req_config = new \Swagger\Client\Model\GetDocxImagesRequest(); // \Swagger\Client\Model\GetDocxImagesRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxGetImages($req_config);
@@ -233,7 +233,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\GetDocxImagesRequest**](../Model/GetDocxImagesRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\GetDocxImagesRequest**](../Model/GetDocxImagesRequest.md)| Document input request |
 
 ### Return type
 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 # **editDocumentDocxGetSections**
 > \Swagger\Client\Model\GetDocxSectionsResponse editDocumentDocxGetSections($req_config)
 
-Get sections from a DOCX
+Get sections from a Word DOCX document
 
 Returns the sections defined in the Word Document (DOCX) format file
 
@@ -273,7 +273,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\GetDocxSectionsRequest(); // \Swagger\Client\Model\GetDocxSectionsRequest | 
+$req_config = new \Swagger\Client\Model\GetDocxSectionsRequest(); // \Swagger\Client\Model\GetDocxSectionsRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxGetSections($req_config);
@@ -288,7 +288,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\GetDocxSectionsRequest**](../Model/GetDocxSectionsRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\GetDocxSectionsRequest**](../Model/GetDocxSectionsRequest.md)| Document input request |
 
 ### Return type
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 # **editDocumentDocxGetStyles**
 > \Swagger\Client\Model\GetDocxStylesResponse editDocumentDocxGetStyles($req_config)
 
-Get styles from a DOCX
+Get styles from a Word DOCX document
 
 Returns the styles defined in the Word Document (DOCX) format file
 
@@ -328,7 +328,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\GetDocxStylesRequest(); // \Swagger\Client\Model\GetDocxStylesRequest | 
+$req_config = new \Swagger\Client\Model\GetDocxStylesRequest(); // \Swagger\Client\Model\GetDocxStylesRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxGetStyles($req_config);
@@ -343,7 +343,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\GetDocxStylesRequest**](../Model/GetDocxStylesRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\GetDocxStylesRequest**](../Model/GetDocxStylesRequest.md)| Document input request |
 
 ### Return type
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 # **editDocumentDocxGetTables**
 > \Swagger\Client\Model\GetDocxTablesResponse editDocumentDocxGetTables($req_config)
 
-Get tables in DOCX
+Get tables in Word DOCX document
 
 Returns all the table objects in an Office Word Document (docx)
 
@@ -383,7 +383,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\GetDocxTablesRequest(); // \Swagger\Client\Model\GetDocxTablesRequest | 
+$req_config = new \Swagger\Client\Model\GetDocxTablesRequest(); // \Swagger\Client\Model\GetDocxTablesRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxGetTables($req_config);
@@ -398,7 +398,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\GetDocxTablesRequest**](../Model/GetDocxTablesRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\GetDocxTablesRequest**](../Model/GetDocxTablesRequest.md)| Document input request |
 
 ### Return type
 
@@ -418,9 +418,9 @@ Name | Type | Description  | Notes
 # **editDocumentDocxInsertImage**
 > \Swagger\Client\Model\DocxInsertImageResponse editDocumentDocxInsertImage($req_config)
 
-Insert image into a DOCX
+Insert image into a Word DOCX document
 
-Set the footer in a Word Document (DOCX)
+Set the footer in a Word Document (DOCX).  Call Finish Editing on the output URL to complete the operation.
 
 ### Example
 ```php
@@ -438,7 +438,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\DocxInsertImageRequest(); // \Swagger\Client\Model\DocxInsertImageRequest | 
+$req_config = new \Swagger\Client\Model\DocxInsertImageRequest(); // \Swagger\Client\Model\DocxInsertImageRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxInsertImage($req_config);
@@ -453,7 +453,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\DocxInsertImageRequest**](../Model/DocxInsertImageRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\DocxInsertImageRequest**](../Model/DocxInsertImageRequest.md)| Document input request |
 
 ### Return type
 
@@ -473,9 +473,9 @@ Name | Type | Description  | Notes
 # **editDocumentDocxInsertParagraph**
 > \Swagger\Client\Model\InsertDocxInsertParagraphResponse editDocumentDocxInsertParagraph($req_config)
 
-Insert a new paragraph into a DOCX
+Insert a new paragraph into a Word DOCX document
 
-Adds a new paragraph into a DOCX and returns the result.  You can insert at the beginning/end of a document, or before/after an existing object using its Path (location within the document).
+Adds a new paragraph into a DOCX and returns the result.  You can insert at the beginning/end of a document, or before/after an existing object using its Path (location within the document).  Call Finish Editing on the output URL to complete the operation.
 
 ### Example
 ```php
@@ -493,7 +493,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\InsertDocxInsertParagraphRequest(); // \Swagger\Client\Model\InsertDocxInsertParagraphRequest | 
+$req_config = new \Swagger\Client\Model\InsertDocxInsertParagraphRequest(); // \Swagger\Client\Model\InsertDocxInsertParagraphRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxInsertParagraph($req_config);
@@ -508,7 +508,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\InsertDocxInsertParagraphRequest**](../Model/InsertDocxInsertParagraphRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\InsertDocxInsertParagraphRequest**](../Model/InsertDocxInsertParagraphRequest.md)| Document input request |
 
 ### Return type
 
@@ -528,9 +528,9 @@ Name | Type | Description  | Notes
 # **editDocumentDocxInsertTable**
 > \Swagger\Client\Model\InsertDocxTablesResponse editDocumentDocxInsertTable($req_config)
 
-Insert a new table into a DOCX
+Insert a new table into a Word DOCX document
 
-Adds a new table into a DOCX and returns the result
+Adds a new table into a DOCX and returns the result.  Call Finish Editing on the output URL to complete the operation.
 
 ### Example
 ```php
@@ -548,7 +548,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\InsertDocxTablesRequest(); // \Swagger\Client\Model\InsertDocxTablesRequest | 
+$req_config = new \Swagger\Client\Model\InsertDocxTablesRequest(); // \Swagger\Client\Model\InsertDocxTablesRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxInsertTable($req_config);
@@ -563,7 +563,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\InsertDocxTablesRequest**](../Model/InsertDocxTablesRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\InsertDocxTablesRequest**](../Model/InsertDocxTablesRequest.md)| Document input request |
 
 ### Return type
 
@@ -583,9 +583,9 @@ Name | Type | Description  | Notes
 # **editDocumentDocxRemoveHeadersAndFooters**
 > \Swagger\Client\Model\RemoveDocxHeadersAndFootersResponse editDocumentDocxRemoveHeadersAndFooters($req_config)
 
-Remove headers and footers from DOCX
+Remove headers and footers from Word DOCX document
 
-Remove all headers, or footers, or both from a Word Document (DOCX)
+Remove all headers, or footers, or both from a Word Document (DOCX).  Call Finish Editing on the output URL to complete the operation.
 
 ### Example
 ```php
@@ -603,7 +603,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest(); // \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest | 
+$req_config = new \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest(); // \Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxRemoveHeadersAndFooters($req_config);
@@ -618,7 +618,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest**](../Model/RemoveDocxHeadersAndFootersRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\RemoveDocxHeadersAndFootersRequest**](../Model/RemoveDocxHeadersAndFootersRequest.md)| Document input request |
 
 ### Return type
 
@@ -638,9 +638,9 @@ Name | Type | Description  | Notes
 # **editDocumentDocxRemoveObject**
 > \Swagger\Client\Model\DocxRemoveObjectResponse editDocumentDocxRemoveObject($req_config)
 
-Delete any object in a DOCX
+Delete any object in a Word DOCX document
 
-Delete any object, such as a paragraph, table, image, etc. from a Word Document (DOCX).  Pass in the Path of the object you would like to delete.  You can call other functions such as Get-Tables, Get-Images, Get-Body, etc. to get the paths of the objects in the document.
+Delete any object, such as a paragraph, table, image, etc. from a Word Document (DOCX).  Pass in the Path of the object you would like to delete.  You can call other functions such as Get-Tables, Get-Images, Get-Body, etc. to get the paths of the objects in the document.  Call Finish Editing on the output URL to complete the operation.
 
 ### Example
 ```php
@@ -658,7 +658,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\DocxRemoveObjectRequest(); // \Swagger\Client\Model\DocxRemoveObjectRequest | 
+$req_config = new \Swagger\Client\Model\DocxRemoveObjectRequest(); // \Swagger\Client\Model\DocxRemoveObjectRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxRemoveObject($req_config);
@@ -673,7 +673,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\DocxRemoveObjectRequest**](../Model/DocxRemoveObjectRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\DocxRemoveObjectRequest**](../Model/DocxRemoveObjectRequest.md)| Document input request |
 
 ### Return type
 
@@ -693,7 +693,7 @@ Name | Type | Description  | Notes
 # **editDocumentDocxReplace**
 > string editDocumentDocxReplace($req_config)
 
-Replace string in DOCX
+Replace string in Word DOCX document
 
 Replace all instances of a string in an Office Word Document (docx)
 
@@ -713,7 +713,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\ReplaceStringRequest(); // \Swagger\Client\Model\ReplaceStringRequest | 
+$req_config = new \Swagger\Client\Model\ReplaceStringRequest(); // \Swagger\Client\Model\ReplaceStringRequest | Document string replacement configuration input
 
 try {
     $result = $apiInstance->editDocumentDocxReplace($req_config);
@@ -728,7 +728,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\ReplaceStringRequest**](../Model/ReplaceStringRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\ReplaceStringRequest**](../Model/ReplaceStringRequest.md)| Document string replacement configuration input |
 
 ### Return type
 
@@ -748,9 +748,9 @@ Name | Type | Description  | Notes
 # **editDocumentDocxSetFooter**
 > \Swagger\Client\Model\DocxSetFooterResponse editDocumentDocxSetFooter($req_config)
 
-Set the footer in a DOCX
+Set the footer in a Word DOCX document
 
-Set the footer in a Word Document (DOCX)
+Set the footer in a Word Document (DOCX).  Call Finish Editing on the output URL to complete the operation.
 
 ### Example
 ```php
@@ -768,7 +768,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\DocxSetFooterRequest(); // \Swagger\Client\Model\DocxSetFooterRequest | 
+$req_config = new \Swagger\Client\Model\DocxSetFooterRequest(); // \Swagger\Client\Model\DocxSetFooterRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxSetFooter($req_config);
@@ -783,7 +783,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\DocxSetFooterRequest**](../Model/DocxSetFooterRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\DocxSetFooterRequest**](../Model/DocxSetFooterRequest.md)| Document input request |
 
 ### Return type
 
@@ -803,9 +803,9 @@ Name | Type | Description  | Notes
 # **editDocumentDocxSetFooterAddPageNumber**
 > \Swagger\Client\Model\DocxSetFooterResponse editDocumentDocxSetFooterAddPageNumber($req_config)
 
-Add page number to footer in a DOCX
+Add page number to footer in a Word DOCX document
 
-Set the footer in a Word Document (DOCX) to contain a page number
+Set the footer in a Word Document (DOCX) to contain a page number.  Call Finish Editing on the output URL to complete the operation.
 
 ### Example
 ```php
@@ -823,7 +823,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest(); // \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest | 
+$req_config = new \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest(); // \Swagger\Client\Model\DocxSetFooterAddPageNumberRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxSetFooterAddPageNumber($req_config);
@@ -838,7 +838,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\DocxSetFooterAddPageNumberRequest**](../Model/DocxSetFooterAddPageNumberRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\DocxSetFooterAddPageNumberRequest**](../Model/DocxSetFooterAddPageNumberRequest.md)| Document input request |
 
 ### Return type
 
@@ -858,9 +858,9 @@ Name | Type | Description  | Notes
 # **editDocumentDocxSetHeader**
 > \Swagger\Client\Model\DocxSetHeaderResponse editDocumentDocxSetHeader($req_config)
 
-Set the header in a DOCX
+Set the header in a Word DOCX document
 
-Set the header in a Word Document (DOCX)
+Set the header in a Word Document (DOCX).  Call Finish Editing on the output URL to complete the operation.
 
 ### Example
 ```php
@@ -878,7 +878,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\DocxSetHeaderRequest(); // \Swagger\Client\Model\DocxSetHeaderRequest | 
+$req_config = new \Swagger\Client\Model\DocxSetHeaderRequest(); // \Swagger\Client\Model\DocxSetHeaderRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentDocxSetHeader($req_config);
@@ -893,7 +893,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\DocxSetHeaderRequest**](../Model/DocxSetHeaderRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\DocxSetHeaderRequest**](../Model/DocxSetHeaderRequest.md)| Document input request |
 
 ### Return type
 
@@ -933,7 +933,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\FinishEditingRequest(); // \Swagger\Client\Model\FinishEditingRequest | 
+$req_config = new \Swagger\Client\Model\FinishEditingRequest(); // \Swagger\Client\Model\FinishEditingRequest | Cloudmersive Document URL to complete editing on
 
 try {
     $result = $apiInstance->editDocumentFinishEditing($req_config);
@@ -948,7 +948,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\FinishEditingRequest**](../Model/FinishEditingRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\FinishEditingRequest**](../Model/FinishEditingRequest.md)| Cloudmersive Document URL to complete editing on |
 
 ### Return type
 
@@ -968,7 +968,7 @@ Name | Type | Description  | Notes
 # **editDocumentPptxReplace**
 > string editDocumentPptxReplace($req_config)
 
-Replace string in PPTX
+Replace string in PowerPoint PPTX presentation
 
 Replace all instances of a string in an Office PowerPoint Document (pptx)
 
@@ -988,7 +988,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req_config = new \Swagger\Client\Model\ReplaceStringRequest(); // \Swagger\Client\Model\ReplaceStringRequest | 
+$req_config = new \Swagger\Client\Model\ReplaceStringRequest(); // \Swagger\Client\Model\ReplaceStringRequest | Replacement document configuration input
 
 try {
     $result = $apiInstance->editDocumentPptxReplace($req_config);
@@ -1003,7 +1003,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req_config** | [**\Swagger\Client\Model\ReplaceStringRequest**](../Model/ReplaceStringRequest.md)|  |
+ **req_config** | [**\Swagger\Client\Model\ReplaceStringRequest**](../Model/ReplaceStringRequest.md)| Replacement document configuration input |
 
 ### Return type
 
@@ -1023,7 +1023,7 @@ Name | Type | Description  | Notes
 # **editDocumentXlsxGetColumns**
 > \Swagger\Client\Model\GetXlsxColumnsResponse editDocumentXlsxGetColumns($input)
 
-Get rows and cells from a XLSX worksheet
+Get rows and cells from a Excel XLSX spreadsheet, worksheet
 
 Returns the rows and cells defined in the Excel Spreadsheet worksheet
 
@@ -1043,7 +1043,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$input = new \Swagger\Client\Model\GetXlsxColumnsRequest(); // \Swagger\Client\Model\GetXlsxColumnsRequest | 
+$input = new \Swagger\Client\Model\GetXlsxColumnsRequest(); // \Swagger\Client\Model\GetXlsxColumnsRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentXlsxGetColumns($input);
@@ -1058,7 +1058,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | [**\Swagger\Client\Model\GetXlsxColumnsRequest**](../Model/GetXlsxColumnsRequest.md)|  |
+ **input** | [**\Swagger\Client\Model\GetXlsxColumnsRequest**](../Model/GetXlsxColumnsRequest.md)| Document input request |
 
 ### Return type
 
@@ -1078,7 +1078,7 @@ Name | Type | Description  | Notes
 # **editDocumentXlsxGetImages**
 > \Swagger\Client\Model\GetXlsxImagesResponse editDocumentXlsxGetImages($input)
 
-Get images from a XLSX worksheet
+Get images from a Excel XLSX spreadsheet, worksheet
 
 Returns the images defined in the Excel Spreadsheet worksheet
 
@@ -1098,7 +1098,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$input = new \Swagger\Client\Model\GetXlsxImagesRequest(); // \Swagger\Client\Model\GetXlsxImagesRequest | 
+$input = new \Swagger\Client\Model\GetXlsxImagesRequest(); // \Swagger\Client\Model\GetXlsxImagesRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentXlsxGetImages($input);
@@ -1113,7 +1113,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | [**\Swagger\Client\Model\GetXlsxImagesRequest**](../Model/GetXlsxImagesRequest.md)|  |
+ **input** | [**\Swagger\Client\Model\GetXlsxImagesRequest**](../Model/GetXlsxImagesRequest.md)| Document input request |
 
 ### Return type
 
@@ -1133,7 +1133,7 @@ Name | Type | Description  | Notes
 # **editDocumentXlsxGetRowsAndCells**
 > \Swagger\Client\Model\GetXlsxRowsAndCellsResponse editDocumentXlsxGetRowsAndCells($input)
 
-Get rows and cells from a XLSX worksheet
+Get rows and cells from a Word XLSX spreadsheet, worksheet
 
 Returns the rows and cells defined in the Excel Spreadsheet worksheet
 
@@ -1153,7 +1153,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$input = new \Swagger\Client\Model\GetXlsxRowsAndCellsRequest(); // \Swagger\Client\Model\GetXlsxRowsAndCellsRequest | 
+$input = new \Swagger\Client\Model\GetXlsxRowsAndCellsRequest(); // \Swagger\Client\Model\GetXlsxRowsAndCellsRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentXlsxGetRowsAndCells($input);
@@ -1168,7 +1168,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | [**\Swagger\Client\Model\GetXlsxRowsAndCellsRequest**](../Model/GetXlsxRowsAndCellsRequest.md)|  |
+ **input** | [**\Swagger\Client\Model\GetXlsxRowsAndCellsRequest**](../Model/GetXlsxRowsAndCellsRequest.md)| Document input request |
 
 ### Return type
 
@@ -1188,7 +1188,7 @@ Name | Type | Description  | Notes
 # **editDocumentXlsxGetStyles**
 > \Swagger\Client\Model\GetXlsxStylesResponse editDocumentXlsxGetStyles($input)
 
-Get styles from a XLSX worksheet
+Get styles from a Excel XLSX spreadsheet, worksheet
 
 Returns the style defined in the Excel Spreadsheet
 
@@ -1208,7 +1208,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$input = new \Swagger\Client\Model\GetXlsxStylesRequest(); // \Swagger\Client\Model\GetXlsxStylesRequest | 
+$input = new \Swagger\Client\Model\GetXlsxStylesRequest(); // \Swagger\Client\Model\GetXlsxStylesRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentXlsxGetStyles($input);
@@ -1223,7 +1223,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | [**\Swagger\Client\Model\GetXlsxStylesRequest**](../Model/GetXlsxStylesRequest.md)|  |
+ **input** | [**\Swagger\Client\Model\GetXlsxStylesRequest**](../Model/GetXlsxStylesRequest.md)| Document input request |
 
 ### Return type
 
@@ -1243,7 +1243,7 @@ Name | Type | Description  | Notes
 # **editDocumentXlsxGetWorksheets**
 > \Swagger\Client\Model\GetXlsxWorksheetsResponse editDocumentXlsxGetWorksheets($input)
 
-Get worksheets from a XLSX
+Get worksheets from a Excel XLSX spreadsheet
 
 Returns the worksheets (tabs) defined in the Excel Spreadsheet (XLSX) format file
 
@@ -1263,7 +1263,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$input = new \Swagger\Client\Model\GetXlsxWorksheetsRequest(); // \Swagger\Client\Model\GetXlsxWorksheetsRequest | 
+$input = new \Swagger\Client\Model\GetXlsxWorksheetsRequest(); // \Swagger\Client\Model\GetXlsxWorksheetsRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentXlsxGetWorksheets($input);
@@ -1278,7 +1278,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | [**\Swagger\Client\Model\GetXlsxWorksheetsRequest**](../Model/GetXlsxWorksheetsRequest.md)|  |
+ **input** | [**\Swagger\Client\Model\GetXlsxWorksheetsRequest**](../Model/GetXlsxWorksheetsRequest.md)| Document input request |
 
 ### Return type
 
@@ -1298,7 +1298,7 @@ Name | Type | Description  | Notes
 # **editDocumentXlsxInsertWorksheet**
 > \Swagger\Client\Model\InsertXlsxWorksheetResponse editDocumentXlsxInsertWorksheet($input)
 
-Insert a new worksheet into an XLSX spreadsheet
+Insert a new worksheet into an Excel XLSX spreadsheet
 
 Inserts a new worksheet into an Excel Spreadsheet
 
@@ -1318,7 +1318,7 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$input = new \Swagger\Client\Model\InsertXlsxWorksheetRequest(); // \Swagger\Client\Model\InsertXlsxWorksheetRequest | 
+$input = new \Swagger\Client\Model\InsertXlsxWorksheetRequest(); // \Swagger\Client\Model\InsertXlsxWorksheetRequest | Document input request
 
 try {
     $result = $apiInstance->editDocumentXlsxInsertWorksheet($input);
@@ -1333,7 +1333,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | [**\Swagger\Client\Model\InsertXlsxWorksheetRequest**](../Model/InsertXlsxWorksheetRequest.md)|  |
+ **input** | [**\Swagger\Client\Model\InsertXlsxWorksheetRequest**](../Model/InsertXlsxWorksheetRequest.md)| Document input request |
 
 ### Return type
 
