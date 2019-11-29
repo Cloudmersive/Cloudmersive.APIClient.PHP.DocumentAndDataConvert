@@ -4,6 +4,7 @@ All URIs are relative to *https://api.cloudmersive.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**editPdfDecrypt**](EditPdfApi.md#editPdfDecrypt) | **POST** /convert/edit/pdf/decrypt | Decrypt and password-protect a PDF
 [**editPdfDeletePages**](EditPdfApi.md#editPdfDeletePages) | **POST** /convert/edit/pdf/pages/delete | Remove / delete pages from a PDF document
 [**editPdfEncrypt**](EditPdfApi.md#editPdfEncrypt) | **POST** /convert/edit/pdf/encrypt | Encrypt and password-protect a PDF
 [**editPdfGetFormFields**](EditPdfApi.md#editPdfGetFormFields) | **POST** /convert/edit/pdf/form/get-fields | Gets PDF Form fields and values
@@ -15,6 +16,63 @@ Method | HTTP request | Description
 [**editPdfSetPermissions**](EditPdfApi.md#editPdfSetPermissions) | **POST** /convert/edit/pdf/encrypt/set-permissions | Encrypt, password-protect and set restricted permissions on a PDF
 [**editPdfWatermarkText**](EditPdfApi.md#editPdfWatermarkText) | **POST** /convert/edit/pdf/watermark/text | Add a text watermark to a PDF
 
+
+# **editPdfDecrypt**
+> string editPdfDecrypt($password, $input_file)
+
+Decrypt and password-protect a PDF
+
+Decrypt a PDF document with a password.  Decrypted PDF will no longer require a password to open.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditPdfApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$password = "password_example"; // string | Valid password for the PDF file
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->editPdfDecrypt($password, $input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditPdfApi->editPdfDecrypt: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **password** | **string**| Valid password for the PDF file |
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **editPdfDeletePages**
 > string editPdfDeletePages($input_file, $page_start, $page_end)
@@ -76,7 +134,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **editPdfEncrypt**
-> string editPdfEncrypt($input_file, $user_password, $owner_password)
+> string editPdfEncrypt($input_file, $user_password, $owner_password, $encryption_key_length)
 
 Encrypt and password-protect a PDF
 
@@ -101,9 +159,10 @@ $apiInstance = new Swagger\Client\Api\EditPdfApi(
 $input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
 $user_password = "user_password_example"; // string | Password of a user (reader) of the PDF file
 $owner_password = "owner_password_example"; // string | Password of a owner (creator/editor) of the PDF file
+$encryption_key_length = "encryption_key_length_example"; // string | Possible values are \"128\" (128-bit RC4 encryption) and \"256\" (256-bit AES encryption).  Default is 256.
 
 try {
-    $result = $apiInstance->editPdfEncrypt($input_file, $user_password, $owner_password);
+    $result = $apiInstance->editPdfEncrypt($input_file, $user_password, $owner_password, $encryption_key_length);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EditPdfApi->editPdfEncrypt: ', $e->getMessage(), PHP_EOL;
@@ -118,6 +177,7 @@ Name | Type | Description  | Notes
  **input_file** | **\SplFileObject**| Input file to perform the operation on. |
  **user_password** | **string**| Password of a user (reader) of the PDF file | [optional]
  **owner_password** | **string**| Password of a owner (creator/editor) of the PDF file | [optional]
+ **encryption_key_length** | **string**| Possible values are \&quot;128\&quot; (128-bit RC4 encryption) and \&quot;256\&quot; (256-bit AES encryption).  Default is 256. | [optional]
 
 ### Return type
 
@@ -473,7 +533,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **editPdfSetPermissions**
-> string editPdfSetPermissions($owner_password, $input_file, $user_password, $allow_printing, $allow_document_assembly, $allow_content_extraction, $allow_form_filling, $allow_editing, $allow_annotations, $allow_degraded_printing)
+> string editPdfSetPermissions($owner_password, $user_password, $input_file, $encryption_key_length, $allow_printing, $allow_document_assembly, $allow_content_extraction, $allow_form_filling, $allow_editing, $allow_annotations, $allow_degraded_printing)
 
 Encrypt, password-protect and set restricted permissions on a PDF
 
@@ -496,8 +556,9 @@ $apiInstance = new Swagger\Client\Api\EditPdfApi(
     $config
 );
 $owner_password = "owner_password_example"; // string | Password of a owner (creator/editor) of the PDF file (required)
-$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
 $user_password = "user_password_example"; // string | Password of a user (reader) of the PDF file (optional)
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$encryption_key_length = "encryption_key_length_example"; // string | Possible values are \"128\" (128-bit RC4 encryption) and \"256\" (256-bit AES encryption).  Default is 256.
 $allow_printing = true; // bool | Set to false to disable printing through DRM.  Default is true.
 $allow_document_assembly = true; // bool | Set to false to disable document assembly through DRM.  Default is true.
 $allow_content_extraction = true; // bool | Set to false to disable copying/extracting content out of the PDF through DRM.  Default is true.
@@ -507,7 +568,7 @@ $allow_annotations = true; // bool | Set to false to disable annotations and edi
 $allow_degraded_printing = true; // bool | Set to false to disable degraded printing of the PDF through DRM.  Default is true.
 
 try {
-    $result = $apiInstance->editPdfSetPermissions($owner_password, $input_file, $user_password, $allow_printing, $allow_document_assembly, $allow_content_extraction, $allow_form_filling, $allow_editing, $allow_annotations, $allow_degraded_printing);
+    $result = $apiInstance->editPdfSetPermissions($owner_password, $user_password, $input_file, $encryption_key_length, $allow_printing, $allow_document_assembly, $allow_content_extraction, $allow_form_filling, $allow_editing, $allow_annotations, $allow_degraded_printing);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EditPdfApi->editPdfSetPermissions: ', $e->getMessage(), PHP_EOL;
@@ -520,8 +581,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner_password** | **string**| Password of a owner (creator/editor) of the PDF file (required) |
+ **user_password** | **string**| Password of a user (reader) of the PDF file (optional) |
  **input_file** | **\SplFileObject**| Input file to perform the operation on. |
- **user_password** | **string**| Password of a user (reader) of the PDF file (optional) | [optional]
+ **encryption_key_length** | **string**| Possible values are \&quot;128\&quot; (128-bit RC4 encryption) and \&quot;256\&quot; (256-bit AES encryption).  Default is 256. | [optional]
  **allow_printing** | **bool**| Set to false to disable printing through DRM.  Default is true. | [optional]
  **allow_document_assembly** | **bool**| Set to false to disable document assembly through DRM.  Default is true. | [optional]
  **allow_content_extraction** | **bool**| Set to false to disable copying/extracting content out of the PDF through DRM.  Default is true. | [optional]

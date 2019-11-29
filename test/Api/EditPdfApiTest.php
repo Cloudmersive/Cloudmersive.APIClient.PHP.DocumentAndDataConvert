@@ -72,6 +72,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editPdfDecrypt
+     *
+     * Decrypt and password-protect a PDF.
+     *
+     */
+    public function testEditPdfDecrypt()
+    {
+    }
+
+    /**
      * Test case for editPdfDeletePages
      *
      * Remove / delete pages from a PDF document.
