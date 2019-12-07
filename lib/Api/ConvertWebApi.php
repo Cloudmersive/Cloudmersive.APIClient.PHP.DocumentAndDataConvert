@@ -85,7 +85,7 @@ class ConvertWebApi
     /**
      * Operation convertWebHtmlToDocx
      *
-     * Convert HTML to DOCX
+     * Convert HTML to Word DOCX Document
      *
      * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTL input to convert to DOCX (required)
      *
@@ -102,7 +102,7 @@ class ConvertWebApi
     /**
      * Operation convertWebHtmlToDocxWithHttpInfo
      *
-     * Convert HTML to DOCX
+     * Convert HTML to Word DOCX Document
      *
      * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTL input to convert to DOCX (required)
      *
@@ -177,7 +177,7 @@ class ConvertWebApi
     /**
      * Operation convertWebHtmlToDocxAsync
      *
-     * Convert HTML to DOCX
+     * Convert HTML to Word DOCX Document
      *
      * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTL input to convert to DOCX (required)
      *
@@ -197,7 +197,7 @@ class ConvertWebApi
     /**
      * Operation convertWebHtmlToDocxAsyncWithHttpInfo
      *
-     * Convert HTML to DOCX
+     * Convert HTML to Word DOCX Document
      *
      * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTL input to convert to DOCX (required)
      *

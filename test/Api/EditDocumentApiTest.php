@@ -92,6 +92,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxDeletePages
+     *
+     * Delete, remove pages from a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxDeletePages()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxGetHeadersAndFooters
      *
      * Get content of a footer from a Word DOCX document.
@@ -168,6 +178,26 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentDocxInsertTable()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxInsertTableRow
+     *
+     * Insert a new row into an existing table in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxInsertTableRow()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxPages
+     *
+     * Get pages and content from a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxPages()
     {
     }
 

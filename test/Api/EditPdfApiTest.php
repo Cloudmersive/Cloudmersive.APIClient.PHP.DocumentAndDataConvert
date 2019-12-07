@@ -122,6 +122,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editPdfGetPdfTextByPages
+     *
+     * Get text in a PDF document by page.
+     *
+     */
+    public function testEditPdfGetPdfTextByPages()
+    {
+    }
+
+    /**
      * Test case for editPdfInsertPages
      *
      * Insert / copy pages from one PDF document into another.
