@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.6.4
+- Package version: 1.6.5
 
 
 ## Requirements
@@ -133,6 +133,7 @@ Class | Method | HTTP request | Description
 *ConvertWebApi* | [**convertWebUrlToScreenshot**](docs/Api/ConvertWebApi.md#convertweburltoscreenshot) | **POST** /convert/web/url/to/screenshot | Take screenshot of URL
 *EditDocumentApi* | [**editDocumentBeginEditing**](docs/Api/EditDocumentApi.md#editdocumentbeginediting) | **POST** /convert/edit/begin-editing | Begin editing a document
 *EditDocumentApi* | [**editDocumentDocxBody**](docs/Api/EditDocumentApi.md#editdocumentdocxbody) | **POST** /convert/edit/docx/get-body | Get body from a Word DOCX document
+*EditDocumentApi* | [**editDocumentDocxCreateBlankDocument**](docs/Api/EditDocumentApi.md#editdocumentdocxcreateblankdocument) | **POST** /convert/edit/docx/create/blank | Create a blank Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxDeletePages**](docs/Api/EditDocumentApi.md#editdocumentdocxdeletepages) | **POST** /convert/edit/docx/delete-pages | Delete, remove pages from a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxDeleteTableRow**](docs/Api/EditDocumentApi.md#editdocumentdocxdeletetablerow) | **POST** /convert/edit/docx/delete-table-row | Deletes a table row in an existing table in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxGetHeadersAndFooters**](docs/Api/EditDocumentApi.md#editdocumentdocxgetheadersandfooters) | **POST** /convert/edit/docx/get-headers-and-footers | Get content of a footer from a Word DOCX document
@@ -153,9 +154,11 @@ Class | Method | HTTP request | Description
 *EditDocumentApi* | [**editDocumentDocxSetFooter**](docs/Api/EditDocumentApi.md#editdocumentdocxsetfooter) | **POST** /convert/edit/docx/set-footer | Set the footer in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxSetFooterAddPageNumber**](docs/Api/EditDocumentApi.md#editdocumentdocxsetfooteraddpagenumber) | **POST** /convert/edit/docx/set-footer/add-page-number | Add page number to footer in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxSetHeader**](docs/Api/EditDocumentApi.md#editdocumentdocxsetheader) | **POST** /convert/edit/docx/set-header | Set the header in a Word DOCX document
+*EditDocumentApi* | [**editDocumentDocxUpdateTableCell**](docs/Api/EditDocumentApi.md#editdocumentdocxupdatetablecell) | **POST** /convert/edit/docx/update-table-cell | Update, set contents of a table cell in an existing table in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxUpdateTableRow**](docs/Api/EditDocumentApi.md#editdocumentdocxupdatetablerow) | **POST** /convert/edit/docx/update-table-row | Update, set contents of a table row in an existing table in a Word DOCX document
 *EditDocumentApi* | [**editDocumentFinishEditing**](docs/Api/EditDocumentApi.md#editdocumentfinishediting) | **POST** /convert/edit/finish-editing | Download result from document editing
 *EditDocumentApi* | [**editDocumentPptxReplace**](docs/Api/EditDocumentApi.md#editdocumentpptxreplace) | **POST** /convert/edit/pptx/replace-all | Replace string in PowerPoint PPTX presentation
+*EditDocumentApi* | [**editDocumentXlsxCreateBlankSpreadsheet**](docs/Api/EditDocumentApi.md#editdocumentxlsxcreateblankspreadsheet) | **POST** /convert/edit/xlsx/create/blank | Create a blank Excel XLSX spreadsheet
 *EditDocumentApi* | [**editDocumentXlsxGetColumns**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetcolumns) | **POST** /convert/edit/xlsx/get-columns | Get rows and cells from a Excel XLSX spreadsheet, worksheet
 *EditDocumentApi* | [**editDocumentXlsxGetImages**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetimages) | **POST** /convert/edit/xlsx/get-images | Get images from a Excel XLSX spreadsheet, worksheet
 *EditDocumentApi* | [**editDocumentXlsxGetRowsAndCells**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetrowsandcells) | **POST** /convert/edit/xlsx/get-rows-and-cells | Get rows and cells from a Word XLSX spreadsheet, worksheet
@@ -203,6 +206,10 @@ Class | Method | HTTP request | Description
  - [AutodetectGetInfoResult](docs/Model/AutodetectGetInfoResult.md)
  - [AutodetectToPngResult](docs/Model/AutodetectToPngResult.md)
  - [ConvertedPngPage](docs/Model/ConvertedPngPage.md)
+ - [CreateBlankDocxRequest](docs/Model/CreateBlankDocxRequest.md)
+ - [CreateBlankDocxResponse](docs/Model/CreateBlankDocxResponse.md)
+ - [CreateBlankSpreadsheetRequest](docs/Model/CreateBlankSpreadsheetRequest.md)
+ - [CreateBlankSpreadsheetResponse](docs/Model/CreateBlankSpreadsheetResponse.md)
  - [DeleteDocxTableRowRequest](docs/Model/DeleteDocxTableRowRequest.md)
  - [DeleteDocxTableRowResponse](docs/Model/DeleteDocxTableRowResponse.md)
  - [DocumentValidationError](docs/Model/DocumentValidationError.md)
@@ -298,6 +305,8 @@ Class | Method | HTTP request | Description
  - [SplitPdfResult](docs/Model/SplitPdfResult.md)
  - [SplitXlsxWorksheetResult](docs/Model/SplitXlsxWorksheetResult.md)
  - [TextConversionResult](docs/Model/TextConversionResult.md)
+ - [UpdateDocxTableCellRequest](docs/Model/UpdateDocxTableCellRequest.md)
+ - [UpdateDocxTableCellResponse](docs/Model/UpdateDocxTableCellResponse.md)
  - [UpdateDocxTableRowRequest](docs/Model/UpdateDocxTableRowRequest.md)
  - [UpdateDocxTableRowResponse](docs/Model/UpdateDocxTableRowResponse.md)
  - [ViewerResponse](docs/Model/ViewerResponse.md)

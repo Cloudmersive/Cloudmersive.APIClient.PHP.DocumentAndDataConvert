@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateDocxTableRowRequest
+ * UpdateDocxTableCellRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * UpdateDocxTableRowRequest Class Doc Comment
+ * UpdateDocxTableCellRequest Class Doc Comment
  *
  * @category Class
- * @description Input to a Update Table Row request
+ * @description Input to a Update Table Cell request
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
+class UpdateDocxTableCellRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'UpdateDocxTableRowRequest';
+    protected static $swaggerModelName = 'UpdateDocxTableCellRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,9 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'input_file_bytes' => 'string',
         'input_file_url' => 'string',
-        'row_to_update' => '\Swagger\Client\Model\DocxTableRow',
+        'cell_to_update' => '\Swagger\Client\Model\DocxTableCell',
         'table_row_index' => 'int',
+        'table_cell_index' => 'int',
         'existing_table_path' => 'string'
     ];
 
@@ -73,8 +74,9 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'input_file_bytes' => 'byte',
         'input_file_url' => null,
-        'row_to_update' => null,
+        'cell_to_update' => null,
         'table_row_index' => 'int32',
+        'table_cell_index' => 'int32',
         'existing_table_path' => null
     ];
 
@@ -107,8 +109,9 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'input_file_bytes' => 'InputFileBytes',
         'input_file_url' => 'InputFileUrl',
-        'row_to_update' => 'RowToUpdate',
+        'cell_to_update' => 'CellToUpdate',
         'table_row_index' => 'TableRowIndex',
+        'table_cell_index' => 'TableCellIndex',
         'existing_table_path' => 'ExistingTablePath'
     ];
 
@@ -120,8 +123,9 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
     protected static $setters = [
         'input_file_bytes' => 'setInputFileBytes',
         'input_file_url' => 'setInputFileUrl',
-        'row_to_update' => 'setRowToUpdate',
+        'cell_to_update' => 'setCellToUpdate',
         'table_row_index' => 'setTableRowIndex',
+        'table_cell_index' => 'setTableCellIndex',
         'existing_table_path' => 'setExistingTablePath'
     ];
 
@@ -133,8 +137,9 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
     protected static $getters = [
         'input_file_bytes' => 'getInputFileBytes',
         'input_file_url' => 'getInputFileUrl',
-        'row_to_update' => 'getRowToUpdate',
+        'cell_to_update' => 'getCellToUpdate',
         'table_row_index' => 'getTableRowIndex',
+        'table_cell_index' => 'getTableCellIndex',
         'existing_table_path' => 'getExistingTablePath'
     ];
 
@@ -200,8 +205,9 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
     {
         $this->container['input_file_bytes'] = isset($data['input_file_bytes']) ? $data['input_file_bytes'] : null;
         $this->container['input_file_url'] = isset($data['input_file_url']) ? $data['input_file_url'] : null;
-        $this->container['row_to_update'] = isset($data['row_to_update']) ? $data['row_to_update'] : null;
+        $this->container['cell_to_update'] = isset($data['cell_to_update']) ? $data['cell_to_update'] : null;
         $this->container['table_row_index'] = isset($data['table_row_index']) ? $data['table_row_index'] : null;
+        $this->container['table_cell_index'] = isset($data['table_cell_index']) ? $data['table_cell_index'] : null;
         $this->container['existing_table_path'] = isset($data['existing_table_path']) ? $data['existing_table_path'] : null;
     }
 
@@ -258,7 +264,7 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
     {
 
         if (!is_null($input_file_bytes) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $input_file_bytes))) {
-            throw new \InvalidArgumentException("invalid value for $input_file_bytes when calling UpdateDocxTableRowRequest., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
+            throw new \InvalidArgumentException("invalid value for $input_file_bytes when calling UpdateDocxTableCellRequest., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
         }
 
         $this->container['input_file_bytes'] = $input_file_bytes;
@@ -291,25 +297,25 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets row_to_update
+     * Gets cell_to_update
      *
-     * @return \Swagger\Client\Model\DocxTableRow
+     * @return \Swagger\Client\Model\DocxTableCell
      */
-    public function getRowToUpdate()
+    public function getCellToUpdate()
     {
-        return $this->container['row_to_update'];
+        return $this->container['cell_to_update'];
     }
 
     /**
-     * Sets row_to_update
+     * Sets cell_to_update
      *
-     * @param \Swagger\Client\Model\DocxTableRow $row_to_update Table row contents you would like to update the row with
+     * @param \Swagger\Client\Model\DocxTableCell $cell_to_update Table cell contents you would like to update the cell with
      *
      * @return $this
      */
-    public function setRowToUpdate($row_to_update)
+    public function setCellToUpdate($cell_to_update)
     {
-        $this->container['row_to_update'] = $row_to_update;
+        $this->container['cell_to_update'] = $cell_to_update;
 
         return $this;
     }
@@ -334,6 +340,30 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
     public function setTableRowIndex($table_row_index)
     {
         $this->container['table_row_index'] = $table_row_index;
+
+        return $this;
+    }
+
+    /**
+     * Gets table_cell_index
+     *
+     * @return int
+     */
+    public function getTableCellIndex()
+    {
+        return $this->container['table_cell_index'];
+    }
+
+    /**
+     * Sets table_cell_index
+     *
+     * @param int $table_cell_index 0-based index of the Table Cell (within the row) to update
+     *
+     * @return $this
+     */
+    public function setTableCellIndex($table_cell_index)
+    {
+        $this->container['table_cell_index'] = $table_cell_index;
 
         return $this;
     }

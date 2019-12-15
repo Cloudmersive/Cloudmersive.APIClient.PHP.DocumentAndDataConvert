@@ -92,6 +92,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxCreateBlankDocument
+     *
+     * Create a blank Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxCreateBlankDocument()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxDeletePages
      *
      * Delete, remove pages from a Word DOCX document.
@@ -292,6 +302,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxUpdateTableCell
+     *
+     * Update, set contents of a table cell in an existing table in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxUpdateTableCell()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxUpdateTableRow
      *
      * Update, set contents of a table row in an existing table in a Word DOCX document.
@@ -318,6 +338,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentPptxReplace()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxCreateBlankSpreadsheet
+     *
+     * Create a blank Excel XLSX spreadsheet.
+     *
+     */
+    public function testEditDocumentXlsxCreateBlankSpreadsheet()
     {
     }
 

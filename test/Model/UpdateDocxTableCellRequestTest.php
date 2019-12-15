@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateDocxTableRowRequestTest
+ * UpdateDocxTableCellRequestTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * UpdateDocxTableRowRequestTest Class Doc Comment
+ * UpdateDocxTableCellRequestTest Class Doc Comment
  *
  * @category    Class */
-// * @description Input to a Update Table Row request
+// * @description Input to a Update Table Cell request
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UpdateDocxTableRowRequestTest extends \PHPUnit_Framework_TestCase
+class UpdateDocxTableCellRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class UpdateDocxTableRowRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "UpdateDocxTableRowRequest"
+     * Test "UpdateDocxTableCellRequest"
      */
-    public function testUpdateDocxTableRowRequest()
+    public function testUpdateDocxTableCellRequest()
     {
     }
 
@@ -92,9 +92,9 @@ class UpdateDocxTableRowRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "row_to_update"
+     * Test attribute "cell_to_update"
      */
-    public function testPropertyRowToUpdate()
+    public function testPropertyCellToUpdate()
     {
     }
 
@@ -102,6 +102,13 @@ class UpdateDocxTableRowRequestTest extends \PHPUnit_Framework_TestCase
      * Test attribute "table_row_index"
      */
     public function testPropertyTableRowIndex()
+    {
+    }
+
+    /**
+     * Test attribute "table_cell_index"
+     */
+    public function testPropertyTableCellIndex()
     {
     }
 

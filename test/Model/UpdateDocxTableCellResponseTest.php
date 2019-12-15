@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateDocxTableRowRequestTest
+ * UpdateDocxTableCellResponseTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * UpdateDocxTableRowRequestTest Class Doc Comment
+ * UpdateDocxTableCellResponseTest Class Doc Comment
  *
  * @category    Class */
-// * @description Input to a Update Table Row request
+// * @description Result of running an Update Table Cell command
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UpdateDocxTableRowRequestTest extends \PHPUnit_Framework_TestCase
+class UpdateDocxTableCellResponseTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,44 +71,23 @@ class UpdateDocxTableRowRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "UpdateDocxTableRowRequest"
+     * Test "UpdateDocxTableCellResponse"
      */
-    public function testUpdateDocxTableRowRequest()
+    public function testUpdateDocxTableCellResponse()
     {
     }
 
     /**
-     * Test attribute "input_file_bytes"
+     * Test attribute "successful"
      */
-    public function testPropertyInputFileBytes()
+    public function testPropertySuccessful()
     {
     }
 
     /**
-     * Test attribute "input_file_url"
+     * Test attribute "edited_document_url"
      */
-    public function testPropertyInputFileUrl()
-    {
-    }
-
-    /**
-     * Test attribute "row_to_update"
-     */
-    public function testPropertyRowToUpdate()
-    {
-    }
-
-    /**
-     * Test attribute "table_row_index"
-     */
-    public function testPropertyTableRowIndex()
-    {
-    }
-
-    /**
-     * Test attribute "existing_table_path"
-     */
-    public function testPropertyExistingTablePath()
+    public function testPropertyEditedDocumentUrl()
     {
     }
 }

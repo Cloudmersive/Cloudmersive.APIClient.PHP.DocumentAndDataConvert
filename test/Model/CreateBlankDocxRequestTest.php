@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateDocxTableRowRequestTest
+ * CreateBlankDocxRequestTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * UpdateDocxTableRowRequestTest Class Doc Comment
+ * CreateBlankDocxRequestTest Class Doc Comment
  *
  * @category    Class */
-// * @description Input to a Update Table Row request
+// * @description Input to a Create Blank Word Document request
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class UpdateDocxTableRowRequestTest extends \PHPUnit_Framework_TestCase
+class CreateBlankDocxRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,44 +71,16 @@ class UpdateDocxTableRowRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "UpdateDocxTableRowRequest"
+     * Test "CreateBlankDocxRequest"
      */
-    public function testUpdateDocxTableRowRequest()
+    public function testCreateBlankDocxRequest()
     {
     }
 
     /**
-     * Test attribute "input_file_bytes"
+     * Test attribute "initial_text"
      */
-    public function testPropertyInputFileBytes()
-    {
-    }
-
-    /**
-     * Test attribute "input_file_url"
-     */
-    public function testPropertyInputFileUrl()
-    {
-    }
-
-    /**
-     * Test attribute "row_to_update"
-     */
-    public function testPropertyRowToUpdate()
-    {
-    }
-
-    /**
-     * Test attribute "table_row_index"
-     */
-    public function testPropertyTableRowIndex()
-    {
-    }
-
-    /**
-     * Test attribute "existing_table_path"
-     */
-    public function testPropertyExistingTablePath()
+    public function testPropertyInitialText()
     {
     }
 }

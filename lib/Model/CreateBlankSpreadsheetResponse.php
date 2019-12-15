@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateDocxTableRowRequest
+ * CreateBlankSpreadsheetResponse
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * UpdateDocxTableRowRequest Class Doc Comment
+ * CreateBlankSpreadsheetResponse Class Doc Comment
  *
  * @category Class
- * @description Input to a Update Table Row request
+ * @description Result of creating a blank worksheet
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
+class CreateBlankSpreadsheetResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'UpdateDocxTableRowRequest';
+    protected static $swaggerModelName = 'CreateBlankSpreadsheetResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,8 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'input_file_bytes' => 'string',
-        'input_file_url' => 'string',
-        'row_to_update' => '\Swagger\Client\Model\DocxTableRow',
-        'table_row_index' => 'int',
-        'existing_table_path' => 'string'
+        'successful' => 'bool',
+        'edited_document_url' => 'string'
     ];
 
     /**
@@ -71,11 +68,8 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'input_file_bytes' => 'byte',
-        'input_file_url' => null,
-        'row_to_update' => null,
-        'table_row_index' => 'int32',
-        'existing_table_path' => null
+        'successful' => null,
+        'edited_document_url' => null
     ];
 
     /**
@@ -105,11 +99,8 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'input_file_bytes' => 'InputFileBytes',
-        'input_file_url' => 'InputFileUrl',
-        'row_to_update' => 'RowToUpdate',
-        'table_row_index' => 'TableRowIndex',
-        'existing_table_path' => 'ExistingTablePath'
+        'successful' => 'Successful',
+        'edited_document_url' => 'EditedDocumentURL'
     ];
 
     /**
@@ -118,11 +109,8 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'input_file_bytes' => 'setInputFileBytes',
-        'input_file_url' => 'setInputFileUrl',
-        'row_to_update' => 'setRowToUpdate',
-        'table_row_index' => 'setTableRowIndex',
-        'existing_table_path' => 'setExistingTablePath'
+        'successful' => 'setSuccessful',
+        'edited_document_url' => 'setEditedDocumentUrl'
     ];
 
     /**
@@ -131,11 +119,8 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'input_file_bytes' => 'getInputFileBytes',
-        'input_file_url' => 'getInputFileUrl',
-        'row_to_update' => 'getRowToUpdate',
-        'table_row_index' => 'getTableRowIndex',
-        'existing_table_path' => 'getExistingTablePath'
+        'successful' => 'getSuccessful',
+        'edited_document_url' => 'getEditedDocumentUrl'
     ];
 
     /**
@@ -198,11 +183,8 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['input_file_bytes'] = isset($data['input_file_bytes']) ? $data['input_file_bytes'] : null;
-        $this->container['input_file_url'] = isset($data['input_file_url']) ? $data['input_file_url'] : null;
-        $this->container['row_to_update'] = isset($data['row_to_update']) ? $data['row_to_update'] : null;
-        $this->container['table_row_index'] = isset($data['table_row_index']) ? $data['table_row_index'] : null;
-        $this->container['existing_table_path'] = isset($data['existing_table_path']) ? $data['existing_table_path'] : null;
+        $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
+        $this->container['edited_document_url'] = isset($data['edited_document_url']) ? $data['edited_document_url'] : null;
     }
 
     /**
@@ -213,10 +195,6 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (!is_null($this->container['input_file_bytes']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
-            $invalidProperties[] = "invalid value for 'input_file_bytes', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
-        }
 
         return $invalidProperties;
     }
@@ -230,134 +208,54 @@ class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
-            return false;
-        }
         return true;
     }
 
 
     /**
-     * Gets input_file_bytes
+     * Gets successful
+     *
+     * @return bool
+     */
+    public function getSuccessful()
+    {
+        return $this->container['successful'];
+    }
+
+    /**
+     * Sets successful
+     *
+     * @param bool $successful True if successful, false otherwise
+     *
+     * @return $this
+     */
+    public function setSuccessful($successful)
+    {
+        $this->container['successful'] = $successful;
+
+        return $this;
+    }
+
+    /**
+     * Gets edited_document_url
      *
      * @return string
      */
-    public function getInputFileBytes()
+    public function getEditedDocumentUrl()
     {
-        return $this->container['input_file_bytes'];
+        return $this->container['edited_document_url'];
     }
 
     /**
-     * Sets input_file_bytes
+     * Sets edited_document_url
      *
-     * @param string $input_file_bytes Optional: Bytes of the input file to operate on
+     * @param string $edited_document_url URL to the edited XLSX file; file is stored in an in-memory cache and will be deleted.  Call Finish-Editing to get the result document contents.
      *
      * @return $this
      */
-    public function setInputFileBytes($input_file_bytes)
+    public function setEditedDocumentUrl($edited_document_url)
     {
-
-        if (!is_null($input_file_bytes) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $input_file_bytes))) {
-            throw new \InvalidArgumentException("invalid value for $input_file_bytes when calling UpdateDocxTableRowRequest., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
-        $this->container['input_file_bytes'] = $input_file_bytes;
-
-        return $this;
-    }
-
-    /**
-     * Gets input_file_url
-     *
-     * @return string
-     */
-    public function getInputFileUrl()
-    {
-        return $this->container['input_file_url'];
-    }
-
-    /**
-     * Sets input_file_url
-     *
-     * @param string $input_file_url Optional: URL of a file to operate on as input.  This can be a public URL, or you can also use the begin-editing API to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public).
-     *
-     * @return $this
-     */
-    public function setInputFileUrl($input_file_url)
-    {
-        $this->container['input_file_url'] = $input_file_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets row_to_update
-     *
-     * @return \Swagger\Client\Model\DocxTableRow
-     */
-    public function getRowToUpdate()
-    {
-        return $this->container['row_to_update'];
-    }
-
-    /**
-     * Sets row_to_update
-     *
-     * @param \Swagger\Client\Model\DocxTableRow $row_to_update Table row contents you would like to update the row with
-     *
-     * @return $this
-     */
-    public function setRowToUpdate($row_to_update)
-    {
-        $this->container['row_to_update'] = $row_to_update;
-
-        return $this;
-    }
-
-    /**
-     * Gets table_row_index
-     *
-     * @return int
-     */
-    public function getTableRowIndex()
-    {
-        return $this->container['table_row_index'];
-    }
-
-    /**
-     * Sets table_row_index
-     *
-     * @param int $table_row_index 0-based index of the Table Row to update
-     *
-     * @return $this
-     */
-    public function setTableRowIndex($table_row_index)
-    {
-        $this->container['table_row_index'] = $table_row_index;
-
-        return $this;
-    }
-
-    /**
-     * Gets existing_table_path
-     *
-     * @return string
-     */
-    public function getExistingTablePath()
-    {
-        return $this->container['existing_table_path'];
-    }
-
-    /**
-     * Sets existing_table_path
-     *
-     * @param string $existing_table_path Required; the path to the existing table to modify
-     *
-     * @return $this
-     */
-    public function setExistingTablePath($existing_table_path)
-    {
-        $this->container['existing_table_path'] = $existing_table_path;
+        $this->container['edited_document_url'] = $edited_document_url;
 
         return $this;
     }

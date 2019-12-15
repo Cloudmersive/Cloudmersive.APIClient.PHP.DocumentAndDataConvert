@@ -249,7 +249,7 @@ class GetXlsxWorksheetsResponse implements ModelInterface, ArrayAccess
     /**
      * Sets worksheets
      *
-     * @param \Swagger\Client\Model\XlsxWorksheet[] $worksheets Styles in the DOCX document
+     * @param \Swagger\Client\Model\XlsxWorksheet[] $worksheets Worksheets in the Excel XLSX spreadsheet
      *
      * @return $this
      */
