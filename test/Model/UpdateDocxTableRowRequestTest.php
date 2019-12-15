@@ -1,6 +1,6 @@
 <?php
 /**
- * PdfMetadataTest
+ * UpdateDocxTableRowRequestTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * PdfMetadataTest Class Doc Comment
+ * UpdateDocxTableRowRequestTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of an autodetect/get-info operation
+// * @description Input to a Update Table Row request
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class PdfMetadataTest extends \PHPUnit_Framework_TestCase
+class UpdateDocxTableRowRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,72 +71,44 @@ class PdfMetadataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "PdfMetadata"
+     * Test "UpdateDocxTableRowRequest"
      */
-    public function testPdfMetadata()
+    public function testUpdateDocxTableRowRequest()
     {
     }
 
     /**
-     * Test attribute "successful"
+     * Test attribute "input_file_bytes"
      */
-    public function testPropertySuccessful()
+    public function testPropertyInputFileBytes()
     {
     }
 
     /**
-     * Test attribute "title"
+     * Test attribute "input_file_url"
      */
-    public function testPropertyTitle()
+    public function testPropertyInputFileUrl()
     {
     }
 
     /**
-     * Test attribute "keywords"
+     * Test attribute "row_to_update"
      */
-    public function testPropertyKeywords()
+    public function testPropertyRowToUpdate()
     {
     }
 
     /**
-     * Test attribute "subject"
+     * Test attribute "table_row_row_index"
      */
-    public function testPropertySubject()
+    public function testPropertyTableRowRowIndex()
     {
     }
 
     /**
-     * Test attribute "author"
+     * Test attribute "existing_table_path"
      */
-    public function testPropertyAuthor()
-    {
-    }
-
-    /**
-     * Test attribute "creator"
-     */
-    public function testPropertyCreator()
-    {
-    }
-
-    /**
-     * Test attribute "date_modified"
-     */
-    public function testPropertyDateModified()
-    {
-    }
-
-    /**
-     * Test attribute "date_created"
-     */
-    public function testPropertyDateCreated()
-    {
-    }
-
-    /**
-     * Test attribute "page_count"
-     */
-    public function testPropertyPageCount()
+    public function testPropertyExistingTablePath()
     {
     }
 }

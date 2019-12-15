@@ -1,6 +1,6 @@
 <?php
 /**
- * PdfMetadataTest
+ * UpdateDocxTableRowResponseTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * PdfMetadataTest Class Doc Comment
+ * UpdateDocxTableRowResponseTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of an autodetect/get-info operation
+// * @description Result of running an Update Table Row command
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class PdfMetadataTest extends \PHPUnit_Framework_TestCase
+class UpdateDocxTableRowResponseTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class PdfMetadataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "PdfMetadata"
+     * Test "UpdateDocxTableRowResponse"
      */
-    public function testPdfMetadata()
+    public function testUpdateDocxTableRowResponse()
     {
     }
 
@@ -85,58 +85,9 @@ class PdfMetadataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "title"
+     * Test attribute "edited_document_url"
      */
-    public function testPropertyTitle()
-    {
-    }
-
-    /**
-     * Test attribute "keywords"
-     */
-    public function testPropertyKeywords()
-    {
-    }
-
-    /**
-     * Test attribute "subject"
-     */
-    public function testPropertySubject()
-    {
-    }
-
-    /**
-     * Test attribute "author"
-     */
-    public function testPropertyAuthor()
-    {
-    }
-
-    /**
-     * Test attribute "creator"
-     */
-    public function testPropertyCreator()
-    {
-    }
-
-    /**
-     * Test attribute "date_modified"
-     */
-    public function testPropertyDateModified()
-    {
-    }
-
-    /**
-     * Test attribute "date_created"
-     */
-    public function testPropertyDateCreated()
-    {
-    }
-
-    /**
-     * Test attribute "page_count"
-     */
-    public function testPropertyPageCount()
+    public function testPropertyEditedDocumentUrl()
     {
     }
 }

@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.6.3
+- Package version: 1.6.4
 
 
 ## Requirements
@@ -134,11 +134,14 @@ Class | Method | HTTP request | Description
 *EditDocumentApi* | [**editDocumentBeginEditing**](docs/Api/EditDocumentApi.md#editdocumentbeginediting) | **POST** /convert/edit/begin-editing | Begin editing a document
 *EditDocumentApi* | [**editDocumentDocxBody**](docs/Api/EditDocumentApi.md#editdocumentdocxbody) | **POST** /convert/edit/docx/get-body | Get body from a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxDeletePages**](docs/Api/EditDocumentApi.md#editdocumentdocxdeletepages) | **POST** /convert/edit/docx/delete-pages | Delete, remove pages from a Word DOCX document
+*EditDocumentApi* | [**editDocumentDocxDeleteTableRow**](docs/Api/EditDocumentApi.md#editdocumentdocxdeletetablerow) | **POST** /convert/edit/docx/delete-table-row | Deletes a table row in an existing table in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxGetHeadersAndFooters**](docs/Api/EditDocumentApi.md#editdocumentdocxgetheadersandfooters) | **POST** /convert/edit/docx/get-headers-and-footers | Get content of a footer from a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxGetImages**](docs/Api/EditDocumentApi.md#editdocumentdocxgetimages) | **POST** /convert/edit/docx/get-images | Get images from a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxGetSections**](docs/Api/EditDocumentApi.md#editdocumentdocxgetsections) | **POST** /convert/edit/docx/get-sections | Get sections from a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxGetStyles**](docs/Api/EditDocumentApi.md#editdocumentdocxgetstyles) | **POST** /convert/edit/docx/get-styles | Get styles from a Word DOCX document
-*EditDocumentApi* | [**editDocumentDocxGetTables**](docs/Api/EditDocumentApi.md#editdocumentdocxgettables) | **POST** /convert/edit/docx/get-tables | Get tables in Word DOCX document
+*EditDocumentApi* | [**editDocumentDocxGetTableByIndex**](docs/Api/EditDocumentApi.md#editdocumentdocxgettablebyindex) | **POST** /convert/edit/docx/get-table/by-index | Get a specific table by index in a Word DOCX document
+*EditDocumentApi* | [**editDocumentDocxGetTableRow**](docs/Api/EditDocumentApi.md#editdocumentdocxgettablerow) | **POST** /convert/edit/docx/get-table-row | Gets the contents of an existing table row in an existing table in a Word DOCX document
+*EditDocumentApi* | [**editDocumentDocxGetTables**](docs/Api/EditDocumentApi.md#editdocumentdocxgettables) | **POST** /convert/edit/docx/get-tables | Get all tables in Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxInsertImage**](docs/Api/EditDocumentApi.md#editdocumentdocxinsertimage) | **POST** /convert/edit/docx/insert-image | Insert image into a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxInsertParagraph**](docs/Api/EditDocumentApi.md#editdocumentdocxinsertparagraph) | **POST** /convert/edit/docx/insert-paragraph | Insert a new paragraph into a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxInsertTable**](docs/Api/EditDocumentApi.md#editdocumentdocxinserttable) | **POST** /convert/edit/docx/insert-table | Insert a new table into a Word DOCX document
@@ -150,6 +153,7 @@ Class | Method | HTTP request | Description
 *EditDocumentApi* | [**editDocumentDocxSetFooter**](docs/Api/EditDocumentApi.md#editdocumentdocxsetfooter) | **POST** /convert/edit/docx/set-footer | Set the footer in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxSetFooterAddPageNumber**](docs/Api/EditDocumentApi.md#editdocumentdocxsetfooteraddpagenumber) | **POST** /convert/edit/docx/set-footer/add-page-number | Add page number to footer in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxSetHeader**](docs/Api/EditDocumentApi.md#editdocumentdocxsetheader) | **POST** /convert/edit/docx/set-header | Set the header in a Word DOCX document
+*EditDocumentApi* | [**editDocumentDocxUpdateTableRow**](docs/Api/EditDocumentApi.md#editdocumentdocxupdatetablerow) | **POST** /convert/edit/docx/update-table-row | Update, set contents of a table row in an existing table in a Word DOCX document
 *EditDocumentApi* | [**editDocumentFinishEditing**](docs/Api/EditDocumentApi.md#editdocumentfinishediting) | **POST** /convert/edit/finish-editing | Download result from document editing
 *EditDocumentApi* | [**editDocumentPptxReplace**](docs/Api/EditDocumentApi.md#editdocumentpptxreplace) | **POST** /convert/edit/pptx/replace-all | Replace string in PowerPoint PPTX presentation
 *EditDocumentApi* | [**editDocumentXlsxGetColumns**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetcolumns) | **POST** /convert/edit/xlsx/get-columns | Get rows and cells from a Excel XLSX spreadsheet, worksheet
@@ -199,6 +203,8 @@ Class | Method | HTTP request | Description
  - [AutodetectGetInfoResult](docs/Model/AutodetectGetInfoResult.md)
  - [AutodetectToPngResult](docs/Model/AutodetectToPngResult.md)
  - [ConvertedPngPage](docs/Model/ConvertedPngPage.md)
+ - [DeleteDocxTableRowRequest](docs/Model/DeleteDocxTableRowRequest.md)
+ - [DeleteDocxTableRowResponse](docs/Model/DeleteDocxTableRowResponse.md)
  - [DocumentValidationError](docs/Model/DocumentValidationError.md)
  - [DocumentValidationResult](docs/Model/DocumentValidationResult.md)
  - [DocxBody](docs/Model/DocxBody.md)
@@ -240,6 +246,10 @@ Class | Method | HTTP request | Description
  - [GetDocxSectionsResponse](docs/Model/GetDocxSectionsResponse.md)
  - [GetDocxStylesRequest](docs/Model/GetDocxStylesRequest.md)
  - [GetDocxStylesResponse](docs/Model/GetDocxStylesResponse.md)
+ - [GetDocxTableByIndexRequest](docs/Model/GetDocxTableByIndexRequest.md)
+ - [GetDocxTableByIndexResponse](docs/Model/GetDocxTableByIndexResponse.md)
+ - [GetDocxTableRowRequest](docs/Model/GetDocxTableRowRequest.md)
+ - [GetDocxTableRowResponse](docs/Model/GetDocxTableRowResponse.md)
  - [GetDocxTablesRequest](docs/Model/GetDocxTablesRequest.md)
  - [GetDocxTablesResponse](docs/Model/GetDocxTablesResponse.md)
  - [GetImageInfoResult](docs/Model/GetImageInfoResult.md)
@@ -288,6 +298,8 @@ Class | Method | HTTP request | Description
  - [SplitPdfResult](docs/Model/SplitPdfResult.md)
  - [SplitXlsxWorksheetResult](docs/Model/SplitXlsxWorksheetResult.md)
  - [TextConversionResult](docs/Model/TextConversionResult.md)
+ - [UpdateDocxTableRowRequest](docs/Model/UpdateDocxTableRowRequest.md)
+ - [UpdateDocxTableRowResponse](docs/Model/UpdateDocxTableRowResponse.md)
  - [ViewerResponse](docs/Model/ViewerResponse.md)
  - [WorksheetResult](docs/Model/WorksheetResult.md)
  - [XlsxImage](docs/Model/XlsxImage.md)

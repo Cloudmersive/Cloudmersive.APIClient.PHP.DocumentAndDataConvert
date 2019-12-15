@@ -102,6 +102,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxDeleteTableRow
+     *
+     * Deletes a table row in an existing table in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxDeleteTableRow()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxGetHeadersAndFooters
      *
      * Get content of a footer from a Word DOCX document.
@@ -142,9 +152,29 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxGetTableByIndex
+     *
+     * Get a specific table by index in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxGetTableByIndex()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxGetTableRow
+     *
+     * Gets the contents of an existing table row in an existing table in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxGetTableRow()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxGetTables
      *
-     * Get tables in Word DOCX document.
+     * Get all tables in Word DOCX document.
      *
      */
     public function testEditDocumentDocxGetTables()
@@ -258,6 +288,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentDocxSetHeader()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxUpdateTableRow
+     *
+     * Update, set contents of a table row in an existing table in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxUpdateTableRow()
     {
     }
 

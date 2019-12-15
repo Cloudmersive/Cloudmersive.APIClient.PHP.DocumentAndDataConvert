@@ -1,6 +1,6 @@
 <?php
 /**
- * PdfMetadataTest
+ * GetDocxTableRowResponseTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * PdfMetadataTest Class Doc Comment
+ * GetDocxTableRowResponseTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of an autodetect/get-info operation
+// * @description Result of running an Get Table Row command
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class PdfMetadataTest extends \PHPUnit_Framework_TestCase
+class GetDocxTableRowResponseTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class PdfMetadataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "PdfMetadata"
+     * Test "GetDocxTableRowResponse"
      */
-    public function testPdfMetadata()
+    public function testGetDocxTableRowResponse()
     {
     }
 
@@ -85,58 +85,9 @@ class PdfMetadataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "title"
+     * Test attribute "row_result"
      */
-    public function testPropertyTitle()
-    {
-    }
-
-    /**
-     * Test attribute "keywords"
-     */
-    public function testPropertyKeywords()
-    {
-    }
-
-    /**
-     * Test attribute "subject"
-     */
-    public function testPropertySubject()
-    {
-    }
-
-    /**
-     * Test attribute "author"
-     */
-    public function testPropertyAuthor()
-    {
-    }
-
-    /**
-     * Test attribute "creator"
-     */
-    public function testPropertyCreator()
-    {
-    }
-
-    /**
-     * Test attribute "date_modified"
-     */
-    public function testPropertyDateModified()
-    {
-    }
-
-    /**
-     * Test attribute "date_created"
-     */
-    public function testPropertyDateCreated()
-    {
-    }
-
-    /**
-     * Test attribute "page_count"
-     */
-    public function testPropertyPageCount()
+    public function testPropertyRowResult()
     {
     }
 }

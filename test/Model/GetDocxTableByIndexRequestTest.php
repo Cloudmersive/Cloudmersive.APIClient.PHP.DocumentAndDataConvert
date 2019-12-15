@@ -1,6 +1,6 @@
 <?php
 /**
- * PdfMetadataTest
+ * GetDocxTableByIndexRequestTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * PdfMetadataTest Class Doc Comment
+ * GetDocxTableByIndexRequestTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of an autodetect/get-info operation
+// * @description Input to a Get Tables by Index request
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class PdfMetadataTest extends \PHPUnit_Framework_TestCase
+class GetDocxTableByIndexRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,72 +71,30 @@ class PdfMetadataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "PdfMetadata"
+     * Test "GetDocxTableByIndexRequest"
      */
-    public function testPdfMetadata()
+    public function testGetDocxTableByIndexRequest()
     {
     }
 
     /**
-     * Test attribute "successful"
+     * Test attribute "input_file_bytes"
      */
-    public function testPropertySuccessful()
+    public function testPropertyInputFileBytes()
     {
     }
 
     /**
-     * Test attribute "title"
+     * Test attribute "input_file_url"
      */
-    public function testPropertyTitle()
+    public function testPropertyInputFileUrl()
     {
     }
 
     /**
-     * Test attribute "keywords"
+     * Test attribute "table_index"
      */
-    public function testPropertyKeywords()
-    {
-    }
-
-    /**
-     * Test attribute "subject"
-     */
-    public function testPropertySubject()
-    {
-    }
-
-    /**
-     * Test attribute "author"
-     */
-    public function testPropertyAuthor()
-    {
-    }
-
-    /**
-     * Test attribute "creator"
-     */
-    public function testPropertyCreator()
-    {
-    }
-
-    /**
-     * Test attribute "date_modified"
-     */
-    public function testPropertyDateModified()
-    {
-    }
-
-    /**
-     * Test attribute "date_created"
-     */
-    public function testPropertyDateCreated()
-    {
-    }
-
-    /**
-     * Test attribute "page_count"
-     */
-    public function testPropertyPageCount()
+    public function testPropertyTableIndex()
     {
     }
 }

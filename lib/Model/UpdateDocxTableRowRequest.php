@@ -1,6 +1,6 @@
 <?php
 /**
- * PdfMetadata
+ * UpdateDocxTableRowRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * PdfMetadata Class Doc Comment
+ * UpdateDocxTableRowRequest Class Doc Comment
  *
  * @category Class
- * @description Result of an autodetect/get-info operation
+ * @description Input to a Update Table Row request
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PdfMetadata implements ModelInterface, ArrayAccess
+class UpdateDocxTableRowRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PdfMetadata implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'PdfMetadata';
+    protected static $swaggerModelName = 'UpdateDocxTableRowRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +58,11 @@ class PdfMetadata implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'successful' => 'bool',
-        'title' => 'string',
-        'keywords' => 'string',
-        'subject' => 'string',
-        'author' => 'string',
-        'creator' => 'string',
-        'date_modified' => '\DateTime',
-        'date_created' => '\DateTime',
-        'page_count' => 'int'
+        'input_file_bytes' => 'string',
+        'input_file_url' => 'string',
+        'row_to_update' => '\Swagger\Client\Model\DocxTableRow',
+        'table_row_row_index' => 'int',
+        'existing_table_path' => 'string'
     ];
 
     /**
@@ -75,15 +71,11 @@ class PdfMetadata implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'successful' => null,
-        'title' => null,
-        'keywords' => null,
-        'subject' => null,
-        'author' => null,
-        'creator' => null,
-        'date_modified' => 'date-time',
-        'date_created' => 'date-time',
-        'page_count' => 'int32'
+        'input_file_bytes' => 'byte',
+        'input_file_url' => null,
+        'row_to_update' => null,
+        'table_row_row_index' => 'int32',
+        'existing_table_path' => null
     ];
 
     /**
@@ -113,15 +105,11 @@ class PdfMetadata implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'successful' => 'Successful',
-        'title' => 'Title',
-        'keywords' => 'Keywords',
-        'subject' => 'Subject',
-        'author' => 'Author',
-        'creator' => 'Creator',
-        'date_modified' => 'DateModified',
-        'date_created' => 'DateCreated',
-        'page_count' => 'PageCount'
+        'input_file_bytes' => 'InputFileBytes',
+        'input_file_url' => 'InputFileUrl',
+        'row_to_update' => 'RowToUpdate',
+        'table_row_row_index' => 'TableRowRowIndex',
+        'existing_table_path' => 'ExistingTablePath'
     ];
 
     /**
@@ -130,15 +118,11 @@ class PdfMetadata implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'successful' => 'setSuccessful',
-        'title' => 'setTitle',
-        'keywords' => 'setKeywords',
-        'subject' => 'setSubject',
-        'author' => 'setAuthor',
-        'creator' => 'setCreator',
-        'date_modified' => 'setDateModified',
-        'date_created' => 'setDateCreated',
-        'page_count' => 'setPageCount'
+        'input_file_bytes' => 'setInputFileBytes',
+        'input_file_url' => 'setInputFileUrl',
+        'row_to_update' => 'setRowToUpdate',
+        'table_row_row_index' => 'setTableRowRowIndex',
+        'existing_table_path' => 'setExistingTablePath'
     ];
 
     /**
@@ -147,15 +131,11 @@ class PdfMetadata implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'successful' => 'getSuccessful',
-        'title' => 'getTitle',
-        'keywords' => 'getKeywords',
-        'subject' => 'getSubject',
-        'author' => 'getAuthor',
-        'creator' => 'getCreator',
-        'date_modified' => 'getDateModified',
-        'date_created' => 'getDateCreated',
-        'page_count' => 'getPageCount'
+        'input_file_bytes' => 'getInputFileBytes',
+        'input_file_url' => 'getInputFileUrl',
+        'row_to_update' => 'getRowToUpdate',
+        'table_row_row_index' => 'getTableRowRowIndex',
+        'existing_table_path' => 'getExistingTablePath'
     ];
 
     /**
@@ -218,15 +198,11 @@ class PdfMetadata implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['keywords'] = isset($data['keywords']) ? $data['keywords'] : null;
-        $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
-        $this->container['author'] = isset($data['author']) ? $data['author'] : null;
-        $this->container['creator'] = isset($data['creator']) ? $data['creator'] : null;
-        $this->container['date_modified'] = isset($data['date_modified']) ? $data['date_modified'] : null;
-        $this->container['date_created'] = isset($data['date_created']) ? $data['date_created'] : null;
-        $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
+        $this->container['input_file_bytes'] = isset($data['input_file_bytes']) ? $data['input_file_bytes'] : null;
+        $this->container['input_file_url'] = isset($data['input_file_url']) ? $data['input_file_url'] : null;
+        $this->container['row_to_update'] = isset($data['row_to_update']) ? $data['row_to_update'] : null;
+        $this->container['table_row_row_index'] = isset($data['table_row_row_index']) ? $data['table_row_row_index'] : null;
+        $this->container['existing_table_path'] = isset($data['existing_table_path']) ? $data['existing_table_path'] : null;
     }
 
     /**
@@ -237,6 +213,10 @@ class PdfMetadata implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['input_file_bytes']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
+            $invalidProperties[] = "invalid value for 'input_file_bytes', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
+        }
 
         return $invalidProperties;
     }
@@ -250,222 +230,134 @@ class PdfMetadata implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets successful
-     *
-     * @return bool
-     */
-    public function getSuccessful()
-    {
-        return $this->container['successful'];
-    }
-
-    /**
-     * Sets successful
-     *
-     * @param bool $successful True if the operation was successful, false otherwise
-     *
-     * @return $this
-     */
-    public function setSuccessful($successful)
-    {
-        $this->container['successful'] = $successful;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
+     * Gets input_file_bytes
      *
      * @return string
      */
-    public function getTitle()
+    public function getInputFileBytes()
     {
-        return $this->container['title'];
+        return $this->container['input_file_bytes'];
     }
 
     /**
-     * Sets title
+     * Sets input_file_bytes
      *
-     * @param string $title Title of the document
+     * @param string $input_file_bytes Optional: Bytes of the input file to operate on
      *
      * @return $this
      */
-    public function setTitle($title)
+    public function setInputFileBytes($input_file_bytes)
     {
-        $this->container['title'] = $title;
+
+        if (!is_null($input_file_bytes) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $input_file_bytes))) {
+            throw new \InvalidArgumentException("invalid value for $input_file_bytes when calling UpdateDocxTableRowRequest., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
+        }
+
+        $this->container['input_file_bytes'] = $input_file_bytes;
 
         return $this;
     }
 
     /**
-     * Gets keywords
+     * Gets input_file_url
      *
      * @return string
      */
-    public function getKeywords()
+    public function getInputFileUrl()
     {
-        return $this->container['keywords'];
+        return $this->container['input_file_url'];
     }
 
     /**
-     * Sets keywords
+     * Sets input_file_url
      *
-     * @param string $keywords Keywords of the document
+     * @param string $input_file_url Optional: URL of a file to operate on as input.  This can be a public URL, or you can also use the begin-editing API to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public).
      *
      * @return $this
      */
-    public function setKeywords($keywords)
+    public function setInputFileUrl($input_file_url)
     {
-        $this->container['keywords'] = $keywords;
+        $this->container['input_file_url'] = $input_file_url;
 
         return $this;
     }
 
     /**
-     * Gets subject
+     * Gets row_to_update
      *
-     * @return string
+     * @return \Swagger\Client\Model\DocxTableRow
      */
-    public function getSubject()
+    public function getRowToUpdate()
     {
-        return $this->container['subject'];
+        return $this->container['row_to_update'];
     }
 
     /**
-     * Sets subject
+     * Sets row_to_update
      *
-     * @param string $subject Subject of the document
+     * @param \Swagger\Client\Model\DocxTableRow $row_to_update Table row contents you would like to update the row with
      *
      * @return $this
      */
-    public function setSubject($subject)
+    public function setRowToUpdate($row_to_update)
     {
-        $this->container['subject'] = $subject;
+        $this->container['row_to_update'] = $row_to_update;
 
         return $this;
     }
 
     /**
-     * Gets author
-     *
-     * @return string
-     */
-    public function getAuthor()
-    {
-        return $this->container['author'];
-    }
-
-    /**
-     * Sets author
-     *
-     * @param string $author User name of the creator/author of the document, if available, null if not available
-     *
-     * @return $this
-     */
-    public function setAuthor($author)
-    {
-        $this->container['author'] = $author;
-
-        return $this;
-    }
-
-    /**
-     * Gets creator
-     *
-     * @return string
-     */
-    public function getCreator()
-    {
-        return $this->container['creator'];
-    }
-
-    /**
-     * Sets creator
-     *
-     * @param string $creator Creator of the document
-     *
-     * @return $this
-     */
-    public function setCreator($creator)
-    {
-        $this->container['creator'] = $creator;
-
-        return $this;
-    }
-
-    /**
-     * Gets date_modified
-     *
-     * @return \DateTime
-     */
-    public function getDateModified()
-    {
-        return $this->container['date_modified'];
-    }
-
-    /**
-     * Sets date_modified
-     *
-     * @param \DateTime $date_modified The timestamp that the document was last modified, if available, null if not available
-     *
-     * @return $this
-     */
-    public function setDateModified($date_modified)
-    {
-        $this->container['date_modified'] = $date_modified;
-
-        return $this;
-    }
-
-    /**
-     * Gets date_created
-     *
-     * @return \DateTime
-     */
-    public function getDateCreated()
-    {
-        return $this->container['date_created'];
-    }
-
-    /**
-     * Sets date_created
-     *
-     * @param \DateTime $date_created The timestamp that the document was created, if available, null if not available
-     *
-     * @return $this
-     */
-    public function setDateCreated($date_created)
-    {
-        $this->container['date_created'] = $date_created;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_count
+     * Gets table_row_row_index
      *
      * @return int
      */
-    public function getPageCount()
+    public function getTableRowRowIndex()
     {
-        return $this->container['page_count'];
+        return $this->container['table_row_row_index'];
     }
 
     /**
-     * Sets page_count
+     * Sets table_row_row_index
      *
-     * @param int $page_count The number of pages in the document
+     * @param int $table_row_row_index 0-based index of the Table Row to update
      *
      * @return $this
      */
-    public function setPageCount($page_count)
+    public function setTableRowRowIndex($table_row_row_index)
     {
-        $this->container['page_count'] = $page_count;
+        $this->container['table_row_row_index'] = $table_row_row_index;
+
+        return $this;
+    }
+
+    /**
+     * Gets existing_table_path
+     *
+     * @return string
+     */
+    public function getExistingTablePath()
+    {
+        return $this->container['existing_table_path'];
+    }
+
+    /**
+     * Sets existing_table_path
+     *
+     * @param string $existing_table_path Required; the path to the existing table to modify
+     *
+     * @return $this
+     */
+    public function setExistingTablePath($existing_table_path)
+    {
+        $this->container['existing_table_path'] = $existing_table_path;
 
         return $this;
     }

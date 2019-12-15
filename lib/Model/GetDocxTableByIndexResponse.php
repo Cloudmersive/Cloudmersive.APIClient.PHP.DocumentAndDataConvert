@@ -1,6 +1,6 @@
 <?php
 /**
- * PdfMetadata
+ * GetDocxTableByIndexResponse
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * PdfMetadata Class Doc Comment
+ * GetDocxTableByIndexResponse Class Doc Comment
  *
  * @category Class
- * @description Result of an autodetect/get-info operation
+ * @description Result of running a Get-Tables by Index command
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PdfMetadata implements ModelInterface, ArrayAccess
+class GetDocxTableByIndexResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PdfMetadata implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'PdfMetadata';
+    protected static $swaggerModelName = 'GetDocxTableByIndexResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +59,7 @@ class PdfMetadata implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'successful' => 'bool',
-        'title' => 'string',
-        'keywords' => 'string',
-        'subject' => 'string',
-        'author' => 'string',
-        'creator' => 'string',
-        'date_modified' => '\DateTime',
-        'date_created' => '\DateTime',
-        'page_count' => 'int'
+        'table' => '\Swagger\Client\Model\DocxTable'
     ];
 
     /**
@@ -76,14 +69,7 @@ class PdfMetadata implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'successful' => null,
-        'title' => null,
-        'keywords' => null,
-        'subject' => null,
-        'author' => null,
-        'creator' => null,
-        'date_modified' => 'date-time',
-        'date_created' => 'date-time',
-        'page_count' => 'int32'
+        'table' => null
     ];
 
     /**
@@ -114,14 +100,7 @@ class PdfMetadata implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'successful' => 'Successful',
-        'title' => 'Title',
-        'keywords' => 'Keywords',
-        'subject' => 'Subject',
-        'author' => 'Author',
-        'creator' => 'Creator',
-        'date_modified' => 'DateModified',
-        'date_created' => 'DateCreated',
-        'page_count' => 'PageCount'
+        'table' => 'Table'
     ];
 
     /**
@@ -131,14 +110,7 @@ class PdfMetadata implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'successful' => 'setSuccessful',
-        'title' => 'setTitle',
-        'keywords' => 'setKeywords',
-        'subject' => 'setSubject',
-        'author' => 'setAuthor',
-        'creator' => 'setCreator',
-        'date_modified' => 'setDateModified',
-        'date_created' => 'setDateCreated',
-        'page_count' => 'setPageCount'
+        'table' => 'setTable'
     ];
 
     /**
@@ -148,14 +120,7 @@ class PdfMetadata implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'successful' => 'getSuccessful',
-        'title' => 'getTitle',
-        'keywords' => 'getKeywords',
-        'subject' => 'getSubject',
-        'author' => 'getAuthor',
-        'creator' => 'getCreator',
-        'date_modified' => 'getDateModified',
-        'date_created' => 'getDateCreated',
-        'page_count' => 'getPageCount'
+        'table' => 'getTable'
     ];
 
     /**
@@ -219,14 +184,7 @@ class PdfMetadata implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['keywords'] = isset($data['keywords']) ? $data['keywords'] : null;
-        $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
-        $this->container['author'] = isset($data['author']) ? $data['author'] : null;
-        $this->container['creator'] = isset($data['creator']) ? $data['creator'] : null;
-        $this->container['date_modified'] = isset($data['date_modified']) ? $data['date_modified'] : null;
-        $this->container['date_created'] = isset($data['date_created']) ? $data['date_created'] : null;
-        $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
+        $this->container['table'] = isset($data['table']) ? $data['table'] : null;
     }
 
     /**
@@ -267,7 +225,7 @@ class PdfMetadata implements ModelInterface, ArrayAccess
     /**
      * Sets successful
      *
-     * @param bool $successful True if the operation was successful, false otherwise
+     * @param bool $successful True if successful, false otherwise
      *
      * @return $this
      */
@@ -279,193 +237,25 @@ class PdfMetadata implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets title
+     * Gets table
      *
-     * @return string
+     * @return \Swagger\Client\Model\DocxTable
      */
-    public function getTitle()
+    public function getTable()
     {
-        return $this->container['title'];
+        return $this->container['table'];
     }
 
     /**
-     * Sets title
+     * Sets table
      *
-     * @param string $title Title of the document
+     * @param \Swagger\Client\Model\DocxTable $table Requested Table in the DOCX file
      *
      * @return $this
      */
-    public function setTitle($title)
+    public function setTable($table)
     {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets keywords
-     *
-     * @return string
-     */
-    public function getKeywords()
-    {
-        return $this->container['keywords'];
-    }
-
-    /**
-     * Sets keywords
-     *
-     * @param string $keywords Keywords of the document
-     *
-     * @return $this
-     */
-    public function setKeywords($keywords)
-    {
-        $this->container['keywords'] = $keywords;
-
-        return $this;
-    }
-
-    /**
-     * Gets subject
-     *
-     * @return string
-     */
-    public function getSubject()
-    {
-        return $this->container['subject'];
-    }
-
-    /**
-     * Sets subject
-     *
-     * @param string $subject Subject of the document
-     *
-     * @return $this
-     */
-    public function setSubject($subject)
-    {
-        $this->container['subject'] = $subject;
-
-        return $this;
-    }
-
-    /**
-     * Gets author
-     *
-     * @return string
-     */
-    public function getAuthor()
-    {
-        return $this->container['author'];
-    }
-
-    /**
-     * Sets author
-     *
-     * @param string $author User name of the creator/author of the document, if available, null if not available
-     *
-     * @return $this
-     */
-    public function setAuthor($author)
-    {
-        $this->container['author'] = $author;
-
-        return $this;
-    }
-
-    /**
-     * Gets creator
-     *
-     * @return string
-     */
-    public function getCreator()
-    {
-        return $this->container['creator'];
-    }
-
-    /**
-     * Sets creator
-     *
-     * @param string $creator Creator of the document
-     *
-     * @return $this
-     */
-    public function setCreator($creator)
-    {
-        $this->container['creator'] = $creator;
-
-        return $this;
-    }
-
-    /**
-     * Gets date_modified
-     *
-     * @return \DateTime
-     */
-    public function getDateModified()
-    {
-        return $this->container['date_modified'];
-    }
-
-    /**
-     * Sets date_modified
-     *
-     * @param \DateTime $date_modified The timestamp that the document was last modified, if available, null if not available
-     *
-     * @return $this
-     */
-    public function setDateModified($date_modified)
-    {
-        $this->container['date_modified'] = $date_modified;
-
-        return $this;
-    }
-
-    /**
-     * Gets date_created
-     *
-     * @return \DateTime
-     */
-    public function getDateCreated()
-    {
-        return $this->container['date_created'];
-    }
-
-    /**
-     * Sets date_created
-     *
-     * @param \DateTime $date_created The timestamp that the document was created, if available, null if not available
-     *
-     * @return $this
-     */
-    public function setDateCreated($date_created)
-    {
-        $this->container['date_created'] = $date_created;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_count
-     *
-     * @return int
-     */
-    public function getPageCount()
-    {
-        return $this->container['page_count'];
-    }
-
-    /**
-     * Sets page_count
-     *
-     * @param int $page_count The number of pages in the document
-     *
-     * @return $this
-     */
-    public function setPageCount($page_count)
-    {
-        $this->container['page_count'] = $page_count;
+        $this->container['table'] = $table;
 
         return $this;
     }

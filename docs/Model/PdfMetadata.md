@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **creator** | **string** | Creator of the document | [optional] 
 **date_modified** | [**\DateTime**](\DateTime.md) | The timestamp that the document was last modified, if available, null if not available | [optional] 
 **date_created** | [**\DateTime**](\DateTime.md) | The timestamp that the document was created, if available, null if not available | [optional] 
+**page_count** | **int** | The number of pages in the document | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

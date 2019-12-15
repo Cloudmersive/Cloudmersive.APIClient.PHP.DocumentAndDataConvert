@@ -871,6 +871,268 @@ class EditDocumentApi
     }
 
     /**
+     * Operation editDocumentDocxDeleteTableRow
+     *
+     * Deletes a table row in an existing table in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\DeleteDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\DeleteDocxTableRowResponse
+     */
+    public function editDocumentDocxDeleteTableRow($req_config)
+    {
+        list($response) = $this->editDocumentDocxDeleteTableRowWithHttpInfo($req_config);
+        return $response;
+    }
+
+    /**
+     * Operation editDocumentDocxDeleteTableRowWithHttpInfo
+     *
+     * Deletes a table row in an existing table in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\DeleteDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\DeleteDocxTableRowResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editDocumentDocxDeleteTableRowWithHttpInfo($req_config)
+    {
+        $returnType = '\Swagger\Client\Model\DeleteDocxTableRowResponse';
+        $request = $this->editDocumentDocxDeleteTableRowRequest($req_config);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\DeleteDocxTableRowResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editDocumentDocxDeleteTableRowAsync
+     *
+     * Deletes a table row in an existing table in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\DeleteDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentDocxDeleteTableRowAsync($req_config)
+    {
+        return $this->editDocumentDocxDeleteTableRowAsyncWithHttpInfo($req_config)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editDocumentDocxDeleteTableRowAsyncWithHttpInfo
+     *
+     * Deletes a table row in an existing table in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\DeleteDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentDocxDeleteTableRowAsyncWithHttpInfo($req_config)
+    {
+        $returnType = '\Swagger\Client\Model\DeleteDocxTableRowResponse';
+        $request = $this->editDocumentDocxDeleteTableRowRequest($req_config);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editDocumentDocxDeleteTableRow'
+     *
+     * @param  \Swagger\Client\Model\DeleteDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editDocumentDocxDeleteTableRowRequest($req_config)
+    {
+        // verify the required parameter 'req_config' is set
+        if ($req_config === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $req_config when calling editDocumentDocxDeleteTableRow'
+            );
+        }
+
+        $resourcePath = '/convert/edit/docx/delete-table-row';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($req_config)) {
+            $_tempBody = $req_config;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation editDocumentDocxGetHeadersAndFooters
      *
      * Get content of a footer from a Word DOCX document
@@ -1919,9 +2181,533 @@ class EditDocumentApi
     }
 
     /**
+     * Operation editDocumentDocxGetTableByIndex
+     *
+     * Get a specific table by index in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\GetDocxTableByIndexRequest $req_config Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\GetDocxTableByIndexResponse
+     */
+    public function editDocumentDocxGetTableByIndex($req_config)
+    {
+        list($response) = $this->editDocumentDocxGetTableByIndexWithHttpInfo($req_config);
+        return $response;
+    }
+
+    /**
+     * Operation editDocumentDocxGetTableByIndexWithHttpInfo
+     *
+     * Get a specific table by index in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\GetDocxTableByIndexRequest $req_config Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\GetDocxTableByIndexResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editDocumentDocxGetTableByIndexWithHttpInfo($req_config)
+    {
+        $returnType = '\Swagger\Client\Model\GetDocxTableByIndexResponse';
+        $request = $this->editDocumentDocxGetTableByIndexRequest($req_config);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\GetDocxTableByIndexResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editDocumentDocxGetTableByIndexAsync
+     *
+     * Get a specific table by index in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\GetDocxTableByIndexRequest $req_config Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentDocxGetTableByIndexAsync($req_config)
+    {
+        return $this->editDocumentDocxGetTableByIndexAsyncWithHttpInfo($req_config)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editDocumentDocxGetTableByIndexAsyncWithHttpInfo
+     *
+     * Get a specific table by index in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\GetDocxTableByIndexRequest $req_config Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentDocxGetTableByIndexAsyncWithHttpInfo($req_config)
+    {
+        $returnType = '\Swagger\Client\Model\GetDocxTableByIndexResponse';
+        $request = $this->editDocumentDocxGetTableByIndexRequest($req_config);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editDocumentDocxGetTableByIndex'
+     *
+     * @param  \Swagger\Client\Model\GetDocxTableByIndexRequest $req_config Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editDocumentDocxGetTableByIndexRequest($req_config)
+    {
+        // verify the required parameter 'req_config' is set
+        if ($req_config === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $req_config when calling editDocumentDocxGetTableByIndex'
+            );
+        }
+
+        $resourcePath = '/convert/edit/docx/get-table/by-index';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($req_config)) {
+            $_tempBody = $req_config;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editDocumentDocxGetTableRow
+     *
+     * Gets the contents of an existing table row in an existing table in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\GetDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\GetDocxTableRowResponse
+     */
+    public function editDocumentDocxGetTableRow($req_config)
+    {
+        list($response) = $this->editDocumentDocxGetTableRowWithHttpInfo($req_config);
+        return $response;
+    }
+
+    /**
+     * Operation editDocumentDocxGetTableRowWithHttpInfo
+     *
+     * Gets the contents of an existing table row in an existing table in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\GetDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\GetDocxTableRowResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editDocumentDocxGetTableRowWithHttpInfo($req_config)
+    {
+        $returnType = '\Swagger\Client\Model\GetDocxTableRowResponse';
+        $request = $this->editDocumentDocxGetTableRowRequest($req_config);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\GetDocxTableRowResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editDocumentDocxGetTableRowAsync
+     *
+     * Gets the contents of an existing table row in an existing table in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\GetDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentDocxGetTableRowAsync($req_config)
+    {
+        return $this->editDocumentDocxGetTableRowAsyncWithHttpInfo($req_config)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editDocumentDocxGetTableRowAsyncWithHttpInfo
+     *
+     * Gets the contents of an existing table row in an existing table in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\GetDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentDocxGetTableRowAsyncWithHttpInfo($req_config)
+    {
+        $returnType = '\Swagger\Client\Model\GetDocxTableRowResponse';
+        $request = $this->editDocumentDocxGetTableRowRequest($req_config);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editDocumentDocxGetTableRow'
+     *
+     * @param  \Swagger\Client\Model\GetDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editDocumentDocxGetTableRowRequest($req_config)
+    {
+        // verify the required parameter 'req_config' is set
+        if ($req_config === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $req_config when calling editDocumentDocxGetTableRow'
+            );
+        }
+
+        $resourcePath = '/convert/edit/docx/get-table-row';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($req_config)) {
+            $_tempBody = $req_config;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation editDocumentDocxGetTables
      *
-     * Get tables in Word DOCX document
+     * Get all tables in Word DOCX document
      *
      * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config Document input request (required)
      *
@@ -1938,7 +2724,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetTablesWithHttpInfo
      *
-     * Get tables in Word DOCX document
+     * Get all tables in Word DOCX document
      *
      * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config Document input request (required)
      *
@@ -2013,7 +2799,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetTablesAsync
      *
-     * Get tables in Word DOCX document
+     * Get all tables in Word DOCX document
      *
      * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config Document input request (required)
      *
@@ -2033,7 +2819,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentDocxGetTablesAsyncWithHttpInfo
      *
-     * Get tables in Word DOCX document
+     * Get all tables in Word DOCX document
      *
      * @param  \Swagger\Client\Model\GetDocxTablesRequest $req_config Document input request (required)
      *
@@ -4982,6 +5768,268 @@ class EditDocumentApi
         }
 
         $resourcePath = '/convert/edit/docx/set-header';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($req_config)) {
+            $_tempBody = $req_config;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editDocumentDocxUpdateTableRow
+     *
+     * Update, set contents of a table row in an existing table in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\UpdateDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\UpdateDocxTableRowResponse
+     */
+    public function editDocumentDocxUpdateTableRow($req_config)
+    {
+        list($response) = $this->editDocumentDocxUpdateTableRowWithHttpInfo($req_config);
+        return $response;
+    }
+
+    /**
+     * Operation editDocumentDocxUpdateTableRowWithHttpInfo
+     *
+     * Update, set contents of a table row in an existing table in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\UpdateDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\UpdateDocxTableRowResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editDocumentDocxUpdateTableRowWithHttpInfo($req_config)
+    {
+        $returnType = '\Swagger\Client\Model\UpdateDocxTableRowResponse';
+        $request = $this->editDocumentDocxUpdateTableRowRequest($req_config);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UpdateDocxTableRowResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editDocumentDocxUpdateTableRowAsync
+     *
+     * Update, set contents of a table row in an existing table in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\UpdateDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentDocxUpdateTableRowAsync($req_config)
+    {
+        return $this->editDocumentDocxUpdateTableRowAsyncWithHttpInfo($req_config)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editDocumentDocxUpdateTableRowAsyncWithHttpInfo
+     *
+     * Update, set contents of a table row in an existing table in a Word DOCX document
+     *
+     * @param  \Swagger\Client\Model\UpdateDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentDocxUpdateTableRowAsyncWithHttpInfo($req_config)
+    {
+        $returnType = '\Swagger\Client\Model\UpdateDocxTableRowResponse';
+        $request = $this->editDocumentDocxUpdateTableRowRequest($req_config);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editDocumentDocxUpdateTableRow'
+     *
+     * @param  \Swagger\Client\Model\UpdateDocxTableRowRequest $req_config Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editDocumentDocxUpdateTableRowRequest($req_config)
+    {
+        // verify the required parameter 'req_config' is set
+        if ($req_config === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $req_config when calling editDocumentDocxUpdateTableRow'
+            );
+        }
+
+        $resourcePath = '/convert/edit/docx/update-table-row';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
