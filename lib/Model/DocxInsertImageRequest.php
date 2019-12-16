@@ -64,7 +64,9 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
         'input_image_file_url' => 'string',
         'image_to_add' => '\Swagger\Client\Model\DocxImage',
         'insert_placement' => 'string',
-        'insert_path' => 'string'
+        'insert_path' => 'string',
+        'width_in_em_us' => 'int',
+        'height_in_em_us' => 'int'
     ];
 
     /**
@@ -79,7 +81,9 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
         'input_image_file_url' => null,
         'image_to_add' => null,
         'insert_placement' => null,
-        'insert_path' => null
+        'insert_path' => null,
+        'width_in_em_us' => 'int64',
+        'height_in_em_us' => 'int64'
     ];
 
     /**
@@ -115,7 +119,9 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
         'input_image_file_url' => 'InputImageFileUrl',
         'image_to_add' => 'ImageToAdd',
         'insert_placement' => 'InsertPlacement',
-        'insert_path' => 'InsertPath'
+        'insert_path' => 'InsertPath',
+        'width_in_em_us' => 'WidthInEMUs',
+        'height_in_em_us' => 'HeightInEMUs'
     ];
 
     /**
@@ -130,7 +136,9 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
         'input_image_file_url' => 'setInputImageFileUrl',
         'image_to_add' => 'setImageToAdd',
         'insert_placement' => 'setInsertPlacement',
-        'insert_path' => 'setInsertPath'
+        'insert_path' => 'setInsertPath',
+        'width_in_em_us' => 'setWidthInEmUs',
+        'height_in_em_us' => 'setHeightInEmUs'
     ];
 
     /**
@@ -145,7 +153,9 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
         'input_image_file_url' => 'getInputImageFileUrl',
         'image_to_add' => 'getImageToAdd',
         'insert_placement' => 'getInsertPlacement',
-        'insert_path' => 'getInsertPath'
+        'insert_path' => 'getInsertPath',
+        'width_in_em_us' => 'getWidthInEmUs',
+        'height_in_em_us' => 'getHeightInEmUs'
     ];
 
     /**
@@ -215,6 +225,8 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
         $this->container['image_to_add'] = isset($data['image_to_add']) ? $data['image_to_add'] : null;
         $this->container['insert_placement'] = isset($data['insert_placement']) ? $data['insert_placement'] : null;
         $this->container['insert_path'] = isset($data['insert_path']) ? $data['insert_path'] : null;
+        $this->container['width_in_em_us'] = isset($data['width_in_em_us']) ? $data['width_in_em_us'] : null;
+        $this->container['height_in_em_us'] = isset($data['height_in_em_us']) ? $data['height_in_em_us'] : null;
     }
 
     /**
@@ -430,6 +442,54 @@ class DocxInsertImageRequest implements ModelInterface, ArrayAccess
     public function setInsertPath($insert_path)
     {
         $this->container['insert_path'] = $insert_path;
+
+        return $this;
+    }
+
+    /**
+     * Gets width_in_em_us
+     *
+     * @return int
+     */
+    public function getWidthInEmUs()
+    {
+        return $this->container['width_in_em_us'];
+    }
+
+    /**
+     * Sets width_in_em_us
+     *
+     * @param int $width_in_em_us Optional: The width of the image in EMUs
+     *
+     * @return $this
+     */
+    public function setWidthInEmUs($width_in_em_us)
+    {
+        $this->container['width_in_em_us'] = $width_in_em_us;
+
+        return $this;
+    }
+
+    /**
+     * Gets height_in_em_us
+     *
+     * @return int
+     */
+    public function getHeightInEmUs()
+    {
+        return $this->container['height_in_em_us'];
+    }
+
+    /**
+     * Sets height_in_em_us
+     *
+     * @param int $height_in_em_us Optional: The height of the image in EMUs
+     *
+     * @return $this
+     */
+    public function setHeightInEmUs($height_in_em_us)
+    {
+        $this->container['height_in_em_us'] = $height_in_em_us;
 
         return $this;
     }

@@ -192,6 +192,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentPdfToDocxRasterize
+     *
+     * Convert PDF to Word DOCX Document based on rasterized version of the PDF.
+     *
+     */
+    public function testConvertDocumentPdfToDocxRasterize()
+    {
+    }
+
+    /**
      * Test case for convertDocumentPdfToPngArray
      *
      * Convert PDF to PNG Image Array.

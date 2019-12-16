@@ -1,6 +1,6 @@
 <?php
 /**
- * GetXlsxRowsAndCellsResponse
+ * GetXlsxCellResponse
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * GetXlsxRowsAndCellsResponse Class Doc Comment
+ * GetXlsxCellResponse Class Doc Comment
  *
  * @category Class
- * @description Result of running a Get-Worksheets command
+ * @description Result of running a Get-Cell command
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
+class GetXlsxCellResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'GetXlsxRowsAndCellsResponse';
+    protected static $swaggerModelName = 'GetXlsxCellResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'successful' => 'bool',
-        'rows' => '\Swagger\Client\Model\XlsxSpreadsheetRow[]'
+        'cell' => '\Swagger\Client\Model\XlsxSpreadsheetCell'
     ];
 
     /**
@@ -69,7 +69,7 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'successful' => null,
-        'rows' => null
+        'cell' => null
     ];
 
     /**
@@ -100,7 +100,7 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'successful' => 'Successful',
-        'rows' => 'Rows'
+        'cell' => 'Cell'
     ];
 
     /**
@@ -110,7 +110,7 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'successful' => 'setSuccessful',
-        'rows' => 'setRows'
+        'cell' => 'setCell'
     ];
 
     /**
@@ -120,7 +120,7 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'successful' => 'getSuccessful',
-        'rows' => 'getRows'
+        'cell' => 'getCell'
     ];
 
     /**
@@ -184,7 +184,7 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
-        $this->container['rows'] = isset($data['rows']) ? $data['rows'] : null;
+        $this->container['cell'] = isset($data['cell']) ? $data['cell'] : null;
     }
 
     /**
@@ -237,25 +237,25 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets rows
+     * Gets cell
      *
-     * @return \Swagger\Client\Model\XlsxSpreadsheetRow[]
+     * @return \Swagger\Client\Model\XlsxSpreadsheetCell
      */
-    public function getRows()
+    public function getCell()
     {
-        return $this->container['rows'];
+        return $this->container['cell'];
     }
 
     /**
-     * Sets rows
+     * Sets cell
      *
-     * @param \Swagger\Client\Model\XlsxSpreadsheetRow[] $rows Spreadsheet Rows in the Excel XLSX document
+     * @param \Swagger\Client\Model\XlsxSpreadsheetCell $cell Requested Cell in the Excel XLSX document
      *
      * @return $this
      */
-    public function setRows($rows)
+    public function setCell($cell)
     {
-        $this->container['rows'] = $rows;
+        $this->container['cell'] = $cell;
 
         return $this;
     }

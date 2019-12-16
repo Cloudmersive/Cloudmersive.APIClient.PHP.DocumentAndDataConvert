@@ -352,6 +352,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentXlsxGetCellByIndex
+     *
+     * Get cell from an Excel XLSX spreadsheet, worksheet by index.
+     *
+     */
+    public function testEditDocumentXlsxGetCellByIndex()
+    {
+    }
+
+    /**
      * Test case for editDocumentXlsxGetColumns
      *
      * Get rows and cells from a Excel XLSX spreadsheet, worksheet.
@@ -374,7 +384,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentXlsxGetRowsAndCells
      *
-     * Get rows and cells from a Word XLSX spreadsheet, worksheet.
+     * Get rows and cells from a Excel XLSX spreadsheet, worksheet.
      *
      */
     public function testEditDocumentXlsxGetRowsAndCells()

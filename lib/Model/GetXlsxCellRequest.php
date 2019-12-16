@@ -1,6 +1,6 @@
 <?php
 /**
- * GetXlsxRowsAndCellsResponse
+ * GetXlsxCellRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * GetXlsxRowsAndCellsResponse Class Doc Comment
+ * GetXlsxCellRequest Class Doc Comment
  *
  * @category Class
- * @description Result of running a Get-Worksheets command
+ * @description Input to a Get Cell request
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
+class GetXlsxCellRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'GetXlsxRowsAndCellsResponse';
+    protected static $swaggerModelName = 'GetXlsxCellRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'successful' => 'bool',
-        'rows' => '\Swagger\Client\Model\XlsxSpreadsheetRow[]'
+        'input_file_bytes' => 'string',
+        'input_file_url' => 'string',
+        'worksheet_to_query' => '\Swagger\Client\Model\XlsxWorksheet',
+        'row_index' => 'int',
+        'cell_index' => 'int'
     ];
 
     /**
@@ -68,8 +71,11 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'successful' => null,
-        'rows' => null
+        'input_file_bytes' => 'byte',
+        'input_file_url' => null,
+        'worksheet_to_query' => null,
+        'row_index' => 'int32',
+        'cell_index' => 'int32'
     ];
 
     /**
@@ -99,8 +105,11 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'successful' => 'Successful',
-        'rows' => 'Rows'
+        'input_file_bytes' => 'InputFileBytes',
+        'input_file_url' => 'InputFileUrl',
+        'worksheet_to_query' => 'WorksheetToQuery',
+        'row_index' => 'RowIndex',
+        'cell_index' => 'CellIndex'
     ];
 
     /**
@@ -109,8 +118,11 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'successful' => 'setSuccessful',
-        'rows' => 'setRows'
+        'input_file_bytes' => 'setInputFileBytes',
+        'input_file_url' => 'setInputFileUrl',
+        'worksheet_to_query' => 'setWorksheetToQuery',
+        'row_index' => 'setRowIndex',
+        'cell_index' => 'setCellIndex'
     ];
 
     /**
@@ -119,8 +131,11 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'successful' => 'getSuccessful',
-        'rows' => 'getRows'
+        'input_file_bytes' => 'getInputFileBytes',
+        'input_file_url' => 'getInputFileUrl',
+        'worksheet_to_query' => 'getWorksheetToQuery',
+        'row_index' => 'getRowIndex',
+        'cell_index' => 'getCellIndex'
     ];
 
     /**
@@ -183,8 +198,11 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
-        $this->container['rows'] = isset($data['rows']) ? $data['rows'] : null;
+        $this->container['input_file_bytes'] = isset($data['input_file_bytes']) ? $data['input_file_bytes'] : null;
+        $this->container['input_file_url'] = isset($data['input_file_url']) ? $data['input_file_url'] : null;
+        $this->container['worksheet_to_query'] = isset($data['worksheet_to_query']) ? $data['worksheet_to_query'] : null;
+        $this->container['row_index'] = isset($data['row_index']) ? $data['row_index'] : null;
+        $this->container['cell_index'] = isset($data['cell_index']) ? $data['cell_index'] : null;
     }
 
     /**
@@ -195,6 +213,10 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['input_file_bytes']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
+            $invalidProperties[] = "invalid value for 'input_file_bytes', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
+        }
 
         return $invalidProperties;
     }
@@ -208,54 +230,134 @@ class GetXlsxRowsAndCellsResponse implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets successful
+     * Gets input_file_bytes
      *
-     * @return bool
+     * @return string
      */
-    public function getSuccessful()
+    public function getInputFileBytes()
     {
-        return $this->container['successful'];
+        return $this->container['input_file_bytes'];
     }
 
     /**
-     * Sets successful
+     * Sets input_file_bytes
      *
-     * @param bool $successful True if successful, false otherwise
+     * @param string $input_file_bytes Optional: Bytes of the input file to operate on
      *
      * @return $this
      */
-    public function setSuccessful($successful)
+    public function setInputFileBytes($input_file_bytes)
     {
-        $this->container['successful'] = $successful;
+
+        if (!is_null($input_file_bytes) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $input_file_bytes))) {
+            throw new \InvalidArgumentException("invalid value for $input_file_bytes when calling GetXlsxCellRequest., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
+        }
+
+        $this->container['input_file_bytes'] = $input_file_bytes;
 
         return $this;
     }
 
     /**
-     * Gets rows
+     * Gets input_file_url
      *
-     * @return \Swagger\Client\Model\XlsxSpreadsheetRow[]
+     * @return string
      */
-    public function getRows()
+    public function getInputFileUrl()
     {
-        return $this->container['rows'];
+        return $this->container['input_file_url'];
     }
 
     /**
-     * Sets rows
+     * Sets input_file_url
      *
-     * @param \Swagger\Client\Model\XlsxSpreadsheetRow[] $rows Spreadsheet Rows in the Excel XLSX document
+     * @param string $input_file_url Optional: URL of a file to operate on as input.  This can be a public URL, or you can also use the begin-editing API to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public).
      *
      * @return $this
      */
-    public function setRows($rows)
+    public function setInputFileUrl($input_file_url)
     {
-        $this->container['rows'] = $rows;
+        $this->container['input_file_url'] = $input_file_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets worksheet_to_query
+     *
+     * @return \Swagger\Client\Model\XlsxWorksheet
+     */
+    public function getWorksheetToQuery()
+    {
+        return $this->container['worksheet_to_query'];
+    }
+
+    /**
+     * Sets worksheet_to_query
+     *
+     * @param \Swagger\Client\Model\XlsxWorksheet $worksheet_to_query Optional; Worksheet (tab) within the spreadsheet to get the rows and cells of; leave blank to default to the first worksheet
+     *
+     * @return $this
+     */
+    public function setWorksheetToQuery($worksheet_to_query)
+    {
+        $this->container['worksheet_to_query'] = $worksheet_to_query;
+
+        return $this;
+    }
+
+    /**
+     * Gets row_index
+     *
+     * @return int
+     */
+    public function getRowIndex()
+    {
+        return $this->container['row_index'];
+    }
+
+    /**
+     * Sets row_index
+     *
+     * @param int $row_index 0-based index of the row, 0, 1, 2, ... to retrieve
+     *
+     * @return $this
+     */
+    public function setRowIndex($row_index)
+    {
+        $this->container['row_index'] = $row_index;
+
+        return $this;
+    }
+
+    /**
+     * Gets cell_index
+     *
+     * @return int
+     */
+    public function getCellIndex()
+    {
+        return $this->container['cell_index'];
+    }
+
+    /**
+     * Sets cell_index
+     *
+     * @param int $cell_index 0-based index of the cell, 0, 1, 2, ... in the row to retrieve
+     *
+     * @return $this
+     */
+    public function setCellIndex($cell_index)
+    {
+        $this->container['cell_index'] = $cell_index;
 
         return $this;
     }

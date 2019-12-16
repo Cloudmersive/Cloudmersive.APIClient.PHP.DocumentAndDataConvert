@@ -1,6 +1,6 @@
 <?php
 /**
- * DocxInsertImageRequestTest
+ * GetXlsxCellResponseTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * DocxInsertImageRequestTest Class Doc Comment
+ * GetXlsxCellResponseTest Class Doc Comment
  *
  * @category    Class */
-// * @description Input to set-footer command
+// * @description Result of running a Get-Cell command
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class DocxInsertImageRequestTest extends \PHPUnit_Framework_TestCase
+class GetXlsxCellResponseTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,72 +71,23 @@ class DocxInsertImageRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "DocxInsertImageRequest"
+     * Test "GetXlsxCellResponse"
      */
-    public function testDocxInsertImageRequest()
+    public function testGetXlsxCellResponse()
     {
     }
 
     /**
-     * Test attribute "input_document_file_bytes"
+     * Test attribute "successful"
      */
-    public function testPropertyInputDocumentFileBytes()
+    public function testPropertySuccessful()
     {
     }
 
     /**
-     * Test attribute "input_document_file_url"
+     * Test attribute "cell"
      */
-    public function testPropertyInputDocumentFileUrl()
-    {
-    }
-
-    /**
-     * Test attribute "input_image_file_bytes"
-     */
-    public function testPropertyInputImageFileBytes()
-    {
-    }
-
-    /**
-     * Test attribute "input_image_file_url"
-     */
-    public function testPropertyInputImageFileUrl()
-    {
-    }
-
-    /**
-     * Test attribute "image_to_add"
-     */
-    public function testPropertyImageToAdd()
-    {
-    }
-
-    /**
-     * Test attribute "insert_placement"
-     */
-    public function testPropertyInsertPlacement()
-    {
-    }
-
-    /**
-     * Test attribute "insert_path"
-     */
-    public function testPropertyInsertPath()
-    {
-    }
-
-    /**
-     * Test attribute "width_in_em_us"
-     */
-    public function testPropertyWidthInEmUs()
-    {
-    }
-
-    /**
-     * Test attribute "height_in_em_us"
-     */
-    public function testPropertyHeightInEmUs()
+    public function testPropertyCell()
     {
     }
 }

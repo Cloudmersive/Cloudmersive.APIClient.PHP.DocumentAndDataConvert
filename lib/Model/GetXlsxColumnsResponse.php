@@ -249,7 +249,7 @@ class GetXlsxColumnsResponse implements ModelInterface, ArrayAccess
     /**
      * Sets columns
      *
-     * @param \Swagger\Client\Model\XlsxSpreadsheetColumn[] $columns Spreadsheet Columns in the DOCX document
+     * @param \Swagger\Client\Model\XlsxSpreadsheetColumn[] $columns Spreadsheet Columns in the XLSX document
      *
      * @return $this
      */

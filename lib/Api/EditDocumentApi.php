@@ -7421,6 +7421,268 @@ class EditDocumentApi
     }
 
     /**
+     * Operation editDocumentXlsxGetCellByIndex
+     *
+     * Get cell from an Excel XLSX spreadsheet, worksheet by index
+     *
+     * @param  \Swagger\Client\Model\GetXlsxCellRequest $input Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\GetXlsxCellResponse
+     */
+    public function editDocumentXlsxGetCellByIndex($input)
+    {
+        list($response) = $this->editDocumentXlsxGetCellByIndexWithHttpInfo($input);
+        return $response;
+    }
+
+    /**
+     * Operation editDocumentXlsxGetCellByIndexWithHttpInfo
+     *
+     * Get cell from an Excel XLSX spreadsheet, worksheet by index
+     *
+     * @param  \Swagger\Client\Model\GetXlsxCellRequest $input Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\GetXlsxCellResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editDocumentXlsxGetCellByIndexWithHttpInfo($input)
+    {
+        $returnType = '\Swagger\Client\Model\GetXlsxCellResponse';
+        $request = $this->editDocumentXlsxGetCellByIndexRequest($input);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\GetXlsxCellResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editDocumentXlsxGetCellByIndexAsync
+     *
+     * Get cell from an Excel XLSX spreadsheet, worksheet by index
+     *
+     * @param  \Swagger\Client\Model\GetXlsxCellRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentXlsxGetCellByIndexAsync($input)
+    {
+        return $this->editDocumentXlsxGetCellByIndexAsyncWithHttpInfo($input)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editDocumentXlsxGetCellByIndexAsyncWithHttpInfo
+     *
+     * Get cell from an Excel XLSX spreadsheet, worksheet by index
+     *
+     * @param  \Swagger\Client\Model\GetXlsxCellRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentXlsxGetCellByIndexAsyncWithHttpInfo($input)
+    {
+        $returnType = '\Swagger\Client\Model\GetXlsxCellResponse';
+        $request = $this->editDocumentXlsxGetCellByIndexRequest($input);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editDocumentXlsxGetCellByIndex'
+     *
+     * @param  \Swagger\Client\Model\GetXlsxCellRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editDocumentXlsxGetCellByIndexRequest($input)
+    {
+        // verify the required parameter 'input' is set
+        if ($input === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input when calling editDocumentXlsxGetCellByIndex'
+            );
+        }
+
+        $resourcePath = '/convert/edit/xlsx/get-cell/by-index';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($input)) {
+            $_tempBody = $input;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation editDocumentXlsxGetColumns
      *
      * Get rows and cells from a Excel XLSX spreadsheet, worksheet
@@ -7947,7 +8209,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetRowsAndCells
      *
-     * Get rows and cells from a Word XLSX spreadsheet, worksheet
+     * Get rows and cells from a Excel XLSX spreadsheet, worksheet
      *
      * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input Document input request (required)
      *
@@ -7964,7 +8226,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetRowsAndCellsWithHttpInfo
      *
-     * Get rows and cells from a Word XLSX spreadsheet, worksheet
+     * Get rows and cells from a Excel XLSX spreadsheet, worksheet
      *
      * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input Document input request (required)
      *
@@ -8039,7 +8301,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetRowsAndCellsAsync
      *
-     * Get rows and cells from a Word XLSX spreadsheet, worksheet
+     * Get rows and cells from a Excel XLSX spreadsheet, worksheet
      *
      * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input Document input request (required)
      *
@@ -8059,7 +8321,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetRowsAndCellsAsyncWithHttpInfo
      *
-     * Get rows and cells from a Word XLSX spreadsheet, worksheet
+     * Get rows and cells from a Excel XLSX spreadsheet, worksheet
      *
      * @param  \Swagger\Client\Model\GetXlsxRowsAndCellsRequest $input Document input request (required)
      *

@@ -249,7 +249,7 @@ class GetXlsxImagesResponse implements ModelInterface, ArrayAccess
     /**
      * Sets images
      *
-     * @param \Swagger\Client\Model\XlsxImage[] $images Spreadsheet Columns in the DOCX document
+     * @param \Swagger\Client\Model\XlsxImage[] $images Spreadsheet Images in the XLSX document
      *
      * @return $this
      */

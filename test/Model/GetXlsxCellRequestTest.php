@@ -1,6 +1,6 @@
 <?php
 /**
- * DocxInsertImageRequestTest
+ * GetXlsxCellRequestTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * DocxInsertImageRequestTest Class Doc Comment
+ * GetXlsxCellRequestTest Class Doc Comment
  *
  * @category    Class */
-// * @description Input to set-footer command
+// * @description Input to a Get Cell request
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class DocxInsertImageRequestTest extends \PHPUnit_Framework_TestCase
+class GetXlsxCellRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,72 +71,44 @@ class DocxInsertImageRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "DocxInsertImageRequest"
+     * Test "GetXlsxCellRequest"
      */
-    public function testDocxInsertImageRequest()
+    public function testGetXlsxCellRequest()
     {
     }
 
     /**
-     * Test attribute "input_document_file_bytes"
+     * Test attribute "input_file_bytes"
      */
-    public function testPropertyInputDocumentFileBytes()
+    public function testPropertyInputFileBytes()
     {
     }
 
     /**
-     * Test attribute "input_document_file_url"
+     * Test attribute "input_file_url"
      */
-    public function testPropertyInputDocumentFileUrl()
+    public function testPropertyInputFileUrl()
     {
     }
 
     /**
-     * Test attribute "input_image_file_bytes"
+     * Test attribute "worksheet_to_query"
      */
-    public function testPropertyInputImageFileBytes()
+    public function testPropertyWorksheetToQuery()
     {
     }
 
     /**
-     * Test attribute "input_image_file_url"
+     * Test attribute "row_index"
      */
-    public function testPropertyInputImageFileUrl()
+    public function testPropertyRowIndex()
     {
     }
 
     /**
-     * Test attribute "image_to_add"
+     * Test attribute "cell_index"
      */
-    public function testPropertyImageToAdd()
-    {
-    }
-
-    /**
-     * Test attribute "insert_placement"
-     */
-    public function testPropertyInsertPlacement()
-    {
-    }
-
-    /**
-     * Test attribute "insert_path"
-     */
-    public function testPropertyInsertPath()
-    {
-    }
-
-    /**
-     * Test attribute "width_in_em_us"
-     */
-    public function testPropertyWidthInEmUs()
-    {
-    }
-
-    /**
-     * Test attribute "height_in_em_us"
-     */
-    public function testPropertyHeightInEmUs()
+    public function testPropertyCellIndex()
     {
     }
 }
