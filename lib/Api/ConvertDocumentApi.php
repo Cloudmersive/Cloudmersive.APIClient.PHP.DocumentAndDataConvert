@@ -877,7 +877,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentAutodetectToTxt
      *
-     * Convert Document to Text
+     * Convert Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -894,7 +894,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentAutodetectToTxtWithHttpInfo
      *
-     * Convert Document to Text
+     * Convert Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -969,7 +969,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentAutodetectToTxtAsync
      *
-     * Convert Document to Text
+     * Convert Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -989,7 +989,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentAutodetectToTxtAsyncWithHttpInfo
      *
-     * Convert Document to Text
+     * Convert Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2197,7 +2197,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToTxt
      *
-     * Convert Word DOCX Document to Text
+     * Convert Word DOCX Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2214,7 +2214,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToTxtWithHttpInfo
      *
-     * Convert Word DOCX Document to Text
+     * Convert Word DOCX Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2289,7 +2289,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToTxtAsync
      *
-     * Convert Word DOCX Document to Text
+     * Convert Word DOCX Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2309,7 +2309,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToTxtAsyncWithHttpInfo
      *
-     * Convert Word DOCX Document to Text
+     * Convert Word DOCX Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2461,7 +2461,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPdf
      *
-     * Convert HTML to PDF Document
+     * Convert HTML document file to PDF Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2478,7 +2478,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPdfWithHttpInfo
      *
-     * Convert HTML to PDF Document
+     * Convert HTML document file to PDF Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2553,7 +2553,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPdfAsync
      *
-     * Convert HTML to PDF Document
+     * Convert HTML document file to PDF Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2573,7 +2573,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPdfAsyncWithHttpInfo
      *
-     * Convert HTML to PDF Document
+     * Convert HTML document file to PDF Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2725,7 +2725,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPng
      *
-     * Convert HTML to PNG image array
+     * Convert HTML document file to PNG image array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2742,7 +2742,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPngWithHttpInfo
      *
-     * Convert HTML to PNG image array
+     * Convert HTML document file to PNG image array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2817,7 +2817,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPngAsync
      *
-     * Convert HTML to PNG image array
+     * Convert HTML document file to PNG image array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2837,7 +2837,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentHtmlToPngAsyncWithHttpInfo
      *
-     * Convert HTML to PNG image array
+     * Convert HTML document file to PNG image array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -2904,6 +2904,270 @@ class ConvertDocumentApi
         }
 
         $resourcePath = '/convert/html/to/png';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentHtmlToTxt
+     *
+     * HTML Document file to Text (txt)
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\TextConversionResult
+     */
+    public function convertDocumentHtmlToTxt($input_file)
+    {
+        list($response) = $this->convertDocumentHtmlToTxtWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentHtmlToTxtWithHttpInfo
+     *
+     * HTML Document file to Text (txt)
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\TextConversionResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentHtmlToTxtWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\TextConversionResult';
+        $request = $this->convertDocumentHtmlToTxtRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\TextConversionResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentHtmlToTxtAsync
+     *
+     * HTML Document file to Text (txt)
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentHtmlToTxtAsync($input_file)
+    {
+        return $this->convertDocumentHtmlToTxtAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentHtmlToTxtAsyncWithHttpInfo
+     *
+     * HTML Document file to Text (txt)
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentHtmlToTxtAsyncWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\TextConversionResult';
+        $request = $this->convertDocumentHtmlToTxtRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentHtmlToTxt'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentHtmlToTxtRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentHtmlToTxt'
+            );
+        }
+
+        $resourcePath = '/convert/html/to/txt';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4309,7 +4573,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToTxt
      *
-     * Convert PDF Document to Text
+     * Convert PDF Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4326,7 +4590,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToTxtWithHttpInfo
      *
-     * Convert PDF Document to Text
+     * Convert PDF Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4401,7 +4665,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToTxtAsync
      *
-     * Convert PDF Document to Text
+     * Convert PDF Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -4421,7 +4685,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPdfToTxtAsyncWithHttpInfo
      *
-     * Convert PDF Document to Text
+     * Convert PDF Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5725,7 +5989,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptxToTxt
      *
-     * Convert PowerPoint PPTX Presentation to Text
+     * Convert PowerPoint PPTX Presentation to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5742,7 +6006,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptxToTxtWithHttpInfo
      *
-     * Convert PowerPoint PPTX Presentation to Text
+     * Convert PowerPoint PPTX Presentation to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5817,7 +6081,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptxToTxtAsync
      *
-     * Convert PowerPoint PPTX Presentation to Text
+     * Convert PowerPoint PPTX Presentation to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -5837,7 +6101,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentPptxToTxtAsyncWithHttpInfo
      *
-     * Convert PowerPoint PPTX Presentation to Text
+     * Convert PowerPoint PPTX Presentation to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7318,7 +7582,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToTxt
      *
-     * Convert Excel XLSX Spreadsheet to Text
+     * Convert Excel XLSX Spreadsheet to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7335,7 +7599,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToTxtWithHttpInfo
      *
-     * Convert Excel XLSX Spreadsheet to Text
+     * Convert Excel XLSX Spreadsheet to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7410,7 +7674,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToTxtAsync
      *
-     * Convert Excel XLSX Spreadsheet to Text
+     * Convert Excel XLSX Spreadsheet to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7430,7 +7694,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentXlsxToTxtAsyncWithHttpInfo
      *
-     * Convert Excel XLSX Spreadsheet to Text
+     * Convert Excel XLSX Spreadsheet to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *

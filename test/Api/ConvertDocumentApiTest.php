@@ -104,7 +104,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentAutodetectToTxt
      *
-     * Convert Document to Text.
+     * Convert Document to Text (txt).
      *
      */
     public function testConvertDocumentAutodetectToTxt()
@@ -154,7 +154,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentDocxToTxt
      *
-     * Convert Word DOCX Document to Text.
+     * Convert Word DOCX Document to Text (txt).
      *
      */
     public function testConvertDocumentDocxToTxt()
@@ -164,7 +164,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentHtmlToPdf
      *
-     * Convert HTML to PDF Document.
+     * Convert HTML document file to PDF Document.
      *
      */
     public function testConvertDocumentHtmlToPdf()
@@ -174,10 +174,20 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentHtmlToPng
      *
-     * Convert HTML to PNG image array.
+     * Convert HTML document file to PNG image array.
      *
      */
     public function testConvertDocumentHtmlToPng()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentHtmlToTxt
+     *
+     * HTML Document file to Text (txt).
+     *
+     */
+    public function testConvertDocumentHtmlToTxt()
     {
     }
 
@@ -234,7 +244,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentPdfToTxt
      *
-     * Convert PDF Document to Text.
+     * Convert PDF Document to Text (txt).
      *
      */
     public function testConvertDocumentPdfToTxt()
@@ -284,7 +294,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentPptxToTxt
      *
-     * Convert PowerPoint PPTX Presentation to Text.
+     * Convert PowerPoint PPTX Presentation to Text (txt).
      *
      */
     public function testConvertDocumentPptxToTxt()
@@ -344,7 +354,7 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentXlsxToTxt
      *
-     * Convert Excel XLSX Spreadsheet to Text.
+     * Convert Excel XLSX Spreadsheet to Text (txt).
      *
      */
     public function testConvertDocumentXlsxToTxt()

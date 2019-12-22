@@ -94,10 +94,30 @@ class ConvertWebApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertWebHtmlToPng
      *
-     * Convert HTML string to PNG.
+     * Convert HTML string to PNG screenshot.
      *
      */
     public function testConvertWebHtmlToPng()
+    {
+    }
+
+    /**
+     * Test case for convertWebHtmlToTxt
+     *
+     * Convert website URL page to text (txt).
+     *
+     */
+    public function testConvertWebHtmlToTxt()
+    {
+    }
+
+    /**
+     * Test case for convertWebHtmlToTxt_0
+     *
+     * Convert HTML string to text (txt).
+     *
+     */
+    public function testConvertWebHtmlToTxt0()
     {
     }
 
