@@ -355,7 +355,7 @@ class ConvertDataApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return string
      */
     public function convertDataJsonToXml($json_object)
     {
@@ -372,11 +372,11 @@ class ConvertDataApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDataJsonToXmlWithHttpInfo($json_object)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->convertDataJsonToXmlRequest($json_object);
 
         try {
@@ -428,7 +428,7 @@ class ConvertDataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -470,7 +470,7 @@ class ConvertDataApi
      */
     public function convertDataJsonToXmlAsyncWithHttpInfo($json_object)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->convertDataJsonToXmlRequest($json_object);
 
         return $this->client
@@ -1137,6 +1137,2034 @@ class ConvertDataApi
     }
 
     /**
+     * Operation convertDataXmlEditAddAttributeWithXPath
+     *
+     * Adds an attribute to all XML nodes matching XPath expression
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_attribute_name Name of the XML attribute to add (required)
+     * @param  string $xml_attribute_value Value of the XML attribute to add (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\XmlAddAttributeWithXPathResult
+     */
+    public function convertDataXmlEditAddAttributeWithXPath($input_file, $x_path_expression, $xml_attribute_name, $xml_attribute_value)
+    {
+        list($response) = $this->convertDataXmlEditAddAttributeWithXPathWithHttpInfo($input_file, $x_path_expression, $xml_attribute_name, $xml_attribute_value);
+        return $response;
+    }
+
+    /**
+     * Operation convertDataXmlEditAddAttributeWithXPathWithHttpInfo
+     *
+     * Adds an attribute to all XML nodes matching XPath expression
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_attribute_name Name of the XML attribute to add (required)
+     * @param  string $xml_attribute_value Value of the XML attribute to add (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\XmlAddAttributeWithXPathResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDataXmlEditAddAttributeWithXPathWithHttpInfo($input_file, $x_path_expression, $xml_attribute_name, $xml_attribute_value)
+    {
+        $returnType = '\Swagger\Client\Model\XmlAddAttributeWithXPathResult';
+        $request = $this->convertDataXmlEditAddAttributeWithXPathRequest($input_file, $x_path_expression, $xml_attribute_name, $xml_attribute_value);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\XmlAddAttributeWithXPathResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDataXmlEditAddAttributeWithXPathAsync
+     *
+     * Adds an attribute to all XML nodes matching XPath expression
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_attribute_name Name of the XML attribute to add (required)
+     * @param  string $xml_attribute_value Value of the XML attribute to add (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlEditAddAttributeWithXPathAsync($input_file, $x_path_expression, $xml_attribute_name, $xml_attribute_value)
+    {
+        return $this->convertDataXmlEditAddAttributeWithXPathAsyncWithHttpInfo($input_file, $x_path_expression, $xml_attribute_name, $xml_attribute_value)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDataXmlEditAddAttributeWithXPathAsyncWithHttpInfo
+     *
+     * Adds an attribute to all XML nodes matching XPath expression
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_attribute_name Name of the XML attribute to add (required)
+     * @param  string $xml_attribute_value Value of the XML attribute to add (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlEditAddAttributeWithXPathAsyncWithHttpInfo($input_file, $x_path_expression, $xml_attribute_name, $xml_attribute_value)
+    {
+        $returnType = '\Swagger\Client\Model\XmlAddAttributeWithXPathResult';
+        $request = $this->convertDataXmlEditAddAttributeWithXPathRequest($input_file, $x_path_expression, $xml_attribute_name, $xml_attribute_value);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDataXmlEditAddAttributeWithXPath'
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_attribute_name Name of the XML attribute to add (required)
+     * @param  string $xml_attribute_value Value of the XML attribute to add (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDataXmlEditAddAttributeWithXPathRequest($input_file, $x_path_expression, $xml_attribute_name, $xml_attribute_value)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDataXmlEditAddAttributeWithXPath'
+            );
+        }
+        // verify the required parameter 'x_path_expression' is set
+        if ($x_path_expression === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $x_path_expression when calling convertDataXmlEditAddAttributeWithXPath'
+            );
+        }
+        // verify the required parameter 'xml_attribute_name' is set
+        if ($xml_attribute_name === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $xml_attribute_name when calling convertDataXmlEditAddAttributeWithXPath'
+            );
+        }
+        // verify the required parameter 'xml_attribute_value' is set
+        if ($xml_attribute_value === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $xml_attribute_value when calling convertDataXmlEditAddAttributeWithXPath'
+            );
+        }
+
+        $resourcePath = '/convert/xml/edit/xpath/add-attribute';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_path_expression !== null) {
+            $headerParams['XPathExpression'] = ObjectSerializer::toHeaderValue($x_path_expression);
+        }
+        // header params
+        if ($xml_attribute_name !== null) {
+            $headerParams['XmlAttributeName'] = ObjectSerializer::toHeaderValue($xml_attribute_name);
+        }
+        // header params
+        if ($xml_attribute_value !== null) {
+            $headerParams['XmlAttributeValue'] = ObjectSerializer::toHeaderValue($xml_attribute_value);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDataXmlEditAddChildWithXPath
+     *
+     * Adds an XML node as a child to XML nodes matching XPath expression
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_node_to_add XML Node to add as a child (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\XmlAddChildWithXPathResult
+     */
+    public function convertDataXmlEditAddChildWithXPath($input_file, $x_path_expression, $xml_node_to_add)
+    {
+        list($response) = $this->convertDataXmlEditAddChildWithXPathWithHttpInfo($input_file, $x_path_expression, $xml_node_to_add);
+        return $response;
+    }
+
+    /**
+     * Operation convertDataXmlEditAddChildWithXPathWithHttpInfo
+     *
+     * Adds an XML node as a child to XML nodes matching XPath expression
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_node_to_add XML Node to add as a child (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\XmlAddChildWithXPathResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDataXmlEditAddChildWithXPathWithHttpInfo($input_file, $x_path_expression, $xml_node_to_add)
+    {
+        $returnType = '\Swagger\Client\Model\XmlAddChildWithXPathResult';
+        $request = $this->convertDataXmlEditAddChildWithXPathRequest($input_file, $x_path_expression, $xml_node_to_add);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\XmlAddChildWithXPathResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDataXmlEditAddChildWithXPathAsync
+     *
+     * Adds an XML node as a child to XML nodes matching XPath expression
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_node_to_add XML Node to add as a child (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlEditAddChildWithXPathAsync($input_file, $x_path_expression, $xml_node_to_add)
+    {
+        return $this->convertDataXmlEditAddChildWithXPathAsyncWithHttpInfo($input_file, $x_path_expression, $xml_node_to_add)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDataXmlEditAddChildWithXPathAsyncWithHttpInfo
+     *
+     * Adds an XML node as a child to XML nodes matching XPath expression
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_node_to_add XML Node to add as a child (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlEditAddChildWithXPathAsyncWithHttpInfo($input_file, $x_path_expression, $xml_node_to_add)
+    {
+        $returnType = '\Swagger\Client\Model\XmlAddChildWithXPathResult';
+        $request = $this->convertDataXmlEditAddChildWithXPathRequest($input_file, $x_path_expression, $xml_node_to_add);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDataXmlEditAddChildWithXPath'
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_node_to_add XML Node to add as a child (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDataXmlEditAddChildWithXPathRequest($input_file, $x_path_expression, $xml_node_to_add)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDataXmlEditAddChildWithXPath'
+            );
+        }
+        // verify the required parameter 'x_path_expression' is set
+        if ($x_path_expression === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $x_path_expression when calling convertDataXmlEditAddChildWithXPath'
+            );
+        }
+        // verify the required parameter 'xml_node_to_add' is set
+        if ($xml_node_to_add === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $xml_node_to_add when calling convertDataXmlEditAddChildWithXPath'
+            );
+        }
+
+        $resourcePath = '/convert/xml/edit/xpath/add-child';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_path_expression !== null) {
+            $headerParams['XPathExpression'] = ObjectSerializer::toHeaderValue($x_path_expression);
+        }
+        // header params
+        if ($xml_node_to_add !== null) {
+            $headerParams['XmlNodeToAdd'] = ObjectSerializer::toHeaderValue($xml_node_to_add);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDataXmlEditRemoveAllChildNodesWithXPath
+     *
+     * Removes, deletes all children of nodes matching XPath expression, but does not remove the nodes
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\XmlRemoveAllChildrenWithXPathResult
+     */
+    public function convertDataXmlEditRemoveAllChildNodesWithXPath($input_file, $x_path_expression)
+    {
+        list($response) = $this->convertDataXmlEditRemoveAllChildNodesWithXPathWithHttpInfo($input_file, $x_path_expression);
+        return $response;
+    }
+
+    /**
+     * Operation convertDataXmlEditRemoveAllChildNodesWithXPathWithHttpInfo
+     *
+     * Removes, deletes all children of nodes matching XPath expression, but does not remove the nodes
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\XmlRemoveAllChildrenWithXPathResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDataXmlEditRemoveAllChildNodesWithXPathWithHttpInfo($input_file, $x_path_expression)
+    {
+        $returnType = '\Swagger\Client\Model\XmlRemoveAllChildrenWithXPathResult';
+        $request = $this->convertDataXmlEditRemoveAllChildNodesWithXPathRequest($input_file, $x_path_expression);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\XmlRemoveAllChildrenWithXPathResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDataXmlEditRemoveAllChildNodesWithXPathAsync
+     *
+     * Removes, deletes all children of nodes matching XPath expression, but does not remove the nodes
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlEditRemoveAllChildNodesWithXPathAsync($input_file, $x_path_expression)
+    {
+        return $this->convertDataXmlEditRemoveAllChildNodesWithXPathAsyncWithHttpInfo($input_file, $x_path_expression)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDataXmlEditRemoveAllChildNodesWithXPathAsyncWithHttpInfo
+     *
+     * Removes, deletes all children of nodes matching XPath expression, but does not remove the nodes
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlEditRemoveAllChildNodesWithXPathAsyncWithHttpInfo($input_file, $x_path_expression)
+    {
+        $returnType = '\Swagger\Client\Model\XmlRemoveAllChildrenWithXPathResult';
+        $request = $this->convertDataXmlEditRemoveAllChildNodesWithXPathRequest($input_file, $x_path_expression);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDataXmlEditRemoveAllChildNodesWithXPath'
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDataXmlEditRemoveAllChildNodesWithXPathRequest($input_file, $x_path_expression)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDataXmlEditRemoveAllChildNodesWithXPath'
+            );
+        }
+        // verify the required parameter 'x_path_expression' is set
+        if ($x_path_expression === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $x_path_expression when calling convertDataXmlEditRemoveAllChildNodesWithXPath'
+            );
+        }
+
+        $resourcePath = '/convert/xml/edit/xpath/remove-all-children';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_path_expression !== null) {
+            $headerParams['XPathExpression'] = ObjectSerializer::toHeaderValue($x_path_expression);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDataXmlEditReplaceWithXPath
+     *
+     * Replaces XML nodes matching XPath expression with new node
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_node_replacement XML Node replacement content (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\XmlReplaceWithXPathResult
+     */
+    public function convertDataXmlEditReplaceWithXPath($input_file, $x_path_expression, $xml_node_replacement)
+    {
+        list($response) = $this->convertDataXmlEditReplaceWithXPathWithHttpInfo($input_file, $x_path_expression, $xml_node_replacement);
+        return $response;
+    }
+
+    /**
+     * Operation convertDataXmlEditReplaceWithXPathWithHttpInfo
+     *
+     * Replaces XML nodes matching XPath expression with new node
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_node_replacement XML Node replacement content (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\XmlReplaceWithXPathResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDataXmlEditReplaceWithXPathWithHttpInfo($input_file, $x_path_expression, $xml_node_replacement)
+    {
+        $returnType = '\Swagger\Client\Model\XmlReplaceWithXPathResult';
+        $request = $this->convertDataXmlEditReplaceWithXPathRequest($input_file, $x_path_expression, $xml_node_replacement);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\XmlReplaceWithXPathResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDataXmlEditReplaceWithXPathAsync
+     *
+     * Replaces XML nodes matching XPath expression with new node
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_node_replacement XML Node replacement content (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlEditReplaceWithXPathAsync($input_file, $x_path_expression, $xml_node_replacement)
+    {
+        return $this->convertDataXmlEditReplaceWithXPathAsyncWithHttpInfo($input_file, $x_path_expression, $xml_node_replacement)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDataXmlEditReplaceWithXPathAsyncWithHttpInfo
+     *
+     * Replaces XML nodes matching XPath expression with new node
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_node_replacement XML Node replacement content (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlEditReplaceWithXPathAsyncWithHttpInfo($input_file, $x_path_expression, $xml_node_replacement)
+    {
+        $returnType = '\Swagger\Client\Model\XmlReplaceWithXPathResult';
+        $request = $this->convertDataXmlEditReplaceWithXPathRequest($input_file, $x_path_expression, $xml_node_replacement);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDataXmlEditReplaceWithXPath'
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_node_replacement XML Node replacement content (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDataXmlEditReplaceWithXPathRequest($input_file, $x_path_expression, $xml_node_replacement)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDataXmlEditReplaceWithXPath'
+            );
+        }
+        // verify the required parameter 'x_path_expression' is set
+        if ($x_path_expression === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $x_path_expression when calling convertDataXmlEditReplaceWithXPath'
+            );
+        }
+        // verify the required parameter 'xml_node_replacement' is set
+        if ($xml_node_replacement === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $xml_node_replacement when calling convertDataXmlEditReplaceWithXPath'
+            );
+        }
+
+        $resourcePath = '/convert/xml/edit/xpath/replace';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_path_expression !== null) {
+            $headerParams['XPathExpression'] = ObjectSerializer::toHeaderValue($x_path_expression);
+        }
+        // header params
+        if ($xml_node_replacement !== null) {
+            $headerParams['XmlNodeReplacement'] = ObjectSerializer::toHeaderValue($xml_node_replacement);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDataXmlEditSetValueWithXPath
+     *
+     * Sets the value contents of XML nodes matching XPath expression
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_value XML Value to set into the matching XML nodes (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\XmlSetValueWithXPathResult
+     */
+    public function convertDataXmlEditSetValueWithXPath($input_file, $x_path_expression, $xml_value)
+    {
+        list($response) = $this->convertDataXmlEditSetValueWithXPathWithHttpInfo($input_file, $x_path_expression, $xml_value);
+        return $response;
+    }
+
+    /**
+     * Operation convertDataXmlEditSetValueWithXPathWithHttpInfo
+     *
+     * Sets the value contents of XML nodes matching XPath expression
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_value XML Value to set into the matching XML nodes (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\XmlSetValueWithXPathResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDataXmlEditSetValueWithXPathWithHttpInfo($input_file, $x_path_expression, $xml_value)
+    {
+        $returnType = '\Swagger\Client\Model\XmlSetValueWithXPathResult';
+        $request = $this->convertDataXmlEditSetValueWithXPathRequest($input_file, $x_path_expression, $xml_value);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\XmlSetValueWithXPathResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDataXmlEditSetValueWithXPathAsync
+     *
+     * Sets the value contents of XML nodes matching XPath expression
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_value XML Value to set into the matching XML nodes (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlEditSetValueWithXPathAsync($input_file, $x_path_expression, $xml_value)
+    {
+        return $this->convertDataXmlEditSetValueWithXPathAsyncWithHttpInfo($input_file, $x_path_expression, $xml_value)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDataXmlEditSetValueWithXPathAsyncWithHttpInfo
+     *
+     * Sets the value contents of XML nodes matching XPath expression
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_value XML Value to set into the matching XML nodes (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlEditSetValueWithXPathAsyncWithHttpInfo($input_file, $x_path_expression, $xml_value)
+    {
+        $returnType = '\Swagger\Client\Model\XmlSetValueWithXPathResult';
+        $request = $this->convertDataXmlEditSetValueWithXPathRequest($input_file, $x_path_expression, $xml_value);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDataXmlEditSetValueWithXPath'
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  string $xml_value XML Value to set into the matching XML nodes (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDataXmlEditSetValueWithXPathRequest($input_file, $x_path_expression, $xml_value)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDataXmlEditSetValueWithXPath'
+            );
+        }
+        // verify the required parameter 'x_path_expression' is set
+        if ($x_path_expression === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $x_path_expression when calling convertDataXmlEditSetValueWithXPath'
+            );
+        }
+        // verify the required parameter 'xml_value' is set
+        if ($xml_value === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $xml_value when calling convertDataXmlEditSetValueWithXPath'
+            );
+        }
+
+        $resourcePath = '/convert/xml/edit/xpath/set-value';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_path_expression !== null) {
+            $headerParams['XPathExpression'] = ObjectSerializer::toHeaderValue($x_path_expression);
+        }
+        // header params
+        if ($xml_value !== null) {
+            $headerParams['XmlValue'] = ObjectSerializer::toHeaderValue($xml_value);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDataXmlFilterWithXPath
+     *
+     * Filter, select XML nodes using XPath expression, get results
+     *
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\XmlFIlterWithXPathResult
+     */
+    public function convertDataXmlFilterWithXPath($x_path_expression, $input_file)
+    {
+        list($response) = $this->convertDataXmlFilterWithXPathWithHttpInfo($x_path_expression, $input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDataXmlFilterWithXPathWithHttpInfo
+     *
+     * Filter, select XML nodes using XPath expression, get results
+     *
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\XmlFIlterWithXPathResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDataXmlFilterWithXPathWithHttpInfo($x_path_expression, $input_file)
+    {
+        $returnType = '\Swagger\Client\Model\XmlFIlterWithXPathResult';
+        $request = $this->convertDataXmlFilterWithXPathRequest($x_path_expression, $input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\XmlFIlterWithXPathResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDataXmlFilterWithXPathAsync
+     *
+     * Filter, select XML nodes using XPath expression, get results
+     *
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlFilterWithXPathAsync($x_path_expression, $input_file)
+    {
+        return $this->convertDataXmlFilterWithXPathAsyncWithHttpInfo($x_path_expression, $input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDataXmlFilterWithXPathAsyncWithHttpInfo
+     *
+     * Filter, select XML nodes using XPath expression, get results
+     *
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlFilterWithXPathAsyncWithHttpInfo($x_path_expression, $input_file)
+    {
+        $returnType = '\Swagger\Client\Model\XmlFIlterWithXPathResult';
+        $request = $this->convertDataXmlFilterWithXPathRequest($x_path_expression, $input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDataXmlFilterWithXPath'
+     *
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDataXmlFilterWithXPathRequest($x_path_expression, $input_file)
+    {
+        // verify the required parameter 'x_path_expression' is set
+        if ($x_path_expression === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $x_path_expression when calling convertDataXmlFilterWithXPath'
+            );
+        }
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDataXmlFilterWithXPath'
+            );
+        }
+
+        $resourcePath = '/convert/xml/select/xpath';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_path_expression !== null) {
+            $headerParams['XPathExpression'] = ObjectSerializer::toHeaderValue($x_path_expression);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDataXmlRemoveWithXPath
+     *
+     * Remove, delete XML nodes and items matching XPath expression
+     *
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\XmlRemoveWithXPathResult
+     */
+    public function convertDataXmlRemoveWithXPath($x_path_expression, $input_file)
+    {
+        list($response) = $this->convertDataXmlRemoveWithXPathWithHttpInfo($x_path_expression, $input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDataXmlRemoveWithXPathWithHttpInfo
+     *
+     * Remove, delete XML nodes and items matching XPath expression
+     *
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\XmlRemoveWithXPathResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDataXmlRemoveWithXPathWithHttpInfo($x_path_expression, $input_file)
+    {
+        $returnType = '\Swagger\Client\Model\XmlRemoveWithXPathResult';
+        $request = $this->convertDataXmlRemoveWithXPathRequest($x_path_expression, $input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\XmlRemoveWithXPathResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDataXmlRemoveWithXPathAsync
+     *
+     * Remove, delete XML nodes and items matching XPath expression
+     *
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlRemoveWithXPathAsync($x_path_expression, $input_file)
+    {
+        return $this->convertDataXmlRemoveWithXPathAsyncWithHttpInfo($x_path_expression, $input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDataXmlRemoveWithXPathAsyncWithHttpInfo
+     *
+     * Remove, delete XML nodes and items matching XPath expression
+     *
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlRemoveWithXPathAsyncWithHttpInfo($x_path_expression, $input_file)
+    {
+        $returnType = '\Swagger\Client\Model\XmlRemoveWithXPathResult';
+        $request = $this->convertDataXmlRemoveWithXPathRequest($x_path_expression, $input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDataXmlRemoveWithXPath'
+     *
+     * @param  string $x_path_expression Valid XML XPath query expression (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDataXmlRemoveWithXPathRequest($x_path_expression, $input_file)
+    {
+        // verify the required parameter 'x_path_expression' is set
+        if ($x_path_expression === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $x_path_expression when calling convertDataXmlRemoveWithXPath'
+            );
+        }
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDataXmlRemoveWithXPath'
+            );
+        }
+
+        $resourcePath = '/convert/xml/edit/xpath/remove';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_path_expression !== null) {
+            $headerParams['XPathExpression'] = ObjectSerializer::toHeaderValue($x_path_expression);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation convertDataXmlToJson
      *
      * Convert XML to JSON conversion
@@ -1342,6 +3370,286 @@ class ConvertDataApi
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
                 ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDataXmlTransformWithXsltToXml
+     *
+     * Transform XML document file with XSLT into a new XML document
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  \SplFileObject $transform_file Input XSLT file to use to transform the input XML file. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function convertDataXmlTransformWithXsltToXml($input_file, $transform_file)
+    {
+        list($response) = $this->convertDataXmlTransformWithXsltToXmlWithHttpInfo($input_file, $transform_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDataXmlTransformWithXsltToXmlWithHttpInfo
+     *
+     * Transform XML document file with XSLT into a new XML document
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  \SplFileObject $transform_file Input XSLT file to use to transform the input XML file. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDataXmlTransformWithXsltToXmlWithHttpInfo($input_file, $transform_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDataXmlTransformWithXsltToXmlRequest($input_file, $transform_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDataXmlTransformWithXsltToXmlAsync
+     *
+     * Transform XML document file with XSLT into a new XML document
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  \SplFileObject $transform_file Input XSLT file to use to transform the input XML file. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlTransformWithXsltToXmlAsync($input_file, $transform_file)
+    {
+        return $this->convertDataXmlTransformWithXsltToXmlAsyncWithHttpInfo($input_file, $transform_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDataXmlTransformWithXsltToXmlAsyncWithHttpInfo
+     *
+     * Transform XML document file with XSLT into a new XML document
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  \SplFileObject $transform_file Input XSLT file to use to transform the input XML file. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlTransformWithXsltToXmlAsyncWithHttpInfo($input_file, $transform_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDataXmlTransformWithXsltToXmlRequest($input_file, $transform_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDataXmlTransformWithXsltToXml'
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  \SplFileObject $transform_file Input XSLT file to use to transform the input XML file. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDataXmlTransformWithXsltToXmlRequest($input_file, $transform_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDataXmlTransformWithXsltToXml'
+            );
+        }
+        // verify the required parameter 'transform_file' is set
+        if ($transform_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $transform_file when calling convertDataXmlTransformWithXsltToXml'
+            );
+        }
+
+        $resourcePath = '/convert/xml/transform/xslt/to/xml';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // form params
+        if ($transform_file !== null) {
+            $multipart = true;
+            $formParams['transformFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($transform_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/xml'],
+                []
             );
         }
 

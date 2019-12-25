@@ -112,12 +112,92 @@ class ConvertDataApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDataXmlEditAddAttributeWithXPath
+     *
+     * Adds an attribute to all XML nodes matching XPath expression.
+     *
+     */
+    public function testConvertDataXmlEditAddAttributeWithXPath()
+    {
+    }
+
+    /**
+     * Test case for convertDataXmlEditAddChildWithXPath
+     *
+     * Adds an XML node as a child to XML nodes matching XPath expression.
+     *
+     */
+    public function testConvertDataXmlEditAddChildWithXPath()
+    {
+    }
+
+    /**
+     * Test case for convertDataXmlEditRemoveAllChildNodesWithXPath
+     *
+     * Removes, deletes all children of nodes matching XPath expression, but does not remove the nodes.
+     *
+     */
+    public function testConvertDataXmlEditRemoveAllChildNodesWithXPath()
+    {
+    }
+
+    /**
+     * Test case for convertDataXmlEditReplaceWithXPath
+     *
+     * Replaces XML nodes matching XPath expression with new node.
+     *
+     */
+    public function testConvertDataXmlEditReplaceWithXPath()
+    {
+    }
+
+    /**
+     * Test case for convertDataXmlEditSetValueWithXPath
+     *
+     * Sets the value contents of XML nodes matching XPath expression.
+     *
+     */
+    public function testConvertDataXmlEditSetValueWithXPath()
+    {
+    }
+
+    /**
+     * Test case for convertDataXmlFilterWithXPath
+     *
+     * Filter, select XML nodes using XPath expression, get results.
+     *
+     */
+    public function testConvertDataXmlFilterWithXPath()
+    {
+    }
+
+    /**
+     * Test case for convertDataXmlRemoveWithXPath
+     *
+     * Remove, delete XML nodes and items matching XPath expression.
+     *
+     */
+    public function testConvertDataXmlRemoveWithXPath()
+    {
+    }
+
+    /**
      * Test case for convertDataXmlToJson
      *
      * Convert XML to JSON conversion.
      *
      */
     public function testConvertDataXmlToJson()
+    {
+    }
+
+    /**
+     * Test case for convertDataXmlTransformWithXsltToXml
+     *
+     * Transform XML document file with XSLT into a new XML document.
+     *
+     */
+    public function testConvertDataXmlTransformWithXsltToXml()
     {
     }
 }
