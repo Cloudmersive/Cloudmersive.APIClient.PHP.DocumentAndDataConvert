@@ -1,6 +1,6 @@
 <?php
 /**
- * XmlFilterWithXPathResult
+ * XmlQueryWithXQueryResult
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * XmlFilterWithXPathResult Class Doc Comment
+ * XmlQueryWithXQueryResult Class Doc Comment
  *
  * @category Class
- * @description Result of performing a filter operation on XML input using XPath
+ * @description Result of performing an XQuery operation on an XML document.
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class XmlFilterWithXPathResult implements ModelInterface, ArrayAccess
+class XmlQueryWithXQueryResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class XmlFilterWithXPathResult implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'XmlFilterWithXPathResult';
+    protected static $swaggerModelName = 'XmlQueryWithXQueryResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,8 @@ class XmlFilterWithXPathResult implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'successful' => 'bool',
-        'xml_nodes' => 'string[]',
-        'result_count' => 'int'
+        'resulting_xml' => 'string',
+        'error_message' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class XmlFilterWithXPathResult implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'successful' => null,
-        'xml_nodes' => null,
-        'result_count' => 'int32'
+        'resulting_xml' => null,
+        'error_message' => null
     ];
 
     /**
@@ -102,8 +102,8 @@ class XmlFilterWithXPathResult implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'successful' => 'Successful',
-        'xml_nodes' => 'XmlNodes',
-        'result_count' => 'ResultCount'
+        'resulting_xml' => 'ResultingXml',
+        'error_message' => 'ErrorMessage'
     ];
 
     /**
@@ -113,8 +113,8 @@ class XmlFilterWithXPathResult implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'successful' => 'setSuccessful',
-        'xml_nodes' => 'setXmlNodes',
-        'result_count' => 'setResultCount'
+        'resulting_xml' => 'setResultingXml',
+        'error_message' => 'setErrorMessage'
     ];
 
     /**
@@ -124,8 +124,8 @@ class XmlFilterWithXPathResult implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'successful' => 'getSuccessful',
-        'xml_nodes' => 'getXmlNodes',
-        'result_count' => 'getResultCount'
+        'resulting_xml' => 'getResultingXml',
+        'error_message' => 'getErrorMessage'
     ];
 
     /**
@@ -189,8 +189,8 @@ class XmlFilterWithXPathResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
-        $this->container['xml_nodes'] = isset($data['xml_nodes']) ? $data['xml_nodes'] : null;
-        $this->container['result_count'] = isset($data['result_count']) ? $data['result_count'] : null;
+        $this->container['resulting_xml'] = isset($data['resulting_xml']) ? $data['resulting_xml'] : null;
+        $this->container['error_message'] = isset($data['error_message']) ? $data['error_message'] : null;
     }
 
     /**
@@ -243,49 +243,49 @@ class XmlFilterWithXPathResult implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets xml_nodes
+     * Gets resulting_xml
      *
-     * @return string[]
+     * @return string
      */
-    public function getXmlNodes()
+    public function getResultingXml()
     {
-        return $this->container['xml_nodes'];
+        return $this->container['resulting_xml'];
     }
 
     /**
-     * Sets xml_nodes
+     * Sets resulting_xml
      *
-     * @param string[] $xml_nodes Matching selected XML nodes as strings
+     * @param string $resulting_xml Resulting XML result output
      *
      * @return $this
      */
-    public function setXmlNodes($xml_nodes)
+    public function setResultingXml($resulting_xml)
     {
-        $this->container['xml_nodes'] = $xml_nodes;
+        $this->container['resulting_xml'] = $resulting_xml;
 
         return $this;
     }
 
     /**
-     * Gets result_count
+     * Gets error_message
      *
-     * @return int
+     * @return string
      */
-    public function getResultCount()
+    public function getErrorMessage()
     {
-        return $this->container['result_count'];
+        return $this->container['error_message'];
     }
 
     /**
-     * Sets result_count
+     * Sets error_message
      *
-     * @param int $result_count Count of the matching results
+     * @param string $error_message If an error occurs, additional details on the error
      *
      * @return $this
      */
-    public function setResultCount($result_count)
+    public function setErrorMessage($error_message)
     {
-        $this->container['result_count'] = $result_count;
+        $this->container['error_message'] = $error_message;
 
         return $this;
     }

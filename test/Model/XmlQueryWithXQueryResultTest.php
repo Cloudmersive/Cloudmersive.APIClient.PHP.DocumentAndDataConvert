@@ -1,6 +1,6 @@
 <?php
 /**
- * XmlFilterWithXPathResultTest
+ * XmlQueryWithXQueryResultTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * XmlFilterWithXPathResultTest Class Doc Comment
+ * XmlQueryWithXQueryResultTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of performing a filter operation on XML input using XPath
+// * @description Result of performing an XQuery operation on an XML document.
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class XmlFilterWithXPathResultTest extends \PHPUnit_Framework_TestCase
+class XmlQueryWithXQueryResultTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class XmlFilterWithXPathResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "XmlFilterWithXPathResult"
+     * Test "XmlQueryWithXQueryResult"
      */
-    public function testXmlFilterWithXPathResult()
+    public function testXmlQueryWithXQueryResult()
     {
     }
 
@@ -85,16 +85,16 @@ class XmlFilterWithXPathResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "xml_nodes"
+     * Test attribute "resulting_xml"
      */
-    public function testPropertyXmlNodes()
+    public function testPropertyResultingXml()
     {
     }
 
     /**
-     * Test attribute "result_count"
+     * Test attribute "error_message"
      */
-    public function testPropertyResultCount()
+    public function testPropertyErrorMessage()
     {
     }
 }

@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**convertDataXmlEditReplaceWithXPath**](ConvertDataApi.md#convertDataXmlEditReplaceWithXPath) | **POST** /convert/xml/edit/xpath/replace | Replaces XML nodes matching XPath expression with new node
 [**convertDataXmlEditSetValueWithXPath**](ConvertDataApi.md#convertDataXmlEditSetValueWithXPath) | **POST** /convert/xml/edit/xpath/set-value | Sets the value contents of XML nodes matching XPath expression
 [**convertDataXmlFilterWithXPath**](ConvertDataApi.md#convertDataXmlFilterWithXPath) | **POST** /convert/xml/select/xpath | Filter, select XML nodes using XPath expression, get results
+[**convertDataXmlQueryWithXQuery**](ConvertDataApi.md#convertDataXmlQueryWithXQuery) | **POST** /convert/xml/query/xquery | Query an XML file using XQuery query, get results
+[**convertDataXmlQueryWithXQueryMulti**](ConvertDataApi.md#convertDataXmlQueryWithXQueryMulti) | **POST** /convert/xml/query/xquery/multi | Query multiple XML files using XQuery query, get results
 [**convertDataXmlRemoveWithXPath**](ConvertDataApi.md#convertDataXmlRemoveWithXPath) | **POST** /convert/xml/edit/xpath/remove | Remove, delete XML nodes and items matching XPath expression
 [**convertDataXmlToJson**](ConvertDataApi.md#convertDataXmlToJson) | **POST** /convert/xml/to/json | Convert XML to JSON conversion
 [**convertDataXmlTransformWithXsltToXml**](ConvertDataApi.md#convertDataXmlTransformWithXsltToXml) | **POST** /convert/xml/transform/xslt/to/xml | Transform XML document file with XSLT into a new XML document
@@ -535,7 +537,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **convertDataXmlFilterWithXPath**
-> \Swagger\Client\Model\XmlFIlterWithXPathResult convertDataXmlFilterWithXPath($x_path_expression, $input_file)
+> \Swagger\Client\Model\XmlFilterWithXPathResult convertDataXmlFilterWithXPath($x_path_expression, $input_file)
 
 Filter, select XML nodes using XPath expression, get results
 
@@ -578,7 +580,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\XmlFIlterWithXPathResult**](../Model/XmlFIlterWithXPathResult.md)
+[**\Swagger\Client\Model\XmlFilterWithXPathResult**](../Model/XmlFilterWithXPathResult.md)
 
 ### Authorization
 
@@ -587,6 +589,138 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDataXmlQueryWithXQuery**
+> \Swagger\Client\Model\XmlQueryWithXQueryResult convertDataXmlQueryWithXQuery($input_file, $x_query)
+
+Query an XML file using XQuery query, get results
+
+Return the reuslts of querying a single XML document with an XQuery expression.  Supports XQuery 3.1 and earlier.  This API is optimized for a single XML document as input.  Provided XML document is automatically loaded as the default context; to access elements in the document, simply refer to them without a document reference, such as bookstore/book
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDataApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input XML file to perform the operation on.
+$x_query = "x_query_example"; // string | Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported
+
+try {
+    $result = $apiInstance->convertDataXmlQueryWithXQuery($input_file, $x_query);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDataApi->convertDataXmlQueryWithXQuery: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input XML file to perform the operation on. |
+ **x_query** | **string**| Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported |
+
+### Return type
+
+[**\Swagger\Client\Model\XmlQueryWithXQueryResult**](../Model/XmlQueryWithXQueryResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDataXmlQueryWithXQueryMulti**
+> \Swagger\Client\Model\XmlQueryWithXQueryMultiResult convertDataXmlQueryWithXQueryMulti($input_file1, $x_query, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10)
+
+Query multiple XML files using XQuery query, get results
+
+Return the reuslts of querying an XML document with an XQuery expression.  Supports XQuery 3.1 and earlier.  This API is optimized for multiple XML documents as input.  You can refer to the contents of a given document by name, for example doc(\"books.xml\") or doc(\"restaurants.xml\") if you included two input files named books.xml and restaurants.xml.  If input files contain no file name, they will default to file names input1.xml, input2.xml and so on.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDataApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file1 = "/path/to/file.txt"; // \SplFileObject | First input XML file to perform the operation on.
+$x_query = "x_query_example"; // string | Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported
+$input_file2 = "/path/to/file.txt"; // \SplFileObject | Second input XML file to perform the operation on.
+$input_file3 = "/path/to/file.txt"; // \SplFileObject | Third input XML file to perform the operation on.
+$input_file4 = "/path/to/file.txt"; // \SplFileObject | Fourth input XML file to perform the operation on.
+$input_file5 = "/path/to/file.txt"; // \SplFileObject | Fifth input XML file to perform the operation on.
+$input_file6 = "/path/to/file.txt"; // \SplFileObject | Sixth input XML file to perform the operation on.
+$input_file7 = "/path/to/file.txt"; // \SplFileObject | Seventh input XML file to perform the operation on.
+$input_file8 = "/path/to/file.txt"; // \SplFileObject | Eighth input XML file to perform the operation on.
+$input_file9 = "/path/to/file.txt"; // \SplFileObject | Ninth input XML file to perform the operation on.
+$input_file10 = "/path/to/file.txt"; // \SplFileObject | Tenth input XML file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDataXmlQueryWithXQueryMulti($input_file1, $x_query, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDataApi->convertDataXmlQueryWithXQueryMulti: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file1** | **\SplFileObject**| First input XML file to perform the operation on. |
+ **x_query** | **string**| Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported |
+ **input_file2** | **\SplFileObject**| Second input XML file to perform the operation on. | [optional]
+ **input_file3** | **\SplFileObject**| Third input XML file to perform the operation on. | [optional]
+ **input_file4** | **\SplFileObject**| Fourth input XML file to perform the operation on. | [optional]
+ **input_file5** | **\SplFileObject**| Fifth input XML file to perform the operation on. | [optional]
+ **input_file6** | **\SplFileObject**| Sixth input XML file to perform the operation on. | [optional]
+ **input_file7** | **\SplFileObject**| Seventh input XML file to perform the operation on. | [optional]
+ **input_file8** | **\SplFileObject**| Eighth input XML file to perform the operation on. | [optional]
+ **input_file9** | **\SplFileObject**| Ninth input XML file to perform the operation on. | [optional]
+ **input_file10** | **\SplFileObject**| Tenth input XML file to perform the operation on. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\XmlQueryWithXQueryMultiResult**](../Model/XmlQueryWithXQueryMultiResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

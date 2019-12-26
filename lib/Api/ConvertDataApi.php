@@ -2616,7 +2616,7 @@ class ConvertDataApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\XmlFIlterWithXPathResult
+     * @return \Swagger\Client\Model\XmlFilterWithXPathResult
      */
     public function convertDataXmlFilterWithXPath($x_path_expression, $input_file)
     {
@@ -2634,11 +2634,11 @@ class ConvertDataApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\XmlFIlterWithXPathResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\XmlFilterWithXPathResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDataXmlFilterWithXPathWithHttpInfo($x_path_expression, $input_file)
     {
-        $returnType = '\Swagger\Client\Model\XmlFIlterWithXPathResult';
+        $returnType = '\Swagger\Client\Model\XmlFilterWithXPathResult';
         $request = $this->convertDataXmlFilterWithXPathRequest($x_path_expression, $input_file);
 
         try {
@@ -2690,7 +2690,7 @@ class ConvertDataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\XmlFIlterWithXPathResult',
+                        '\Swagger\Client\Model\XmlFilterWithXPathResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2734,7 +2734,7 @@ class ConvertDataApi
      */
     public function convertDataXmlFilterWithXPathAsyncWithHttpInfo($x_path_expression, $input_file)
     {
-        $returnType = '\Swagger\Client\Model\XmlFIlterWithXPathResult';
+        $returnType = '\Swagger\Client\Model\XmlFilterWithXPathResult';
         $request = $this->convertDataXmlFilterWithXPathRequest($x_path_expression, $input_file);
 
         return $this->client
@@ -2827,6 +2827,654 @@ class ConvertDataApi
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json', 'text/json', 'application/xml', 'text/xml'],
                 ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDataXmlQueryWithXQuery
+     *
+     * Query an XML file using XQuery query, get results
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_query Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\XmlQueryWithXQueryResult
+     */
+    public function convertDataXmlQueryWithXQuery($input_file, $x_query)
+    {
+        list($response) = $this->convertDataXmlQueryWithXQueryWithHttpInfo($input_file, $x_query);
+        return $response;
+    }
+
+    /**
+     * Operation convertDataXmlQueryWithXQueryWithHttpInfo
+     *
+     * Query an XML file using XQuery query, get results
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_query Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\XmlQueryWithXQueryResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDataXmlQueryWithXQueryWithHttpInfo($input_file, $x_query)
+    {
+        $returnType = '\Swagger\Client\Model\XmlQueryWithXQueryResult';
+        $request = $this->convertDataXmlQueryWithXQueryRequest($input_file, $x_query);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\XmlQueryWithXQueryResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDataXmlQueryWithXQueryAsync
+     *
+     * Query an XML file using XQuery query, get results
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_query Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlQueryWithXQueryAsync($input_file, $x_query)
+    {
+        return $this->convertDataXmlQueryWithXQueryAsyncWithHttpInfo($input_file, $x_query)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDataXmlQueryWithXQueryAsyncWithHttpInfo
+     *
+     * Query an XML file using XQuery query, get results
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_query Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlQueryWithXQueryAsyncWithHttpInfo($input_file, $x_query)
+    {
+        $returnType = '\Swagger\Client\Model\XmlQueryWithXQueryResult';
+        $request = $this->convertDataXmlQueryWithXQueryRequest($input_file, $x_query);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDataXmlQueryWithXQuery'
+     *
+     * @param  \SplFileObject $input_file Input XML file to perform the operation on. (required)
+     * @param  string $x_query Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDataXmlQueryWithXQueryRequest($input_file, $x_query)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDataXmlQueryWithXQuery'
+            );
+        }
+        // verify the required parameter 'x_query' is set
+        if ($x_query === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $x_query when calling convertDataXmlQueryWithXQuery'
+            );
+        }
+
+        $resourcePath = '/convert/xml/query/xquery';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_query !== null) {
+            $headerParams['XQuery'] = ObjectSerializer::toHeaderValue($x_query);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDataXmlQueryWithXQueryMulti
+     *
+     * Query multiple XML files using XQuery query, get results
+     *
+     * @param  \SplFileObject $input_file1 First input XML file to perform the operation on. (required)
+     * @param  string $x_query Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported (required)
+     * @param  \SplFileObject $input_file2 Second input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file3 Third input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input XML file to perform the operation on. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\XmlQueryWithXQueryMultiResult
+     */
+    public function convertDataXmlQueryWithXQueryMulti($input_file1, $x_query, $input_file2 = null, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
+    {
+        list($response) = $this->convertDataXmlQueryWithXQueryMultiWithHttpInfo($input_file1, $x_query, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10);
+        return $response;
+    }
+
+    /**
+     * Operation convertDataXmlQueryWithXQueryMultiWithHttpInfo
+     *
+     * Query multiple XML files using XQuery query, get results
+     *
+     * @param  \SplFileObject $input_file1 First input XML file to perform the operation on. (required)
+     * @param  string $x_query Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported (required)
+     * @param  \SplFileObject $input_file2 Second input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file3 Third input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input XML file to perform the operation on. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\XmlQueryWithXQueryMultiResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDataXmlQueryWithXQueryMultiWithHttpInfo($input_file1, $x_query, $input_file2 = null, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
+    {
+        $returnType = '\Swagger\Client\Model\XmlQueryWithXQueryMultiResult';
+        $request = $this->convertDataXmlQueryWithXQueryMultiRequest($input_file1, $x_query, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\XmlQueryWithXQueryMultiResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDataXmlQueryWithXQueryMultiAsync
+     *
+     * Query multiple XML files using XQuery query, get results
+     *
+     * @param  \SplFileObject $input_file1 First input XML file to perform the operation on. (required)
+     * @param  string $x_query Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported (required)
+     * @param  \SplFileObject $input_file2 Second input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file3 Third input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input XML file to perform the operation on. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlQueryWithXQueryMultiAsync($input_file1, $x_query, $input_file2 = null, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
+    {
+        return $this->convertDataXmlQueryWithXQueryMultiAsyncWithHttpInfo($input_file1, $x_query, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDataXmlQueryWithXQueryMultiAsyncWithHttpInfo
+     *
+     * Query multiple XML files using XQuery query, get results
+     *
+     * @param  \SplFileObject $input_file1 First input XML file to perform the operation on. (required)
+     * @param  string $x_query Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported (required)
+     * @param  \SplFileObject $input_file2 Second input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file3 Third input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input XML file to perform the operation on. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDataXmlQueryWithXQueryMultiAsyncWithHttpInfo($input_file1, $x_query, $input_file2 = null, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
+    {
+        $returnType = '\Swagger\Client\Model\XmlQueryWithXQueryMultiResult';
+        $request = $this->convertDataXmlQueryWithXQueryMultiRequest($input_file1, $x_query, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDataXmlQueryWithXQueryMulti'
+     *
+     * @param  \SplFileObject $input_file1 First input XML file to perform the operation on. (required)
+     * @param  string $x_query Valid XML XQuery 3.1 or earlier query expression; multi-line expressions are supported (required)
+     * @param  \SplFileObject $input_file2 Second input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file3 Third input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input XML file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input XML file to perform the operation on. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDataXmlQueryWithXQueryMultiRequest($input_file1, $x_query, $input_file2 = null, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
+    {
+        // verify the required parameter 'input_file1' is set
+        if ($input_file1 === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file1 when calling convertDataXmlQueryWithXQueryMulti'
+            );
+        }
+        // verify the required parameter 'x_query' is set
+        if ($x_query === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $x_query when calling convertDataXmlQueryWithXQueryMulti'
+            );
+        }
+
+        $resourcePath = '/convert/xml/query/xquery/multi';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_query !== null) {
+            $headerParams['XQuery'] = ObjectSerializer::toHeaderValue($x_query);
+        }
+
+
+        // form params
+        if ($input_file1 !== null) {
+            $multipart = true;
+            $formParams['inputFile1'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file1), 'rb');
+        }
+        // form params
+        if ($input_file2 !== null) {
+            $multipart = true;
+            $formParams['inputFile2'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file2), 'rb');
+        }
+        // form params
+        if ($input_file3 !== null) {
+            $multipart = true;
+            $formParams['inputFile3'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file3), 'rb');
+        }
+        // form params
+        if ($input_file4 !== null) {
+            $multipart = true;
+            $formParams['inputFile4'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file4), 'rb');
+        }
+        // form params
+        if ($input_file5 !== null) {
+            $multipart = true;
+            $formParams['inputFile5'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file5), 'rb');
+        }
+        // form params
+        if ($input_file6 !== null) {
+            $multipart = true;
+            $formParams['inputFile6'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file6), 'rb');
+        }
+        // form params
+        if ($input_file7 !== null) {
+            $multipart = true;
+            $formParams['inputFile7'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file7), 'rb');
+        }
+        // form params
+        if ($input_file8 !== null) {
+            $multipart = true;
+            $formParams['inputFile8'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file8), 'rb');
+        }
+        // form params
+        if ($input_file9 !== null) {
+            $multipart = true;
+            $formParams['inputFile9'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file9), 'rb');
+        }
+        // form params
+        if ($input_file10 !== null) {
+            $multipart = true;
+            $formParams['inputFile10'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file10), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                []
             );
         }
 

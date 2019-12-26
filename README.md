@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.6.8
+- Package version: 1.6.9
 
 
 ## Requirements
@@ -98,6 +98,8 @@ Class | Method | HTTP request | Description
 *ConvertDataApi* | [**convertDataXmlEditReplaceWithXPath**](docs/Api/ConvertDataApi.md#convertdataxmleditreplacewithxpath) | **POST** /convert/xml/edit/xpath/replace | Replaces XML nodes matching XPath expression with new node
 *ConvertDataApi* | [**convertDataXmlEditSetValueWithXPath**](docs/Api/ConvertDataApi.md#convertdataxmleditsetvaluewithxpath) | **POST** /convert/xml/edit/xpath/set-value | Sets the value contents of XML nodes matching XPath expression
 *ConvertDataApi* | [**convertDataXmlFilterWithXPath**](docs/Api/ConvertDataApi.md#convertdataxmlfilterwithxpath) | **POST** /convert/xml/select/xpath | Filter, select XML nodes using XPath expression, get results
+*ConvertDataApi* | [**convertDataXmlQueryWithXQuery**](docs/Api/ConvertDataApi.md#convertdataxmlquerywithxquery) | **POST** /convert/xml/query/xquery | Query an XML file using XQuery query, get results
+*ConvertDataApi* | [**convertDataXmlQueryWithXQueryMulti**](docs/Api/ConvertDataApi.md#convertdataxmlquerywithxquerymulti) | **POST** /convert/xml/query/xquery/multi | Query multiple XML files using XQuery query, get results
 *ConvertDataApi* | [**convertDataXmlRemoveWithXPath**](docs/Api/ConvertDataApi.md#convertdataxmlremovewithxpath) | **POST** /convert/xml/edit/xpath/remove | Remove, delete XML nodes and items matching XPath expression
 *ConvertDataApi* | [**convertDataXmlToJson**](docs/Api/ConvertDataApi.md#convertdataxmltojson) | **POST** /convert/xml/to/json | Convert XML to JSON conversion
 *ConvertDataApi* | [**convertDataXmlTransformWithXsltToXml**](docs/Api/ConvertDataApi.md#convertdataxmltransformwithxslttoxml) | **POST** /convert/xml/transform/xslt/to/xml | Transform XML document file with XSLT into a new XML document
@@ -338,7 +340,9 @@ Class | Method | HTTP request | Description
  - [XlsxWorksheet](docs/Model/XlsxWorksheet.md)
  - [XmlAddAttributeWithXPathResult](docs/Model/XmlAddAttributeWithXPathResult.md)
  - [XmlAddChildWithXPathResult](docs/Model/XmlAddChildWithXPathResult.md)
- - [XmlFIlterWithXPathResult](docs/Model/XmlFIlterWithXPathResult.md)
+ - [XmlFilterWithXPathResult](docs/Model/XmlFilterWithXPathResult.md)
+ - [XmlQueryWithXQueryMultiResult](docs/Model/XmlQueryWithXQueryMultiResult.md)
+ - [XmlQueryWithXQueryResult](docs/Model/XmlQueryWithXQueryResult.md)
  - [XmlRemoveAllChildrenWithXPathResult](docs/Model/XmlRemoveAllChildrenWithXPathResult.md)
  - [XmlRemoveWithXPathResult](docs/Model/XmlRemoveWithXPathResult.md)
  - [XmlReplaceWithXPathResult](docs/Model/XmlReplaceWithXPathResult.md)

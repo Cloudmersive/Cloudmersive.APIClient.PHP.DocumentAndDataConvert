@@ -172,6 +172,26 @@ class ConvertDataApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDataXmlQueryWithXQuery
+     *
+     * Query an XML file using XQuery query, get results.
+     *
+     */
+    public function testConvertDataXmlQueryWithXQuery()
+    {
+    }
+
+    /**
+     * Test case for convertDataXmlQueryWithXQueryMulti
+     *
+     * Query multiple XML files using XQuery query, get results.
+     *
+     */
+    public function testConvertDataXmlQueryWithXQueryMulti()
+    {
+    }
+
+    /**
      * Test case for convertDataXmlRemoveWithXPath
      *
      * Remove, delete XML nodes and items matching XPath expression.
