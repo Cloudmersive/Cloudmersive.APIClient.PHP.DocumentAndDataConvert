@@ -30,6 +30,7 @@ Method | HTTP request | Description
 [**editDocumentDocxUpdateTableCell**](EditDocumentApi.md#editDocumentDocxUpdateTableCell) | **POST** /convert/edit/docx/update-table-cell | Update, set contents of a table cell in an existing table in a Word DOCX document
 [**editDocumentDocxUpdateTableRow**](EditDocumentApi.md#editDocumentDocxUpdateTableRow) | **POST** /convert/edit/docx/update-table-row | Update, set contents of a table row in an existing table in a Word DOCX document
 [**editDocumentFinishEditing**](EditDocumentApi.md#editDocumentFinishEditing) | **POST** /convert/edit/finish-editing | Download result from document editing
+[**editDocumentPptxDeleteSlides**](EditDocumentApi.md#editDocumentPptxDeleteSlides) | **POST** /convert/edit/pptx/delete-slides | Delete, remove slides from a PowerPoint PPTX presentation document
 [**editDocumentPptxReplace**](EditDocumentApi.md#editDocumentPptxReplace) | **POST** /convert/edit/pptx/replace-all | Replace string in PowerPoint PPTX presentation
 [**editDocumentXlsxCreateBlankSpreadsheet**](EditDocumentApi.md#editDocumentXlsxCreateBlankSpreadsheet) | **POST** /convert/edit/xlsx/create/blank | Create a blank Excel XLSX spreadsheet
 [**editDocumentXlsxGetCellByIndex**](EditDocumentApi.md#editDocumentXlsxGetCellByIndex) | **POST** /convert/edit/xlsx/get-cell/by-index | Get cell from an Excel XLSX spreadsheet, worksheet by index
@@ -211,7 +212,7 @@ Name | Type | Description  | Notes
 
 Delete, remove pages from a Word DOCX document
 
-Returns the pages and contents of each page defined in the Word Document (DOCX) format file
+Returns the edited Word Document in the Word Document (DOCX) format file with the specified pages removed
 
 ### Example
 ```php
@@ -1455,6 +1456,61 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **req_config** | [**\Swagger\Client\Model\FinishEditingRequest**](../Model/FinishEditingRequest.md)| Cloudmersive Document URL to complete editing on |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editDocumentPptxDeleteSlides**
+> string editDocumentPptxDeleteSlides($req_config)
+
+Delete, remove slides from a PowerPoint PPTX presentation document
+
+Edits the input PowerPoint PPTX presentation document to remove the specified slides
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$req_config = new \Swagger\Client\Model\RemovePptxSlidesRequest(); // \Swagger\Client\Model\RemovePptxSlidesRequest | Presentation input request
+
+try {
+    $result = $apiInstance->editDocumentPptxDeleteSlides($req_config);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditDocumentApi->editDocumentPptxDeleteSlides: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **req_config** | [**\Swagger\Client\Model\RemovePptxSlidesRequest**](../Model/RemovePptxSlidesRequest.md)| Presentation input request |
 
 ### Return type
 

@@ -82,6 +82,16 @@ class SplitDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for splitDocumentPptx
+     *
+     * Split a single PowerPoint Presentation PPTX into Separate Slides.
+     *
+     */
+    public function testSplitDocumentPptx()
+    {
+    }
+
+    /**
      * Test case for splitDocumentXlsx
      *
      * Split a single Excel XLSX into Separate Worksheets.

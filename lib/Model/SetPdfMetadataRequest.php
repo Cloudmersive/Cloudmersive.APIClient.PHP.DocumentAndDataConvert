@@ -36,6 +36,7 @@ use \Swagger\Client\ObjectSerializer;
  * SetPdfMetadataRequest Class Doc Comment
  *
  * @category Class
+ * @description Request to set PDF metadata
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -231,7 +232,7 @@ class SetPdfMetadataRequest implements ModelInterface, ArrayAccess
     /**
      * Sets input_file_bytes
      *
-     * @param string $input_file_bytes input_file_bytes
+     * @param string $input_file_bytes Input file contents bytes for the file to modify
      *
      * @return $this
      */
@@ -260,7 +261,7 @@ class SetPdfMetadataRequest implements ModelInterface, ArrayAccess
     /**
      * Sets metadata_to_set
      *
-     * @param \Swagger\Client\Model\PdfMetadata $metadata_to_set metadata_to_set
+     * @param \Swagger\Client\Model\PdfMetadata $metadata_to_set PDF metadata to set on the file
      *
      * @return $this
      */

@@ -33,7 +33,7 @@ namespace Swagger\Client;
  * SetPdfMetadataRequestTest Class Doc Comment
  *
  * @category    Class */
-// * @description SetPdfMetadataRequest
+// * @description Request to set PDF metadata
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team

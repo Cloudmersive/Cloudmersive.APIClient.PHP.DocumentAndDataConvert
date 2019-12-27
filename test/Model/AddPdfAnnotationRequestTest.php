@@ -1,6 +1,6 @@
 <?php
 /**
- * WorksheetResultTest
+ * AddPdfAnnotationRequestTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * WorksheetResultTest Class Doc Comment
+ * AddPdfAnnotationRequestTest Class Doc Comment
  *
  * @category    Class */
-// * @description A single Excel XLSX file corresponding to one worksheet (tab) in the original spreadsheet
+// * @description Request to add annotations to a PDF
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class WorksheetResultTest extends \PHPUnit_Framework_TestCase
+class AddPdfAnnotationRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,37 +71,23 @@ class WorksheetResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "WorksheetResult"
+     * Test "AddPdfAnnotationRequest"
      */
-    public function testWorksheetResult()
+    public function testAddPdfAnnotationRequest()
     {
     }
 
     /**
-     * Test attribute "worksheet_number"
+     * Test attribute "input_file_bytes"
      */
-    public function testPropertyWorksheetNumber()
+    public function testPropertyInputFileBytes()
     {
     }
 
     /**
-     * Test attribute "worksheet_name"
+     * Test attribute "annotations_to_add"
      */
-    public function testPropertyWorksheetName()
-    {
-    }
-
-    /**
-     * Test attribute "url"
-     */
-    public function testPropertyUrl()
-    {
-    }
-
-    /**
-     * Test attribute "worksheet_contents"
-     */
-    public function testPropertyWorksheetContents()
+    public function testPropertyAnnotationsToAdd()
     {
     }
 }

@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.6.9
+- Package version: 1.7.0
 
 
 ## Requirements
@@ -172,6 +172,7 @@ Class | Method | HTTP request | Description
 *EditDocumentApi* | [**editDocumentDocxUpdateTableCell**](docs/Api/EditDocumentApi.md#editdocumentdocxupdatetablecell) | **POST** /convert/edit/docx/update-table-cell | Update, set contents of a table cell in an existing table in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxUpdateTableRow**](docs/Api/EditDocumentApi.md#editdocumentdocxupdatetablerow) | **POST** /convert/edit/docx/update-table-row | Update, set contents of a table row in an existing table in a Word DOCX document
 *EditDocumentApi* | [**editDocumentFinishEditing**](docs/Api/EditDocumentApi.md#editdocumentfinishediting) | **POST** /convert/edit/finish-editing | Download result from document editing
+*EditDocumentApi* | [**editDocumentPptxDeleteSlides**](docs/Api/EditDocumentApi.md#editdocumentpptxdeleteslides) | **POST** /convert/edit/pptx/delete-slides | Delete, remove slides from a PowerPoint PPTX presentation document
 *EditDocumentApi* | [**editDocumentPptxReplace**](docs/Api/EditDocumentApi.md#editdocumentpptxreplace) | **POST** /convert/edit/pptx/replace-all | Replace string in PowerPoint PPTX presentation
 *EditDocumentApi* | [**editDocumentXlsxCreateBlankSpreadsheet**](docs/Api/EditDocumentApi.md#editdocumentxlsxcreateblankspreadsheet) | **POST** /convert/edit/xlsx/create/blank | Create a blank Excel XLSX spreadsheet
 *EditDocumentApi* | [**editDocumentXlsxGetCellByIndex**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetcellbyindex) | **POST** /convert/edit/xlsx/get-cell/by-index | Get cell from an Excel XLSX spreadsheet, worksheet by index
@@ -181,14 +182,20 @@ Class | Method | HTTP request | Description
 *EditDocumentApi* | [**editDocumentXlsxGetStyles**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetstyles) | **POST** /convert/edit/xlsx/get-styles | Get styles from a Excel XLSX spreadsheet, worksheet
 *EditDocumentApi* | [**editDocumentXlsxGetWorksheets**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetworksheets) | **POST** /convert/edit/xlsx/get-worksheets | Get worksheets from a Excel XLSX spreadsheet
 *EditDocumentApi* | [**editDocumentXlsxInsertWorksheet**](docs/Api/EditDocumentApi.md#editdocumentxlsxinsertworksheet) | **POST** /convert/edit/xlsx/insert-worksheet | Insert a new worksheet into an Excel XLSX spreadsheet
+*EditPdfApi* | [**editPdfAddAnnotations**](docs/Api/EditPdfApi.md#editpdfaddannotations) | **POST** /convert/edit/pdf/annotations/add-item | Add one or more PDF annotations, comments in the PDF document
 *EditPdfApi* | [**editPdfDecrypt**](docs/Api/EditPdfApi.md#editpdfdecrypt) | **POST** /convert/edit/pdf/decrypt | Decrypt and password-protect a PDF
 *EditPdfApi* | [**editPdfDeletePages**](docs/Api/EditPdfApi.md#editpdfdeletepages) | **POST** /convert/edit/pdf/pages/delete | Remove / delete pages from a PDF document
 *EditPdfApi* | [**editPdfEncrypt**](docs/Api/EditPdfApi.md#editpdfencrypt) | **POST** /convert/edit/pdf/encrypt | Encrypt and password-protect a PDF
+*EditPdfApi* | [**editPdfGetAnnotations**](docs/Api/EditPdfApi.md#editpdfgetannotations) | **POST** /convert/edit/pdf/annotations/list | Get PDF annotations, including comments in the document
 *EditPdfApi* | [**editPdfGetFormFields**](docs/Api/EditPdfApi.md#editpdfgetformfields) | **POST** /convert/edit/pdf/form/get-fields | Gets PDF Form fields and values
 *EditPdfApi* | [**editPdfGetMetadata**](docs/Api/EditPdfApi.md#editpdfgetmetadata) | **POST** /convert/edit/pdf/get-metadata | Get PDF document metadata
 *EditPdfApi* | [**editPdfGetPdfTextByPages**](docs/Api/EditPdfApi.md#editpdfgetpdftextbypages) | **POST** /convert/edit/pdf/pages/get-text | Get text in a PDF document by page
 *EditPdfApi* | [**editPdfInsertPages**](docs/Api/EditPdfApi.md#editpdfinsertpages) | **POST** /convert/edit/pdf/pages/insert | Insert / copy pages from one PDF document into another
 *EditPdfApi* | [**editPdfRasterize**](docs/Api/EditPdfApi.md#editpdfrasterize) | **POST** /convert/edit/pdf/rasterize | Rasterize a PDF to an image-based PDF
+*EditPdfApi* | [**editPdfRemoveAllAnnotations**](docs/Api/EditPdfApi.md#editpdfremoveallannotations) | **POST** /convert/edit/pdf/annotations/remove-all | Remove all PDF annotations, including comments in the document
+*EditPdfApi* | [**editPdfRemoveAnnotationItem**](docs/Api/EditPdfApi.md#editpdfremoveannotationitem) | **POST** /convert/edit/pdf/annotations/remove-item | Remove a specific PDF annotation, comment in the document
+*EditPdfApi* | [**editPdfRotateAllPages**](docs/Api/EditPdfApi.md#editpdfrotateallpages) | **POST** /convert/edit/pdf/pages/rotate/all | Rotate all pages in a PDF document
+*EditPdfApi* | [**editPdfRotatePageRange**](docs/Api/EditPdfApi.md#editpdfrotatepagerange) | **POST** /convert/edit/pdf/pages/rotate/page-range | Rotate a range, subset of pages in a PDF document
 *EditPdfApi* | [**editPdfSetFormFields**](docs/Api/EditPdfApi.md#editpdfsetformfields) | **POST** /convert/edit/pdf/form/set-fields | Sets ands fills PDF Form field values
 *EditPdfApi* | [**editPdfSetMetadata**](docs/Api/EditPdfApi.md#editpdfsetmetadata) | **POST** /convert/edit/pdf/set-metadata | Sets PDF document metadata
 *EditPdfApi* | [**editPdfSetPermissions**](docs/Api/EditPdfApi.md#editpdfsetpermissions) | **POST** /convert/edit/pdf/encrypt/set-permissions | Encrypt, password-protect and set restricted permissions on a PDF
@@ -203,6 +210,7 @@ Class | Method | HTTP request | Description
 *MergeDocumentApi* | [**mergeDocumentXlsx**](docs/Api/MergeDocumentApi.md#mergedocumentxlsx) | **POST** /convert/merge/xlsx | Merge Two Excel XLSX Together
 *MergeDocumentApi* | [**mergeDocumentXlsxMulti**](docs/Api/MergeDocumentApi.md#mergedocumentxlsxmulti) | **POST** /convert/merge/xlsx/multi | Merge Multple Excel XLSX Together
 *SplitDocumentApi* | [**splitDocumentPdfByPage**](docs/Api/SplitDocumentApi.md#splitdocumentpdfbypage) | **POST** /convert/split/pdf | Split a PDF file into separate PDF files, one per page
+*SplitDocumentApi* | [**splitDocumentPptx**](docs/Api/SplitDocumentApi.md#splitdocumentpptx) | **POST** /convert/split/pptx | Split a single PowerPoint Presentation PPTX into Separate Slides
 *SplitDocumentApi* | [**splitDocumentXlsx**](docs/Api/SplitDocumentApi.md#splitdocumentxlsx) | **POST** /convert/split/xlsx | Split a single Excel XLSX into Separate Worksheets
 *ValidateDocumentApi* | [**validateDocumentAutodetectValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentautodetectvalidation) | **POST** /convert/validate/autodetect | Autodetect content type and validate
 *ValidateDocumentApi* | [**validateDocumentDocxValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentdocxvalidation) | **POST** /convert/validate/docx | Validate a Word document (DOCX)
@@ -217,6 +225,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AddPdfAnnotationRequest](docs/Model/AddPdfAnnotationRequest.md)
  - [AlternateFileFormatCandidate](docs/Model/AlternateFileFormatCandidate.md)
  - [AutodetectDocumentValidationResult](docs/Model/AutodetectDocumentValidationResult.md)
  - [AutodetectGetInfoResult](docs/Model/AutodetectGetInfoResult.md)
@@ -276,6 +285,7 @@ Class | Method | HTTP request | Description
  - [GetDocxTablesRequest](docs/Model/GetDocxTablesRequest.md)
  - [GetDocxTablesResponse](docs/Model/GetDocxTablesResponse.md)
  - [GetImageInfoResult](docs/Model/GetImageInfoResult.md)
+ - [GetPdfAnnotationsResult](docs/Model/GetPdfAnnotationsResult.md)
  - [GetXlsxCellRequest](docs/Model/GetXlsxCellRequest.md)
  - [GetXlsxCellResponse](docs/Model/GetXlsxCellResponse.md)
  - [GetXlsxColumnsRequest](docs/Model/GetXlsxColumnsRequest.md)
@@ -307,6 +317,7 @@ Class | Method | HTTP request | Description
  - [InsertXlsxWorksheetResponse](docs/Model/InsertXlsxWorksheetResponse.md)
  - [MultipageImageFormatConversionResult](docs/Model/MultipageImageFormatConversionResult.md)
  - [PageConversionResult](docs/Model/PageConversionResult.md)
+ - [PdfAnnotation](docs/Model/PdfAnnotation.md)
  - [PdfDocument](docs/Model/PdfDocument.md)
  - [PdfFormField](docs/Model/PdfFormField.md)
  - [PdfFormFields](docs/Model/PdfFormFields.md)
@@ -314,15 +325,18 @@ Class | Method | HTTP request | Description
  - [PdfPageText](docs/Model/PdfPageText.md)
  - [PdfTextByPageResult](docs/Model/PdfTextByPageResult.md)
  - [PdfToPngResult](docs/Model/PdfToPngResult.md)
+ - [PresentationResult](docs/Model/PresentationResult.md)
  - [RemoveDocxHeadersAndFootersRequest](docs/Model/RemoveDocxHeadersAndFootersRequest.md)
  - [RemoveDocxHeadersAndFootersResponse](docs/Model/RemoveDocxHeadersAndFootersResponse.md)
  - [RemoveDocxPagesRequest](docs/Model/RemoveDocxPagesRequest.md)
+ - [RemovePptxSlidesRequest](docs/Model/RemovePptxSlidesRequest.md)
  - [ReplaceStringRequest](docs/Model/ReplaceStringRequest.md)
  - [ScreenshotRequest](docs/Model/ScreenshotRequest.md)
  - [SetFormFieldValue](docs/Model/SetFormFieldValue.md)
  - [SetPdfFormFieldsRequest](docs/Model/SetPdfFormFieldsRequest.md)
  - [SetPdfMetadataRequest](docs/Model/SetPdfMetadataRequest.md)
  - [SplitPdfResult](docs/Model/SplitPdfResult.md)
+ - [SplitPptxPresentationResult](docs/Model/SplitPptxPresentationResult.md)
  - [SplitXlsxWorksheetResult](docs/Model/SplitXlsxWorksheetResult.md)
  - [TextConversionResult](docs/Model/TextConversionResult.md)
  - [UpdateDocxTableCellRequest](docs/Model/UpdateDocxTableCellRequest.md)

@@ -83,6 +83,268 @@ class EditPdfApi
     }
 
     /**
+     * Operation editPdfAddAnnotations
+     *
+     * Add one or more PDF annotations, comments in the PDF document
+     *
+     * @param  \Swagger\Client\Model\AddPdfAnnotationRequest $request request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function editPdfAddAnnotations($request)
+    {
+        list($response) = $this->editPdfAddAnnotationsWithHttpInfo($request);
+        return $response;
+    }
+
+    /**
+     * Operation editPdfAddAnnotationsWithHttpInfo
+     *
+     * Add one or more PDF annotations, comments in the PDF document
+     *
+     * @param  \Swagger\Client\Model\AddPdfAnnotationRequest $request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editPdfAddAnnotationsWithHttpInfo($request)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfAddAnnotationsRequest($request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editPdfAddAnnotationsAsync
+     *
+     * Add one or more PDF annotations, comments in the PDF document
+     *
+     * @param  \Swagger\Client\Model\AddPdfAnnotationRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfAddAnnotationsAsync($request)
+    {
+        return $this->editPdfAddAnnotationsAsyncWithHttpInfo($request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editPdfAddAnnotationsAsyncWithHttpInfo
+     *
+     * Add one or more PDF annotations, comments in the PDF document
+     *
+     * @param  \Swagger\Client\Model\AddPdfAnnotationRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfAddAnnotationsAsyncWithHttpInfo($request)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfAddAnnotationsRequest($request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editPdfAddAnnotations'
+     *
+     * @param  \Swagger\Client\Model\AddPdfAnnotationRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editPdfAddAnnotationsRequest($request)
+    {
+        // verify the required parameter 'request' is set
+        if ($request === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request when calling editPdfAddAnnotations'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pdf/annotations/add-item';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($request)) {
+            $_tempBody = $request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation editPdfDecrypt
      *
      * Decrypt and password-protect a PDF
@@ -870,6 +1132,270 @@ class EditPdfApi
         if ($encryption_key_length !== null) {
             $headerParams['encryptionKeyLength'] = ObjectSerializer::toHeaderValue($encryption_key_length);
         }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editPdfGetAnnotations
+     *
+     * Get PDF annotations, including comments in the document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\GetPdfAnnotationsResult
+     */
+    public function editPdfGetAnnotations($input_file)
+    {
+        list($response) = $this->editPdfGetAnnotationsWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation editPdfGetAnnotationsWithHttpInfo
+     *
+     * Get PDF annotations, including comments in the document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\GetPdfAnnotationsResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editPdfGetAnnotationsWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\GetPdfAnnotationsResult';
+        $request = $this->editPdfGetAnnotationsRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\GetPdfAnnotationsResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editPdfGetAnnotationsAsync
+     *
+     * Get PDF annotations, including comments in the document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfGetAnnotationsAsync($input_file)
+    {
+        return $this->editPdfGetAnnotationsAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editPdfGetAnnotationsAsyncWithHttpInfo
+     *
+     * Get PDF annotations, including comments in the document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfGetAnnotationsAsyncWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\GetPdfAnnotationsResult';
+        $request = $this->editPdfGetAnnotationsRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editPdfGetAnnotations'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editPdfGetAnnotationsRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling editPdfGetAnnotations'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pdf/annotations/list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
 
 
         // form params
@@ -2251,6 +2777,1137 @@ class EditPdfApi
         $httpBody = '';
         $multipart = false;
 
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editPdfRemoveAllAnnotations
+     *
+     * Remove all PDF annotations, including comments in the document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function editPdfRemoveAllAnnotations($input_file)
+    {
+        list($response) = $this->editPdfRemoveAllAnnotationsWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation editPdfRemoveAllAnnotationsWithHttpInfo
+     *
+     * Remove all PDF annotations, including comments in the document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editPdfRemoveAllAnnotationsWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfRemoveAllAnnotationsRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editPdfRemoveAllAnnotationsAsync
+     *
+     * Remove all PDF annotations, including comments in the document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfRemoveAllAnnotationsAsync($input_file)
+    {
+        return $this->editPdfRemoveAllAnnotationsAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editPdfRemoveAllAnnotationsAsyncWithHttpInfo
+     *
+     * Remove all PDF annotations, including comments in the document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfRemoveAllAnnotationsAsyncWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfRemoveAllAnnotationsRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editPdfRemoveAllAnnotations'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editPdfRemoveAllAnnotationsRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling editPdfRemoveAllAnnotations'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pdf/annotations/remove-all';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editPdfRemoveAnnotationItem
+     *
+     * Remove a specific PDF annotation, comment in the document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $annotation_index The 0-based index of the annotation in the document (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function editPdfRemoveAnnotationItem($input_file, $annotation_index)
+    {
+        list($response) = $this->editPdfRemoveAnnotationItemWithHttpInfo($input_file, $annotation_index);
+        return $response;
+    }
+
+    /**
+     * Operation editPdfRemoveAnnotationItemWithHttpInfo
+     *
+     * Remove a specific PDF annotation, comment in the document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $annotation_index The 0-based index of the annotation in the document (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editPdfRemoveAnnotationItemWithHttpInfo($input_file, $annotation_index)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfRemoveAnnotationItemRequest($input_file, $annotation_index);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editPdfRemoveAnnotationItemAsync
+     *
+     * Remove a specific PDF annotation, comment in the document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $annotation_index The 0-based index of the annotation in the document (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfRemoveAnnotationItemAsync($input_file, $annotation_index)
+    {
+        return $this->editPdfRemoveAnnotationItemAsyncWithHttpInfo($input_file, $annotation_index)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editPdfRemoveAnnotationItemAsyncWithHttpInfo
+     *
+     * Remove a specific PDF annotation, comment in the document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $annotation_index The 0-based index of the annotation in the document (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfRemoveAnnotationItemAsyncWithHttpInfo($input_file, $annotation_index)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfRemoveAnnotationItemRequest($input_file, $annotation_index);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editPdfRemoveAnnotationItem'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $annotation_index The 0-based index of the annotation in the document (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editPdfRemoveAnnotationItemRequest($input_file, $annotation_index)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling editPdfRemoveAnnotationItem'
+            );
+        }
+        // verify the required parameter 'annotation_index' is set
+        if ($annotation_index === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $annotation_index when calling editPdfRemoveAnnotationItem'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pdf/annotations/remove-item';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($annotation_index !== null) {
+            $headerParams['annotationIndex'] = ObjectSerializer::toHeaderValue($annotation_index);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editPdfRotateAllPages
+     *
+     * Rotate all pages in a PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $rotation_angle The angle to rotate the page in degrees, must be a multiple of 90 degrees, e.g. 90, 180, 270, or -90, -180, -270, etc. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function editPdfRotateAllPages($input_file, $rotation_angle)
+    {
+        list($response) = $this->editPdfRotateAllPagesWithHttpInfo($input_file, $rotation_angle);
+        return $response;
+    }
+
+    /**
+     * Operation editPdfRotateAllPagesWithHttpInfo
+     *
+     * Rotate all pages in a PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $rotation_angle The angle to rotate the page in degrees, must be a multiple of 90 degrees, e.g. 90, 180, 270, or -90, -180, -270, etc. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editPdfRotateAllPagesWithHttpInfo($input_file, $rotation_angle)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfRotateAllPagesRequest($input_file, $rotation_angle);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editPdfRotateAllPagesAsync
+     *
+     * Rotate all pages in a PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $rotation_angle The angle to rotate the page in degrees, must be a multiple of 90 degrees, e.g. 90, 180, 270, or -90, -180, -270, etc. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfRotateAllPagesAsync($input_file, $rotation_angle)
+    {
+        return $this->editPdfRotateAllPagesAsyncWithHttpInfo($input_file, $rotation_angle)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editPdfRotateAllPagesAsyncWithHttpInfo
+     *
+     * Rotate all pages in a PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $rotation_angle The angle to rotate the page in degrees, must be a multiple of 90 degrees, e.g. 90, 180, 270, or -90, -180, -270, etc. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfRotateAllPagesAsyncWithHttpInfo($input_file, $rotation_angle)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfRotateAllPagesRequest($input_file, $rotation_angle);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editPdfRotateAllPages'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $rotation_angle The angle to rotate the page in degrees, must be a multiple of 90 degrees, e.g. 90, 180, 270, or -90, -180, -270, etc. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editPdfRotateAllPagesRequest($input_file, $rotation_angle)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling editPdfRotateAllPages'
+            );
+        }
+        // verify the required parameter 'rotation_angle' is set
+        if ($rotation_angle === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rotation_angle when calling editPdfRotateAllPages'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pdf/pages/rotate/all';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($rotation_angle !== null) {
+            $headerParams['rotationAngle'] = ObjectSerializer::toHeaderValue($rotation_angle);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editPdfRotatePageRange
+     *
+     * Rotate a range, subset of pages in a PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $rotation_angle The angle to rotate the page in degrees, must be a multiple of 90 degrees, e.g. 90, 180, 270, or -90, -180, -270, etc. (required)
+     * @param  int $page_start Page number (1 based) to start rotating pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop rotating pages from (inclusive). (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function editPdfRotatePageRange($input_file, $rotation_angle, $page_start, $page_end)
+    {
+        list($response) = $this->editPdfRotatePageRangeWithHttpInfo($input_file, $rotation_angle, $page_start, $page_end);
+        return $response;
+    }
+
+    /**
+     * Operation editPdfRotatePageRangeWithHttpInfo
+     *
+     * Rotate a range, subset of pages in a PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $rotation_angle The angle to rotate the page in degrees, must be a multiple of 90 degrees, e.g. 90, 180, 270, or -90, -180, -270, etc. (required)
+     * @param  int $page_start Page number (1 based) to start rotating pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop rotating pages from (inclusive). (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editPdfRotatePageRangeWithHttpInfo($input_file, $rotation_angle, $page_start, $page_end)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfRotatePageRangeRequest($input_file, $rotation_angle, $page_start, $page_end);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editPdfRotatePageRangeAsync
+     *
+     * Rotate a range, subset of pages in a PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $rotation_angle The angle to rotate the page in degrees, must be a multiple of 90 degrees, e.g. 90, 180, 270, or -90, -180, -270, etc. (required)
+     * @param  int $page_start Page number (1 based) to start rotating pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop rotating pages from (inclusive). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfRotatePageRangeAsync($input_file, $rotation_angle, $page_start, $page_end)
+    {
+        return $this->editPdfRotatePageRangeAsyncWithHttpInfo($input_file, $rotation_angle, $page_start, $page_end)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editPdfRotatePageRangeAsyncWithHttpInfo
+     *
+     * Rotate a range, subset of pages in a PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $rotation_angle The angle to rotate the page in degrees, must be a multiple of 90 degrees, e.g. 90, 180, 270, or -90, -180, -270, etc. (required)
+     * @param  int $page_start Page number (1 based) to start rotating pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop rotating pages from (inclusive). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfRotatePageRangeAsyncWithHttpInfo($input_file, $rotation_angle, $page_start, $page_end)
+    {
+        $returnType = 'string';
+        $request = $this->editPdfRotatePageRangeRequest($input_file, $rotation_angle, $page_start, $page_end);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editPdfRotatePageRange'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $rotation_angle The angle to rotate the page in degrees, must be a multiple of 90 degrees, e.g. 90, 180, 270, or -90, -180, -270, etc. (required)
+     * @param  int $page_start Page number (1 based) to start rotating pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop rotating pages from (inclusive). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editPdfRotatePageRangeRequest($input_file, $rotation_angle, $page_start, $page_end)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling editPdfRotatePageRange'
+            );
+        }
+        // verify the required parameter 'rotation_angle' is set
+        if ($rotation_angle === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rotation_angle when calling editPdfRotatePageRange'
+            );
+        }
+        // verify the required parameter 'page_start' is set
+        if ($page_start === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_start when calling editPdfRotatePageRange'
+            );
+        }
+        // verify the required parameter 'page_end' is set
+        if ($page_end === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_end when calling editPdfRotatePageRange'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pdf/pages/rotate/page-range';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($rotation_angle !== null) {
+            $headerParams['rotationAngle'] = ObjectSerializer::toHeaderValue($rotation_angle);
+        }
+        // header params
+        if ($page_start !== null) {
+            $headerParams['pageStart'] = ObjectSerializer::toHeaderValue($page_start);
+        }
+        // header params
+        if ($page_end !== null) {
+            $headerParams['pageEnd'] = ObjectSerializer::toHeaderValue($page_end);
+        }
 
 
         // form params

@@ -1,6 +1,6 @@
 <?php
 /**
- * WorksheetResultTest
+ * SplitPptxPresentationResultTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * WorksheetResultTest Class Doc Comment
+ * SplitPptxPresentationResultTest Class Doc Comment
  *
  * @category    Class */
-// * @description A single Excel XLSX file corresponding to one worksheet (tab) in the original spreadsheet
+// * @description The result of splitting a presentation into individual PowerPoint PPTX slides
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class WorksheetResultTest extends \PHPUnit_Framework_TestCase
+class SplitPptxPresentationResultTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,37 +71,23 @@ class WorksheetResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "WorksheetResult"
+     * Test "SplitPptxPresentationResult"
      */
-    public function testWorksheetResult()
+    public function testSplitPptxPresentationResult()
     {
     }
 
     /**
-     * Test attribute "worksheet_number"
+     * Test attribute "result_presentations"
      */
-    public function testPropertyWorksheetNumber()
+    public function testPropertyResultPresentations()
     {
     }
 
     /**
-     * Test attribute "worksheet_name"
+     * Test attribute "successful"
      */
-    public function testPropertyWorksheetName()
-    {
-    }
-
-    /**
-     * Test attribute "url"
-     */
-    public function testPropertyUrl()
-    {
-    }
-
-    /**
-     * Test attribute "worksheet_contents"
-     */
-    public function testPropertyWorksheetContents()
+    public function testPropertySuccessful()
     {
     }
 }

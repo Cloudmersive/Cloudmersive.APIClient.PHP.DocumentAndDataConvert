@@ -356,19 +356,293 @@ class SplitDocumentApi
     }
 
     /**
+     * Operation splitDocumentPptx
+     *
+     * Split a single PowerPoint Presentation PPTX into Separate Slides
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\SplitPptxPresentationResult
+     */
+    public function splitDocumentPptx($input_file, $return_document_contents = null)
+    {
+        list($response) = $this->splitDocumentPptxWithHttpInfo($input_file, $return_document_contents);
+        return $response;
+    }
+
+    /**
+     * Operation splitDocumentPptxWithHttpInfo
+     *
+     * Split a single PowerPoint Presentation PPTX into Separate Slides
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\SplitPptxPresentationResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function splitDocumentPptxWithHttpInfo($input_file, $return_document_contents = null)
+    {
+        $returnType = '\Swagger\Client\Model\SplitPptxPresentationResult';
+        $request = $this->splitDocumentPptxRequest($input_file, $return_document_contents);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\SplitPptxPresentationResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation splitDocumentPptxAsync
+     *
+     * Split a single PowerPoint Presentation PPTX into Separate Slides
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function splitDocumentPptxAsync($input_file, $return_document_contents = null)
+    {
+        return $this->splitDocumentPptxAsyncWithHttpInfo($input_file, $return_document_contents)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation splitDocumentPptxAsyncWithHttpInfo
+     *
+     * Split a single PowerPoint Presentation PPTX into Separate Slides
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function splitDocumentPptxAsyncWithHttpInfo($input_file, $return_document_contents = null)
+    {
+        $returnType = '\Swagger\Client\Model\SplitPptxPresentationResult';
+        $request = $this->splitDocumentPptxRequest($input_file, $return_document_contents);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'splitDocumentPptx'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function splitDocumentPptxRequest($input_file, $return_document_contents = null)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling splitDocumentPptx'
+            );
+        }
+
+        $resourcePath = '/convert/split/pptx';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($return_document_contents !== null) {
+            $headerParams['returnDocumentContents'] = ObjectSerializer::toHeaderValue($return_document_contents);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation splitDocumentXlsx
      *
      * Split a single Excel XLSX into Separate Worksheets
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\SplitXlsxWorksheetResult
      */
-    public function splitDocumentXlsx($input_file)
+    public function splitDocumentXlsx($input_file, $return_document_contents = null)
     {
-        list($response) = $this->splitDocumentXlsxWithHttpInfo($input_file);
+        list($response) = $this->splitDocumentXlsxWithHttpInfo($input_file, $return_document_contents);
         return $response;
     }
 
@@ -378,15 +652,16 @@ class SplitDocumentApi
      * Split a single Excel XLSX into Separate Worksheets
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\SplitXlsxWorksheetResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function splitDocumentXlsxWithHttpInfo($input_file)
+    public function splitDocumentXlsxWithHttpInfo($input_file, $return_document_contents = null)
     {
         $returnType = '\Swagger\Client\Model\SplitXlsxWorksheetResult';
-        $request = $this->splitDocumentXlsxRequest($input_file);
+        $request = $this->splitDocumentXlsxRequest($input_file, $return_document_contents);
 
         try {
             $options = $this->createHttpClientOption();
@@ -453,13 +728,14 @@ class SplitDocumentApi
      * Split a single Excel XLSX into Separate Worksheets
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function splitDocumentXlsxAsync($input_file)
+    public function splitDocumentXlsxAsync($input_file, $return_document_contents = null)
     {
-        return $this->splitDocumentXlsxAsyncWithHttpInfo($input_file)
+        return $this->splitDocumentXlsxAsyncWithHttpInfo($input_file, $return_document_contents)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -473,14 +749,15 @@ class SplitDocumentApi
      * Split a single Excel XLSX into Separate Worksheets
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function splitDocumentXlsxAsyncWithHttpInfo($input_file)
+    public function splitDocumentXlsxAsyncWithHttpInfo($input_file, $return_document_contents = null)
     {
         $returnType = '\Swagger\Client\Model\SplitXlsxWorksheetResult';
-        $request = $this->splitDocumentXlsxRequest($input_file);
+        $request = $this->splitDocumentXlsxRequest($input_file, $return_document_contents);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -523,11 +800,12 @@ class SplitDocumentApi
      * Create request for operation 'splitDocumentXlsx'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function splitDocumentXlsxRequest($input_file)
+    protected function splitDocumentXlsxRequest($input_file, $return_document_contents = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
@@ -543,6 +821,10 @@ class SplitDocumentApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($return_document_contents !== null) {
+            $headerParams['returnDocumentContents'] = ObjectSerializer::toHeaderValue($return_document_contents);
+        }
 
 
         // form params

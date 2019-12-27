@@ -72,6 +72,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editPdfAddAnnotations
+     *
+     * Add one or more PDF annotations, comments in the PDF document.
+     *
+     */
+    public function testEditPdfAddAnnotations()
+    {
+    }
+
+    /**
      * Test case for editPdfDecrypt
      *
      * Decrypt and password-protect a PDF.
@@ -98,6 +108,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditPdfEncrypt()
+    {
+    }
+
+    /**
+     * Test case for editPdfGetAnnotations
+     *
+     * Get PDF annotations, including comments in the document.
+     *
+     */
+    public function testEditPdfGetAnnotations()
     {
     }
 
@@ -148,6 +168,46 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditPdfRasterize()
+    {
+    }
+
+    /**
+     * Test case for editPdfRemoveAllAnnotations
+     *
+     * Remove all PDF annotations, including comments in the document.
+     *
+     */
+    public function testEditPdfRemoveAllAnnotations()
+    {
+    }
+
+    /**
+     * Test case for editPdfRemoveAnnotationItem
+     *
+     * Remove a specific PDF annotation, comment in the document.
+     *
+     */
+    public function testEditPdfRemoveAnnotationItem()
+    {
+    }
+
+    /**
+     * Test case for editPdfRotateAllPages
+     *
+     * Rotate all pages in a PDF document.
+     *
+     */
+    public function testEditPdfRotateAllPages()
+    {
+    }
+
+    /**
+     * Test case for editPdfRotatePageRange
+     *
+     * Rotate a range, subset of pages in a PDF document.
+     *
+     */
+    public function testEditPdfRotatePageRange()
     {
     }
 

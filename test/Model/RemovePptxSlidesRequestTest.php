@@ -1,6 +1,6 @@
 <?php
 /**
- * WorksheetResultTest
+ * RemovePptxSlidesRequestTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * WorksheetResultTest Class Doc Comment
+ * RemovePptxSlidesRequestTest Class Doc Comment
  *
  * @category    Class */
-// * @description A single Excel XLSX file corresponding to one worksheet (tab) in the original spreadsheet
+// * @description Input to a Remove PowerPoint PPTX Presentation Slides request
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class WorksheetResultTest extends \PHPUnit_Framework_TestCase
+class RemovePptxSlidesRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,37 +71,37 @@ class WorksheetResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "WorksheetResult"
+     * Test "RemovePptxSlidesRequest"
      */
-    public function testWorksheetResult()
+    public function testRemovePptxSlidesRequest()
     {
     }
 
     /**
-     * Test attribute "worksheet_number"
+     * Test attribute "input_file_bytes"
      */
-    public function testPropertyWorksheetNumber()
+    public function testPropertyInputFileBytes()
     {
     }
 
     /**
-     * Test attribute "worksheet_name"
+     * Test attribute "input_file_url"
      */
-    public function testPropertyWorksheetName()
+    public function testPropertyInputFileUrl()
     {
     }
 
     /**
-     * Test attribute "url"
+     * Test attribute "start_delete_slide_number"
      */
-    public function testPropertyUrl()
+    public function testPropertyStartDeleteSlideNumber()
     {
     }
 
     /**
-     * Test attribute "worksheet_contents"
+     * Test attribute "end_delete_slide_number"
      */
-    public function testPropertyWorksheetContents()
+    public function testPropertyEndDeleteSlideNumber()
     {
     }
 }

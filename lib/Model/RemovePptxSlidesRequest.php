@@ -1,6 +1,6 @@
 <?php
 /**
- * WorksheetResult
+ * RemovePptxSlidesRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * WorksheetResult Class Doc Comment
+ * RemovePptxSlidesRequest Class Doc Comment
  *
  * @category Class
- * @description A single Excel XLSX file corresponding to one worksheet (tab) in the original spreadsheet
+ * @description Input to a Remove PowerPoint PPTX Presentation Slides request
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class WorksheetResult implements ModelInterface, ArrayAccess
+class RemovePptxSlidesRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class WorksheetResult implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'WorksheetResult';
+    protected static $swaggerModelName = 'RemovePptxSlidesRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,10 @@ class WorksheetResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'worksheet_number' => 'int',
-        'worksheet_name' => 'string',
-        'url' => 'string',
-        'worksheet_contents' => 'string'
+        'input_file_bytes' => 'string',
+        'input_file_url' => 'string',
+        'start_delete_slide_number' => 'int',
+        'end_delete_slide_number' => 'int'
     ];
 
     /**
@@ -70,10 +70,10 @@ class WorksheetResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'worksheet_number' => 'int32',
-        'worksheet_name' => null,
-        'url' => null,
-        'worksheet_contents' => 'byte'
+        'input_file_bytes' => 'byte',
+        'input_file_url' => null,
+        'start_delete_slide_number' => 'int32',
+        'end_delete_slide_number' => 'int32'
     ];
 
     /**
@@ -103,10 +103,10 @@ class WorksheetResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'worksheet_number' => 'WorksheetNumber',
-        'worksheet_name' => 'WorksheetName',
-        'url' => 'URL',
-        'worksheet_contents' => 'WorksheetContents'
+        'input_file_bytes' => 'InputFileBytes',
+        'input_file_url' => 'InputFileUrl',
+        'start_delete_slide_number' => 'StartDeleteSlideNumber',
+        'end_delete_slide_number' => 'EndDeleteSlideNumber'
     ];
 
     /**
@@ -115,10 +115,10 @@ class WorksheetResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'worksheet_number' => 'setWorksheetNumber',
-        'worksheet_name' => 'setWorksheetName',
-        'url' => 'setUrl',
-        'worksheet_contents' => 'setWorksheetContents'
+        'input_file_bytes' => 'setInputFileBytes',
+        'input_file_url' => 'setInputFileUrl',
+        'start_delete_slide_number' => 'setStartDeleteSlideNumber',
+        'end_delete_slide_number' => 'setEndDeleteSlideNumber'
     ];
 
     /**
@@ -127,10 +127,10 @@ class WorksheetResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'worksheet_number' => 'getWorksheetNumber',
-        'worksheet_name' => 'getWorksheetName',
-        'url' => 'getUrl',
-        'worksheet_contents' => 'getWorksheetContents'
+        'input_file_bytes' => 'getInputFileBytes',
+        'input_file_url' => 'getInputFileUrl',
+        'start_delete_slide_number' => 'getStartDeleteSlideNumber',
+        'end_delete_slide_number' => 'getEndDeleteSlideNumber'
     ];
 
     /**
@@ -193,10 +193,10 @@ class WorksheetResult implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['worksheet_number'] = isset($data['worksheet_number']) ? $data['worksheet_number'] : null;
-        $this->container['worksheet_name'] = isset($data['worksheet_name']) ? $data['worksheet_name'] : null;
-        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
-        $this->container['worksheet_contents'] = isset($data['worksheet_contents']) ? $data['worksheet_contents'] : null;
+        $this->container['input_file_bytes'] = isset($data['input_file_bytes']) ? $data['input_file_bytes'] : null;
+        $this->container['input_file_url'] = isset($data['input_file_url']) ? $data['input_file_url'] : null;
+        $this->container['start_delete_slide_number'] = isset($data['start_delete_slide_number']) ? $data['start_delete_slide_number'] : null;
+        $this->container['end_delete_slide_number'] = isset($data['end_delete_slide_number']) ? $data['end_delete_slide_number'] : null;
     }
 
     /**
@@ -208,8 +208,8 @@ class WorksheetResult implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['worksheet_contents']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['worksheet_contents'])) {
-            $invalidProperties[] = "invalid value for 'worksheet_contents', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
+        if (!is_null($this->container['input_file_bytes']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
+            $invalidProperties[] = "invalid value for 'input_file_bytes', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
         }
 
         return $invalidProperties;
@@ -224,7 +224,7 @@ class WorksheetResult implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['worksheet_contents'])) {
+        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
             return false;
         }
         return true;
@@ -232,102 +232,102 @@ class WorksheetResult implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets worksheet_number
+     * Gets input_file_bytes
+     *
+     * @return string
+     */
+    public function getInputFileBytes()
+    {
+        return $this->container['input_file_bytes'];
+    }
+
+    /**
+     * Sets input_file_bytes
+     *
+     * @param string $input_file_bytes Optional: Bytes of the input file to operate on
+     *
+     * @return $this
+     */
+    public function setInputFileBytes($input_file_bytes)
+    {
+
+        if (!is_null($input_file_bytes) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $input_file_bytes))) {
+            throw new \InvalidArgumentException("invalid value for $input_file_bytes when calling RemovePptxSlidesRequest., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
+        }
+
+        $this->container['input_file_bytes'] = $input_file_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets input_file_url
+     *
+     * @return string
+     */
+    public function getInputFileUrl()
+    {
+        return $this->container['input_file_url'];
+    }
+
+    /**
+     * Sets input_file_url
+     *
+     * @param string $input_file_url Optional: URL of a file to operate on as input.  This can be a public URL, or you can also use the begin-editing API to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public).
+     *
+     * @return $this
+     */
+    public function setInputFileUrl($input_file_url)
+    {
+        $this->container['input_file_url'] = $input_file_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_delete_slide_number
      *
      * @return int
      */
-    public function getWorksheetNumber()
+    public function getStartDeleteSlideNumber()
     {
-        return $this->container['worksheet_number'];
+        return $this->container['start_delete_slide_number'];
     }
 
     /**
-     * Sets worksheet_number
+     * Sets start_delete_slide_number
      *
-     * @param int $worksheet_number Worksheet number of the converted page, starting with 1 for the left-most worksheet
+     * @param int $start_delete_slide_number Slide number (1-based) to start deleting slides; inclusive
      *
      * @return $this
      */
-    public function setWorksheetNumber($worksheet_number)
+    public function setStartDeleteSlideNumber($start_delete_slide_number)
     {
-        $this->container['worksheet_number'] = $worksheet_number;
+        $this->container['start_delete_slide_number'] = $start_delete_slide_number;
 
         return $this;
     }
 
     /**
-     * Gets worksheet_name
+     * Gets end_delete_slide_number
      *
-     * @return string
+     * @return int
      */
-    public function getWorksheetName()
+    public function getEndDeleteSlideNumber()
     {
-        return $this->container['worksheet_name'];
+        return $this->container['end_delete_slide_number'];
     }
 
     /**
-     * Sets worksheet_name
+     * Sets end_delete_slide_number
      *
-     * @param string $worksheet_name The name of the worksheet
+     * @param int $end_delete_slide_number Slide number (1-based) to stop deleting slides; inclusive
      *
      * @return $this
      */
-    public function setWorksheetName($worksheet_name)
+    public function setEndDeleteSlideNumber($end_delete_slide_number)
     {
-        $this->container['worksheet_name'] = $worksheet_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string $url URL to the XLSX file of this worksheet; file is stored in an in-memory cache and will be deleted
-     *
-     * @return $this
-     */
-    public function setUrl($url)
-    {
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets worksheet_contents
-     *
-     * @return string
-     */
-    public function getWorksheetContents()
-    {
-        return $this->container['worksheet_contents'];
-    }
-
-    /**
-     * Sets worksheet_contents
-     *
-     * @param string $worksheet_contents Contents of the worksheet in bytes
-     *
-     * @return $this
-     */
-    public function setWorksheetContents($worksheet_contents)
-    {
-
-        if (!is_null($worksheet_contents) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $worksheet_contents))) {
-            throw new \InvalidArgumentException("invalid value for $worksheet_contents when calling WorksheetResult., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
-        }
-
-        $this->container['worksheet_contents'] = $worksheet_contents;
+        $this->container['end_delete_slide_number'] = $end_delete_slide_number;
 
         return $this;
     }

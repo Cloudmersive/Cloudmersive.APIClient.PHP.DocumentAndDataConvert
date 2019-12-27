@@ -1,6 +1,6 @@
 <?php
 /**
- * WorksheetResultTest
+ * GetPdfAnnotationsResultTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * WorksheetResultTest Class Doc Comment
+ * GetPdfAnnotationsResultTest Class Doc Comment
  *
  * @category    Class */
-// * @description A single Excel XLSX file corresponding to one worksheet (tab) in the original spreadsheet
+// * @description Result of retrieving annotations from a PDF document
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class WorksheetResultTest extends \PHPUnit_Framework_TestCase
+class GetPdfAnnotationsResultTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,37 +71,23 @@ class WorksheetResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "WorksheetResult"
+     * Test "GetPdfAnnotationsResult"
      */
-    public function testWorksheetResult()
+    public function testGetPdfAnnotationsResult()
     {
     }
 
     /**
-     * Test attribute "worksheet_number"
+     * Test attribute "successful"
      */
-    public function testPropertyWorksheetNumber()
+    public function testPropertySuccessful()
     {
     }
 
     /**
-     * Test attribute "worksheet_name"
+     * Test attribute "annotations"
      */
-    public function testPropertyWorksheetName()
-    {
-    }
-
-    /**
-     * Test attribute "url"
-     */
-    public function testPropertyUrl()
-    {
-    }
-
-    /**
-     * Test attribute "worksheet_contents"
-     */
-    public function testPropertyWorksheetContents()
+    public function testPropertyAnnotations()
     {
     }
 }

@@ -332,6 +332,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentPptxDeleteSlides
+     *
+     * Delete, remove slides from a PowerPoint PPTX presentation document.
+     *
+     */
+    public function testEditDocumentPptxDeleteSlides()
+    {
+    }
+
+    /**
      * Test case for editDocumentPptxReplace
      *
      * Replace string in PowerPoint PPTX presentation.

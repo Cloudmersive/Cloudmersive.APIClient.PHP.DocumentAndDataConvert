@@ -1,10 +1,10 @@
-# SetPdfMetadataRequest
+# SplitPptxPresentationResult
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**input_file_bytes** | **string** | Input file contents bytes for the file to modify | [optional] 
-**metadata_to_set** | [**\Swagger\Client\Model\PdfMetadata**](PdfMetadata.md) | PDF metadata to set on the file | [optional] 
+**result_presentations** | [**\Swagger\Client\Model\PresentationResult[]**](PresentationResult.md) |  | [optional] 
+**successful** | **bool** | True if the operation was successful, false otherwise | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

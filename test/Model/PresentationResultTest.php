@@ -1,6 +1,6 @@
 <?php
 /**
- * WorksheetResultTest
+ * PresentationResultTest
  *
  * PHP version 5
  *
@@ -30,7 +30,7 @@
 namespace Swagger\Client;
 
 /**
- * WorksheetResultTest Class Doc Comment
+ * PresentationResultTest Class Doc Comment
  *
  * @category    Class */
 // * @description A single Excel XLSX file corresponding to one worksheet (tab) in the original spreadsheet
@@ -39,7 +39,7 @@ namespace Swagger\Client;
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class WorksheetResultTest extends \PHPUnit_Framework_TestCase
+class PresentationResultTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,23 +71,16 @@ class WorksheetResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "WorksheetResult"
+     * Test "PresentationResult"
      */
-    public function testWorksheetResult()
+    public function testPresentationResult()
     {
     }
 
     /**
-     * Test attribute "worksheet_number"
+     * Test attribute "slide_number"
      */
-    public function testPropertyWorksheetNumber()
-    {
-    }
-
-    /**
-     * Test attribute "worksheet_name"
-     */
-    public function testPropertyWorksheetName()
+    public function testPropertySlideNumber()
     {
     }
 
@@ -99,9 +92,9 @@ class WorksheetResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "worksheet_contents"
+     * Test attribute "presentation_contents"
      */
-    public function testPropertyWorksheetContents()
+    public function testPropertyPresentationContents()
     {
     }
 }

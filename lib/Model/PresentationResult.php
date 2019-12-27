@@ -1,6 +1,6 @@
 <?php
 /**
- * WorksheetResult
+ * PresentationResult
  *
  * PHP version 5
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * WorksheetResult Class Doc Comment
+ * PresentationResult Class Doc Comment
  *
  * @category Class
  * @description A single Excel XLSX file corresponding to one worksheet (tab) in the original spreadsheet
@@ -41,7 +41,7 @@ use \Swagger\Client\ObjectSerializer;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class WorksheetResult implements ModelInterface, ArrayAccess
+class PresentationResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class WorksheetResult implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'WorksheetResult';
+    protected static $swaggerModelName = 'PresentationResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class WorksheetResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'worksheet_number' => 'int',
-        'worksheet_name' => 'string',
+        'slide_number' => 'int',
         'url' => 'string',
-        'worksheet_contents' => 'string'
+        'presentation_contents' => 'string'
     ];
 
     /**
@@ -70,10 +69,9 @@ class WorksheetResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'worksheet_number' => 'int32',
-        'worksheet_name' => null,
+        'slide_number' => 'int32',
         'url' => null,
-        'worksheet_contents' => 'byte'
+        'presentation_contents' => 'byte'
     ];
 
     /**
@@ -103,10 +101,9 @@ class WorksheetResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'worksheet_number' => 'WorksheetNumber',
-        'worksheet_name' => 'WorksheetName',
+        'slide_number' => 'SlideNumber',
         'url' => 'URL',
-        'worksheet_contents' => 'WorksheetContents'
+        'presentation_contents' => 'PresentationContents'
     ];
 
     /**
@@ -115,10 +112,9 @@ class WorksheetResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'worksheet_number' => 'setWorksheetNumber',
-        'worksheet_name' => 'setWorksheetName',
+        'slide_number' => 'setSlideNumber',
         'url' => 'setUrl',
-        'worksheet_contents' => 'setWorksheetContents'
+        'presentation_contents' => 'setPresentationContents'
     ];
 
     /**
@@ -127,10 +123,9 @@ class WorksheetResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'worksheet_number' => 'getWorksheetNumber',
-        'worksheet_name' => 'getWorksheetName',
+        'slide_number' => 'getSlideNumber',
         'url' => 'getUrl',
-        'worksheet_contents' => 'getWorksheetContents'
+        'presentation_contents' => 'getPresentationContents'
     ];
 
     /**
@@ -193,10 +188,9 @@ class WorksheetResult implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['worksheet_number'] = isset($data['worksheet_number']) ? $data['worksheet_number'] : null;
-        $this->container['worksheet_name'] = isset($data['worksheet_name']) ? $data['worksheet_name'] : null;
+        $this->container['slide_number'] = isset($data['slide_number']) ? $data['slide_number'] : null;
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
-        $this->container['worksheet_contents'] = isset($data['worksheet_contents']) ? $data['worksheet_contents'] : null;
+        $this->container['presentation_contents'] = isset($data['presentation_contents']) ? $data['presentation_contents'] : null;
     }
 
     /**
@@ -208,8 +202,8 @@ class WorksheetResult implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['worksheet_contents']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['worksheet_contents'])) {
-            $invalidProperties[] = "invalid value for 'worksheet_contents', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
+        if (!is_null($this->container['presentation_contents']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['presentation_contents'])) {
+            $invalidProperties[] = "invalid value for 'presentation_contents', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
         }
 
         return $invalidProperties;
@@ -224,7 +218,7 @@ class WorksheetResult implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['worksheet_contents'])) {
+        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['presentation_contents'])) {
             return false;
         }
         return true;
@@ -232,49 +226,25 @@ class WorksheetResult implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets worksheet_number
+     * Gets slide_number
      *
      * @return int
      */
-    public function getWorksheetNumber()
+    public function getSlideNumber()
     {
-        return $this->container['worksheet_number'];
+        return $this->container['slide_number'];
     }
 
     /**
-     * Sets worksheet_number
+     * Sets slide_number
      *
-     * @param int $worksheet_number Worksheet number of the converted page, starting with 1 for the left-most worksheet
+     * @param int $slide_number Worksheet number of the converted page, starting with 1 for the left-most worksheet
      *
      * @return $this
      */
-    public function setWorksheetNumber($worksheet_number)
+    public function setSlideNumber($slide_number)
     {
-        $this->container['worksheet_number'] = $worksheet_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets worksheet_name
-     *
-     * @return string
-     */
-    public function getWorksheetName()
-    {
-        return $this->container['worksheet_name'];
-    }
-
-    /**
-     * Sets worksheet_name
-     *
-     * @param string $worksheet_name The name of the worksheet
-     *
-     * @return $this
-     */
-    public function setWorksheetName($worksheet_name)
-    {
-        $this->container['worksheet_name'] = $worksheet_name;
+        $this->container['slide_number'] = $slide_number;
 
         return $this;
     }
@@ -292,7 +262,7 @@ class WorksheetResult implements ModelInterface, ArrayAccess
     /**
      * Sets url
      *
-     * @param string $url URL to the XLSX file of this worksheet; file is stored in an in-memory cache and will be deleted
+     * @param string $url URL to the PPTX file of this slide; file is stored in an in-memory cache and will be deleted
      *
      * @return $this
      */
@@ -304,30 +274,30 @@ class WorksheetResult implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets worksheet_contents
+     * Gets presentation_contents
      *
      * @return string
      */
-    public function getWorksheetContents()
+    public function getPresentationContents()
     {
-        return $this->container['worksheet_contents'];
+        return $this->container['presentation_contents'];
     }
 
     /**
-     * Sets worksheet_contents
+     * Sets presentation_contents
      *
-     * @param string $worksheet_contents Contents of the worksheet in bytes
+     * @param string $presentation_contents Contents of the presentation in bytes
      *
      * @return $this
      */
-    public function setWorksheetContents($worksheet_contents)
+    public function setPresentationContents($presentation_contents)
     {
 
-        if (!is_null($worksheet_contents) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $worksheet_contents))) {
-            throw new \InvalidArgumentException("invalid value for $worksheet_contents when calling WorksheetResult., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
+        if (!is_null($presentation_contents) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $presentation_contents))) {
+            throw new \InvalidArgumentException("invalid value for $presentation_contents when calling PresentationResult., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
         }
 
-        $this->container['worksheet_contents'] = $worksheet_contents;
+        $this->container['presentation_contents'] = $presentation_contents;
 
         return $this;
     }

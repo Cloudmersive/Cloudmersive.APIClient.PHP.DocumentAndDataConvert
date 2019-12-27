@@ -1,6 +1,6 @@
 <?php
 /**
- * WorksheetResult
+ * AddPdfAnnotationRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * WorksheetResult Class Doc Comment
+ * AddPdfAnnotationRequest Class Doc Comment
  *
  * @category Class
- * @description A single Excel XLSX file corresponding to one worksheet (tab) in the original spreadsheet
+ * @description Request to add annotations to a PDF
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class WorksheetResult implements ModelInterface, ArrayAccess
+class AddPdfAnnotationRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class WorksheetResult implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'WorksheetResult';
+    protected static $swaggerModelName = 'AddPdfAnnotationRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class WorksheetResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'worksheet_number' => 'int',
-        'worksheet_name' => 'string',
-        'url' => 'string',
-        'worksheet_contents' => 'string'
+        'input_file_bytes' => 'string',
+        'annotations_to_add' => '\Swagger\Client\Model\PdfAnnotation[]'
     ];
 
     /**
@@ -70,10 +68,8 @@ class WorksheetResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'worksheet_number' => 'int32',
-        'worksheet_name' => null,
-        'url' => null,
-        'worksheet_contents' => 'byte'
+        'input_file_bytes' => 'byte',
+        'annotations_to_add' => null
     ];
 
     /**
@@ -103,10 +99,8 @@ class WorksheetResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'worksheet_number' => 'WorksheetNumber',
-        'worksheet_name' => 'WorksheetName',
-        'url' => 'URL',
-        'worksheet_contents' => 'WorksheetContents'
+        'input_file_bytes' => 'InputFileBytes',
+        'annotations_to_add' => 'AnnotationsToAdd'
     ];
 
     /**
@@ -115,10 +109,8 @@ class WorksheetResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'worksheet_number' => 'setWorksheetNumber',
-        'worksheet_name' => 'setWorksheetName',
-        'url' => 'setUrl',
-        'worksheet_contents' => 'setWorksheetContents'
+        'input_file_bytes' => 'setInputFileBytes',
+        'annotations_to_add' => 'setAnnotationsToAdd'
     ];
 
     /**
@@ -127,10 +119,8 @@ class WorksheetResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'worksheet_number' => 'getWorksheetNumber',
-        'worksheet_name' => 'getWorksheetName',
-        'url' => 'getUrl',
-        'worksheet_contents' => 'getWorksheetContents'
+        'input_file_bytes' => 'getInputFileBytes',
+        'annotations_to_add' => 'getAnnotationsToAdd'
     ];
 
     /**
@@ -193,10 +183,8 @@ class WorksheetResult implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['worksheet_number'] = isset($data['worksheet_number']) ? $data['worksheet_number'] : null;
-        $this->container['worksheet_name'] = isset($data['worksheet_name']) ? $data['worksheet_name'] : null;
-        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
-        $this->container['worksheet_contents'] = isset($data['worksheet_contents']) ? $data['worksheet_contents'] : null;
+        $this->container['input_file_bytes'] = isset($data['input_file_bytes']) ? $data['input_file_bytes'] : null;
+        $this->container['annotations_to_add'] = isset($data['annotations_to_add']) ? $data['annotations_to_add'] : null;
     }
 
     /**
@@ -208,8 +196,8 @@ class WorksheetResult implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['worksheet_contents']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['worksheet_contents'])) {
-            $invalidProperties[] = "invalid value for 'worksheet_contents', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
+        if (!is_null($this->container['input_file_bytes']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
+            $invalidProperties[] = "invalid value for 'input_file_bytes', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
         }
 
         return $invalidProperties;
@@ -224,7 +212,7 @@ class WorksheetResult implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['worksheet_contents'])) {
+        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
             return false;
         }
         return true;
@@ -232,102 +220,54 @@ class WorksheetResult implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets worksheet_number
-     *
-     * @return int
-     */
-    public function getWorksheetNumber()
-    {
-        return $this->container['worksheet_number'];
-    }
-
-    /**
-     * Sets worksheet_number
-     *
-     * @param int $worksheet_number Worksheet number of the converted page, starting with 1 for the left-most worksheet
-     *
-     * @return $this
-     */
-    public function setWorksheetNumber($worksheet_number)
-    {
-        $this->container['worksheet_number'] = $worksheet_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets worksheet_name
+     * Gets input_file_bytes
      *
      * @return string
      */
-    public function getWorksheetName()
+    public function getInputFileBytes()
     {
-        return $this->container['worksheet_name'];
+        return $this->container['input_file_bytes'];
     }
 
     /**
-     * Sets worksheet_name
+     * Sets input_file_bytes
      *
-     * @param string $worksheet_name The name of the worksheet
+     * @param string $input_file_bytes Input file contents bytes for the file to modify
      *
      * @return $this
      */
-    public function setWorksheetName($worksheet_name)
-    {
-        $this->container['worksheet_name'] = $worksheet_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string $url URL to the XLSX file of this worksheet; file is stored in an in-memory cache and will be deleted
-     *
-     * @return $this
-     */
-    public function setUrl($url)
-    {
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets worksheet_contents
-     *
-     * @return string
-     */
-    public function getWorksheetContents()
-    {
-        return $this->container['worksheet_contents'];
-    }
-
-    /**
-     * Sets worksheet_contents
-     *
-     * @param string $worksheet_contents Contents of the worksheet in bytes
-     *
-     * @return $this
-     */
-    public function setWorksheetContents($worksheet_contents)
+    public function setInputFileBytes($input_file_bytes)
     {
 
-        if (!is_null($worksheet_contents) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $worksheet_contents))) {
-            throw new \InvalidArgumentException("invalid value for $worksheet_contents when calling WorksheetResult., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
+        if (!is_null($input_file_bytes) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $input_file_bytes))) {
+            throw new \InvalidArgumentException("invalid value for $input_file_bytes when calling AddPdfAnnotationRequest., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
         }
 
-        $this->container['worksheet_contents'] = $worksheet_contents;
+        $this->container['input_file_bytes'] = $input_file_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets annotations_to_add
+     *
+     * @return \Swagger\Client\Model\PdfAnnotation[]
+     */
+    public function getAnnotationsToAdd()
+    {
+        return $this->container['annotations_to_add'];
+    }
+
+    /**
+     * Sets annotations_to_add
+     *
+     * @param \Swagger\Client\Model\PdfAnnotation[] $annotations_to_add Annotations to add to the PDF file
+     *
+     * @return $this
+     */
+    public function setAnnotationsToAdd($annotations_to_add)
+    {
+        $this->container['annotations_to_add'] = $annotations_to_add;
 
         return $this;
     }
