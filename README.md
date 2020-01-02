@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.7.0
+- Package version: 1.7.1
 
 
 ## Requirements
@@ -209,6 +209,7 @@ Class | Method | HTTP request | Description
 *MergeDocumentApi* | [**mergeDocumentPptxMulti**](docs/Api/MergeDocumentApi.md#mergedocumentpptxmulti) | **POST** /convert/merge/pptx/multi | Merge Multple PowerPoint PPTX Together
 *MergeDocumentApi* | [**mergeDocumentXlsx**](docs/Api/MergeDocumentApi.md#mergedocumentxlsx) | **POST** /convert/merge/xlsx | Merge Two Excel XLSX Together
 *MergeDocumentApi* | [**mergeDocumentXlsxMulti**](docs/Api/MergeDocumentApi.md#mergedocumentxlsxmulti) | **POST** /convert/merge/xlsx/multi | Merge Multple Excel XLSX Together
+*SplitDocumentApi* | [**splitDocumentDocx**](docs/Api/SplitDocumentApi.md#splitdocumentdocx) | **POST** /convert/split/docx | Split a single Word Document DOCX into Separate Documents by Page
 *SplitDocumentApi* | [**splitDocumentPdfByPage**](docs/Api/SplitDocumentApi.md#splitdocumentpdfbypage) | **POST** /convert/split/pdf | Split a PDF file into separate PDF files, one per page
 *SplitDocumentApi* | [**splitDocumentPptx**](docs/Api/SplitDocumentApi.md#splitdocumentpptx) | **POST** /convert/split/pptx | Split a single PowerPoint Presentation PPTX into Separate Slides
 *SplitDocumentApi* | [**splitDocumentXlsx**](docs/Api/SplitDocumentApi.md#splitdocumentxlsx) | **POST** /convert/split/xlsx | Split a single Excel XLSX into Separate Worksheets
@@ -335,6 +336,8 @@ Class | Method | HTTP request | Description
  - [SetFormFieldValue](docs/Model/SetFormFieldValue.md)
  - [SetPdfFormFieldsRequest](docs/Model/SetPdfFormFieldsRequest.md)
  - [SetPdfMetadataRequest](docs/Model/SetPdfMetadataRequest.md)
+ - [SplitDocumentResult](docs/Model/SplitDocumentResult.md)
+ - [SplitDocxDocumentResult](docs/Model/SplitDocxDocumentResult.md)
  - [SplitPdfResult](docs/Model/SplitPdfResult.md)
  - [SplitPptxPresentationResult](docs/Model/SplitPptxPresentationResult.md)
  - [SplitXlsxWorksheetResult](docs/Model/SplitXlsxWorksheetResult.md)

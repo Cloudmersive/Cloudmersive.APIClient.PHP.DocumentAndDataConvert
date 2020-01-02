@@ -72,6 +72,16 @@ class SplitDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for splitDocumentDocx
+     *
+     * Split a single Word Document DOCX into Separate Documents by Page.
+     *
+     */
+    public function testSplitDocumentDocx()
+    {
+    }
+
+    /**
      * Test case for splitDocumentPdfByPage
      *
      * Split a PDF file into separate PDF files, one per page.
