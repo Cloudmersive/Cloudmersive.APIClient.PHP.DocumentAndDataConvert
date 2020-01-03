@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.7.1
+- Package version: 1.7.2
 
 
 ## Requirements
@@ -175,6 +175,7 @@ Class | Method | HTTP request | Description
 *EditDocumentApi* | [**editDocumentPptxDeleteSlides**](docs/Api/EditDocumentApi.md#editdocumentpptxdeleteslides) | **POST** /convert/edit/pptx/delete-slides | Delete, remove slides from a PowerPoint PPTX presentation document
 *EditDocumentApi* | [**editDocumentPptxReplace**](docs/Api/EditDocumentApi.md#editdocumentpptxreplace) | **POST** /convert/edit/pptx/replace-all | Replace string in PowerPoint PPTX presentation
 *EditDocumentApi* | [**editDocumentXlsxCreateBlankSpreadsheet**](docs/Api/EditDocumentApi.md#editdocumentxlsxcreateblankspreadsheet) | **POST** /convert/edit/xlsx/create/blank | Create a blank Excel XLSX spreadsheet
+*EditDocumentApi* | [**editDocumentXlsxCreateSpreadsheetFromData**](docs/Api/EditDocumentApi.md#editdocumentxlsxcreatespreadsheetfromdata) | **POST** /convert/edit/xlsx/create/from/data | Create a new Excel XLSX spreadsheet from column and row data
 *EditDocumentApi* | [**editDocumentXlsxGetCellByIndex**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetcellbyindex) | **POST** /convert/edit/xlsx/get-cell/by-index | Get cell from an Excel XLSX spreadsheet, worksheet by index
 *EditDocumentApi* | [**editDocumentXlsxGetColumns**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetcolumns) | **POST** /convert/edit/xlsx/get-columns | Get rows and cells from a Excel XLSX spreadsheet, worksheet
 *EditDocumentApi* | [**editDocumentXlsxGetImages**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetimages) | **POST** /convert/edit/xlsx/get-images | Get images from a Excel XLSX spreadsheet, worksheet
@@ -236,6 +237,8 @@ Class | Method | HTTP request | Description
  - [CreateBlankDocxResponse](docs/Model/CreateBlankDocxResponse.md)
  - [CreateBlankSpreadsheetRequest](docs/Model/CreateBlankSpreadsheetRequest.md)
  - [CreateBlankSpreadsheetResponse](docs/Model/CreateBlankSpreadsheetResponse.md)
+ - [CreateSpreadsheetFromDataRequest](docs/Model/CreateSpreadsheetFromDataRequest.md)
+ - [CreateSpreadsheetFromDataResponse](docs/Model/CreateSpreadsheetFromDataResponse.md)
  - [DeleteDocxTableRowRequest](docs/Model/DeleteDocxTableRowRequest.md)
  - [DeleteDocxTableRowResponse](docs/Model/DeleteDocxTableRowResponse.md)
  - [DocumentValidationError](docs/Model/DocumentValidationError.md)

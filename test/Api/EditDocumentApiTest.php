@@ -362,6 +362,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentXlsxCreateSpreadsheetFromData
+     *
+     * Create a new Excel XLSX spreadsheet from column and row data.
+     *
+     */
+    public function testEditDocumentXlsxCreateSpreadsheetFromData()
+    {
+    }
+
+    /**
      * Test case for editDocumentXlsxGetCellByIndex
      *
      * Get cell from an Excel XLSX spreadsheet, worksheet by index.
