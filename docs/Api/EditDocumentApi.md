@@ -32,8 +32,10 @@ Method | HTTP request | Description
 [**editDocumentFinishEditing**](EditDocumentApi.md#editDocumentFinishEditing) | **POST** /convert/edit/finish-editing | Download result from document editing
 [**editDocumentPptxDeleteSlides**](EditDocumentApi.md#editDocumentPptxDeleteSlides) | **POST** /convert/edit/pptx/delete-slides | Delete, remove slides from a PowerPoint PPTX presentation document
 [**editDocumentPptxReplace**](EditDocumentApi.md#editDocumentPptxReplace) | **POST** /convert/edit/pptx/replace-all | Replace string in PowerPoint PPTX presentation
+[**editDocumentXlsxClearCellByIndex**](EditDocumentApi.md#editDocumentXlsxClearCellByIndex) | **POST** /convert/edit/xlsx/clear-cell/by-index | Clear cell contents in an Excel XLSX spreadsheet, worksheet by index
 [**editDocumentXlsxCreateBlankSpreadsheet**](EditDocumentApi.md#editDocumentXlsxCreateBlankSpreadsheet) | **POST** /convert/edit/xlsx/create/blank | Create a blank Excel XLSX spreadsheet
 [**editDocumentXlsxCreateSpreadsheetFromData**](EditDocumentApi.md#editDocumentXlsxCreateSpreadsheetFromData) | **POST** /convert/edit/xlsx/create/from/data | Create a new Excel XLSX spreadsheet from column and row data
+[**editDocumentXlsxDeleteWorksheet**](EditDocumentApi.md#editDocumentXlsxDeleteWorksheet) | **POST** /convert/edit/xlsx/delete-worksheet | Delete, remove worksheet from an Excel XLSX spreadsheet document
 [**editDocumentXlsxGetCellByIndex**](EditDocumentApi.md#editDocumentXlsxGetCellByIndex) | **POST** /convert/edit/xlsx/get-cell/by-index | Get cell from an Excel XLSX spreadsheet, worksheet by index
 [**editDocumentXlsxGetColumns**](EditDocumentApi.md#editDocumentXlsxGetColumns) | **POST** /convert/edit/xlsx/get-columns | Get rows and cells from a Excel XLSX spreadsheet, worksheet
 [**editDocumentXlsxGetImages**](EditDocumentApi.md#editDocumentXlsxGetImages) | **POST** /convert/edit/xlsx/get-images | Get images from a Excel XLSX spreadsheet, worksheet
@@ -41,6 +43,7 @@ Method | HTTP request | Description
 [**editDocumentXlsxGetStyles**](EditDocumentApi.md#editDocumentXlsxGetStyles) | **POST** /convert/edit/xlsx/get-styles | Get styles from a Excel XLSX spreadsheet, worksheet
 [**editDocumentXlsxGetWorksheets**](EditDocumentApi.md#editDocumentXlsxGetWorksheets) | **POST** /convert/edit/xlsx/get-worksheets | Get worksheets from a Excel XLSX spreadsheet
 [**editDocumentXlsxInsertWorksheet**](EditDocumentApi.md#editDocumentXlsxInsertWorksheet) | **POST** /convert/edit/xlsx/insert-worksheet | Insert a new worksheet into an Excel XLSX spreadsheet
+[**editDocumentXlsxSetCellByIndex**](EditDocumentApi.md#editDocumentXlsxSetCellByIndex) | **POST** /convert/edit/xlsx/set-cell/by-index | Set, update cell contents in an Excel XLSX spreadsheet, worksheet by index
 
 
 # **editDocumentBeginEditing**
@@ -1583,6 +1586,61 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **editDocumentXlsxClearCellByIndex**
+> \Swagger\Client\Model\ClearXlsxCellResponse editDocumentXlsxClearCellByIndex($input)
+
+Clear cell contents in an Excel XLSX spreadsheet, worksheet by index
+
+Clears, sets to blank, the contents of a specific cell in an Excel XLSX spreadsheet, worksheet
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input = new \Swagger\Client\Model\ClearXlsxCellRequest(); // \Swagger\Client\Model\ClearXlsxCellRequest | Document input request
+
+try {
+    $result = $apiInstance->editDocumentXlsxClearCellByIndex($input);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditDocumentApi->editDocumentXlsxClearCellByIndex: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input** | [**\Swagger\Client\Model\ClearXlsxCellRequest**](../Model/ClearXlsxCellRequest.md)| Document input request |
+
+### Return type
+
+[**\Swagger\Client\Model\ClearXlsxCellResponse**](../Model/ClearXlsxCellResponse.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **editDocumentXlsxCreateBlankSpreadsheet**
 > \Swagger\Client\Model\CreateBlankSpreadsheetResponse editDocumentXlsxCreateBlankSpreadsheet($input)
 
@@ -1690,6 +1748,61 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
  - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editDocumentXlsxDeleteWorksheet**
+> object editDocumentXlsxDeleteWorksheet($req_config)
+
+Delete, remove worksheet from an Excel XLSX spreadsheet document
+
+Edits the input Excel XLSX spreadsheet document to remove the specified worksheet (tab).  Use the Get Worksheets API to enumerate available worksheets in a spreadsheet.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$req_config = new \Swagger\Client\Model\RemoveXlsxWorksheetRequest(); // \Swagger\Client\Model\RemoveXlsxWorksheetRequest | Spreadsheet input request
+
+try {
+    $result = $apiInstance->editDocumentXlsxDeleteWorksheet($req_config);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditDocumentApi->editDocumentXlsxDeleteWorksheet: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **req_config** | [**\Swagger\Client\Model\RemoveXlsxWorksheetRequest**](../Model/RemoveXlsxWorksheetRequest.md)| Spreadsheet input request |
+
+### Return type
+
+**object**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -2066,6 +2179,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\Model\InsertXlsxWorksheetResponse**](../Model/InsertXlsxWorksheetResponse.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editDocumentXlsxSetCellByIndex**
+> \Swagger\Client\Model\SetXlsxCellResponse editDocumentXlsxSetCellByIndex($input)
+
+Set, update cell contents in an Excel XLSX spreadsheet, worksheet by index
+
+Sets, updates the contents of a specific cell in an Excel XLSX spreadsheet, worksheet
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input = new \Swagger\Client\Model\SetXlsxCellRequest(); // \Swagger\Client\Model\SetXlsxCellRequest | Document input request
+
+try {
+    $result = $apiInstance->editDocumentXlsxSetCellByIndex($input);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditDocumentApi->editDocumentXlsxSetCellByIndex: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input** | [**\Swagger\Client\Model\SetXlsxCellRequest**](../Model/SetXlsxCellRequest.md)| Document input request |
+
+### Return type
+
+[**\Swagger\Client\Model\SetXlsxCellResponse**](../Model/SetXlsxCellResponse.md)
 
 ### Authorization
 

@@ -352,6 +352,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentXlsxClearCellByIndex
+     *
+     * Clear cell contents in an Excel XLSX spreadsheet, worksheet by index.
+     *
+     */
+    public function testEditDocumentXlsxClearCellByIndex()
+    {
+    }
+
+    /**
      * Test case for editDocumentXlsxCreateBlankSpreadsheet
      *
      * Create a blank Excel XLSX spreadsheet.
@@ -368,6 +378,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentXlsxCreateSpreadsheetFromData()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxDeleteWorksheet
+     *
+     * Delete, remove worksheet from an Excel XLSX spreadsheet document.
+     *
+     */
+    public function testEditDocumentXlsxDeleteWorksheet()
     {
     }
 
@@ -438,6 +458,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentXlsxInsertWorksheet()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxSetCellByIndex
+     *
+     * Set, update cell contents in an Excel XLSX spreadsheet, worksheet by index.
+     *
+     */
+    public function testEditDocumentXlsxSetCellByIndex()
     {
     }
 }
