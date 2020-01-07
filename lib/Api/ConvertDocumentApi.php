@@ -880,14 +880,15 @@ class ConvertDocumentApi
      * Convert Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\TextConversionResult
      */
-    public function convertDocumentAutodetectToTxt($input_file)
+    public function convertDocumentAutodetectToTxt($input_file, $text_formatting_mode = null)
     {
-        list($response) = $this->convertDocumentAutodetectToTxtWithHttpInfo($input_file);
+        list($response) = $this->convertDocumentAutodetectToTxtWithHttpInfo($input_file, $text_formatting_mode);
         return $response;
     }
 
@@ -897,15 +898,16 @@ class ConvertDocumentApi
      * Convert Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\TextConversionResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function convertDocumentAutodetectToTxtWithHttpInfo($input_file)
+    public function convertDocumentAutodetectToTxtWithHttpInfo($input_file, $text_formatting_mode = null)
     {
         $returnType = '\Swagger\Client\Model\TextConversionResult';
-        $request = $this->convertDocumentAutodetectToTxtRequest($input_file);
+        $request = $this->convertDocumentAutodetectToTxtRequest($input_file, $text_formatting_mode);
 
         try {
             $options = $this->createHttpClientOption();
@@ -972,13 +974,14 @@ class ConvertDocumentApi
      * Convert Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertDocumentAutodetectToTxtAsync($input_file)
+    public function convertDocumentAutodetectToTxtAsync($input_file, $text_formatting_mode = null)
     {
-        return $this->convertDocumentAutodetectToTxtAsyncWithHttpInfo($input_file)
+        return $this->convertDocumentAutodetectToTxtAsyncWithHttpInfo($input_file, $text_formatting_mode)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -992,14 +995,15 @@ class ConvertDocumentApi
      * Convert Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertDocumentAutodetectToTxtAsyncWithHttpInfo($input_file)
+    public function convertDocumentAutodetectToTxtAsyncWithHttpInfo($input_file, $text_formatting_mode = null)
     {
         $returnType = '\Swagger\Client\Model\TextConversionResult';
-        $request = $this->convertDocumentAutodetectToTxtRequest($input_file);
+        $request = $this->convertDocumentAutodetectToTxtRequest($input_file, $text_formatting_mode);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1042,11 +1046,12 @@ class ConvertDocumentApi
      * Create request for operation 'convertDocumentAutodetectToTxt'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function convertDocumentAutodetectToTxtRequest($input_file)
+    protected function convertDocumentAutodetectToTxtRequest($input_file, $text_formatting_mode = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
@@ -1062,6 +1067,10 @@ class ConvertDocumentApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($text_formatting_mode !== null) {
+            $headerParams['textFormattingMode'] = ObjectSerializer::toHeaderValue($text_formatting_mode);
+        }
 
 
         // form params
@@ -4576,14 +4585,15 @@ class ConvertDocumentApi
      * Convert PDF Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting PDF to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\TextConversionResult
      */
-    public function convertDocumentPdfToTxt($input_file)
+    public function convertDocumentPdfToTxt($input_file, $text_formatting_mode = null)
     {
-        list($response) = $this->convertDocumentPdfToTxtWithHttpInfo($input_file);
+        list($response) = $this->convertDocumentPdfToTxtWithHttpInfo($input_file, $text_formatting_mode);
         return $response;
     }
 
@@ -4593,15 +4603,16 @@ class ConvertDocumentApi
      * Convert PDF Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting PDF to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\TextConversionResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function convertDocumentPdfToTxtWithHttpInfo($input_file)
+    public function convertDocumentPdfToTxtWithHttpInfo($input_file, $text_formatting_mode = null)
     {
         $returnType = '\Swagger\Client\Model\TextConversionResult';
-        $request = $this->convertDocumentPdfToTxtRequest($input_file);
+        $request = $this->convertDocumentPdfToTxtRequest($input_file, $text_formatting_mode);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4668,13 +4679,14 @@ class ConvertDocumentApi
      * Convert PDF Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting PDF to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertDocumentPdfToTxtAsync($input_file)
+    public function convertDocumentPdfToTxtAsync($input_file, $text_formatting_mode = null)
     {
-        return $this->convertDocumentPdfToTxtAsyncWithHttpInfo($input_file)
+        return $this->convertDocumentPdfToTxtAsyncWithHttpInfo($input_file, $text_formatting_mode)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4688,14 +4700,15 @@ class ConvertDocumentApi
      * Convert PDF Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting PDF to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertDocumentPdfToTxtAsyncWithHttpInfo($input_file)
+    public function convertDocumentPdfToTxtAsyncWithHttpInfo($input_file, $text_formatting_mode = null)
     {
         $returnType = '\Swagger\Client\Model\TextConversionResult';
-        $request = $this->convertDocumentPdfToTxtRequest($input_file);
+        $request = $this->convertDocumentPdfToTxtRequest($input_file, $text_formatting_mode);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4738,11 +4751,12 @@ class ConvertDocumentApi
      * Create request for operation 'convertDocumentPdfToTxt'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting PDF to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function convertDocumentPdfToTxtRequest($input_file)
+    protected function convertDocumentPdfToTxtRequest($input_file, $text_formatting_mode = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
@@ -4758,6 +4772,10 @@ class ConvertDocumentApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($text_formatting_mode !== null) {
+            $headerParams['textFormattingMode'] = ObjectSerializer::toHeaderValue($text_formatting_mode);
+        }
 
 
         // form params
