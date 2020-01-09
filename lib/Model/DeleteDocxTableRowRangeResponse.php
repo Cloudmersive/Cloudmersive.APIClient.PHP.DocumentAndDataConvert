@@ -1,6 +1,6 @@
 <?php
 /**
- * DocxTableRow
+ * DeleteDocxTableRowRangeResponse
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * DocxTableRow Class Doc Comment
+ * DeleteDocxTableRowRangeResponse Class Doc Comment
  *
  * @category Class
- * @description A row in a Word Document (DOCX) file
+ * @description Result of running an Delete Table Row Range command
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class DocxTableRow implements ModelInterface, ArrayAccess
+class DeleteDocxTableRowRangeResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DocxTableRow implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'DocxTableRow';
+    protected static $swaggerModelName = 'DeleteDocxTableRowRangeResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class DocxTableRow implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'row_index' => 'int',
-        'path' => 'string',
-        'row_cells' => '\Swagger\Client\Model\DocxTableCell[]'
+        'successful' => 'bool',
+        'edited_document_url' => 'string'
     ];
 
     /**
@@ -69,9 +68,8 @@ class DocxTableRow implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'row_index' => 'int32',
-        'path' => null,
-        'row_cells' => null
+        'successful' => null,
+        'edited_document_url' => null
     ];
 
     /**
@@ -101,9 +99,8 @@ class DocxTableRow implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'row_index' => 'RowIndex',
-        'path' => 'Path',
-        'row_cells' => 'RowCells'
+        'successful' => 'Successful',
+        'edited_document_url' => 'EditedDocumentURL'
     ];
 
     /**
@@ -112,9 +109,8 @@ class DocxTableRow implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'row_index' => 'setRowIndex',
-        'path' => 'setPath',
-        'row_cells' => 'setRowCells'
+        'successful' => 'setSuccessful',
+        'edited_document_url' => 'setEditedDocumentUrl'
     ];
 
     /**
@@ -123,9 +119,8 @@ class DocxTableRow implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'row_index' => 'getRowIndex',
-        'path' => 'getPath',
-        'row_cells' => 'getRowCells'
+        'successful' => 'getSuccessful',
+        'edited_document_url' => 'getEditedDocumentUrl'
     ];
 
     /**
@@ -188,9 +183,8 @@ class DocxTableRow implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['row_index'] = isset($data['row_index']) ? $data['row_index'] : null;
-        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
-        $this->container['row_cells'] = isset($data['row_cells']) ? $data['row_cells'] : null;
+        $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
+        $this->container['edited_document_url'] = isset($data['edited_document_url']) ? $data['edited_document_url'] : null;
     }
 
     /**
@@ -219,73 +213,49 @@ class DocxTableRow implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets row_index
+     * Gets successful
      *
-     * @return int
+     * @return bool
      */
-    public function getRowIndex()
+    public function getSuccessful()
     {
-        return $this->container['row_index'];
+        return $this->container['successful'];
     }
 
     /**
-     * Sets row_index
+     * Sets successful
      *
-     * @param int $row_index Index of the row, 0-based
+     * @param bool $successful True if successful, false otherwise
      *
      * @return $this
      */
-    public function setRowIndex($row_index)
+    public function setSuccessful($successful)
     {
-        $this->container['row_index'] = $row_index;
+        $this->container['successful'] = $successful;
 
         return $this;
     }
 
     /**
-     * Gets path
+     * Gets edited_document_url
      *
      * @return string
      */
-    public function getPath()
+    public function getEditedDocumentUrl()
     {
-        return $this->container['path'];
+        return $this->container['edited_document_url'];
     }
 
     /**
-     * Sets path
+     * Sets edited_document_url
      *
-     * @param string $path The Path of the location of this table row object; leave blank for new tables
+     * @param string $edited_document_url URL to the edited DOCX file; file is stored in an in-memory cache and will be deleted.  Call Finish-Editing to get the result document contents.
      *
      * @return $this
      */
-    public function setPath($path)
+    public function setEditedDocumentUrl($edited_document_url)
     {
-        $this->container['path'] = $path;
-
-        return $this;
-    }
-
-    /**
-     * Gets row_cells
-     *
-     * @return \Swagger\Client\Model\DocxTableCell[]
-     */
-    public function getRowCells()
-    {
-        return $this->container['row_cells'];
-    }
-
-    /**
-     * Sets row_cells
-     *
-     * @param \Swagger\Client\Model\DocxTableCell[] $row_cells Cells in the row; this is where the contents of the row is stored
-     *
-     * @return $this
-     */
-    public function setRowCells($row_cells)
-    {
-        $this->container['row_cells'] = $row_cells;
+        $this->container['edited_document_url'] = $edited_document_url;
 
         return $this;
     }

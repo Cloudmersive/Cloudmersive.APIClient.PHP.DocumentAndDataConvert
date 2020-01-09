@@ -1,6 +1,6 @@
 <?php
 /**
- * DocxTableRow
+ * GetXlsxCellByIdentifierRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * DocxTableRow Class Doc Comment
+ * GetXlsxCellByIdentifierRequest Class Doc Comment
  *
  * @category Class
- * @description A row in a Word Document (DOCX) file
+ * @description Input to a Get Cell by cell identifier request
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class DocxTableRow implements ModelInterface, ArrayAccess
+class GetXlsxCellByIdentifierRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DocxTableRow implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'DocxTableRow';
+    protected static $swaggerModelName = 'GetXlsxCellByIdentifierRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class DocxTableRow implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'row_index' => 'int',
-        'path' => 'string',
-        'row_cells' => '\Swagger\Client\Model\DocxTableCell[]'
+        'input_file_bytes' => 'string',
+        'input_file_url' => 'string',
+        'worksheet_to_query' => '\Swagger\Client\Model\XlsxWorksheet',
+        'cell_identifier' => 'string'
     ];
 
     /**
@@ -69,9 +70,10 @@ class DocxTableRow implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'row_index' => 'int32',
-        'path' => null,
-        'row_cells' => null
+        'input_file_bytes' => 'byte',
+        'input_file_url' => null,
+        'worksheet_to_query' => null,
+        'cell_identifier' => null
     ];
 
     /**
@@ -101,9 +103,10 @@ class DocxTableRow implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'row_index' => 'RowIndex',
-        'path' => 'Path',
-        'row_cells' => 'RowCells'
+        'input_file_bytes' => 'InputFileBytes',
+        'input_file_url' => 'InputFileUrl',
+        'worksheet_to_query' => 'WorksheetToQuery',
+        'cell_identifier' => 'CellIdentifier'
     ];
 
     /**
@@ -112,9 +115,10 @@ class DocxTableRow implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'row_index' => 'setRowIndex',
-        'path' => 'setPath',
-        'row_cells' => 'setRowCells'
+        'input_file_bytes' => 'setInputFileBytes',
+        'input_file_url' => 'setInputFileUrl',
+        'worksheet_to_query' => 'setWorksheetToQuery',
+        'cell_identifier' => 'setCellIdentifier'
     ];
 
     /**
@@ -123,9 +127,10 @@ class DocxTableRow implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'row_index' => 'getRowIndex',
-        'path' => 'getPath',
-        'row_cells' => 'getRowCells'
+        'input_file_bytes' => 'getInputFileBytes',
+        'input_file_url' => 'getInputFileUrl',
+        'worksheet_to_query' => 'getWorksheetToQuery',
+        'cell_identifier' => 'getCellIdentifier'
     ];
 
     /**
@@ -188,9 +193,10 @@ class DocxTableRow implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['row_index'] = isset($data['row_index']) ? $data['row_index'] : null;
-        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
-        $this->container['row_cells'] = isset($data['row_cells']) ? $data['row_cells'] : null;
+        $this->container['input_file_bytes'] = isset($data['input_file_bytes']) ? $data['input_file_bytes'] : null;
+        $this->container['input_file_url'] = isset($data['input_file_url']) ? $data['input_file_url'] : null;
+        $this->container['worksheet_to_query'] = isset($data['worksheet_to_query']) ? $data['worksheet_to_query'] : null;
+        $this->container['cell_identifier'] = isset($data['cell_identifier']) ? $data['cell_identifier'] : null;
     }
 
     /**
@@ -201,6 +207,10 @@ class DocxTableRow implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['input_file_bytes']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
+            $invalidProperties[] = "invalid value for 'input_file_bytes', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
+        }
 
         return $invalidProperties;
     }
@@ -214,78 +224,110 @@ class DocxTableRow implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets row_index
-     *
-     * @return int
-     */
-    public function getRowIndex()
-    {
-        return $this->container['row_index'];
-    }
-
-    /**
-     * Sets row_index
-     *
-     * @param int $row_index Index of the row, 0-based
-     *
-     * @return $this
-     */
-    public function setRowIndex($row_index)
-    {
-        $this->container['row_index'] = $row_index;
-
-        return $this;
-    }
-
-    /**
-     * Gets path
+     * Gets input_file_bytes
      *
      * @return string
      */
-    public function getPath()
+    public function getInputFileBytes()
     {
-        return $this->container['path'];
+        return $this->container['input_file_bytes'];
     }
 
     /**
-     * Sets path
+     * Sets input_file_bytes
      *
-     * @param string $path The Path of the location of this table row object; leave blank for new tables
+     * @param string $input_file_bytes Optional: Bytes of the input file to operate on
      *
      * @return $this
      */
-    public function setPath($path)
+    public function setInputFileBytes($input_file_bytes)
     {
-        $this->container['path'] = $path;
+
+        if (!is_null($input_file_bytes) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $input_file_bytes))) {
+            throw new \InvalidArgumentException("invalid value for $input_file_bytes when calling GetXlsxCellByIdentifierRequest., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
+        }
+
+        $this->container['input_file_bytes'] = $input_file_bytes;
 
         return $this;
     }
 
     /**
-     * Gets row_cells
+     * Gets input_file_url
      *
-     * @return \Swagger\Client\Model\DocxTableCell[]
+     * @return string
      */
-    public function getRowCells()
+    public function getInputFileUrl()
     {
-        return $this->container['row_cells'];
+        return $this->container['input_file_url'];
     }
 
     /**
-     * Sets row_cells
+     * Sets input_file_url
      *
-     * @param \Swagger\Client\Model\DocxTableCell[] $row_cells Cells in the row; this is where the contents of the row is stored
+     * @param string $input_file_url Optional: URL of a file to operate on as input.  This can be a public URL, or you can also use the begin-editing API to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public).
      *
      * @return $this
      */
-    public function setRowCells($row_cells)
+    public function setInputFileUrl($input_file_url)
     {
-        $this->container['row_cells'] = $row_cells;
+        $this->container['input_file_url'] = $input_file_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets worksheet_to_query
+     *
+     * @return \Swagger\Client\Model\XlsxWorksheet
+     */
+    public function getWorksheetToQuery()
+    {
+        return $this->container['worksheet_to_query'];
+    }
+
+    /**
+     * Sets worksheet_to_query
+     *
+     * @param \Swagger\Client\Model\XlsxWorksheet $worksheet_to_query Optional; Worksheet (tab) within the spreadsheet to get the rows and cells of; leave blank to default to the first worksheet
+     *
+     * @return $this
+     */
+    public function setWorksheetToQuery($worksheet_to_query)
+    {
+        $this->container['worksheet_to_query'] = $worksheet_to_query;
+
+        return $this;
+    }
+
+    /**
+     * Gets cell_identifier
+     *
+     * @return string
+     */
+    public function getCellIdentifier()
+    {
+        return $this->container['cell_identifier'];
+    }
+
+    /**
+     * Sets cell_identifier
+     *
+     * @param string $cell_identifier Required; Excel cell identifier, e.g. A1, B22, C33, etc.
+     *
+     * @return $this
+     */
+    public function setCellIdentifier($cell_identifier)
+    {
+        $this->container['cell_identifier'] = $cell_identifier;
 
         return $this;
     }

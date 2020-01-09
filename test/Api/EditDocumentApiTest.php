@@ -122,6 +122,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxDeleteTableRowRange
+     *
+     * Deletes a range of multiple table rows in an existing table in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxDeleteTableRowRange()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxGetHeadersAndFooters
      *
      * Get content of a footer from a Word DOCX document.
@@ -392,6 +402,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentXlsxGetCellByIdentifier
+     *
+     * Get cell from an Excel XLSX spreadsheet, worksheet by cell identifier.
+     *
+     */
+    public function testEditDocumentXlsxGetCellByIdentifier()
+    {
+    }
+
+    /**
      * Test case for editDocumentXlsxGetCellByIndex
      *
      * Get cell from an Excel XLSX spreadsheet, worksheet by index.
@@ -458,6 +478,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentXlsxInsertWorksheet()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxSetCellByIdentifier
+     *
+     * Set, update cell contents in an Excel XLSX spreadsheet, worksheet by cell identifier.
+     *
+     */
+    public function testEditDocumentXlsxSetCellByIdentifier()
     {
     }
 

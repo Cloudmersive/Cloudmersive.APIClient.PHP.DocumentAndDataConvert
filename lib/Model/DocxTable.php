@@ -471,7 +471,7 @@ class DocxTable implements ModelInterface, ArrayAccess
     /**
      * Sets path
      *
-     * @param string $path The Path of the location of this object; leave blank for new tables
+     * @param string $path The Path of the location of this table object; leave blank for new tables
      *
      * @return $this
      */
