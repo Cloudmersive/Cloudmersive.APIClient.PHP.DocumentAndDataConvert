@@ -102,6 +102,16 @@ class SplitDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for splitDocumentTxtByLine
+     *
+     * Split a single Text file (txt) into lines.
+     *
+     */
+    public function testSplitDocumentTxtByLine()
+    {
+    }
+
+    /**
      * Test case for splitDocumentXlsx
      *
      * Split a single Excel XLSX into Separate Worksheets.

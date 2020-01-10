@@ -142,6 +142,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentDocToTxt
+     *
+     * Convert Word DOC (97-03) Document to Text (txt).
+     *
+     */
+    public function testConvertDocumentDocToTxt()
+    {
+    }
+
+    /**
      * Test case for convertDocumentDocxToPdf
      *
      * Convert Word DOCX Document to PDF.
