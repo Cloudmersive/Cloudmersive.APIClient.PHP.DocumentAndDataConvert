@@ -1,6 +1,6 @@
 <?php
 /**
- * GetDocxPagesResponse
+ * GetDocxGetCommentsRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * GetDocxPagesResponse Class Doc Comment
+ * GetDocxGetCommentsRequest Class Doc Comment
  *
  * @category Class
- * @description Result of getting pages from a Word Document DOCX
+ * @description Input to a Get Word DOCX Document comments request
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class GetDocxPagesResponse implements ModelInterface, ArrayAccess
+class GetDocxGetCommentsRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'GetDocxPagesResponse';
+    protected static $swaggerModelName = 'GetDocxGetCommentsRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'successful' => 'bool',
-        'pages' => '\Swagger\Client\Model\DocxPage[]',
-        'page_count' => 'int'
+        'input_file_bytes' => 'string',
+        'input_file_url' => 'string'
     ];
 
     /**
@@ -69,9 +68,8 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'successful' => null,
-        'pages' => null,
-        'page_count' => 'int32'
+        'input_file_bytes' => 'byte',
+        'input_file_url' => null
     ];
 
     /**
@@ -101,9 +99,8 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'successful' => 'Successful',
-        'pages' => 'Pages',
-        'page_count' => 'PageCount'
+        'input_file_bytes' => 'InputFileBytes',
+        'input_file_url' => 'InputFileUrl'
     ];
 
     /**
@@ -112,9 +109,8 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'successful' => 'setSuccessful',
-        'pages' => 'setPages',
-        'page_count' => 'setPageCount'
+        'input_file_bytes' => 'setInputFileBytes',
+        'input_file_url' => 'setInputFileUrl'
     ];
 
     /**
@@ -123,9 +119,8 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'successful' => 'getSuccessful',
-        'pages' => 'getPages',
-        'page_count' => 'getPageCount'
+        'input_file_bytes' => 'getInputFileBytes',
+        'input_file_url' => 'getInputFileUrl'
     ];
 
     /**
@@ -188,9 +183,8 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
-        $this->container['pages'] = isset($data['pages']) ? $data['pages'] : null;
-        $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
+        $this->container['input_file_bytes'] = isset($data['input_file_bytes']) ? $data['input_file_bytes'] : null;
+        $this->container['input_file_url'] = isset($data['input_file_url']) ? $data['input_file_url'] : null;
     }
 
     /**
@@ -201,6 +195,10 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['input_file_bytes']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
+            $invalidProperties[] = "invalid value for 'input_file_bytes', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
+        }
 
         return $invalidProperties;
     }
@@ -214,78 +212,62 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets successful
+     * Gets input_file_bytes
      *
-     * @return bool
+     * @return string
      */
-    public function getSuccessful()
+    public function getInputFileBytes()
     {
-        return $this->container['successful'];
+        return $this->container['input_file_bytes'];
     }
 
     /**
-     * Sets successful
+     * Sets input_file_bytes
      *
-     * @param bool $successful True if successful, false otherwise
+     * @param string $input_file_bytes Optional: Bytes of the input file to operate on
      *
      * @return $this
      */
-    public function setSuccessful($successful)
+    public function setInputFileBytes($input_file_bytes)
     {
-        $this->container['successful'] = $successful;
+
+        if (!is_null($input_file_bytes) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $input_file_bytes))) {
+            throw new \InvalidArgumentException("invalid value for $input_file_bytes when calling GetDocxGetCommentsRequest., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
+        }
+
+        $this->container['input_file_bytes'] = $input_file_bytes;
 
         return $this;
     }
 
     /**
-     * Gets pages
+     * Gets input_file_url
      *
-     * @return \Swagger\Client\Model\DocxPage[]
+     * @return string
      */
-    public function getPages()
+    public function getInputFileUrl()
     {
-        return $this->container['pages'];
+        return $this->container['input_file_url'];
     }
 
     /**
-     * Sets pages
+     * Sets input_file_url
      *
-     * @param \Swagger\Client\Model\DocxPage[] $pages Pages in the document
+     * @param string $input_file_url Optional: URL of a file to operate on as input.  This can be a public URL, or you can also use the begin-editing API to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public).
      *
      * @return $this
      */
-    public function setPages($pages)
+    public function setInputFileUrl($input_file_url)
     {
-        $this->container['pages'] = $pages;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_count
-     *
-     * @return int
-     */
-    public function getPageCount()
-    {
-        return $this->container['page_count'];
-    }
-
-    /**
-     * Sets page_count
-     *
-     * @param int $page_count Count of pages
-     *
-     * @return $this
-     */
-    public function setPageCount($page_count)
-    {
-        $this->container['page_count'] = $page_count;
+        $this->container['input_file_url'] = $input_file_url;
 
         return $this;
     }

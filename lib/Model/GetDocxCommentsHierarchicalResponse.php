@@ -1,6 +1,6 @@
 <?php
 /**
- * GetDocxPagesResponse
+ * GetDocxCommentsHierarchicalResponse
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * GetDocxPagesResponse Class Doc Comment
+ * GetDocxCommentsHierarchicalResponse Class Doc Comment
  *
  * @category Class
- * @description Result of getting pages from a Word Document DOCX
+ * @description Result of getting comments hierarchically from a Word Document DOCX
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class GetDocxPagesResponse implements ModelInterface, ArrayAccess
+class GetDocxCommentsHierarchicalResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'GetDocxPagesResponse';
+    protected static $swaggerModelName = 'GetDocxCommentsHierarchicalResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,8 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'successful' => 'bool',
-        'pages' => '\Swagger\Client\Model\DocxPage[]',
-        'page_count' => 'int'
+        'comments' => '\Swagger\Client\Model\DocxTopLevelComment[]',
+        'top_level_comment_count' => 'int'
     ];
 
     /**
@@ -70,8 +70,8 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'successful' => null,
-        'pages' => null,
-        'page_count' => 'int32'
+        'comments' => null,
+        'top_level_comment_count' => 'int32'
     ];
 
     /**
@@ -102,8 +102,8 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'successful' => 'Successful',
-        'pages' => 'Pages',
-        'page_count' => 'PageCount'
+        'comments' => 'Comments',
+        'top_level_comment_count' => 'TopLevelCommentCount'
     ];
 
     /**
@@ -113,8 +113,8 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'successful' => 'setSuccessful',
-        'pages' => 'setPages',
-        'page_count' => 'setPageCount'
+        'comments' => 'setComments',
+        'top_level_comment_count' => 'setTopLevelCommentCount'
     ];
 
     /**
@@ -124,8 +124,8 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'successful' => 'getSuccessful',
-        'pages' => 'getPages',
-        'page_count' => 'getPageCount'
+        'comments' => 'getComments',
+        'top_level_comment_count' => 'getTopLevelCommentCount'
     ];
 
     /**
@@ -189,8 +189,8 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
-        $this->container['pages'] = isset($data['pages']) ? $data['pages'] : null;
-        $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
+        $this->container['comments'] = isset($data['comments']) ? $data['comments'] : null;
+        $this->container['top_level_comment_count'] = isset($data['top_level_comment_count']) ? $data['top_level_comment_count'] : null;
     }
 
     /**
@@ -243,49 +243,49 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets pages
+     * Gets comments
      *
-     * @return \Swagger\Client\Model\DocxPage[]
+     * @return \Swagger\Client\Model\DocxTopLevelComment[]
      */
-    public function getPages()
+    public function getComments()
     {
-        return $this->container['pages'];
+        return $this->container['comments'];
     }
 
     /**
-     * Sets pages
+     * Sets comments
      *
-     * @param \Swagger\Client\Model\DocxPage[] $pages Pages in the document
+     * @param \Swagger\Client\Model\DocxTopLevelComment[] $comments Comments in the document
      *
      * @return $this
      */
-    public function setPages($pages)
+    public function setComments($comments)
     {
-        $this->container['pages'] = $pages;
+        $this->container['comments'] = $comments;
 
         return $this;
     }
 
     /**
-     * Gets page_count
+     * Gets top_level_comment_count
      *
      * @return int
      */
-    public function getPageCount()
+    public function getTopLevelCommentCount()
     {
-        return $this->container['page_count'];
+        return $this->container['top_level_comment_count'];
     }
 
     /**
-     * Sets page_count
+     * Sets top_level_comment_count
      *
-     * @param int $page_count Count of pages
+     * @param int $top_level_comment_count The number of comments in the document
      *
      * @return $this
      */
-    public function setPageCount($page_count)
+    public function setTopLevelCommentCount($top_level_comment_count)
     {
-        $this->container['page_count'] = $page_count;
+        $this->container['top_level_comment_count'] = $top_level_comment_count;
 
         return $this;
     }

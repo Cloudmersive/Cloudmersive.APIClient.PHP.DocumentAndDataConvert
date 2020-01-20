@@ -1,6 +1,6 @@
 <?php
 /**
- * GetDocxPagesResponse
+ * DocxTopLevelComment
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * GetDocxPagesResponse Class Doc Comment
+ * DocxTopLevelComment Class Doc Comment
  *
  * @category Class
- * @description Result of getting pages from a Word Document DOCX
+ * @description Top-level Comment in a Word Document
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class GetDocxPagesResponse implements ModelInterface, ArrayAccess
+class DocxTopLevelComment implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'GetDocxPagesResponse';
+    protected static $swaggerModelName = 'DocxTopLevelComment';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,13 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'successful' => 'bool',
-        'pages' => '\Swagger\Client\Model\DocxPage[]',
-        'page_count' => 'int'
+        'path' => 'string',
+        'author' => 'string',
+        'author_initials' => 'string',
+        'comment_text' => 'string',
+        'comment_date' => '\DateTime',
+        'reply_child_comments' => '\Swagger\Client\Model\DocxComment[]',
+        'done' => 'bool'
     ];
 
     /**
@@ -69,9 +73,13 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'successful' => null,
-        'pages' => null,
-        'page_count' => 'int32'
+        'path' => null,
+        'author' => null,
+        'author_initials' => null,
+        'comment_text' => null,
+        'comment_date' => 'date-time',
+        'reply_child_comments' => null,
+        'done' => null
     ];
 
     /**
@@ -101,9 +109,13 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'successful' => 'Successful',
-        'pages' => 'Pages',
-        'page_count' => 'PageCount'
+        'path' => 'Path',
+        'author' => 'Author',
+        'author_initials' => 'AuthorInitials',
+        'comment_text' => 'CommentText',
+        'comment_date' => 'CommentDate',
+        'reply_child_comments' => 'ReplyChildComments',
+        'done' => 'Done'
     ];
 
     /**
@@ -112,9 +124,13 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'successful' => 'setSuccessful',
-        'pages' => 'setPages',
-        'page_count' => 'setPageCount'
+        'path' => 'setPath',
+        'author' => 'setAuthor',
+        'author_initials' => 'setAuthorInitials',
+        'comment_text' => 'setCommentText',
+        'comment_date' => 'setCommentDate',
+        'reply_child_comments' => 'setReplyChildComments',
+        'done' => 'setDone'
     ];
 
     /**
@@ -123,9 +139,13 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'successful' => 'getSuccessful',
-        'pages' => 'getPages',
-        'page_count' => 'getPageCount'
+        'path' => 'getPath',
+        'author' => 'getAuthor',
+        'author_initials' => 'getAuthorInitials',
+        'comment_text' => 'getCommentText',
+        'comment_date' => 'getCommentDate',
+        'reply_child_comments' => 'getReplyChildComments',
+        'done' => 'getDone'
     ];
 
     /**
@@ -188,9 +208,13 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
-        $this->container['pages'] = isset($data['pages']) ? $data['pages'] : null;
-        $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
+        $this->container['author'] = isset($data['author']) ? $data['author'] : null;
+        $this->container['author_initials'] = isset($data['author_initials']) ? $data['author_initials'] : null;
+        $this->container['comment_text'] = isset($data['comment_text']) ? $data['comment_text'] : null;
+        $this->container['comment_date'] = isset($data['comment_date']) ? $data['comment_date'] : null;
+        $this->container['reply_child_comments'] = isset($data['reply_child_comments']) ? $data['reply_child_comments'] : null;
+        $this->container['done'] = isset($data['done']) ? $data['done'] : null;
     }
 
     /**
@@ -219,73 +243,169 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets successful
+     * Gets path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->container['path'];
+    }
+
+    /**
+     * Sets path
+     *
+     * @param string $path Path to the comment in the document
+     *
+     * @return $this
+     */
+    public function setPath($path)
+    {
+        $this->container['path'] = $path;
+
+        return $this;
+    }
+
+    /**
+     * Gets author
+     *
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->container['author'];
+    }
+
+    /**
+     * Sets author
+     *
+     * @param string $author Author name of the comment
+     *
+     * @return $this
+     */
+    public function setAuthor($author)
+    {
+        $this->container['author'] = $author;
+
+        return $this;
+    }
+
+    /**
+     * Gets author_initials
+     *
+     * @return string
+     */
+    public function getAuthorInitials()
+    {
+        return $this->container['author_initials'];
+    }
+
+    /**
+     * Sets author_initials
+     *
+     * @param string $author_initials Initials of the author of the comment
+     *
+     * @return $this
+     */
+    public function setAuthorInitials($author_initials)
+    {
+        $this->container['author_initials'] = $author_initials;
+
+        return $this;
+    }
+
+    /**
+     * Gets comment_text
+     *
+     * @return string
+     */
+    public function getCommentText()
+    {
+        return $this->container['comment_text'];
+    }
+
+    /**
+     * Sets comment_text
+     *
+     * @param string $comment_text Text content of the comment
+     *
+     * @return $this
+     */
+    public function setCommentText($comment_text)
+    {
+        $this->container['comment_text'] = $comment_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets comment_date
+     *
+     * @return \DateTime
+     */
+    public function getCommentDate()
+    {
+        return $this->container['comment_date'];
+    }
+
+    /**
+     * Sets comment_date
+     *
+     * @param \DateTime $comment_date Date timestamp of the comment
+     *
+     * @return $this
+     */
+    public function setCommentDate($comment_date)
+    {
+        $this->container['comment_date'] = $comment_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets reply_child_comments
+     *
+     * @return \Swagger\Client\Model\DocxComment[]
+     */
+    public function getReplyChildComments()
+    {
+        return $this->container['reply_child_comments'];
+    }
+
+    /**
+     * Sets reply_child_comments
+     *
+     * @param \Swagger\Client\Model\DocxComment[] $reply_child_comments Child comments, that are replies to this one
+     *
+     * @return $this
+     */
+    public function setReplyChildComments($reply_child_comments)
+    {
+        $this->container['reply_child_comments'] = $reply_child_comments;
+
+        return $this;
+    }
+
+    /**
+     * Gets done
      *
      * @return bool
      */
-    public function getSuccessful()
+    public function getDone()
     {
-        return $this->container['successful'];
+        return $this->container['done'];
     }
 
     /**
-     * Sets successful
+     * Sets done
      *
-     * @param bool $successful True if successful, false otherwise
+     * @param bool $done True if this comment is marked as Done in Word, otherwise it is false
      *
      * @return $this
      */
-    public function setSuccessful($successful)
+    public function setDone($done)
     {
-        $this->container['successful'] = $successful;
-
-        return $this;
-    }
-
-    /**
-     * Gets pages
-     *
-     * @return \Swagger\Client\Model\DocxPage[]
-     */
-    public function getPages()
-    {
-        return $this->container['pages'];
-    }
-
-    /**
-     * Sets pages
-     *
-     * @param \Swagger\Client\Model\DocxPage[] $pages Pages in the document
-     *
-     * @return $this
-     */
-    public function setPages($pages)
-    {
-        $this->container['pages'] = $pages;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_count
-     *
-     * @return int
-     */
-    public function getPageCount()
-    {
-        return $this->container['page_count'];
-    }
-
-    /**
-     * Sets page_count
-     *
-     * @param int $page_count Count of pages
-     *
-     * @return $this
-     */
-    public function setPageCount($page_count)
-    {
-        $this->container['page_count'] = $page_count;
+        $this->container['done'] = $done;
 
         return $this;
     }

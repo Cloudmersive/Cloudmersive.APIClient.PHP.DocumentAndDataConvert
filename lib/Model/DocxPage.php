@@ -36,6 +36,7 @@ use \Swagger\Client\ObjectSerializer;
  * DocxPage Class Doc Comment
  *
  * @category Class
+ * @description One page in a Word Document DOCX
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen

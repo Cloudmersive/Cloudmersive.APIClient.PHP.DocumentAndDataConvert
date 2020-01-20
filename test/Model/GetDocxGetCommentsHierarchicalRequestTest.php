@@ -1,6 +1,6 @@
 <?php
 /**
- * GetDocxPagesResponseTest
+ * GetDocxGetCommentsHierarchicalRequestTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * GetDocxPagesResponseTest Class Doc Comment
+ * GetDocxGetCommentsHierarchicalRequestTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of getting pages from a Word Document DOCX
+// * @description Input to a Get Word DOCX Document comments hierarchically request
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
+class GetDocxGetCommentsHierarchicalRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,30 +71,23 @@ class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "GetDocxPagesResponse"
+     * Test "GetDocxGetCommentsHierarchicalRequest"
      */
-    public function testGetDocxPagesResponse()
+    public function testGetDocxGetCommentsHierarchicalRequest()
     {
     }
 
     /**
-     * Test attribute "successful"
+     * Test attribute "input_file_bytes"
      */
-    public function testPropertySuccessful()
+    public function testPropertyInputFileBytes()
     {
     }
 
     /**
-     * Test attribute "pages"
+     * Test attribute "input_file_url"
      */
-    public function testPropertyPages()
-    {
-    }
-
-    /**
-     * Test attribute "page_count"
-     */
-    public function testPropertyPageCount()
+    public function testPropertyInputFileUrl()
     {
     }
 }

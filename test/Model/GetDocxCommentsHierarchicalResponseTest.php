@@ -1,6 +1,6 @@
 <?php
 /**
- * GetDocxPagesResponseTest
+ * GetDocxCommentsHierarchicalResponseTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * GetDocxPagesResponseTest Class Doc Comment
+ * GetDocxCommentsHierarchicalResponseTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of getting pages from a Word Document DOCX
+// * @description Result of getting comments hierarchically from a Word Document DOCX
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
+class GetDocxCommentsHierarchicalResponseTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "GetDocxPagesResponse"
+     * Test "GetDocxCommentsHierarchicalResponse"
      */
-    public function testGetDocxPagesResponse()
+    public function testGetDocxCommentsHierarchicalResponse()
     {
     }
 
@@ -85,16 +85,16 @@ class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "pages"
+     * Test attribute "comments"
      */
-    public function testPropertyPages()
+    public function testPropertyComments()
     {
     }
 
     /**
-     * Test attribute "page_count"
+     * Test attribute "top_level_comment_count"
      */
-    public function testPropertyPageCount()
+    public function testPropertyTopLevelCommentCount()
     {
     }
 }

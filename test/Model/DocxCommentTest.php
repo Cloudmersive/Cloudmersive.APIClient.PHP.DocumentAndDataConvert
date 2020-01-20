@@ -1,6 +1,6 @@
 <?php
 /**
- * GetDocxPagesResponseTest
+ * DocxCommentTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * GetDocxPagesResponseTest Class Doc Comment
+ * DocxCommentTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of getting pages from a Word Document DOCX
+// * @description Comment in a Word Document
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
+class DocxCommentTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,30 +71,72 @@ class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "GetDocxPagesResponse"
+     * Test "DocxComment"
      */
-    public function testGetDocxPagesResponse()
+    public function testDocxComment()
     {
     }
 
     /**
-     * Test attribute "successful"
+     * Test attribute "path"
      */
-    public function testPropertySuccessful()
+    public function testPropertyPath()
     {
     }
 
     /**
-     * Test attribute "pages"
+     * Test attribute "author"
      */
-    public function testPropertyPages()
+    public function testPropertyAuthor()
     {
     }
 
     /**
-     * Test attribute "page_count"
+     * Test attribute "author_initials"
      */
-    public function testPropertyPageCount()
+    public function testPropertyAuthorInitials()
+    {
+    }
+
+    /**
+     * Test attribute "comment_text"
+     */
+    public function testPropertyCommentText()
+    {
+    }
+
+    /**
+     * Test attribute "comment_date"
+     */
+    public function testPropertyCommentDate()
+    {
+    }
+
+    /**
+     * Test attribute "is_top_level"
+     */
+    public function testPropertyIsTopLevel()
+    {
+    }
+
+    /**
+     * Test attribute "is_reply"
+     */
+    public function testPropertyIsReply()
+    {
+    }
+
+    /**
+     * Test attribute "parent_comment_path"
+     */
+    public function testPropertyParentCommentPath()
+    {
+    }
+
+    /**
+     * Test attribute "done"
+     */
+    public function testPropertyDone()
     {
     }
 }

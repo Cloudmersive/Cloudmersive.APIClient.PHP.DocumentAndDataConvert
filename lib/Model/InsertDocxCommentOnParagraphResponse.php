@@ -1,6 +1,6 @@
 <?php
 /**
- * GetDocxPagesResponse
+ * InsertDocxCommentOnParagraphResponse
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * GetDocxPagesResponse Class Doc Comment
+ * InsertDocxCommentOnParagraphResponse Class Doc Comment
  *
  * @category Class
- * @description Result of getting pages from a Word Document DOCX
+ * @description Result of running an Insert-Comment-on-Paragraph command
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class GetDocxPagesResponse implements ModelInterface, ArrayAccess
+class InsertDocxCommentOnParagraphResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'GetDocxPagesResponse';
+    protected static $swaggerModelName = 'InsertDocxCommentOnParagraphResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,7 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'successful' => 'bool',
-        'pages' => '\Swagger\Client\Model\DocxPage[]',
-        'page_count' => 'int'
+        'edited_document_url' => 'string'
     ];
 
     /**
@@ -70,8 +69,7 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'successful' => null,
-        'pages' => null,
-        'page_count' => 'int32'
+        'edited_document_url' => null
     ];
 
     /**
@@ -102,8 +100,7 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'successful' => 'Successful',
-        'pages' => 'Pages',
-        'page_count' => 'PageCount'
+        'edited_document_url' => 'EditedDocumentURL'
     ];
 
     /**
@@ -113,8 +110,7 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'successful' => 'setSuccessful',
-        'pages' => 'setPages',
-        'page_count' => 'setPageCount'
+        'edited_document_url' => 'setEditedDocumentUrl'
     ];
 
     /**
@@ -124,8 +120,7 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'successful' => 'getSuccessful',
-        'pages' => 'getPages',
-        'page_count' => 'getPageCount'
+        'edited_document_url' => 'getEditedDocumentUrl'
     ];
 
     /**
@@ -189,8 +184,7 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
-        $this->container['pages'] = isset($data['pages']) ? $data['pages'] : null;
-        $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
+        $this->container['edited_document_url'] = isset($data['edited_document_url']) ? $data['edited_document_url'] : null;
     }
 
     /**
@@ -243,49 +237,25 @@ class GetDocxPagesResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets pages
+     * Gets edited_document_url
      *
-     * @return \Swagger\Client\Model\DocxPage[]
+     * @return string
      */
-    public function getPages()
+    public function getEditedDocumentUrl()
     {
-        return $this->container['pages'];
+        return $this->container['edited_document_url'];
     }
 
     /**
-     * Sets pages
+     * Sets edited_document_url
      *
-     * @param \Swagger\Client\Model\DocxPage[] $pages Pages in the document
+     * @param string $edited_document_url URL to the edited DOCX file; file is stored in an in-memory cache and will be deleted.  Call Finish-Editing to get the result document contents.
      *
      * @return $this
      */
-    public function setPages($pages)
+    public function setEditedDocumentUrl($edited_document_url)
     {
-        $this->container['pages'] = $pages;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_count
-     *
-     * @return int
-     */
-    public function getPageCount()
-    {
-        return $this->container['page_count'];
-    }
-
-    /**
-     * Sets page_count
-     *
-     * @param int $page_count Count of pages
-     *
-     * @return $this
-     */
-    public function setPageCount($page_count)
-    {
-        $this->container['page_count'] = $page_count;
+        $this->container['edited_document_url'] = $edited_document_url;
 
         return $this;
     }

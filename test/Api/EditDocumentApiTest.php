@@ -132,6 +132,26 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxGetComments
+     *
+     * Get comments from a Word DOCX document as a flat list.
+     *
+     */
+    public function testEditDocumentDocxGetComments()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxGetCommentsHierarchical
+     *
+     * Get comments from a Word DOCX document hierarchically.
+     *
+     */
+    public function testEditDocumentDocxGetCommentsHierarchical()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxGetHeadersAndFooters
      *
      * Get content of a footer from a Word DOCX document.
@@ -198,6 +218,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentDocxGetTables()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxInsertCommentOnParagraph
+     *
+     * Insert a new comment into a Word DOCX document attached to a paragraph.
+     *
+     */
+    public function testEditDocumentDocxInsertCommentOnParagraph()
     {
     }
 

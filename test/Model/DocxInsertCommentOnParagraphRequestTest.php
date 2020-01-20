@@ -1,6 +1,6 @@
 <?php
 /**
- * GetDocxPagesResponseTest
+ * DocxInsertCommentOnParagraphRequestTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * GetDocxPagesResponseTest Class Doc Comment
+ * DocxInsertCommentOnParagraphRequestTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of getting pages from a Word Document DOCX
+// * @description Input to a Insert Comment on Paragraph request
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
+class DocxInsertCommentOnParagraphRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,30 +71,37 @@ class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "GetDocxPagesResponse"
+     * Test "DocxInsertCommentOnParagraphRequest"
      */
-    public function testGetDocxPagesResponse()
+    public function testDocxInsertCommentOnParagraphRequest()
     {
     }
 
     /**
-     * Test attribute "successful"
+     * Test attribute "input_file_bytes"
      */
-    public function testPropertySuccessful()
+    public function testPropertyInputFileBytes()
     {
     }
 
     /**
-     * Test attribute "pages"
+     * Test attribute "input_file_url"
      */
-    public function testPropertyPages()
+    public function testPropertyInputFileUrl()
     {
     }
 
     /**
-     * Test attribute "page_count"
+     * Test attribute "paragraph_path"
      */
-    public function testPropertyPageCount()
+    public function testPropertyParagraphPath()
+    {
+    }
+
+    /**
+     * Test attribute "comment_to_insert"
+     */
+    public function testPropertyCommentToInsert()
     {
     }
 }

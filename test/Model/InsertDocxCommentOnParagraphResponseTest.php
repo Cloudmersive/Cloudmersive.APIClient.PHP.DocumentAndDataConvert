@@ -1,6 +1,6 @@
 <?php
 /**
- * GetDocxPagesResponseTest
+ * InsertDocxCommentOnParagraphResponseTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * GetDocxPagesResponseTest Class Doc Comment
+ * InsertDocxCommentOnParagraphResponseTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of getting pages from a Word Document DOCX
+// * @description Result of running an Insert-Comment-on-Paragraph command
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
+class InsertDocxCommentOnParagraphResponseTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "GetDocxPagesResponse"
+     * Test "InsertDocxCommentOnParagraphResponse"
      */
-    public function testGetDocxPagesResponse()
+    public function testInsertDocxCommentOnParagraphResponse()
     {
     }
 
@@ -85,16 +85,9 @@ class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "pages"
+     * Test attribute "edited_document_url"
      */
-    public function testPropertyPages()
-    {
-    }
-
-    /**
-     * Test attribute "page_count"
-     */
-    public function testPropertyPageCount()
+    public function testPropertyEditedDocumentUrl()
     {
     }
 }

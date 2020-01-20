@@ -1,6 +1,6 @@
 <?php
 /**
- * GetDocxPagesResponseTest
+ * GetDocxCommentsResponseTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * GetDocxPagesResponseTest Class Doc Comment
+ * GetDocxCommentsResponseTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of getting pages from a Word Document DOCX
+// * @description Result of getting comments from a Word Document DOCX
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
+class GetDocxCommentsResponseTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "GetDocxPagesResponse"
+     * Test "GetDocxCommentsResponse"
      */
-    public function testGetDocxPagesResponse()
+    public function testGetDocxCommentsResponse()
     {
     }
 
@@ -85,16 +85,16 @@ class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "pages"
+     * Test attribute "comments"
      */
-    public function testPropertyPages()
+    public function testPropertyComments()
     {
     }
 
     /**
-     * Test attribute "page_count"
+     * Test attribute "comment_count"
      */
-    public function testPropertyPageCount()
+    public function testPropertyCommentCount()
     {
     }
 }

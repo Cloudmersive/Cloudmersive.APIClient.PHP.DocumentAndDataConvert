@@ -1,6 +1,6 @@
 <?php
 /**
- * GetDocxPagesResponseTest
+ * DocxTopLevelCommentTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * GetDocxPagesResponseTest Class Doc Comment
+ * DocxTopLevelCommentTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of getting pages from a Word Document DOCX
+// * @description Top-level Comment in a Word Document
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
+class DocxTopLevelCommentTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,30 +71,58 @@ class GetDocxPagesResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "GetDocxPagesResponse"
+     * Test "DocxTopLevelComment"
      */
-    public function testGetDocxPagesResponse()
+    public function testDocxTopLevelComment()
     {
     }
 
     /**
-     * Test attribute "successful"
+     * Test attribute "path"
      */
-    public function testPropertySuccessful()
+    public function testPropertyPath()
     {
     }
 
     /**
-     * Test attribute "pages"
+     * Test attribute "author"
      */
-    public function testPropertyPages()
+    public function testPropertyAuthor()
     {
     }
 
     /**
-     * Test attribute "page_count"
+     * Test attribute "author_initials"
      */
-    public function testPropertyPageCount()
+    public function testPropertyAuthorInitials()
+    {
+    }
+
+    /**
+     * Test attribute "comment_text"
+     */
+    public function testPropertyCommentText()
+    {
+    }
+
+    /**
+     * Test attribute "comment_date"
+     */
+    public function testPropertyCommentDate()
+    {
+    }
+
+    /**
+     * Test attribute "reply_child_comments"
+     */
+    public function testPropertyReplyChildComments()
+    {
+    }
+
+    /**
+     * Test attribute "done"
+     */
+    public function testPropertyDone()
     {
     }
 }

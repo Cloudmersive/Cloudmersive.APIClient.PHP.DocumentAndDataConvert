@@ -33,7 +33,7 @@ namespace Swagger\Client;
  * DocxPageTest Class Doc Comment
  *
  * @category    Class */
-// * @description DocxPage
+// * @description One page in a Word Document DOCX
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
