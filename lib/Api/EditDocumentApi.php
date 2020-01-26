@@ -7685,7 +7685,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentFinishEditing
      *
-     * Download result from document editing
+     * Finish editing document, and download result from document editing
      *
      * @param  \Swagger\Client\Model\FinishEditingRequest $req_config Cloudmersive Document URL to complete editing on (required)
      *
@@ -7702,7 +7702,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentFinishEditingWithHttpInfo
      *
-     * Download result from document editing
+     * Finish editing document, and download result from document editing
      *
      * @param  \Swagger\Client\Model\FinishEditingRequest $req_config Cloudmersive Document URL to complete editing on (required)
      *
@@ -7777,7 +7777,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentFinishEditingAsync
      *
-     * Download result from document editing
+     * Finish editing document, and download result from document editing
      *
      * @param  \Swagger\Client\Model\FinishEditingRequest $req_config Cloudmersive Document URL to complete editing on (required)
      *
@@ -7797,7 +7797,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentFinishEditingAsyncWithHttpInfo
      *
-     * Download result from document editing
+     * Finish editing document, and download result from document editing
      *
      * @param  \Swagger\Client\Model\FinishEditingRequest $req_config Cloudmersive Document URL to complete editing on (required)
      *

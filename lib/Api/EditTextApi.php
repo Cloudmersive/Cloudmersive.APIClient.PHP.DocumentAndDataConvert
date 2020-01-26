@@ -1,6 +1,6 @@
 <?php
 /**
- * SplitDocumentApi
+ * EditTextApi
  * PHP version 5
  *
  * @category Class
@@ -40,14 +40,14 @@ use Swagger\Client\HeaderSelector;
 use Swagger\Client\ObjectSerializer;
 
 /**
- * SplitDocumentApi Class Doc Comment
+ * EditTextApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SplitDocumentApi
+class EditTextApi
 {
     /**
      * @var ClientInterface
@@ -83,39 +83,37 @@ class SplitDocumentApi
     }
 
     /**
-     * Operation splitDocumentDocx
+     * Operation editTextBase64Decode
      *
-     * Split a single Word Document DOCX into Separate Documents by Page
+     * Base 64 decode, convert base 64 string to binary content
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting document.  Default is true. (optional)
+     * @param  \Swagger\Client\Model\Base64DecodeRequest $request request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\SplitDocxDocumentResult
+     * @return \Swagger\Client\Model\Base64DecodeResponse
      */
-    public function splitDocumentDocx($input_file, $return_document_contents = null)
+    public function editTextBase64Decode($request)
     {
-        list($response) = $this->splitDocumentDocxWithHttpInfo($input_file, $return_document_contents);
+        list($response) = $this->editTextBase64DecodeWithHttpInfo($request);
         return $response;
     }
 
     /**
-     * Operation splitDocumentDocxWithHttpInfo
+     * Operation editTextBase64DecodeWithHttpInfo
      *
-     * Split a single Word Document DOCX into Separate Documents by Page
+     * Base 64 decode, convert base 64 string to binary content
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting document.  Default is true. (optional)
+     * @param  \Swagger\Client\Model\Base64DecodeRequest $request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\SplitDocxDocumentResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\Base64DecodeResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function splitDocumentDocxWithHttpInfo($input_file, $return_document_contents = null)
+    public function editTextBase64DecodeWithHttpInfo($request)
     {
-        $returnType = '\Swagger\Client\Model\SplitDocxDocumentResult';
-        $request = $this->splitDocumentDocxRequest($input_file, $return_document_contents);
+        $returnType = '\Swagger\Client\Model\Base64DecodeResponse';
+        $request = $this->editTextBase64DecodeRequest($request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -166,7 +164,7 @@ class SplitDocumentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\SplitDocxDocumentResult',
+                        '\Swagger\Client\Model\Base64DecodeResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -177,19 +175,18 @@ class SplitDocumentApi
     }
 
     /**
-     * Operation splitDocumentDocxAsync
+     * Operation editTextBase64DecodeAsync
      *
-     * Split a single Word Document DOCX into Separate Documents by Page
+     * Base 64 decode, convert base 64 string to binary content
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting document.  Default is true. (optional)
+     * @param  \Swagger\Client\Model\Base64DecodeRequest $request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function splitDocumentDocxAsync($input_file, $return_document_contents = null)
+    public function editTextBase64DecodeAsync($request)
     {
-        return $this->splitDocumentDocxAsyncWithHttpInfo($input_file, $return_document_contents)
+        return $this->editTextBase64DecodeAsyncWithHttpInfo($request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -198,20 +195,19 @@ class SplitDocumentApi
     }
 
     /**
-     * Operation splitDocumentDocxAsyncWithHttpInfo
+     * Operation editTextBase64DecodeAsyncWithHttpInfo
      *
-     * Split a single Word Document DOCX into Separate Documents by Page
+     * Base 64 decode, convert base 64 string to binary content
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting document.  Default is true. (optional)
+     * @param  \Swagger\Client\Model\Base64DecodeRequest $request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function splitDocumentDocxAsyncWithHttpInfo($input_file, $return_document_contents = null)
+    public function editTextBase64DecodeAsyncWithHttpInfo($request)
     {
-        $returnType = '\Swagger\Client\Model\SplitDocxDocumentResult';
-        $request = $this->splitDocumentDocxRequest($input_file, $return_document_contents);
+        $returnType = '\Swagger\Client\Model\Base64DecodeResponse';
+        $request = $this->editTextBase64DecodeRequest($request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -251,24 +247,820 @@ class SplitDocumentApi
     }
 
     /**
-     * Create request for operation 'splitDocumentDocx'
+     * Create request for operation 'editTextBase64Decode'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting document.  Default is true. (optional)
+     * @param  \Swagger\Client\Model\Base64DecodeRequest $request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function splitDocumentDocxRequest($input_file, $return_document_contents = null)
+    protected function editTextBase64DecodeRequest($request)
     {
-        // verify the required parameter 'input_file' is set
-        if ($input_file === null) {
+        // verify the required parameter 'request' is set
+        if ($request === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $input_file when calling splitDocumentDocx'
+                'Missing the required parameter $request when calling editTextBase64Decode'
             );
         }
 
-        $resourcePath = '/convert/split/docx';
+        $resourcePath = '/convert/edit/text/encoding/base64/decode';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($request)) {
+            $_tempBody = $request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editTextBase64Detect
+     *
+     * Detect, check if text string is base 64 encoded
+     *
+     * @param  \Swagger\Client\Model\Base64DetectRequest $request request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\Base64DetectResponse
+     */
+    public function editTextBase64Detect($request)
+    {
+        list($response) = $this->editTextBase64DetectWithHttpInfo($request);
+        return $response;
+    }
+
+    /**
+     * Operation editTextBase64DetectWithHttpInfo
+     *
+     * Detect, check if text string is base 64 encoded
+     *
+     * @param  \Swagger\Client\Model\Base64DetectRequest $request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\Base64DetectResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editTextBase64DetectWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\Base64DetectResponse';
+        $request = $this->editTextBase64DetectRequest($request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Base64DetectResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editTextBase64DetectAsync
+     *
+     * Detect, check if text string is base 64 encoded
+     *
+     * @param  \Swagger\Client\Model\Base64DetectRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextBase64DetectAsync($request)
+    {
+        return $this->editTextBase64DetectAsyncWithHttpInfo($request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editTextBase64DetectAsyncWithHttpInfo
+     *
+     * Detect, check if text string is base 64 encoded
+     *
+     * @param  \Swagger\Client\Model\Base64DetectRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextBase64DetectAsyncWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\Base64DetectResponse';
+        $request = $this->editTextBase64DetectRequest($request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editTextBase64Detect'
+     *
+     * @param  \Swagger\Client\Model\Base64DetectRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editTextBase64DetectRequest($request)
+    {
+        // verify the required parameter 'request' is set
+        if ($request === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request when calling editTextBase64Detect'
+            );
+        }
+
+        $resourcePath = '/convert/edit/text/encoding/base64/detect';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($request)) {
+            $_tempBody = $request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editTextBase64Encode
+     *
+     * Base 64 encode, convert binary or file data to a text string
+     *
+     * @param  \Swagger\Client\Model\Base64EncodeRequest $request request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\Base64EncodeResponse
+     */
+    public function editTextBase64Encode($request)
+    {
+        list($response) = $this->editTextBase64EncodeWithHttpInfo($request);
+        return $response;
+    }
+
+    /**
+     * Operation editTextBase64EncodeWithHttpInfo
+     *
+     * Base 64 encode, convert binary or file data to a text string
+     *
+     * @param  \Swagger\Client\Model\Base64EncodeRequest $request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\Base64EncodeResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editTextBase64EncodeWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\Base64EncodeResponse';
+        $request = $this->editTextBase64EncodeRequest($request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Base64EncodeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editTextBase64EncodeAsync
+     *
+     * Base 64 encode, convert binary or file data to a text string
+     *
+     * @param  \Swagger\Client\Model\Base64EncodeRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextBase64EncodeAsync($request)
+    {
+        return $this->editTextBase64EncodeAsyncWithHttpInfo($request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editTextBase64EncodeAsyncWithHttpInfo
+     *
+     * Base 64 encode, convert binary or file data to a text string
+     *
+     * @param  \Swagger\Client\Model\Base64EncodeRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextBase64EncodeAsyncWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\Base64EncodeResponse';
+        $request = $this->editTextBase64EncodeRequest($request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editTextBase64Encode'
+     *
+     * @param  \Swagger\Client\Model\Base64EncodeRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editTextBase64EncodeRequest($request)
+    {
+        // verify the required parameter 'request' is set
+        if ($request === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request when calling editTextBase64Encode'
+            );
+        }
+
+        $resourcePath = '/convert/edit/text/encoding/base64/encode';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($request)) {
+            $_tempBody = $request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editTextChangeLineEndings
+     *
+     * Set, change line endings of a text file
+     *
+     * @param  string $line_ending_type Required; &#39;Windows&#39; will use carriage return and line feed, &#39;Unix&#39; will use newline, and &#39;Mac&#39; will use carriage return (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\ChangeLineEndingResponse
+     */
+    public function editTextChangeLineEndings($line_ending_type, $input_file)
+    {
+        list($response) = $this->editTextChangeLineEndingsWithHttpInfo($line_ending_type, $input_file);
+        return $response;
+    }
+
+    /**
+     * Operation editTextChangeLineEndingsWithHttpInfo
+     *
+     * Set, change line endings of a text file
+     *
+     * @param  string $line_ending_type Required; &#39;Windows&#39; will use carriage return and line feed, &#39;Unix&#39; will use newline, and &#39;Mac&#39; will use carriage return (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\ChangeLineEndingResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editTextChangeLineEndingsWithHttpInfo($line_ending_type, $input_file)
+    {
+        $returnType = '\Swagger\Client\Model\ChangeLineEndingResponse';
+        $request = $this->editTextChangeLineEndingsRequest($line_ending_type, $input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ChangeLineEndingResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editTextChangeLineEndingsAsync
+     *
+     * Set, change line endings of a text file
+     *
+     * @param  string $line_ending_type Required; &#39;Windows&#39; will use carriage return and line feed, &#39;Unix&#39; will use newline, and &#39;Mac&#39; will use carriage return (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextChangeLineEndingsAsync($line_ending_type, $input_file)
+    {
+        return $this->editTextChangeLineEndingsAsyncWithHttpInfo($line_ending_type, $input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editTextChangeLineEndingsAsyncWithHttpInfo
+     *
+     * Set, change line endings of a text file
+     *
+     * @param  string $line_ending_type Required; &#39;Windows&#39; will use carriage return and line feed, &#39;Unix&#39; will use newline, and &#39;Mac&#39; will use carriage return (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextChangeLineEndingsAsyncWithHttpInfo($line_ending_type, $input_file)
+    {
+        $returnType = '\Swagger\Client\Model\ChangeLineEndingResponse';
+        $request = $this->editTextChangeLineEndingsRequest($line_ending_type, $input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editTextChangeLineEndings'
+     *
+     * @param  string $line_ending_type Required; &#39;Windows&#39; will use carriage return and line feed, &#39;Unix&#39; will use newline, and &#39;Mac&#39; will use carriage return (required)
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editTextChangeLineEndingsRequest($line_ending_type, $input_file)
+    {
+        // verify the required parameter 'line_ending_type' is set
+        if ($line_ending_type === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_ending_type when calling editTextChangeLineEndings'
+            );
+        }
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling editTextChangeLineEndings'
+            );
+        }
+
+        $resourcePath = '/convert/edit/text/line-endings/change';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -276,8 +1068,8 @@ class SplitDocumentApi
         $multipart = false;
 
         // header params
-        if ($return_document_contents !== null) {
-            $headerParams['returnDocumentContents'] = ObjectSerializer::toHeaderValue($return_document_contents);
+        if ($line_ending_type !== null) {
+            $headerParams['lineEndingType'] = ObjectSerializer::toHeaderValue($line_ending_type);
         }
 
 
@@ -356,39 +1148,37 @@ class SplitDocumentApi
     }
 
     /**
-     * Operation splitDocumentPdfByPage
+     * Operation editTextDetectLineEndings
      *
-     * Split a PDF file into separate PDF files, one per page
+     * Detect line endings of a text file
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to directly return all of the document contents in the DocumentContents field; set to false to return contents as temporary URLs (more efficient for large operations).  Default is false. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\SplitPdfResult
+     * @return \Swagger\Client\Model\DetectLineEndingsResponse
      */
-    public function splitDocumentPdfByPage($input_file, $return_document_contents = null)
+    public function editTextDetectLineEndings($input_file)
     {
-        list($response) = $this->splitDocumentPdfByPageWithHttpInfo($input_file, $return_document_contents);
+        list($response) = $this->editTextDetectLineEndingsWithHttpInfo($input_file);
         return $response;
     }
 
     /**
-     * Operation splitDocumentPdfByPageWithHttpInfo
+     * Operation editTextDetectLineEndingsWithHttpInfo
      *
-     * Split a PDF file into separate PDF files, one per page
+     * Detect line endings of a text file
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to directly return all of the document contents in the DocumentContents field; set to false to return contents as temporary URLs (more efficient for large operations).  Default is false. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\SplitPdfResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\DetectLineEndingsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function splitDocumentPdfByPageWithHttpInfo($input_file, $return_document_contents = null)
+    public function editTextDetectLineEndingsWithHttpInfo($input_file)
     {
-        $returnType = '\Swagger\Client\Model\SplitPdfResult';
-        $request = $this->splitDocumentPdfByPageRequest($input_file, $return_document_contents);
+        $returnType = '\Swagger\Client\Model\DetectLineEndingsResponse';
+        $request = $this->editTextDetectLineEndingsRequest($input_file);
 
         try {
             $options = $this->createHttpClientOption();
@@ -439,7 +1229,7 @@ class SplitDocumentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\SplitPdfResult',
+                        '\Swagger\Client\Model\DetectLineEndingsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -450,19 +1240,18 @@ class SplitDocumentApi
     }
 
     /**
-     * Operation splitDocumentPdfByPageAsync
+     * Operation editTextDetectLineEndingsAsync
      *
-     * Split a PDF file into separate PDF files, one per page
+     * Detect line endings of a text file
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to directly return all of the document contents in the DocumentContents field; set to false to return contents as temporary URLs (more efficient for large operations).  Default is false. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function splitDocumentPdfByPageAsync($input_file, $return_document_contents = null)
+    public function editTextDetectLineEndingsAsync($input_file)
     {
-        return $this->splitDocumentPdfByPageAsyncWithHttpInfo($input_file, $return_document_contents)
+        return $this->editTextDetectLineEndingsAsyncWithHttpInfo($input_file)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -471,20 +1260,19 @@ class SplitDocumentApi
     }
 
     /**
-     * Operation splitDocumentPdfByPageAsyncWithHttpInfo
+     * Operation editTextDetectLineEndingsAsyncWithHttpInfo
      *
-     * Split a PDF file into separate PDF files, one per page
+     * Detect line endings of a text file
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to directly return all of the document contents in the DocumentContents field; set to false to return contents as temporary URLs (more efficient for large operations).  Default is false. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function splitDocumentPdfByPageAsyncWithHttpInfo($input_file, $return_document_contents = null)
+    public function editTextDetectLineEndingsAsyncWithHttpInfo($input_file)
     {
-        $returnType = '\Swagger\Client\Model\SplitPdfResult';
-        $request = $this->splitDocumentPdfByPageRequest($input_file, $return_document_contents);
+        $returnType = '\Swagger\Client\Model\DetectLineEndingsResponse';
+        $request = $this->editTextDetectLineEndingsRequest($input_file);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -524,565 +1312,23 @@ class SplitDocumentApi
     }
 
     /**
-     * Create request for operation 'splitDocumentPdfByPage'
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to directly return all of the document contents in the DocumentContents field; set to false to return contents as temporary URLs (more efficient for large operations).  Default is false. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function splitDocumentPdfByPageRequest($input_file, $return_document_contents = null)
-    {
-        // verify the required parameter 'input_file' is set
-        if ($input_file === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $input_file when calling splitDocumentPdfByPage'
-            );
-        }
-
-        $resourcePath = '/convert/split/pdf';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // header params
-        if ($return_document_contents !== null) {
-            $headerParams['returnDocumentContents'] = ObjectSerializer::toHeaderValue($return_document_contents);
-        }
-
-
-        // form params
-        if ($input_file !== null) {
-            $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
-        }
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'text/json', 'application/xml', 'text/xml']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'text/json', 'application/xml', 'text/xml'],
-                ['multipart/form-data']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
-        if ($apiKey !== null) {
-            $headers['Apikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation splitDocumentPptx
-     *
-     * Split a single PowerPoint Presentation PPTX into Separate Slides
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each presentation directly, set to false to only return URLs to each resulting presentation.  Default is true. (optional)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\SplitPptxPresentationResult
-     */
-    public function splitDocumentPptx($input_file, $return_document_contents = null)
-    {
-        list($response) = $this->splitDocumentPptxWithHttpInfo($input_file, $return_document_contents);
-        return $response;
-    }
-
-    /**
-     * Operation splitDocumentPptxWithHttpInfo
-     *
-     * Split a single PowerPoint Presentation PPTX into Separate Slides
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each presentation directly, set to false to only return URLs to each resulting presentation.  Default is true. (optional)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\SplitPptxPresentationResult, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function splitDocumentPptxWithHttpInfo($input_file, $return_document_contents = null)
-    {
-        $returnType = '\Swagger\Client\Model\SplitPptxPresentationResult';
-        $request = $this->splitDocumentPptxRequest($input_file, $return_document_contents);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\SplitPptxPresentationResult',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation splitDocumentPptxAsync
-     *
-     * Split a single PowerPoint Presentation PPTX into Separate Slides
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each presentation directly, set to false to only return URLs to each resulting presentation.  Default is true. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function splitDocumentPptxAsync($input_file, $return_document_contents = null)
-    {
-        return $this->splitDocumentPptxAsyncWithHttpInfo($input_file, $return_document_contents)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation splitDocumentPptxAsyncWithHttpInfo
-     *
-     * Split a single PowerPoint Presentation PPTX into Separate Slides
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each presentation directly, set to false to only return URLs to each resulting presentation.  Default is true. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function splitDocumentPptxAsyncWithHttpInfo($input_file, $return_document_contents = null)
-    {
-        $returnType = '\Swagger\Client\Model\SplitPptxPresentationResult';
-        $request = $this->splitDocumentPptxRequest($input_file, $return_document_contents);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'splitDocumentPptx'
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each presentation directly, set to false to only return URLs to each resulting presentation.  Default is true. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function splitDocumentPptxRequest($input_file, $return_document_contents = null)
-    {
-        // verify the required parameter 'input_file' is set
-        if ($input_file === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $input_file when calling splitDocumentPptx'
-            );
-        }
-
-        $resourcePath = '/convert/split/pptx';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // header params
-        if ($return_document_contents !== null) {
-            $headerParams['returnDocumentContents'] = ObjectSerializer::toHeaderValue($return_document_contents);
-        }
-
-
-        // form params
-        if ($input_file !== null) {
-            $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
-        }
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json', 'text/json', 'application/xml', 'text/xml']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json', 'text/json', 'application/xml', 'text/xml'],
-                ['multipart/form-data']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
-        if ($apiKey !== null) {
-            $headers['Apikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation splitDocumentTxtByLine
-     *
-     * Split a single Text file (txt) into lines
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\SplitTextDocumentByLinesResult
-     */
-    public function splitDocumentTxtByLine($input_file)
-    {
-        list($response) = $this->splitDocumentTxtByLineWithHttpInfo($input_file);
-        return $response;
-    }
-
-    /**
-     * Operation splitDocumentTxtByLineWithHttpInfo
-     *
-     * Split a single Text file (txt) into lines
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\SplitTextDocumentByLinesResult, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function splitDocumentTxtByLineWithHttpInfo($input_file)
-    {
-        $returnType = '\Swagger\Client\Model\SplitTextDocumentByLinesResult';
-        $request = $this->splitDocumentTxtByLineRequest($input_file);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\SplitTextDocumentByLinesResult',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation splitDocumentTxtByLineAsync
-     *
-     * Split a single Text file (txt) into lines
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function splitDocumentTxtByLineAsync($input_file)
-    {
-        return $this->splitDocumentTxtByLineAsyncWithHttpInfo($input_file)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation splitDocumentTxtByLineAsyncWithHttpInfo
-     *
-     * Split a single Text file (txt) into lines
-     *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function splitDocumentTxtByLineAsyncWithHttpInfo($input_file)
-    {
-        $returnType = '\Swagger\Client\Model\SplitTextDocumentByLinesResult';
-        $request = $this->splitDocumentTxtByLineRequest($input_file);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'splitDocumentTxtByLine'
+     * Create request for operation 'editTextDetectLineEndings'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function splitDocumentTxtByLineRequest($input_file)
+    protected function editTextDetectLineEndingsRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $input_file when calling splitDocumentTxtByLine'
+                'Missing the required parameter $input_file when calling editTextDetectLineEndings'
             );
         }
 
-        $resourcePath = '/convert/split/txt/by-line';
+        $resourcePath = '/convert/edit/text/line-endings/detect';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1166,41 +1412,37 @@ class SplitDocumentApi
     }
 
     /**
-     * Operation splitDocumentTxtByString
+     * Operation editTextRemoveAllWhitespace
      *
-     * Split a single Text file (txt) by a string delimiter
+     * Remove whitespace from text string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  string $split_delimiter Required; String to split up the input file on (required)
-     * @param  bool $skip_empty_elements Optional; If true, empty elements will be skipped in the output (optional)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\SplitTextDocumentByStringResult
+     * @return \Swagger\Client\Model\RemoveWhitespaceFromTextResponse
      */
-    public function splitDocumentTxtByString($input_file, $split_delimiter, $skip_empty_elements = null)
+    public function editTextRemoveAllWhitespace($request)
     {
-        list($response) = $this->splitDocumentTxtByStringWithHttpInfo($input_file, $split_delimiter, $skip_empty_elements);
+        list($response) = $this->editTextRemoveAllWhitespaceWithHttpInfo($request);
         return $response;
     }
 
     /**
-     * Operation splitDocumentTxtByStringWithHttpInfo
+     * Operation editTextRemoveAllWhitespaceWithHttpInfo
      *
-     * Split a single Text file (txt) by a string delimiter
+     * Remove whitespace from text string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  string $split_delimiter Required; String to split up the input file on (required)
-     * @param  bool $skip_empty_elements Optional; If true, empty elements will be skipped in the output (optional)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\SplitTextDocumentByStringResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\RemoveWhitespaceFromTextResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function splitDocumentTxtByStringWithHttpInfo($input_file, $split_delimiter, $skip_empty_elements = null)
+    public function editTextRemoveAllWhitespaceWithHttpInfo($request)
     {
-        $returnType = '\Swagger\Client\Model\SplitTextDocumentByStringResult';
-        $request = $this->splitDocumentTxtByStringRequest($input_file, $split_delimiter, $skip_empty_elements);
+        $returnType = '\Swagger\Client\Model\RemoveWhitespaceFromTextResponse';
+        $request = $this->editTextRemoveAllWhitespaceRequest($request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1251,7 +1493,7 @@ class SplitDocumentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\SplitTextDocumentByStringResult',
+                        '\Swagger\Client\Model\RemoveWhitespaceFromTextResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1262,20 +1504,18 @@ class SplitDocumentApi
     }
 
     /**
-     * Operation splitDocumentTxtByStringAsync
+     * Operation editTextRemoveAllWhitespaceAsync
      *
-     * Split a single Text file (txt) by a string delimiter
+     * Remove whitespace from text string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  string $split_delimiter Required; String to split up the input file on (required)
-     * @param  bool $skip_empty_elements Optional; If true, empty elements will be skipped in the output (optional)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function splitDocumentTxtByStringAsync($input_file, $split_delimiter, $skip_empty_elements = null)
+    public function editTextRemoveAllWhitespaceAsync($request)
     {
-        return $this->splitDocumentTxtByStringAsyncWithHttpInfo($input_file, $split_delimiter, $skip_empty_elements)
+        return $this->editTextRemoveAllWhitespaceAsyncWithHttpInfo($request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1284,21 +1524,19 @@ class SplitDocumentApi
     }
 
     /**
-     * Operation splitDocumentTxtByStringAsyncWithHttpInfo
+     * Operation editTextRemoveAllWhitespaceAsyncWithHttpInfo
      *
-     * Split a single Text file (txt) by a string delimiter
+     * Remove whitespace from text string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  string $split_delimiter Required; String to split up the input file on (required)
-     * @param  bool $skip_empty_elements Optional; If true, empty elements will be skipped in the output (optional)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function splitDocumentTxtByStringAsyncWithHttpInfo($input_file, $split_delimiter, $skip_empty_elements = null)
+    public function editTextRemoveAllWhitespaceAsyncWithHttpInfo($request)
     {
-        $returnType = '\Swagger\Client\Model\SplitTextDocumentByStringResult';
-        $request = $this->splitDocumentTxtByStringRequest($input_file, $split_delimiter, $skip_empty_elements);
+        $returnType = '\Swagger\Client\Model\RemoveWhitespaceFromTextResponse';
+        $request = $this->editTextRemoveAllWhitespaceRequest($request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1338,45 +1576,553 @@ class SplitDocumentApi
     }
 
     /**
-     * Create request for operation 'splitDocumentTxtByString'
+     * Create request for operation 'editTextRemoveAllWhitespace'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  string $split_delimiter Required; String to split up the input file on (required)
-     * @param  bool $skip_empty_elements Optional; If true, empty elements will be skipped in the output (optional)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function splitDocumentTxtByStringRequest($input_file, $split_delimiter, $skip_empty_elements = null)
+    protected function editTextRemoveAllWhitespaceRequest($request)
     {
-        // verify the required parameter 'input_file' is set
-        if ($input_file === null) {
+        // verify the required parameter 'request' is set
+        if ($request === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $input_file when calling splitDocumentTxtByString'
-            );
-        }
-        // verify the required parameter 'split_delimiter' is set
-        if ($split_delimiter === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $split_delimiter when calling splitDocumentTxtByString'
+                'Missing the required parameter $request when calling editTextRemoveAllWhitespace'
             );
         }
 
-        $resourcePath = '/convert/split/txt/by-string';
+        $resourcePath = '/convert/edit/text/remove/whitespace/all';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($split_delimiter !== null) {
-            $headerParams['splitDelimiter'] = ObjectSerializer::toHeaderValue($split_delimiter);
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($request)) {
+            $_tempBody = $request;
         }
-        // header params
-        if ($skip_empty_elements !== null) {
-            $headerParams['skipEmptyElements'] = ObjectSerializer::toHeaderValue($skip_empty_elements);
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
         }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editTextRemoveHtml
+     *
+     * Remove HTML from text string
+     *
+     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\RemoveHtmlFromTextResponse
+     */
+    public function editTextRemoveHtml($request)
+    {
+        list($response) = $this->editTextRemoveHtmlWithHttpInfo($request);
+        return $response;
+    }
+
+    /**
+     * Operation editTextRemoveHtmlWithHttpInfo
+     *
+     * Remove HTML from text string
+     *
+     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\RemoveHtmlFromTextResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editTextRemoveHtmlWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\RemoveHtmlFromTextResponse';
+        $request = $this->editTextRemoveHtmlRequest($request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\RemoveHtmlFromTextResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editTextRemoveHtmlAsync
+     *
+     * Remove HTML from text string
+     *
+     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextRemoveHtmlAsync($request)
+    {
+        return $this->editTextRemoveHtmlAsyncWithHttpInfo($request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editTextRemoveHtmlAsyncWithHttpInfo
+     *
+     * Remove HTML from text string
+     *
+     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextRemoveHtmlAsyncWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\RemoveHtmlFromTextResponse';
+        $request = $this->editTextRemoveHtmlRequest($request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editTextRemoveHtml'
+     *
+     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editTextRemoveHtmlRequest($request)
+    {
+        // verify the required parameter 'request' is set
+        if ($request === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request when calling editTextRemoveHtml'
+            );
+        }
+
+        $resourcePath = '/convert/edit/text/remove/html';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($request)) {
+            $_tempBody = $request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editTextTextEncodingDetect
+     *
+     * Detect text encoding of file
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\TextEncodingDetectResponse
+     */
+    public function editTextTextEncodingDetect($input_file)
+    {
+        list($response) = $this->editTextTextEncodingDetectWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation editTextTextEncodingDetectWithHttpInfo
+     *
+     * Detect text encoding of file
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\TextEncodingDetectResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editTextTextEncodingDetectWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\TextEncodingDetectResponse';
+        $request = $this->editTextTextEncodingDetectRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\TextEncodingDetectResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editTextTextEncodingDetectAsync
+     *
+     * Detect text encoding of file
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextTextEncodingDetectAsync($input_file)
+    {
+        return $this->editTextTextEncodingDetectAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editTextTextEncodingDetectAsyncWithHttpInfo
+     *
+     * Detect text encoding of file
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextTextEncodingDetectAsyncWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\TextEncodingDetectResponse';
+        $request = $this->editTextTextEncodingDetectRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editTextTextEncodingDetect'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editTextTextEncodingDetectRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling editTextTextEncodingDetect'
+            );
+        }
+
+        $resourcePath = '/convert/edit/text/encoding/detect';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
 
 
         // form params
@@ -1454,39 +2200,37 @@ class SplitDocumentApi
     }
 
     /**
-     * Operation splitDocumentXlsx
+     * Operation editTextTrimWhitespace
      *
-     * Split a single Excel XLSX into Separate Worksheets
+     * Trim leading and trailing whitespace from text string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\SplitXlsxWorksheetResult
+     * @return \Swagger\Client\Model\RemoveWhitespaceFromTextResponse
      */
-    public function splitDocumentXlsx($input_file, $return_document_contents = null)
+    public function editTextTrimWhitespace($request)
     {
-        list($response) = $this->splitDocumentXlsxWithHttpInfo($input_file, $return_document_contents);
+        list($response) = $this->editTextTrimWhitespaceWithHttpInfo($request);
         return $response;
     }
 
     /**
-     * Operation splitDocumentXlsxWithHttpInfo
+     * Operation editTextTrimWhitespaceWithHttpInfo
      *
-     * Split a single Excel XLSX into Separate Worksheets
+     * Trim leading and trailing whitespace from text string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\SplitXlsxWorksheetResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\RemoveWhitespaceFromTextResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function splitDocumentXlsxWithHttpInfo($input_file, $return_document_contents = null)
+    public function editTextTrimWhitespaceWithHttpInfo($request)
     {
-        $returnType = '\Swagger\Client\Model\SplitXlsxWorksheetResult';
-        $request = $this->splitDocumentXlsxRequest($input_file, $return_document_contents);
+        $returnType = '\Swagger\Client\Model\RemoveWhitespaceFromTextResponse';
+        $request = $this->editTextTrimWhitespaceRequest($request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1537,7 +2281,7 @@ class SplitDocumentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\SplitXlsxWorksheetResult',
+                        '\Swagger\Client\Model\RemoveWhitespaceFromTextResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1548,19 +2292,18 @@ class SplitDocumentApi
     }
 
     /**
-     * Operation splitDocumentXlsxAsync
+     * Operation editTextTrimWhitespaceAsync
      *
-     * Split a single Excel XLSX into Separate Worksheets
+     * Trim leading and trailing whitespace from text string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function splitDocumentXlsxAsync($input_file, $return_document_contents = null)
+    public function editTextTrimWhitespaceAsync($request)
     {
-        return $this->splitDocumentXlsxAsyncWithHttpInfo($input_file, $return_document_contents)
+        return $this->editTextTrimWhitespaceAsyncWithHttpInfo($request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1569,20 +2312,19 @@ class SplitDocumentApi
     }
 
     /**
-     * Operation splitDocumentXlsxAsyncWithHttpInfo
+     * Operation editTextTrimWhitespaceAsyncWithHttpInfo
      *
-     * Split a single Excel XLSX into Separate Worksheets
+     * Trim leading and trailing whitespace from text string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function splitDocumentXlsxAsyncWithHttpInfo($input_file, $return_document_contents = null)
+    public function editTextTrimWhitespaceAsyncWithHttpInfo($request)
     {
-        $returnType = '\Swagger\Client\Model\SplitXlsxWorksheetResult';
-        $request = $this->splitDocumentXlsxRequest($input_file, $return_document_contents);
+        $returnType = '\Swagger\Client\Model\RemoveWhitespaceFromTextResponse';
+        $request = $this->editTextTrimWhitespaceRequest($request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1622,43 +2364,36 @@ class SplitDocumentApi
     }
 
     /**
-     * Create request for operation 'splitDocumentXlsx'
+     * Create request for operation 'editTextTrimWhitespace'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
-     * @param  bool $return_document_contents Set to true to return the contents of each Worksheet directly, set to false to only return URLs to each resulting worksheet.  Default is true. (optional)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function splitDocumentXlsxRequest($input_file, $return_document_contents = null)
+    protected function editTextTrimWhitespaceRequest($request)
     {
-        // verify the required parameter 'input_file' is set
-        if ($input_file === null) {
+        // verify the required parameter 'request' is set
+        if ($request === null) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $input_file when calling splitDocumentXlsx'
+                'Missing the required parameter $request when calling editTextTrimWhitespace'
             );
         }
 
-        $resourcePath = '/convert/split/xlsx';
+        $resourcePath = '/convert/edit/text/remove/whitespace/trim';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($return_document_contents !== null) {
-            $headerParams['returnDocumentContents'] = ObjectSerializer::toHeaderValue($return_document_contents);
-        }
 
 
-        // form params
-        if ($input_file !== null) {
-            $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
-        }
         // body params
         $_tempBody = null;
+        if (isset($request)) {
+            $_tempBody = $request;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1667,7 +2402,7 @@ class SplitDocumentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json', 'text/json', 'application/xml', 'text/xml'],
-                ['multipart/form-data']
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
             );
         }
 

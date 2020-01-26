@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**splitDocumentPdfByPage**](SplitDocumentApi.md#splitDocumentPdfByPage) | **POST** /convert/split/pdf | Split a PDF file into separate PDF files, one per page
 [**splitDocumentPptx**](SplitDocumentApi.md#splitDocumentPptx) | **POST** /convert/split/pptx | Split a single PowerPoint Presentation PPTX into Separate Slides
 [**splitDocumentTxtByLine**](SplitDocumentApi.md#splitDocumentTxtByLine) | **POST** /convert/split/txt/by-line | Split a single Text file (txt) into lines
+[**splitDocumentTxtByString**](SplitDocumentApi.md#splitDocumentTxtByString) | **POST** /convert/split/txt/by-string | Split a single Text file (txt) by a string delimiter
 [**splitDocumentXlsx**](SplitDocumentApi.md#splitDocumentXlsx) | **POST** /convert/split/xlsx | Split a single Excel XLSX into Separate Worksheets
 
 
@@ -225,6 +226,65 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\Model\SplitTextDocumentByLinesResult**](../Model/SplitTextDocumentByLinesResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **splitDocumentTxtByString**
+> \Swagger\Client\Model\SplitTextDocumentByStringResult splitDocumentTxtByString($input_file, $split_delimiter, $skip_empty_elements)
+
+Split a single Text file (txt) by a string delimiter
+
+Split a Text (txt) Document by a string delimiter, returning each component of the string as an array of strings.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\SplitDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$split_delimiter = "split_delimiter_example"; // string | Required; String to split up the input file on
+$skip_empty_elements = true; // bool | Optional; If true, empty elements will be skipped in the output
+
+try {
+    $result = $apiInstance->splitDocumentTxtByString($input_file, $split_delimiter, $skip_empty_elements);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SplitDocumentApi->splitDocumentTxtByString: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **split_delimiter** | **string**| Required; String to split up the input file on |
+ **skip_empty_elements** | **bool**| Optional; If true, empty elements will be skipped in the output | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\SplitTextDocumentByStringResult**](../Model/SplitTextDocumentByStringResult.md)
 
 ### Authorization
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * SplitDocumentApiTest
+ * EditTextApiTest
  * PHP version 5
  *
  * @category Class
@@ -33,14 +33,14 @@ use \Swagger\Client\ApiException;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * SplitDocumentApiTest Class Doc Comment
+ * EditTextApiTest Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SplitDocumentApiTest extends \PHPUnit_Framework_TestCase
+class EditTextApiTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -72,62 +72,92 @@ class SplitDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for splitDocumentDocx
+     * Test case for editTextBase64Decode
      *
-     * Split a single Word Document DOCX into Separate Documents by Page.
+     * Base 64 decode, convert base 64 string to binary content.
      *
      */
-    public function testSplitDocumentDocx()
+    public function testEditTextBase64Decode()
     {
     }
 
     /**
-     * Test case for splitDocumentPdfByPage
+     * Test case for editTextBase64Detect
      *
-     * Split a PDF file into separate PDF files, one per page.
+     * Detect, check if text string is base 64 encoded.
      *
      */
-    public function testSplitDocumentPdfByPage()
+    public function testEditTextBase64Detect()
     {
     }
 
     /**
-     * Test case for splitDocumentPptx
+     * Test case for editTextBase64Encode
      *
-     * Split a single PowerPoint Presentation PPTX into Separate Slides.
+     * Base 64 encode, convert binary or file data to a text string.
      *
      */
-    public function testSplitDocumentPptx()
+    public function testEditTextBase64Encode()
     {
     }
 
     /**
-     * Test case for splitDocumentTxtByLine
+     * Test case for editTextChangeLineEndings
      *
-     * Split a single Text file (txt) into lines.
+     * Set, change line endings of a text file.
      *
      */
-    public function testSplitDocumentTxtByLine()
+    public function testEditTextChangeLineEndings()
     {
     }
 
     /**
-     * Test case for splitDocumentTxtByString
+     * Test case for editTextDetectLineEndings
      *
-     * Split a single Text file (txt) by a string delimiter.
+     * Detect line endings of a text file.
      *
      */
-    public function testSplitDocumentTxtByString()
+    public function testEditTextDetectLineEndings()
     {
     }
 
     /**
-     * Test case for splitDocumentXlsx
+     * Test case for editTextRemoveAllWhitespace
      *
-     * Split a single Excel XLSX into Separate Worksheets.
+     * Remove whitespace from text string.
      *
      */
-    public function testSplitDocumentXlsx()
+    public function testEditTextRemoveAllWhitespace()
+    {
+    }
+
+    /**
+     * Test case for editTextRemoveHtml
+     *
+     * Remove HTML from text string.
+     *
+     */
+    public function testEditTextRemoveHtml()
+    {
+    }
+
+    /**
+     * Test case for editTextTextEncodingDetect
+     *
+     * Detect text encoding of file.
+     *
+     */
+    public function testEditTextTextEncodingDetect()
+    {
+    }
+
+    /**
+     * Test case for editTextTrimWhitespace
+     *
+     * Trim leading and trailing whitespace from text string.
+     *
+     */
+    public function testEditTextTrimWhitespace()
     {
     }
 }

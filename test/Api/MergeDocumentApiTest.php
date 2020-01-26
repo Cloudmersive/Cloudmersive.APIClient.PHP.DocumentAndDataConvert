@@ -142,6 +142,26 @@ class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for mergeDocumentTxt
+     *
+     * Merge Two Text (TXT) Files Together.
+     *
+     */
+    public function testMergeDocumentTxt()
+    {
+    }
+
+    /**
+     * Test case for mergeDocumentTxtMulti
+     *
+     * Merge Multple Text (TXT) Files Together.
+     *
+     */
+    public function testMergeDocumentTxtMulti()
+    {
+    }
+
+    /**
      * Test case for mergeDocumentXlsx
      *
      * Merge Two Excel XLSX Together.

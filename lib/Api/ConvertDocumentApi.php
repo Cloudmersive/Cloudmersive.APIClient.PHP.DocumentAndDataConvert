@@ -2473,14 +2473,15 @@ class ConvertDocumentApi
      * Convert Word DOCX Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;minimizeWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\TextConversionResult
      */
-    public function convertDocumentDocxToTxt($input_file)
+    public function convertDocumentDocxToTxt($input_file, $text_formatting_mode = null)
     {
-        list($response) = $this->convertDocumentDocxToTxtWithHttpInfo($input_file);
+        list($response) = $this->convertDocumentDocxToTxtWithHttpInfo($input_file, $text_formatting_mode);
         return $response;
     }
 
@@ -2490,15 +2491,16 @@ class ConvertDocumentApi
      * Convert Word DOCX Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;minimizeWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\TextConversionResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function convertDocumentDocxToTxtWithHttpInfo($input_file)
+    public function convertDocumentDocxToTxtWithHttpInfo($input_file, $text_formatting_mode = null)
     {
         $returnType = '\Swagger\Client\Model\TextConversionResult';
-        $request = $this->convertDocumentDocxToTxtRequest($input_file);
+        $request = $this->convertDocumentDocxToTxtRequest($input_file, $text_formatting_mode);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2565,13 +2567,14 @@ class ConvertDocumentApi
      * Convert Word DOCX Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;minimizeWhitespace&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertDocumentDocxToTxtAsync($input_file)
+    public function convertDocumentDocxToTxtAsync($input_file, $text_formatting_mode = null)
     {
-        return $this->convertDocumentDocxToTxtAsyncWithHttpInfo($input_file)
+        return $this->convertDocumentDocxToTxtAsyncWithHttpInfo($input_file, $text_formatting_mode)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2585,14 +2588,15 @@ class ConvertDocumentApi
      * Convert Word DOCX Document to Text (txt)
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;minimizeWhitespace&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertDocumentDocxToTxtAsyncWithHttpInfo($input_file)
+    public function convertDocumentDocxToTxtAsyncWithHttpInfo($input_file, $text_formatting_mode = null)
     {
         $returnType = '\Swagger\Client\Model\TextConversionResult';
-        $request = $this->convertDocumentDocxToTxtRequest($input_file);
+        $request = $this->convertDocumentDocxToTxtRequest($input_file, $text_formatting_mode);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2635,11 +2639,12 @@ class ConvertDocumentApi
      * Create request for operation 'convertDocumentDocxToTxt'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;minimizeWhitespace&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function convertDocumentDocxToTxtRequest($input_file)
+    protected function convertDocumentDocxToTxtRequest($input_file, $text_formatting_mode = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
@@ -2655,6 +2660,10 @@ class ConvertDocumentApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($text_formatting_mode !== null) {
+            $headerParams['textFormattingMode'] = ObjectSerializer::toHeaderValue($text_formatting_mode);
+        }
 
 
         // form params

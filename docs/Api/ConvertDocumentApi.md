@@ -534,7 +534,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **convertDocumentDocxToTxt**
-> \Swagger\Client\Model\TextConversionResult convertDocumentDocxToTxt($input_file)
+> \Swagger\Client\Model\TextConversionResult convertDocumentDocxToTxt($input_file, $text_formatting_mode)
 
 Convert Word DOCX Document to Text (txt)
 
@@ -557,9 +557,10 @@ $apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
     $config
 );
 $input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$text_formatting_mode = "text_formatting_mode_example"; // string | Optional; specify how whitespace should be handled when converting the document to text.  Possible values are 'preserveWhitespace' which will attempt to preserve whitespace in the document and relative positioning of text within the document, and 'minimizeWhitespace' which will not insert additional spaces into the document in most cases.  Default is 'minimizeWhitespace'.
 
 try {
-    $result = $apiInstance->convertDocumentDocxToTxt($input_file);
+    $result = $apiInstance->convertDocumentDocxToTxt($input_file, $text_formatting_mode);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConvertDocumentApi->convertDocumentDocxToTxt: ', $e->getMessage(), PHP_EOL;
@@ -572,6 +573,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **text_formatting_mode** | **string**| Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;minimizeWhitespace&#39;. | [optional]
 
 ### Return type
 

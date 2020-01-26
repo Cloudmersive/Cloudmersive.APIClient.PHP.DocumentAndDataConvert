@@ -364,7 +364,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentFinishEditing
      *
-     * Download result from document editing.
+     * Finish editing document, and download result from document editing.
      *
      */
     public function testEditDocumentFinishEditing()
