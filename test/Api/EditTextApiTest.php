@@ -122,6 +122,26 @@ class EditTextApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editTextFindRegex
+     *
+     * Find a regular expression regex in text input.
+     *
+     */
+    public function testEditTextFindRegex()
+    {
+    }
+
+    /**
+     * Test case for editTextFindSimple
+     *
+     * Find a string in text input.
+     *
+     */
+    public function testEditTextFindSimple()
+    {
+    }
+
+    /**
      * Test case for editTextRemoveAllWhitespace
      *
      * Remove whitespace from text string.
@@ -138,6 +158,26 @@ class EditTextApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditTextRemoveHtml()
+    {
+    }
+
+    /**
+     * Test case for editTextReplaceRegex
+     *
+     * Replace a string in text with a regex regular expression string.
+     *
+     */
+    public function testEditTextReplaceRegex()
+    {
+    }
+
+    /**
+     * Test case for editTextReplaceSimple
+     *
+     * Replace a string in text with another string value.
+     *
+     */
+    public function testEditTextReplaceSimple()
     {
     }
 

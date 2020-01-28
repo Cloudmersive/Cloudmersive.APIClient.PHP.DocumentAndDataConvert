@@ -351,7 +351,7 @@ class ConvertDataApi
      *
      * Convert JSON to XML conversion
      *
-     * @param  object $json_object json_object (required)
+     * @param  object $json_object Input JSON to convert to XML (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -368,7 +368,7 @@ class ConvertDataApi
      *
      * Convert JSON to XML conversion
      *
-     * @param  object $json_object (required)
+     * @param  object $json_object Input JSON to convert to XML (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -443,7 +443,7 @@ class ConvertDataApi
      *
      * Convert JSON to XML conversion
      *
-     * @param  object $json_object (required)
+     * @param  object $json_object Input JSON to convert to XML (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -463,7 +463,7 @@ class ConvertDataApi
      *
      * Convert JSON to XML conversion
      *
-     * @param  object $json_object (required)
+     * @param  object $json_object Input JSON to convert to XML (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -513,7 +513,7 @@ class ConvertDataApi
     /**
      * Create request for operation 'convertDataJsonToXml'
      *
-     * @param  object $json_object (required)
+     * @param  object $json_object Input JSON to convert to XML (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

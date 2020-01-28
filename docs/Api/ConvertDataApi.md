@@ -99,7 +99,7 @@ $apiInstance = new Swagger\Client\Api\ConvertDataApi(
     new GuzzleHttp\Client(),
     $config
 );
-$json_object = new \stdClass; // object | 
+$json_object = new \stdClass; // object | Input JSON to convert to XML
 
 try {
     $result = $apiInstance->convertDataJsonToXml($json_object);
@@ -114,7 +114,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **json_object** | **object**|  |
+ **json_object** | **object**| Input JSON to convert to XML |
 
 ### Return type
 

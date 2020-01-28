@@ -87,7 +87,7 @@ class EditTextApi
      *
      * Base 64 decode, convert base 64 string to binary content
      *
-     * @param  \Swagger\Client\Model\Base64DecodeRequest $request request (required)
+     * @param  \Swagger\Client\Model\Base64DecodeRequest $request Input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -104,7 +104,7 @@ class EditTextApi
      *
      * Base 64 decode, convert base 64 string to binary content
      *
-     * @param  \Swagger\Client\Model\Base64DecodeRequest $request (required)
+     * @param  \Swagger\Client\Model\Base64DecodeRequest $request Input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -179,7 +179,7 @@ class EditTextApi
      *
      * Base 64 decode, convert base 64 string to binary content
      *
-     * @param  \Swagger\Client\Model\Base64DecodeRequest $request (required)
+     * @param  \Swagger\Client\Model\Base64DecodeRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -199,7 +199,7 @@ class EditTextApi
      *
      * Base 64 decode, convert base 64 string to binary content
      *
-     * @param  \Swagger\Client\Model\Base64DecodeRequest $request (required)
+     * @param  \Swagger\Client\Model\Base64DecodeRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -249,7 +249,7 @@ class EditTextApi
     /**
      * Create request for operation 'editTextBase64Decode'
      *
-     * @param  \Swagger\Client\Model\Base64DecodeRequest $request (required)
+     * @param  \Swagger\Client\Model\Base64DecodeRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -349,7 +349,7 @@ class EditTextApi
      *
      * Detect, check if text string is base 64 encoded
      *
-     * @param  \Swagger\Client\Model\Base64DetectRequest $request request (required)
+     * @param  \Swagger\Client\Model\Base64DetectRequest $request Input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -366,7 +366,7 @@ class EditTextApi
      *
      * Detect, check if text string is base 64 encoded
      *
-     * @param  \Swagger\Client\Model\Base64DetectRequest $request (required)
+     * @param  \Swagger\Client\Model\Base64DetectRequest $request Input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -441,7 +441,7 @@ class EditTextApi
      *
      * Detect, check if text string is base 64 encoded
      *
-     * @param  \Swagger\Client\Model\Base64DetectRequest $request (required)
+     * @param  \Swagger\Client\Model\Base64DetectRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -461,7 +461,7 @@ class EditTextApi
      *
      * Detect, check if text string is base 64 encoded
      *
-     * @param  \Swagger\Client\Model\Base64DetectRequest $request (required)
+     * @param  \Swagger\Client\Model\Base64DetectRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -511,7 +511,7 @@ class EditTextApi
     /**
      * Create request for operation 'editTextBase64Detect'
      *
-     * @param  \Swagger\Client\Model\Base64DetectRequest $request (required)
+     * @param  \Swagger\Client\Model\Base64DetectRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -611,7 +611,7 @@ class EditTextApi
      *
      * Base 64 encode, convert binary or file data to a text string
      *
-     * @param  \Swagger\Client\Model\Base64EncodeRequest $request request (required)
+     * @param  \Swagger\Client\Model\Base64EncodeRequest $request Input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -628,7 +628,7 @@ class EditTextApi
      *
      * Base 64 encode, convert binary or file data to a text string
      *
-     * @param  \Swagger\Client\Model\Base64EncodeRequest $request (required)
+     * @param  \Swagger\Client\Model\Base64EncodeRequest $request Input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -703,7 +703,7 @@ class EditTextApi
      *
      * Base 64 encode, convert binary or file data to a text string
      *
-     * @param  \Swagger\Client\Model\Base64EncodeRequest $request (required)
+     * @param  \Swagger\Client\Model\Base64EncodeRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -723,7 +723,7 @@ class EditTextApi
      *
      * Base 64 encode, convert binary or file data to a text string
      *
-     * @param  \Swagger\Client\Model\Base64EncodeRequest $request (required)
+     * @param  \Swagger\Client\Model\Base64EncodeRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -773,7 +773,7 @@ class EditTextApi
     /**
      * Create request for operation 'editTextBase64Encode'
      *
-     * @param  \Swagger\Client\Model\Base64EncodeRequest $request (required)
+     * @param  \Swagger\Client\Model\Base64EncodeRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1412,11 +1412,535 @@ class EditTextApi
     }
 
     /**
+     * Operation editTextFindRegex
+     *
+     * Find a regular expression regex in text input
+     *
+     * @param  \Swagger\Client\Model\FindStringRegexRequest $request Input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\FindStringRegexResponse
+     */
+    public function editTextFindRegex($request)
+    {
+        list($response) = $this->editTextFindRegexWithHttpInfo($request);
+        return $response;
+    }
+
+    /**
+     * Operation editTextFindRegexWithHttpInfo
+     *
+     * Find a regular expression regex in text input
+     *
+     * @param  \Swagger\Client\Model\FindStringRegexRequest $request Input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\FindStringRegexResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editTextFindRegexWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\FindStringRegexResponse';
+        $request = $this->editTextFindRegexRequest($request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\FindStringRegexResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editTextFindRegexAsync
+     *
+     * Find a regular expression regex in text input
+     *
+     * @param  \Swagger\Client\Model\FindStringRegexRequest $request Input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextFindRegexAsync($request)
+    {
+        return $this->editTextFindRegexAsyncWithHttpInfo($request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editTextFindRegexAsyncWithHttpInfo
+     *
+     * Find a regular expression regex in text input
+     *
+     * @param  \Swagger\Client\Model\FindStringRegexRequest $request Input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextFindRegexAsyncWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\FindStringRegexResponse';
+        $request = $this->editTextFindRegexRequest($request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editTextFindRegex'
+     *
+     * @param  \Swagger\Client\Model\FindStringRegexRequest $request Input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editTextFindRegexRequest($request)
+    {
+        // verify the required parameter 'request' is set
+        if ($request === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request when calling editTextFindRegex'
+            );
+        }
+
+        $resourcePath = '/convert/edit/text/find/regex';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($request)) {
+            $_tempBody = $request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editTextFindSimple
+     *
+     * Find a string in text input
+     *
+     * @param  \Swagger\Client\Model\FindStringSimpleRequest $request Input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\FindStringSimpleResponse
+     */
+    public function editTextFindSimple($request)
+    {
+        list($response) = $this->editTextFindSimpleWithHttpInfo($request);
+        return $response;
+    }
+
+    /**
+     * Operation editTextFindSimpleWithHttpInfo
+     *
+     * Find a string in text input
+     *
+     * @param  \Swagger\Client\Model\FindStringSimpleRequest $request Input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\FindStringSimpleResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editTextFindSimpleWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\FindStringSimpleResponse';
+        $request = $this->editTextFindSimpleRequest($request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\FindStringSimpleResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editTextFindSimpleAsync
+     *
+     * Find a string in text input
+     *
+     * @param  \Swagger\Client\Model\FindStringSimpleRequest $request Input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextFindSimpleAsync($request)
+    {
+        return $this->editTextFindSimpleAsyncWithHttpInfo($request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editTextFindSimpleAsyncWithHttpInfo
+     *
+     * Find a string in text input
+     *
+     * @param  \Swagger\Client\Model\FindStringSimpleRequest $request Input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextFindSimpleAsyncWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\FindStringSimpleResponse';
+        $request = $this->editTextFindSimpleRequest($request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editTextFindSimple'
+     *
+     * @param  \Swagger\Client\Model\FindStringSimpleRequest $request Input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editTextFindSimpleRequest($request)
+    {
+        // verify the required parameter 'request' is set
+        if ($request === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request when calling editTextFindSimple'
+            );
+        }
+
+        $resourcePath = '/convert/edit/text/find/string';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($request)) {
+            $_tempBody = $request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation editTextRemoveAllWhitespace
      *
      * Remove whitespace from text string
      *
-     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request request (required)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request Input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1433,7 +1957,7 @@ class EditTextApi
      *
      * Remove whitespace from text string
      *
-     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request Input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1508,7 +2032,7 @@ class EditTextApi
      *
      * Remove whitespace from text string
      *
-     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1528,7 +2052,7 @@ class EditTextApi
      *
      * Remove whitespace from text string
      *
-     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1578,7 +2102,7 @@ class EditTextApi
     /**
      * Create request for operation 'editTextRemoveAllWhitespace'
      *
-     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1678,7 +2202,7 @@ class EditTextApi
      *
      * Remove HTML from text string
      *
-     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request request (required)
+     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request Input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1695,7 +2219,7 @@ class EditTextApi
      *
      * Remove HTML from text string
      *
-     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request (required)
+     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request Input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1770,7 +2294,7 @@ class EditTextApi
      *
      * Remove HTML from text string
      *
-     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request (required)
+     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1790,7 +2314,7 @@ class EditTextApi
      *
      * Remove HTML from text string
      *
-     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request (required)
+     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1840,7 +2364,7 @@ class EditTextApi
     /**
      * Create request for operation 'editTextRemoveHtml'
      *
-     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request (required)
+     * @param  \Swagger\Client\Model\RemoveHtmlFromTextRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1855,6 +2379,530 @@ class EditTextApi
         }
 
         $resourcePath = '/convert/edit/text/remove/html';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($request)) {
+            $_tempBody = $request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editTextReplaceRegex
+     *
+     * Replace a string in text with a regex regular expression string
+     *
+     * @param  \Swagger\Client\Model\ReplaceStringRegexRequest $request Input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\ReplaceStringRegexResponse
+     */
+    public function editTextReplaceRegex($request)
+    {
+        list($response) = $this->editTextReplaceRegexWithHttpInfo($request);
+        return $response;
+    }
+
+    /**
+     * Operation editTextReplaceRegexWithHttpInfo
+     *
+     * Replace a string in text with a regex regular expression string
+     *
+     * @param  \Swagger\Client\Model\ReplaceStringRegexRequest $request Input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\ReplaceStringRegexResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editTextReplaceRegexWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\ReplaceStringRegexResponse';
+        $request = $this->editTextReplaceRegexRequest($request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ReplaceStringRegexResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editTextReplaceRegexAsync
+     *
+     * Replace a string in text with a regex regular expression string
+     *
+     * @param  \Swagger\Client\Model\ReplaceStringRegexRequest $request Input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextReplaceRegexAsync($request)
+    {
+        return $this->editTextReplaceRegexAsyncWithHttpInfo($request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editTextReplaceRegexAsyncWithHttpInfo
+     *
+     * Replace a string in text with a regex regular expression string
+     *
+     * @param  \Swagger\Client\Model\ReplaceStringRegexRequest $request Input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextReplaceRegexAsyncWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\ReplaceStringRegexResponse';
+        $request = $this->editTextReplaceRegexRequest($request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editTextReplaceRegex'
+     *
+     * @param  \Swagger\Client\Model\ReplaceStringRegexRequest $request Input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editTextReplaceRegexRequest($request)
+    {
+        // verify the required parameter 'request' is set
+        if ($request === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request when calling editTextReplaceRegex'
+            );
+        }
+
+        $resourcePath = '/convert/edit/text/replace/regex';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($request)) {
+            $_tempBody = $request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editTextReplaceSimple
+     *
+     * Replace a string in text with another string value
+     *
+     * @param  \Swagger\Client\Model\ReplaceStringSimpleRequest $request Input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\ReplaceStringSimpleResponse
+     */
+    public function editTextReplaceSimple($request)
+    {
+        list($response) = $this->editTextReplaceSimpleWithHttpInfo($request);
+        return $response;
+    }
+
+    /**
+     * Operation editTextReplaceSimpleWithHttpInfo
+     *
+     * Replace a string in text with another string value
+     *
+     * @param  \Swagger\Client\Model\ReplaceStringSimpleRequest $request Input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\ReplaceStringSimpleResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editTextReplaceSimpleWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\ReplaceStringSimpleResponse';
+        $request = $this->editTextReplaceSimpleRequest($request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ReplaceStringSimpleResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editTextReplaceSimpleAsync
+     *
+     * Replace a string in text with another string value
+     *
+     * @param  \Swagger\Client\Model\ReplaceStringSimpleRequest $request Input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextReplaceSimpleAsync($request)
+    {
+        return $this->editTextReplaceSimpleAsyncWithHttpInfo($request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editTextReplaceSimpleAsyncWithHttpInfo
+     *
+     * Replace a string in text with another string value
+     *
+     * @param  \Swagger\Client\Model\ReplaceStringSimpleRequest $request Input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editTextReplaceSimpleAsyncWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\ReplaceStringSimpleResponse';
+        $request = $this->editTextReplaceSimpleRequest($request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editTextReplaceSimple'
+     *
+     * @param  \Swagger\Client\Model\ReplaceStringSimpleRequest $request Input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editTextReplaceSimpleRequest($request)
+    {
+        // verify the required parameter 'request' is set
+        if ($request === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request when calling editTextReplaceSimple'
+            );
+        }
+
+        $resourcePath = '/convert/edit/text/replace/string';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2204,7 +3252,7 @@ class EditTextApi
      *
      * Trim leading and trailing whitespace from text string
      *
-     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request request (required)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request Input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2221,7 +3269,7 @@ class EditTextApi
      *
      * Trim leading and trailing whitespace from text string
      *
-     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request Input request (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2296,7 +3344,7 @@ class EditTextApi
      *
      * Trim leading and trailing whitespace from text string
      *
-     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2316,7 +3364,7 @@ class EditTextApi
      *
      * Trim leading and trailing whitespace from text string
      *
-     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2366,7 +3414,7 @@ class EditTextApi
     /**
      * Create request for operation 'editTextTrimWhitespace'
      *
-     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request (required)
+     * @param  \Swagger\Client\Model\RemoveWhitespaceFromTextRequest $request Input request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -7,11 +7,11 @@ Method | HTTP request | Description
 [**convertWebHtmlToDocx**](ConvertWebApi.md#convertWebHtmlToDocx) | **POST** /convert/html/to/docx | Convert HTML to Word DOCX Document
 [**convertWebHtmlToPdf**](ConvertWebApi.md#convertWebHtmlToPdf) | **POST** /convert/web/html/to/pdf | Convert HTML string to PDF
 [**convertWebHtmlToPng**](ConvertWebApi.md#convertWebHtmlToPng) | **POST** /convert/web/html/to/png | Convert HTML string to PNG screenshot
-[**convertWebHtmlToTxt**](ConvertWebApi.md#convertWebHtmlToTxt) | **POST** /convert/web/url/to/txt | Convert website URL page to text (txt)
-[**convertWebHtmlToTxt_0**](ConvertWebApi.md#convertWebHtmlToTxt_0) | **POST** /convert/web/html/to/txt | Convert HTML string to text (txt)
+[**convertWebHtmlToTxt**](ConvertWebApi.md#convertWebHtmlToTxt) | **POST** /convert/web/html/to/txt | Convert HTML string to text (txt)
 [**convertWebMdToHtml**](ConvertWebApi.md#convertWebMdToHtml) | **POST** /convert/web/md/to/html | Convert Markdown to HTML
 [**convertWebUrlToPdf**](ConvertWebApi.md#convertWebUrlToPdf) | **POST** /convert/web/url/to/pdf | Convert a URL to PDF
 [**convertWebUrlToScreenshot**](ConvertWebApi.md#convertWebUrlToScreenshot) | **POST** /convert/web/url/to/screenshot | Take screenshot of URL
+[**convertWebUrlToTxt**](ConvertWebApi.md#convertWebUrlToTxt) | **POST** /convert/web/url/to/txt | Convert website URL page to text (txt)
 
 
 # **convertWebHtmlToDocx**
@@ -180,62 +180,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **convertWebHtmlToTxt**
-> \Swagger\Client\Model\UrlToTextResponse convertWebHtmlToTxt($input)
-
-Convert website URL page to text (txt)
-
-Converts a website URL page into text (txt); extracts text from HTML
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: Apikey
-$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
-
-$apiInstance = new Swagger\Client\Api\ConvertWebApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$input = new \Swagger\Client\Model\UrlToTextRequest(); // \Swagger\Client\Model\UrlToTextRequest | HTML to Text request parameters
-
-try {
-    $result = $apiInstance->convertWebHtmlToTxt($input);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ConvertWebApi->convertWebHtmlToTxt: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **input** | [**\Swagger\Client\Model\UrlToTextRequest**](../Model/UrlToTextRequest.md)| HTML to Text request parameters |
-
-### Return type
-
-[**\Swagger\Client\Model\UrlToTextResponse**](../Model/UrlToTextResponse.md)
-
-### Authorization
-
-[Apikey](../../README.md#Apikey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
- - **Accept**: application/octet-stream
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **convertWebHtmlToTxt_0**
-> \Swagger\Client\Model\HtmlToTextResponse convertWebHtmlToTxt_0($input)
+> \Swagger\Client\Model\HtmlToTextResponse convertWebHtmlToTxt($input)
 
 Convert HTML string to text (txt)
 
@@ -260,10 +205,10 @@ $apiInstance = new Swagger\Client\Api\ConvertWebApi(
 $input = new \Swagger\Client\Model\HtmlToTextRequest(); // \Swagger\Client\Model\HtmlToTextRequest | HTML to Text request parameters
 
 try {
-    $result = $apiInstance->convertWebHtmlToTxt_0($input);
+    $result = $apiInstance->convertWebHtmlToTxt($input);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ConvertWebApi->convertWebHtmlToTxt_0: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ConvertWebApi->convertWebHtmlToTxt: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -442,6 +387,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 **string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertWebUrlToTxt**
+> \Swagger\Client\Model\UrlToTextResponse convertWebUrlToTxt($input)
+
+Convert website URL page to text (txt)
+
+Converts a website URL page into text (txt); extracts text from HTML
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertWebApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input = new \Swagger\Client\Model\UrlToTextRequest(); // \Swagger\Client\Model\UrlToTextRequest | HTML to Text request parameters
+
+try {
+    $result = $apiInstance->convertWebUrlToTxt($input);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertWebApi->convertWebUrlToTxt: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input** | [**\Swagger\Client\Model\UrlToTextRequest**](../Model/UrlToTextRequest.md)| HTML to Text request parameters |
+
+### Return type
+
+[**\Swagger\Client\Model\UrlToTextResponse**](../Model/UrlToTextResponse.md)
 
 ### Authorization
 

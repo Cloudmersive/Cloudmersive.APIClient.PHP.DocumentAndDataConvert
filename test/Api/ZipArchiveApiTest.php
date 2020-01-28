@@ -1,6 +1,6 @@
 <?php
 /**
- * ConvertWebApiTest
+ * ZipArchiveApiTest
  * PHP version 5
  *
  * @category Class
@@ -33,14 +33,14 @@ use \Swagger\Client\ApiException;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ConvertWebApiTest Class Doc Comment
+ * ZipArchiveApiTest Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ConvertWebApiTest extends \PHPUnit_Framework_TestCase
+class ZipArchiveApiTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -72,82 +72,32 @@ class ConvertWebApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for convertWebHtmlToDocx
+     * Test case for zipArchiveZipCreate
      *
-     * Convert HTML to Word DOCX Document.
+     * Compress files to create a new zip archive.
      *
      */
-    public function testConvertWebHtmlToDocx()
+    public function testZipArchiveZipCreate()
     {
     }
 
     /**
-     * Test case for convertWebHtmlToPdf
+     * Test case for zipArchiveZipCreateAdvanced
      *
-     * Convert HTML string to PDF.
+     * Compress files and folders to create a new zip archive with advanced options.
      *
      */
-    public function testConvertWebHtmlToPdf()
+    public function testZipArchiveZipCreateAdvanced()
     {
     }
 
     /**
-     * Test case for convertWebHtmlToPng
+     * Test case for zipArchiveZipExtract
      *
-     * Convert HTML string to PNG screenshot.
-     *
-     */
-    public function testConvertWebHtmlToPng()
-    {
-    }
-
-    /**
-     * Test case for convertWebHtmlToTxt
-     *
-     * Convert HTML string to text (txt).
+     * Extract, decompress files and folders from a zip archive.
      *
      */
-    public function testConvertWebHtmlToTxt()
-    {
-    }
-
-    /**
-     * Test case for convertWebMdToHtml
-     *
-     * Convert Markdown to HTML.
-     *
-     */
-    public function testConvertWebMdToHtml()
-    {
-    }
-
-    /**
-     * Test case for convertWebUrlToPdf
-     *
-     * Convert a URL to PDF.
-     *
-     */
-    public function testConvertWebUrlToPdf()
-    {
-    }
-
-    /**
-     * Test case for convertWebUrlToScreenshot
-     *
-     * Take screenshot of URL.
-     *
-     */
-    public function testConvertWebUrlToScreenshot()
-    {
-    }
-
-    /**
-     * Test case for convertWebUrlToTxt
-     *
-     * Convert website URL page to text (txt).
-     *
-     */
-    public function testConvertWebUrlToTxt()
+    public function testZipArchiveZipExtract()
     {
     }
 }

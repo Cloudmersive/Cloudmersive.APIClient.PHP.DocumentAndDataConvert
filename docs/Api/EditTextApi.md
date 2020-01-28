@@ -9,8 +9,12 @@ Method | HTTP request | Description
 [**editTextBase64Encode**](EditTextApi.md#editTextBase64Encode) | **POST** /convert/edit/text/encoding/base64/encode | Base 64 encode, convert binary or file data to a text string
 [**editTextChangeLineEndings**](EditTextApi.md#editTextChangeLineEndings) | **POST** /convert/edit/text/line-endings/change | Set, change line endings of a text file
 [**editTextDetectLineEndings**](EditTextApi.md#editTextDetectLineEndings) | **POST** /convert/edit/text/line-endings/detect | Detect line endings of a text file
+[**editTextFindRegex**](EditTextApi.md#editTextFindRegex) | **POST** /convert/edit/text/find/regex | Find a regular expression regex in text input
+[**editTextFindSimple**](EditTextApi.md#editTextFindSimple) | **POST** /convert/edit/text/find/string | Find a string in text input
 [**editTextRemoveAllWhitespace**](EditTextApi.md#editTextRemoveAllWhitespace) | **POST** /convert/edit/text/remove/whitespace/all | Remove whitespace from text string
 [**editTextRemoveHtml**](EditTextApi.md#editTextRemoveHtml) | **POST** /convert/edit/text/remove/html | Remove HTML from text string
+[**editTextReplaceRegex**](EditTextApi.md#editTextReplaceRegex) | **POST** /convert/edit/text/replace/regex | Replace a string in text with a regex regular expression string
+[**editTextReplaceSimple**](EditTextApi.md#editTextReplaceSimple) | **POST** /convert/edit/text/replace/string | Replace a string in text with another string value
 [**editTextTextEncodingDetect**](EditTextApi.md#editTextTextEncodingDetect) | **POST** /convert/edit/text/encoding/detect | Detect text encoding of file
 [**editTextTrimWhitespace**](EditTextApi.md#editTextTrimWhitespace) | **POST** /convert/edit/text/remove/whitespace/trim | Trim leading and trailing whitespace from text string
 
@@ -38,7 +42,7 @@ $apiInstance = new Swagger\Client\Api\EditTextApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request = new \Swagger\Client\Model\Base64DecodeRequest(); // \Swagger\Client\Model\Base64DecodeRequest | 
+$request = new \Swagger\Client\Model\Base64DecodeRequest(); // \Swagger\Client\Model\Base64DecodeRequest | Input request
 
 try {
     $result = $apiInstance->editTextBase64Decode($request);
@@ -53,7 +57,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | [**\Swagger\Client\Model\Base64DecodeRequest**](../Model/Base64DecodeRequest.md)|  |
+ **request** | [**\Swagger\Client\Model\Base64DecodeRequest**](../Model/Base64DecodeRequest.md)| Input request |
 
 ### Return type
 
@@ -93,7 +97,7 @@ $apiInstance = new Swagger\Client\Api\EditTextApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request = new \Swagger\Client\Model\Base64DetectRequest(); // \Swagger\Client\Model\Base64DetectRequest | 
+$request = new \Swagger\Client\Model\Base64DetectRequest(); // \Swagger\Client\Model\Base64DetectRequest | Input request
 
 try {
     $result = $apiInstance->editTextBase64Detect($request);
@@ -108,7 +112,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | [**\Swagger\Client\Model\Base64DetectRequest**](../Model/Base64DetectRequest.md)|  |
+ **request** | [**\Swagger\Client\Model\Base64DetectRequest**](../Model/Base64DetectRequest.md)| Input request |
 
 ### Return type
 
@@ -148,7 +152,7 @@ $apiInstance = new Swagger\Client\Api\EditTextApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request = new \Swagger\Client\Model\Base64EncodeRequest(); // \Swagger\Client\Model\Base64EncodeRequest | 
+$request = new \Swagger\Client\Model\Base64EncodeRequest(); // \Swagger\Client\Model\Base64EncodeRequest | Input request
 
 try {
     $result = $apiInstance->editTextBase64Encode($request);
@@ -163,7 +167,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | [**\Swagger\Client\Model\Base64EncodeRequest**](../Model/Base64EncodeRequest.md)|  |
+ **request** | [**\Swagger\Client\Model\Base64EncodeRequest**](../Model/Base64EncodeRequest.md)| Input request |
 
 ### Return type
 
@@ -292,6 +296,116 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **editTextFindRegex**
+> \Swagger\Client\Model\FindStringRegexResponse editTextFindRegex($request)
+
+Find a regular expression regex in text input
+
+Find all occurrences of the input regular expression in the input content, and returns the matches
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditTextApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$request = new \Swagger\Client\Model\FindStringRegexRequest(); // \Swagger\Client\Model\FindStringRegexRequest | Input request
+
+try {
+    $result = $apiInstance->editTextFindRegex($request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditTextApi->editTextFindRegex: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request** | [**\Swagger\Client\Model\FindStringRegexRequest**](../Model/FindStringRegexRequest.md)| Input request |
+
+### Return type
+
+[**\Swagger\Client\Model\FindStringRegexResponse**](../Model/FindStringRegexResponse.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editTextFindSimple**
+> \Swagger\Client\Model\FindStringSimpleResponse editTextFindSimple($request)
+
+Find a string in text input
+
+Finds all occurrences of the input string in the input content, and returns the matches
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditTextApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$request = new \Swagger\Client\Model\FindStringSimpleRequest(); // \Swagger\Client\Model\FindStringSimpleRequest | Input request
+
+try {
+    $result = $apiInstance->editTextFindSimple($request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditTextApi->editTextFindSimple: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request** | [**\Swagger\Client\Model\FindStringSimpleRequest**](../Model/FindStringSimpleRequest.md)| Input request |
+
+### Return type
+
+[**\Swagger\Client\Model\FindStringSimpleResponse**](../Model/FindStringSimpleResponse.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **editTextRemoveAllWhitespace**
 > \Swagger\Client\Model\RemoveWhitespaceFromTextResponse editTextRemoveAllWhitespace($request)
 
@@ -315,7 +429,7 @@ $apiInstance = new Swagger\Client\Api\EditTextApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request = new \Swagger\Client\Model\RemoveWhitespaceFromTextRequest(); // \Swagger\Client\Model\RemoveWhitespaceFromTextRequest | 
+$request = new \Swagger\Client\Model\RemoveWhitespaceFromTextRequest(); // \Swagger\Client\Model\RemoveWhitespaceFromTextRequest | Input request
 
 try {
     $result = $apiInstance->editTextRemoveAllWhitespace($request);
@@ -330,7 +444,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | [**\Swagger\Client\Model\RemoveWhitespaceFromTextRequest**](../Model/RemoveWhitespaceFromTextRequest.md)|  |
+ **request** | [**\Swagger\Client\Model\RemoveWhitespaceFromTextRequest**](../Model/RemoveWhitespaceFromTextRequest.md)| Input request |
 
 ### Return type
 
@@ -370,7 +484,7 @@ $apiInstance = new Swagger\Client\Api\EditTextApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request = new \Swagger\Client\Model\RemoveHtmlFromTextRequest(); // \Swagger\Client\Model\RemoveHtmlFromTextRequest | 
+$request = new \Swagger\Client\Model\RemoveHtmlFromTextRequest(); // \Swagger\Client\Model\RemoveHtmlFromTextRequest | Input request
 
 try {
     $result = $apiInstance->editTextRemoveHtml($request);
@@ -385,11 +499,121 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | [**\Swagger\Client\Model\RemoveHtmlFromTextRequest**](../Model/RemoveHtmlFromTextRequest.md)|  |
+ **request** | [**\Swagger\Client\Model\RemoveHtmlFromTextRequest**](../Model/RemoveHtmlFromTextRequest.md)| Input request |
 
 ### Return type
 
 [**\Swagger\Client\Model\RemoveHtmlFromTextResponse**](../Model/RemoveHtmlFromTextResponse.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editTextReplaceRegex**
+> \Swagger\Client\Model\ReplaceStringRegexResponse editTextReplaceRegex($request)
+
+Replace a string in text with a regex regular expression string
+
+Replaces all occurrences of the input regular expression regex string in the input content, and returns the result
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditTextApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$request = new \Swagger\Client\Model\ReplaceStringRegexRequest(); // \Swagger\Client\Model\ReplaceStringRegexRequest | Input request
+
+try {
+    $result = $apiInstance->editTextReplaceRegex($request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditTextApi->editTextReplaceRegex: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request** | [**\Swagger\Client\Model\ReplaceStringRegexRequest**](../Model/ReplaceStringRegexRequest.md)| Input request |
+
+### Return type
+
+[**\Swagger\Client\Model\ReplaceStringRegexResponse**](../Model/ReplaceStringRegexResponse.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editTextReplaceSimple**
+> \Swagger\Client\Model\ReplaceStringSimpleResponse editTextReplaceSimple($request)
+
+Replace a string in text with another string value
+
+Replaces all occurrences of the input string in the input content, and returns the result
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditTextApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$request = new \Swagger\Client\Model\ReplaceStringSimpleRequest(); // \Swagger\Client\Model\ReplaceStringSimpleRequest | Input request
+
+try {
+    $result = $apiInstance->editTextReplaceSimple($request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditTextApi->editTextReplaceSimple: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request** | [**\Swagger\Client\Model\ReplaceStringSimpleRequest**](../Model/ReplaceStringSimpleRequest.md)| Input request |
+
+### Return type
+
+[**\Swagger\Client\Model\ReplaceStringSimpleResponse**](../Model/ReplaceStringSimpleResponse.md)
 
 ### Authorization
 
@@ -480,7 +704,7 @@ $apiInstance = new Swagger\Client\Api\EditTextApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request = new \Swagger\Client\Model\RemoveWhitespaceFromTextRequest(); // \Swagger\Client\Model\RemoveWhitespaceFromTextRequest | 
+$request = new \Swagger\Client\Model\RemoveWhitespaceFromTextRequest(); // \Swagger\Client\Model\RemoveWhitespaceFromTextRequest | Input request
 
 try {
     $result = $apiInstance->editTextTrimWhitespace($request);
@@ -495,7 +719,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request** | [**\Swagger\Client\Model\RemoveWhitespaceFromTextRequest**](../Model/RemoveWhitespaceFromTextRequest.md)|  |
+ **request** | [**\Swagger\Client\Model\RemoveWhitespaceFromTextRequest**](../Model/RemoveWhitespaceFromTextRequest.md)| Input request |
 
 ### Return type
 

@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.7.8
+- Package version: 1.7.9
 
 
 ## Requirements
@@ -142,11 +142,11 @@ Class | Method | HTTP request | Description
 *ConvertWebApi* | [**convertWebHtmlToDocx**](docs/Api/ConvertWebApi.md#convertwebhtmltodocx) | **POST** /convert/html/to/docx | Convert HTML to Word DOCX Document
 *ConvertWebApi* | [**convertWebHtmlToPdf**](docs/Api/ConvertWebApi.md#convertwebhtmltopdf) | **POST** /convert/web/html/to/pdf | Convert HTML string to PDF
 *ConvertWebApi* | [**convertWebHtmlToPng**](docs/Api/ConvertWebApi.md#convertwebhtmltopng) | **POST** /convert/web/html/to/png | Convert HTML string to PNG screenshot
-*ConvertWebApi* | [**convertWebHtmlToTxt**](docs/Api/ConvertWebApi.md#convertwebhtmltotxt) | **POST** /convert/web/url/to/txt | Convert website URL page to text (txt)
-*ConvertWebApi* | [**convertWebHtmlToTxt_0**](docs/Api/ConvertWebApi.md#convertwebhtmltotxt_0) | **POST** /convert/web/html/to/txt | Convert HTML string to text (txt)
+*ConvertWebApi* | [**convertWebHtmlToTxt**](docs/Api/ConvertWebApi.md#convertwebhtmltotxt) | **POST** /convert/web/html/to/txt | Convert HTML string to text (txt)
 *ConvertWebApi* | [**convertWebMdToHtml**](docs/Api/ConvertWebApi.md#convertwebmdtohtml) | **POST** /convert/web/md/to/html | Convert Markdown to HTML
 *ConvertWebApi* | [**convertWebUrlToPdf**](docs/Api/ConvertWebApi.md#convertweburltopdf) | **POST** /convert/web/url/to/pdf | Convert a URL to PDF
 *ConvertWebApi* | [**convertWebUrlToScreenshot**](docs/Api/ConvertWebApi.md#convertweburltoscreenshot) | **POST** /convert/web/url/to/screenshot | Take screenshot of URL
+*ConvertWebApi* | [**convertWebUrlToTxt**](docs/Api/ConvertWebApi.md#convertweburltotxt) | **POST** /convert/web/url/to/txt | Convert website URL page to text (txt)
 *EditDocumentApi* | [**editDocumentBeginEditing**](docs/Api/EditDocumentApi.md#editdocumentbeginediting) | **POST** /convert/edit/begin-editing | Begin editing a document
 *EditDocumentApi* | [**editDocumentDocxBody**](docs/Api/EditDocumentApi.md#editdocumentdocxbody) | **POST** /convert/edit/docx/get-body | Get body from a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxCreateBlankDocument**](docs/Api/EditDocumentApi.md#editdocumentdocxcreateblankdocument) | **POST** /convert/edit/docx/create/blank | Create a blank Word DOCX document
@@ -216,8 +216,12 @@ Class | Method | HTTP request | Description
 *EditTextApi* | [**editTextBase64Encode**](docs/Api/EditTextApi.md#edittextbase64encode) | **POST** /convert/edit/text/encoding/base64/encode | Base 64 encode, convert binary or file data to a text string
 *EditTextApi* | [**editTextChangeLineEndings**](docs/Api/EditTextApi.md#edittextchangelineendings) | **POST** /convert/edit/text/line-endings/change | Set, change line endings of a text file
 *EditTextApi* | [**editTextDetectLineEndings**](docs/Api/EditTextApi.md#edittextdetectlineendings) | **POST** /convert/edit/text/line-endings/detect | Detect line endings of a text file
+*EditTextApi* | [**editTextFindRegex**](docs/Api/EditTextApi.md#edittextfindregex) | **POST** /convert/edit/text/find/regex | Find a regular expression regex in text input
+*EditTextApi* | [**editTextFindSimple**](docs/Api/EditTextApi.md#edittextfindsimple) | **POST** /convert/edit/text/find/string | Find a string in text input
 *EditTextApi* | [**editTextRemoveAllWhitespace**](docs/Api/EditTextApi.md#edittextremoveallwhitespace) | **POST** /convert/edit/text/remove/whitespace/all | Remove whitespace from text string
 *EditTextApi* | [**editTextRemoveHtml**](docs/Api/EditTextApi.md#edittextremovehtml) | **POST** /convert/edit/text/remove/html | Remove HTML from text string
+*EditTextApi* | [**editTextReplaceRegex**](docs/Api/EditTextApi.md#edittextreplaceregex) | **POST** /convert/edit/text/replace/regex | Replace a string in text with a regex regular expression string
+*EditTextApi* | [**editTextReplaceSimple**](docs/Api/EditTextApi.md#edittextreplacesimple) | **POST** /convert/edit/text/replace/string | Replace a string in text with another string value
 *EditTextApi* | [**editTextTextEncodingDetect**](docs/Api/EditTextApi.md#edittexttextencodingdetect) | **POST** /convert/edit/text/encoding/detect | Detect text encoding of file
 *EditTextApi* | [**editTextTrimWhitespace**](docs/Api/EditTextApi.md#edittexttrimwhitespace) | **POST** /convert/edit/text/remove/whitespace/trim | Trim leading and trailing whitespace from text string
 *MergeDocumentApi* | [**mergeDocumentDocx**](docs/Api/MergeDocumentApi.md#mergedocumentdocx) | **POST** /convert/merge/docx | Merge Two Word DOCX Together
@@ -246,6 +250,9 @@ Class | Method | HTTP request | Description
 *ValidateDocumentApi* | [**validateDocumentXlsxValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentxlsxvalidation) | **POST** /convert/validate/xlsx | Validate a Excel document (XLSX)
 *ValidateDocumentApi* | [**validateDocumentXmlValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentxmlvalidation) | **POST** /convert/validate/xml | Validate an XML file
 *ViewerToolsApi* | [**viewerToolsCreateSimple**](docs/Api/ViewerToolsApi.md#viewertoolscreatesimple) | **POST** /convert/viewer/create/web/simple | Create a web-based viewer
+*ZipArchiveApi* | [**zipArchiveZipCreate**](docs/Api/ZipArchiveApi.md#ziparchivezipcreate) | **POST** /convert/archive/zip/create | Compress files to create a new zip archive
+*ZipArchiveApi* | [**zipArchiveZipCreateAdvanced**](docs/Api/ZipArchiveApi.md#ziparchivezipcreateadvanced) | **POST** /convert/archive/zip/create/advanced | Compress files and folders to create a new zip archive with advanced options
+*ZipArchiveApi* | [**zipArchiveZipExtract**](docs/Api/ZipArchiveApi.md#ziparchivezipextract) | **POST** /convert/archive/zip/extract | Extract, decompress files and folders from a zip archive
 
 
 ## Documentation For Models
@@ -271,6 +278,7 @@ Class | Method | HTTP request | Description
  - [CreateBlankSpreadsheetResponse](docs/Model/CreateBlankSpreadsheetResponse.md)
  - [CreateSpreadsheetFromDataRequest](docs/Model/CreateSpreadsheetFromDataRequest.md)
  - [CreateSpreadsheetFromDataResponse](docs/Model/CreateSpreadsheetFromDataResponse.md)
+ - [CreateZipArchiveRequest](docs/Model/CreateZipArchiveRequest.md)
  - [DeleteDocxTableRowRangeRequest](docs/Model/DeleteDocxTableRowRangeRequest.md)
  - [DeleteDocxTableRowRangeResponse](docs/Model/DeleteDocxTableRowRangeResponse.md)
  - [DeleteDocxTableRowRequest](docs/Model/DeleteDocxTableRowRequest.md)
@@ -307,6 +315,12 @@ Class | Method | HTTP request | Description
  - [DocxText](docs/Model/DocxText.md)
  - [DocxTopLevelComment](docs/Model/DocxTopLevelComment.md)
  - [ExifValue](docs/Model/ExifValue.md)
+ - [FindRegexMatch](docs/Model/FindRegexMatch.md)
+ - [FindStringMatch](docs/Model/FindStringMatch.md)
+ - [FindStringRegexRequest](docs/Model/FindStringRegexRequest.md)
+ - [FindStringRegexResponse](docs/Model/FindStringRegexResponse.md)
+ - [FindStringSimpleRequest](docs/Model/FindStringSimpleRequest.md)
+ - [FindStringSimpleResponse](docs/Model/FindStringSimpleResponse.md)
  - [FinishEditingRequest](docs/Model/FinishEditingRequest.md)
  - [GetDocxBodyRequest](docs/Model/GetDocxBodyRequest.md)
  - [GetDocxBodyResponse](docs/Model/GetDocxBodyResponse.md)
@@ -384,7 +398,11 @@ Class | Method | HTTP request | Description
  - [RemoveWhitespaceFromTextRequest](docs/Model/RemoveWhitespaceFromTextRequest.md)
  - [RemoveWhitespaceFromTextResponse](docs/Model/RemoveWhitespaceFromTextResponse.md)
  - [RemoveXlsxWorksheetRequest](docs/Model/RemoveXlsxWorksheetRequest.md)
+ - [ReplaceStringRegexRequest](docs/Model/ReplaceStringRegexRequest.md)
+ - [ReplaceStringRegexResponse](docs/Model/ReplaceStringRegexResponse.md)
  - [ReplaceStringRequest](docs/Model/ReplaceStringRequest.md)
+ - [ReplaceStringSimpleRequest](docs/Model/ReplaceStringSimpleRequest.md)
+ - [ReplaceStringSimpleResponse](docs/Model/ReplaceStringSimpleResponse.md)
  - [ScreenshotRequest](docs/Model/ScreenshotRequest.md)
  - [SetFormFieldValue](docs/Model/SetFormFieldValue.md)
  - [SetPdfFormFieldsRequest](docs/Model/SetPdfFormFieldsRequest.md)
@@ -426,6 +444,9 @@ Class | Method | HTTP request | Description
  - [XmlRemoveWithXPathResult](docs/Model/XmlRemoveWithXPathResult.md)
  - [XmlReplaceWithXPathResult](docs/Model/XmlReplaceWithXPathResult.md)
  - [XmlSetValueWithXPathResult](docs/Model/XmlSetValueWithXPathResult.md)
+ - [ZipDirectory](docs/Model/ZipDirectory.md)
+ - [ZipExtractResponse](docs/Model/ZipExtractResponse.md)
+ - [ZipFile](docs/Model/ZipFile.md)
 
 
 ## Documentation For Authorization
