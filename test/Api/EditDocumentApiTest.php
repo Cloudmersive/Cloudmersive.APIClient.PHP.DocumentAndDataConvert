@@ -454,7 +454,7 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentXlsxGetColumns
      *
-     * Get rows and cells from a Excel XLSX spreadsheet, worksheet.
+     * Get columns from a Excel XLSX spreadsheet, worksheet.
      *
      */
     public function testEditDocumentXlsxGetColumns()

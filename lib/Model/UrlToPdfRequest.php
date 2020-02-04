@@ -1,6 +1,6 @@
 <?php
 /**
- * ScreenshotRequest
+ * UrlToPdfRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * ScreenshotRequest Class Doc Comment
+ * UrlToPdfRequest Class Doc Comment
  *
  * @category Class
- * @description Details of the screenshot request
+ * @description Request to convert a URL to a PDF file
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ScreenshotRequest implements ModelInterface, ArrayAccess
+class UrlToPdfRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ScreenshotRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ScreenshotRequest';
+    protected static $swaggerModelName = 'UrlToPdfRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,7 @@ class ScreenshotRequest implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'url' => 'string',
         'extra_loading_wait' => 'int',
-        'screenshot_width' => 'int',
-        'screenshot_height' => 'int'
+        'include_background_graphics' => 'bool'
     ];
 
     /**
@@ -72,8 +71,7 @@ class ScreenshotRequest implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'url' => null,
         'extra_loading_wait' => 'int32',
-        'screenshot_width' => 'int32',
-        'screenshot_height' => 'int32'
+        'include_background_graphics' => null
     ];
 
     /**
@@ -105,8 +103,7 @@ class ScreenshotRequest implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'url' => 'Url',
         'extra_loading_wait' => 'ExtraLoadingWait',
-        'screenshot_width' => 'ScreenshotWidth',
-        'screenshot_height' => 'ScreenshotHeight'
+        'include_background_graphics' => 'IncludeBackgroundGraphics'
     ];
 
     /**
@@ -117,8 +114,7 @@ class ScreenshotRequest implements ModelInterface, ArrayAccess
     protected static $setters = [
         'url' => 'setUrl',
         'extra_loading_wait' => 'setExtraLoadingWait',
-        'screenshot_width' => 'setScreenshotWidth',
-        'screenshot_height' => 'setScreenshotHeight'
+        'include_background_graphics' => 'setIncludeBackgroundGraphics'
     ];
 
     /**
@@ -129,8 +125,7 @@ class ScreenshotRequest implements ModelInterface, ArrayAccess
     protected static $getters = [
         'url' => 'getUrl',
         'extra_loading_wait' => 'getExtraLoadingWait',
-        'screenshot_width' => 'getScreenshotWidth',
-        'screenshot_height' => 'getScreenshotHeight'
+        'include_background_graphics' => 'getIncludeBackgroundGraphics'
     ];
 
     /**
@@ -195,8 +190,7 @@ class ScreenshotRequest implements ModelInterface, ArrayAccess
     {
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
         $this->container['extra_loading_wait'] = isset($data['extra_loading_wait']) ? $data['extra_loading_wait'] : null;
-        $this->container['screenshot_width'] = isset($data['screenshot_width']) ? $data['screenshot_width'] : null;
-        $this->container['screenshot_height'] = isset($data['screenshot_height']) ? $data['screenshot_height'] : null;
+        $this->container['include_background_graphics'] = isset($data['include_background_graphics']) ? $data['include_background_graphics'] : null;
     }
 
     /**
@@ -273,49 +267,25 @@ class ScreenshotRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets screenshot_width
+     * Gets include_background_graphics
      *
-     * @return int
+     * @return bool
      */
-    public function getScreenshotWidth()
+    public function getIncludeBackgroundGraphics()
     {
-        return $this->container['screenshot_width'];
+        return $this->container['include_background_graphics'];
     }
 
     /**
-     * Sets screenshot_width
+     * Sets include_background_graphics
      *
-     * @param int $screenshot_width Optional: Width of the screenshot in pixels; supply 0 to default to 1280 x 1024
+     * @param bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true.
      *
      * @return $this
      */
-    public function setScreenshotWidth($screenshot_width)
+    public function setIncludeBackgroundGraphics($include_background_graphics)
     {
-        $this->container['screenshot_width'] = $screenshot_width;
-
-        return $this;
-    }
-
-    /**
-     * Gets screenshot_height
-     *
-     * @return int
-     */
-    public function getScreenshotHeight()
-    {
-        return $this->container['screenshot_height'];
-    }
-
-    /**
-     * Sets screenshot_height
-     *
-     * @param int $screenshot_height Optional: Height of the screenshot in pixels; supply 0 to default to 1280 x 1024, supply -1 to measure the full screen height of the page and attempt to take a screen-height screenshot
-     *
-     * @return $this
-     */
-    public function setScreenshotHeight($screenshot_height)
-    {
-        $this->container['screenshot_height'] = $screenshot_height;
+        $this->container['include_background_graphics'] = $include_background_graphics;
 
         return $this;
     }

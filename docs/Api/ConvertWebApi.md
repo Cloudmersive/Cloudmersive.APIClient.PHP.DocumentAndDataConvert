@@ -312,7 +312,7 @@ $apiInstance = new Swagger\Client\Api\ConvertWebApi(
     new GuzzleHttp\Client(),
     $config
 );
-$input = new \Swagger\Client\Model\ScreenshotRequest(); // \Swagger\Client\Model\ScreenshotRequest | URL to PDF request parameters
+$input = new \Swagger\Client\Model\UrlToPdfRequest(); // \Swagger\Client\Model\UrlToPdfRequest | URL to PDF request parameters
 
 try {
     $result = $apiInstance->convertWebUrlToPdf($input);
@@ -327,7 +327,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input** | [**\Swagger\Client\Model\ScreenshotRequest**](../Model/ScreenshotRequest.md)| URL to PDF request parameters |
+ **input** | [**\Swagger\Client\Model\UrlToPdfRequest**](../Model/UrlToPdfRequest.md)| URL to PDF request parameters |
 
 ### Return type
 

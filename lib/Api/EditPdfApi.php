@@ -626,7 +626,7 @@ class EditPdfApi
     /**
      * Operation editPdfDeletePages
      *
-     * Remove / delete pages from a PDF document
+     * Remove, delete pages from a PDF document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
@@ -645,7 +645,7 @@ class EditPdfApi
     /**
      * Operation editPdfDeletePagesWithHttpInfo
      *
-     * Remove / delete pages from a PDF document
+     * Remove, delete pages from a PDF document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
@@ -722,7 +722,7 @@ class EditPdfApi
     /**
      * Operation editPdfDeletePagesAsync
      *
-     * Remove / delete pages from a PDF document
+     * Remove, delete pages from a PDF document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
@@ -744,7 +744,7 @@ class EditPdfApi
     /**
      * Operation editPdfDeletePagesAsyncWithHttpInfo
      *
-     * Remove / delete pages from a PDF document
+     * Remove, delete pages from a PDF document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
@@ -2267,7 +2267,7 @@ class EditPdfApi
     /**
      * Operation editPdfInsertPages
      *
-     * Insert / copy pages from one PDF document into another
+     * Insert, copy pages from one PDF document into another
      *
      * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
      * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
@@ -2288,7 +2288,7 @@ class EditPdfApi
     /**
      * Operation editPdfInsertPagesWithHttpInfo
      *
-     * Insert / copy pages from one PDF document into another
+     * Insert, copy pages from one PDF document into another
      *
      * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
      * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
@@ -2367,7 +2367,7 @@ class EditPdfApi
     /**
      * Operation editPdfInsertPagesAsync
      *
-     * Insert / copy pages from one PDF document into another
+     * Insert, copy pages from one PDF document into another
      *
      * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
      * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
@@ -2391,7 +2391,7 @@ class EditPdfApi
     /**
      * Operation editPdfInsertPagesAsyncWithHttpInfo
      *
-     * Insert / copy pages from one PDF document into another
+     * Insert, copy pages from one PDF document into another
      *
      * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
      * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)

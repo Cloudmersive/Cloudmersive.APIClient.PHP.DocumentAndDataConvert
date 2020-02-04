@@ -1399,7 +1399,7 @@ class ConvertWebApi
      *
      * Convert a URL to PDF
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input URL to PDF request parameters (required)
+     * @param  \Swagger\Client\Model\UrlToPdfRequest $input URL to PDF request parameters (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1416,7 +1416,7 @@ class ConvertWebApi
      *
      * Convert a URL to PDF
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input URL to PDF request parameters (required)
+     * @param  \Swagger\Client\Model\UrlToPdfRequest $input URL to PDF request parameters (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1491,7 +1491,7 @@ class ConvertWebApi
      *
      * Convert a URL to PDF
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input URL to PDF request parameters (required)
+     * @param  \Swagger\Client\Model\UrlToPdfRequest $input URL to PDF request parameters (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1511,7 +1511,7 @@ class ConvertWebApi
      *
      * Convert a URL to PDF
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input URL to PDF request parameters (required)
+     * @param  \Swagger\Client\Model\UrlToPdfRequest $input URL to PDF request parameters (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1561,7 +1561,7 @@ class ConvertWebApi
     /**
      * Create request for operation 'convertWebUrlToPdf'
      *
-     * @param  \Swagger\Client\Model\ScreenshotRequest $input URL to PDF request parameters (required)
+     * @param  \Swagger\Client\Model\UrlToPdfRequest $input URL to PDF request parameters (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

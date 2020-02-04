@@ -10043,7 +10043,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetColumns
      *
-     * Get rows and cells from a Excel XLSX spreadsheet, worksheet
+     * Get columns from a Excel XLSX spreadsheet, worksheet
      *
      * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input Document input request (required)
      *
@@ -10060,7 +10060,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetColumnsWithHttpInfo
      *
-     * Get rows and cells from a Excel XLSX spreadsheet, worksheet
+     * Get columns from a Excel XLSX spreadsheet, worksheet
      *
      * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input Document input request (required)
      *
@@ -10135,7 +10135,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetColumnsAsync
      *
-     * Get rows and cells from a Excel XLSX spreadsheet, worksheet
+     * Get columns from a Excel XLSX spreadsheet, worksheet
      *
      * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input Document input request (required)
      *
@@ -10155,7 +10155,7 @@ class EditDocumentApi
     /**
      * Operation editDocumentXlsxGetColumnsAsyncWithHttpInfo
      *
-     * Get rows and cells from a Excel XLSX spreadsheet, worksheet
+     * Get columns from a Excel XLSX spreadsheet, worksheet
      *
      * @param  \Swagger\Client\Model\GetXlsxColumnsRequest $input Document input request (required)
      *
