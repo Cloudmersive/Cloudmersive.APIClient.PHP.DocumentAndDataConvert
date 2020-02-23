@@ -1,6 +1,6 @@
 <?php
 /**
- * InsertXlsxWorksheetResponse
+ * EnableSharedWorkbookResponse
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * InsertXlsxWorksheetResponse Class Doc Comment
+ * EnableSharedWorkbookResponse Class Doc Comment
  *
  * @category Class
- * @description Result of running a insert worksheet command
+ * @description Result of running a Enable Shared Workbook command
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InsertXlsxWorksheetResponse implements ModelInterface, ArrayAccess
+class EnableSharedWorkbookResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class InsertXlsxWorksheetResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'InsertXlsxWorksheetResponse';
+    protected static $swaggerModelName = 'EnableSharedWorkbookResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

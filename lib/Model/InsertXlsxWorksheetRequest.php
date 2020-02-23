@@ -36,7 +36,7 @@ use \Swagger\Client\ObjectSerializer;
  * InsertXlsxWorksheetRequest Class Doc Comment
  *
  * @category Class
- * @description Input to a Get Worksheets request
+ * @description Input to a Insert Worksheets request
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen

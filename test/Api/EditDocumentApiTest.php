@@ -432,6 +432,26 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentXlsxDisableSharedWorkbook
+     *
+     * Disable Shared Workbook (legacy) in Excel XLSX spreadsheet.
+     *
+     */
+    public function testEditDocumentXlsxDisableSharedWorkbook()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxEnableSharedWorkbook
+     *
+     * Enable Shared Workbook (legacy) in Excel XLSX spreadsheet.
+     *
+     */
+    public function testEditDocumentXlsxEnableSharedWorkbook()
+    {
+    }
+
+    /**
      * Test case for editDocumentXlsxGetCellByIdentifier
      *
      * Get cell from an Excel XLSX spreadsheet, worksheet by cell identifier.

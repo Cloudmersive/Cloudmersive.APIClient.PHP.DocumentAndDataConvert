@@ -33,7 +33,7 @@ namespace Swagger\Client;
  * InsertXlsxWorksheetResponseTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result of running a Get-Worksheets command
+// * @description Result of running a insert worksheet command
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team

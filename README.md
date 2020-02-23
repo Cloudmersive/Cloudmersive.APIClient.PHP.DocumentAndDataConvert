@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.8.0
+- Package version: 1.8.1
 
 
 ## Requirements
@@ -183,6 +183,8 @@ Class | Method | HTTP request | Description
 *EditDocumentApi* | [**editDocumentXlsxCreateBlankSpreadsheet**](docs/Api/EditDocumentApi.md#editdocumentxlsxcreateblankspreadsheet) | **POST** /convert/edit/xlsx/create/blank | Create a blank Excel XLSX spreadsheet
 *EditDocumentApi* | [**editDocumentXlsxCreateSpreadsheetFromData**](docs/Api/EditDocumentApi.md#editdocumentxlsxcreatespreadsheetfromdata) | **POST** /convert/edit/xlsx/create/from/data | Create a new Excel XLSX spreadsheet from column and row data
 *EditDocumentApi* | [**editDocumentXlsxDeleteWorksheet**](docs/Api/EditDocumentApi.md#editdocumentxlsxdeleteworksheet) | **POST** /convert/edit/xlsx/delete-worksheet | Delete, remove worksheet from an Excel XLSX spreadsheet document
+*EditDocumentApi* | [**editDocumentXlsxDisableSharedWorkbook**](docs/Api/EditDocumentApi.md#editdocumentxlsxdisablesharedworkbook) | **POST** /convert/edit/xlsx/configuration/disable-shared-workbook | Disable Shared Workbook (legacy) in Excel XLSX spreadsheet
+*EditDocumentApi* | [**editDocumentXlsxEnableSharedWorkbook**](docs/Api/EditDocumentApi.md#editdocumentxlsxenablesharedworkbook) | **POST** /convert/edit/xlsx/configuration/enable-shared-workbook | Enable Shared Workbook (legacy) in Excel XLSX spreadsheet
 *EditDocumentApi* | [**editDocumentXlsxGetCellByIdentifier**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetcellbyidentifier) | **POST** /convert/edit/xlsx/get-cell/by-identifier | Get cell from an Excel XLSX spreadsheet, worksheet by cell identifier
 *EditDocumentApi* | [**editDocumentXlsxGetCellByIndex**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetcellbyindex) | **POST** /convert/edit/xlsx/get-cell/by-index | Get cell from an Excel XLSX spreadsheet, worksheet by index
 *EditDocumentApi* | [**editDocumentXlsxGetColumns**](docs/Api/EditDocumentApi.md#editdocumentxlsxgetcolumns) | **POST** /convert/edit/xlsx/get-columns | Get columns from a Excel XLSX spreadsheet, worksheet
@@ -284,6 +286,8 @@ Class | Method | HTTP request | Description
  - [DeleteDocxTableRowRequest](docs/Model/DeleteDocxTableRowRequest.md)
  - [DeleteDocxTableRowResponse](docs/Model/DeleteDocxTableRowResponse.md)
  - [DetectLineEndingsResponse](docs/Model/DetectLineEndingsResponse.md)
+ - [DisableSharedWorkbookRequest](docs/Model/DisableSharedWorkbookRequest.md)
+ - [DisableSharedWorkbookResponse](docs/Model/DisableSharedWorkbookResponse.md)
  - [DocumentValidationError](docs/Model/DocumentValidationError.md)
  - [DocumentValidationResult](docs/Model/DocumentValidationResult.md)
  - [DocxBody](docs/Model/DocxBody.md)
@@ -314,6 +318,8 @@ Class | Method | HTTP request | Description
  - [DocxTemplateOperation](docs/Model/DocxTemplateOperation.md)
  - [DocxText](docs/Model/DocxText.md)
  - [DocxTopLevelComment](docs/Model/DocxTopLevelComment.md)
+ - [EnableSharedWorkbookRequest](docs/Model/EnableSharedWorkbookRequest.md)
+ - [EnableSharedWorkbookResponse](docs/Model/EnableSharedWorkbookResponse.md)
  - [ExifValue](docs/Model/ExifValue.md)
  - [FindRegexMatch](docs/Model/FindRegexMatch.md)
  - [FindStringMatch](docs/Model/FindStringMatch.md)

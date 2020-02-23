@@ -1,6 +1,6 @@
 <?php
 /**
- * InsertXlsxWorksheetRequestTest
+ * DisableSharedWorkbookRequestTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * InsertXlsxWorksheetRequestTest Class Doc Comment
+ * DisableSharedWorkbookRequestTest Class Doc Comment
  *
  * @category    Class */
-// * @description Input to a Insert Worksheets request
+// * @description Input to a Disable Shared Workbook request
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InsertXlsxWorksheetRequestTest extends \PHPUnit_Framework_TestCase
+class DisableSharedWorkbookRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class InsertXlsxWorksheetRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "InsertXlsxWorksheetRequest"
+     * Test "DisableSharedWorkbookRequest"
      */
-    public function testInsertXlsxWorksheetRequest()
+    public function testDisableSharedWorkbookRequest()
     {
     }
 
@@ -88,13 +88,6 @@ class InsertXlsxWorksheetRequestTest extends \PHPUnit_Framework_TestCase
      * Test attribute "input_file_url"
      */
     public function testPropertyInputFileUrl()
-    {
-    }
-
-    /**
-     * Test attribute "worksheet_to_insert"
-     */
-    public function testPropertyWorksheetToInsert()
     {
     }
 }
