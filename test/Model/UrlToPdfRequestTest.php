@@ -97,4 +97,11 @@ class UrlToPdfRequestTest extends \PHPUnit_Framework_TestCase
     public function testPropertyIncludeBackgroundGraphics()
     {
     }
+
+    /**
+     * Test attribute "scale_factor"
+     */
+    public function testPropertyScaleFactor()
+    {
+    }
 }

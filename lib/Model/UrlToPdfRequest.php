@@ -60,7 +60,8 @@ class UrlToPdfRequest implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'url' => 'string',
         'extra_loading_wait' => 'int',
-        'include_background_graphics' => 'bool'
+        'include_background_graphics' => 'bool',
+        'scale_factor' => 'int'
     ];
 
     /**
@@ -71,7 +72,8 @@ class UrlToPdfRequest implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'url' => null,
         'extra_loading_wait' => 'int32',
-        'include_background_graphics' => null
+        'include_background_graphics' => null,
+        'scale_factor' => 'int32'
     ];
 
     /**
@@ -103,7 +105,8 @@ class UrlToPdfRequest implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'url' => 'Url',
         'extra_loading_wait' => 'ExtraLoadingWait',
-        'include_background_graphics' => 'IncludeBackgroundGraphics'
+        'include_background_graphics' => 'IncludeBackgroundGraphics',
+        'scale_factor' => 'ScaleFactor'
     ];
 
     /**
@@ -114,7 +117,8 @@ class UrlToPdfRequest implements ModelInterface, ArrayAccess
     protected static $setters = [
         'url' => 'setUrl',
         'extra_loading_wait' => 'setExtraLoadingWait',
-        'include_background_graphics' => 'setIncludeBackgroundGraphics'
+        'include_background_graphics' => 'setIncludeBackgroundGraphics',
+        'scale_factor' => 'setScaleFactor'
     ];
 
     /**
@@ -125,7 +129,8 @@ class UrlToPdfRequest implements ModelInterface, ArrayAccess
     protected static $getters = [
         'url' => 'getUrl',
         'extra_loading_wait' => 'getExtraLoadingWait',
-        'include_background_graphics' => 'getIncludeBackgroundGraphics'
+        'include_background_graphics' => 'getIncludeBackgroundGraphics',
+        'scale_factor' => 'getScaleFactor'
     ];
 
     /**
@@ -191,6 +196,7 @@ class UrlToPdfRequest implements ModelInterface, ArrayAccess
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
         $this->container['extra_loading_wait'] = isset($data['extra_loading_wait']) ? $data['extra_loading_wait'] : null;
         $this->container['include_background_graphics'] = isset($data['include_background_graphics']) ? $data['include_background_graphics'] : null;
+        $this->container['scale_factor'] = isset($data['scale_factor']) ? $data['scale_factor'] : null;
     }
 
     /**
@@ -286,6 +292,30 @@ class UrlToPdfRequest implements ModelInterface, ArrayAccess
     public function setIncludeBackgroundGraphics($include_background_graphics)
     {
         $this->container['include_background_graphics'] = $include_background_graphics;
+
+        return $this;
+    }
+
+    /**
+     * Gets scale_factor
+     *
+     * @return int
+     */
+    public function getScaleFactor()
+    {
+        return $this->container['scale_factor'];
+    }
+
+    /**
+     * Sets scale_factor
+     *
+     * @param int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%
+     *
+     * @return $this
+     */
+    public function setScaleFactor($scale_factor)
+    {
+        $this->container['scale_factor'] = $scale_factor;
 
         return $this;
     }
