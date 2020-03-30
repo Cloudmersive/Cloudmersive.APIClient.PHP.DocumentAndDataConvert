@@ -90,4 +90,11 @@ class GetDocxPagesRequestTest extends \PHPUnit_Framework_TestCase
     public function testPropertyInputFileUrl()
     {
     }
+
+    /**
+     * Test attribute "maximum_pages"
+     */
+    public function testPropertyMaximumPages()
+    {
+    }
 }

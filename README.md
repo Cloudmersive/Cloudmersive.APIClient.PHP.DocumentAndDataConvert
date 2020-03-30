@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.8.4
+- Package version: 1.8.5
 
 
 ## Requirements
@@ -230,7 +230,8 @@ Class | Method | HTTP request | Description
 *MergeDocumentApi* | [**mergeDocumentDocxMulti**](docs/Api/MergeDocumentApi.md#mergedocumentdocxmulti) | **POST** /convert/merge/docx/multi | Merge Multple Word DOCX Together
 *MergeDocumentApi* | [**mergeDocumentPdf**](docs/Api/MergeDocumentApi.md#mergedocumentpdf) | **POST** /convert/merge/pdf | Merge Two PDF Files Together
 *MergeDocumentApi* | [**mergeDocumentPdfMulti**](docs/Api/MergeDocumentApi.md#mergedocumentpdfmulti) | **POST** /convert/merge/pdf/multi | Merge Multple PDF Files Together
-*MergeDocumentApi* | [**mergeDocumentPng**](docs/Api/MergeDocumentApi.md#mergedocumentpng) | **POST** /convert/merge/png/vertical | Merge Multple PNG Files Together
+*MergeDocumentApi* | [**mergeDocumentPng**](docs/Api/MergeDocumentApi.md#mergedocumentpng) | **POST** /convert/merge/png/vertical | Merge Two PNG Files Together
+*MergeDocumentApi* | [**mergeDocumentPngMulti**](docs/Api/MergeDocumentApi.md#mergedocumentpngmulti) | **POST** /convert/merge/png/vertical/multi | Merge Multple PNG Files Together
 *MergeDocumentApi* | [**mergeDocumentPptx**](docs/Api/MergeDocumentApi.md#mergedocumentpptx) | **POST** /convert/merge/pptx | Merge Two PowerPoint PPTX Together
 *MergeDocumentApi* | [**mergeDocumentPptxMulti**](docs/Api/MergeDocumentApi.md#mergedocumentpptxmulti) | **POST** /convert/merge/pptx/multi | Merge Multple PowerPoint PPTX Together
 *MergeDocumentApi* | [**mergeDocumentTxt**](docs/Api/MergeDocumentApi.md#mergedocumenttxt) | **POST** /convert/merge/txt | Merge Two Text (TXT) Files Together

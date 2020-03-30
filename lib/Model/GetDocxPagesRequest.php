@@ -59,7 +59,8 @@ class GetDocxPagesRequest implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'input_file_bytes' => 'string',
-        'input_file_url' => 'string'
+        'input_file_url' => 'string',
+        'maximum_pages' => 'int'
     ];
 
     /**
@@ -69,7 +70,8 @@ class GetDocxPagesRequest implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'input_file_bytes' => 'byte',
-        'input_file_url' => null
+        'input_file_url' => null,
+        'maximum_pages' => 'int32'
     ];
 
     /**
@@ -100,7 +102,8 @@ class GetDocxPagesRequest implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'input_file_bytes' => 'InputFileBytes',
-        'input_file_url' => 'InputFileUrl'
+        'input_file_url' => 'InputFileUrl',
+        'maximum_pages' => 'MaximumPages'
     ];
 
     /**
@@ -110,7 +113,8 @@ class GetDocxPagesRequest implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'input_file_bytes' => 'setInputFileBytes',
-        'input_file_url' => 'setInputFileUrl'
+        'input_file_url' => 'setInputFileUrl',
+        'maximum_pages' => 'setMaximumPages'
     ];
 
     /**
@@ -120,7 +124,8 @@ class GetDocxPagesRequest implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'input_file_bytes' => 'getInputFileBytes',
-        'input_file_url' => 'getInputFileUrl'
+        'input_file_url' => 'getInputFileUrl',
+        'maximum_pages' => 'getMaximumPages'
     ];
 
     /**
@@ -185,6 +190,7 @@ class GetDocxPagesRequest implements ModelInterface, ArrayAccess
     {
         $this->container['input_file_bytes'] = isset($data['input_file_bytes']) ? $data['input_file_bytes'] : null;
         $this->container['input_file_url'] = isset($data['input_file_url']) ? $data['input_file_url'] : null;
+        $this->container['maximum_pages'] = isset($data['maximum_pages']) ? $data['maximum_pages'] : null;
     }
 
     /**
@@ -268,6 +274,30 @@ class GetDocxPagesRequest implements ModelInterface, ArrayAccess
     public function setInputFileUrl($input_file_url)
     {
         $this->container['input_file_url'] = $input_file_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets maximum_pages
+     *
+     * @return int
+     */
+    public function getMaximumPages()
+    {
+        return $this->container['maximum_pages'];
+    }
+
+    /**
+     * Sets maximum_pages
+     *
+     * @param int $maximum_pages Optional: Maximum number of pages to return; set to 0 or do not supply to return all pages
+     *
+     * @return $this
+     */
+    public function setMaximumPages($maximum_pages)
+    {
+        $this->container['maximum_pages'] = $maximum_pages;
 
         return $this;
     }

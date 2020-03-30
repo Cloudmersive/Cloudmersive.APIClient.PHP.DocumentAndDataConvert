@@ -114,10 +114,20 @@ class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for mergeDocumentPng
      *
-     * Merge Multple PNG Files Together.
+     * Merge Two PNG Files Together.
      *
      */
     public function testMergeDocumentPng()
+    {
+    }
+
+    /**
+     * Test case for mergeDocumentPngMulti
+     *
+     * Merge Multple PNG Files Together.
+     *
+     */
+    public function testMergeDocumentPngMulti()
     {
     }
 

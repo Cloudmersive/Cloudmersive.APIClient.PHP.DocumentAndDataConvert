@@ -2006,14 +2006,15 @@ class EditPdfApi
      * Get text in a PDF document by page
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\PdfTextByPageResult
      */
-    public function editPdfGetPdfTextByPages($input_file)
+    public function editPdfGetPdfTextByPages($input_file, $text_formatting_mode = null)
     {
-        list($response) = $this->editPdfGetPdfTextByPagesWithHttpInfo($input_file);
+        list($response) = $this->editPdfGetPdfTextByPagesWithHttpInfo($input_file, $text_formatting_mode);
         return $response;
     }
 
@@ -2023,15 +2024,16 @@ class EditPdfApi
      * Get text in a PDF document by page
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\PdfTextByPageResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function editPdfGetPdfTextByPagesWithHttpInfo($input_file)
+    public function editPdfGetPdfTextByPagesWithHttpInfo($input_file, $text_formatting_mode = null)
     {
         $returnType = '\Swagger\Client\Model\PdfTextByPageResult';
-        $request = $this->editPdfGetPdfTextByPagesRequest($input_file);
+        $request = $this->editPdfGetPdfTextByPagesRequest($input_file, $text_formatting_mode);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2098,13 +2100,14 @@ class EditPdfApi
      * Get text in a PDF document by page
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editPdfGetPdfTextByPagesAsync($input_file)
+    public function editPdfGetPdfTextByPagesAsync($input_file, $text_formatting_mode = null)
     {
-        return $this->editPdfGetPdfTextByPagesAsyncWithHttpInfo($input_file)
+        return $this->editPdfGetPdfTextByPagesAsyncWithHttpInfo($input_file, $text_formatting_mode)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2118,14 +2121,15 @@ class EditPdfApi
      * Get text in a PDF document by page
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editPdfGetPdfTextByPagesAsyncWithHttpInfo($input_file)
+    public function editPdfGetPdfTextByPagesAsyncWithHttpInfo($input_file, $text_formatting_mode = null)
     {
         $returnType = '\Swagger\Client\Model\PdfTextByPageResult';
-        $request = $this->editPdfGetPdfTextByPagesRequest($input_file);
+        $request = $this->editPdfGetPdfTextByPagesRequest($input_file, $text_formatting_mode);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2168,11 +2172,12 @@ class EditPdfApi
      * Create request for operation 'editPdfGetPdfTextByPages'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function editPdfGetPdfTextByPagesRequest($input_file)
+    protected function editPdfGetPdfTextByPagesRequest($input_file, $text_formatting_mode = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
@@ -2188,6 +2193,10 @@ class EditPdfApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($text_formatting_mode !== null) {
+            $headerParams['textFormattingMode'] = ObjectSerializer::toHeaderValue($text_formatting_mode);
+        }
 
 
         // form params
