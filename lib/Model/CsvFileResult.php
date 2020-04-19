@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentValidationResult
+ * CsvFileResult
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * DocumentValidationResult Class Doc Comment
+ * CsvFileResult Class Doc Comment
  *
  * @category Class
- * @description Document validation result
+ * @description CSV file result
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class DocumentValidationResult implements ModelInterface, ArrayAccess
+class CsvFileResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DocumentValidationResult implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'DocumentValidationResult';
+    protected static $swaggerModelName = 'CsvFileResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,8 @@ class DocumentValidationResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'document_is_valid' => 'bool',
-        'password_protected' => 'bool',
-        'error_count' => 'int',
-        'warning_count' => 'int',
-        'errors_and_warnings' => '\Swagger\Client\Model\DocumentValidationError[]'
+        'title' => 'string',
+        'file_contents' => 'string'
     ];
 
     /**
@@ -71,11 +68,8 @@ class DocumentValidationResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'document_is_valid' => null,
-        'password_protected' => null,
-        'error_count' => 'int32',
-        'warning_count' => 'int32',
-        'errors_and_warnings' => null
+        'title' => null,
+        'file_contents' => 'byte'
     ];
 
     /**
@@ -105,11 +99,8 @@ class DocumentValidationResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'document_is_valid' => 'DocumentIsValid',
-        'password_protected' => 'PasswordProtected',
-        'error_count' => 'ErrorCount',
-        'warning_count' => 'WarningCount',
-        'errors_and_warnings' => 'ErrorsAndWarnings'
+        'title' => 'Title',
+        'file_contents' => 'FileContents'
     ];
 
     /**
@@ -118,11 +109,8 @@ class DocumentValidationResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'document_is_valid' => 'setDocumentIsValid',
-        'password_protected' => 'setPasswordProtected',
-        'error_count' => 'setErrorCount',
-        'warning_count' => 'setWarningCount',
-        'errors_and_warnings' => 'setErrorsAndWarnings'
+        'title' => 'setTitle',
+        'file_contents' => 'setFileContents'
     ];
 
     /**
@@ -131,11 +119,8 @@ class DocumentValidationResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'document_is_valid' => 'getDocumentIsValid',
-        'password_protected' => 'getPasswordProtected',
-        'error_count' => 'getErrorCount',
-        'warning_count' => 'getWarningCount',
-        'errors_and_warnings' => 'getErrorsAndWarnings'
+        'title' => 'getTitle',
+        'file_contents' => 'getFileContents'
     ];
 
     /**
@@ -198,11 +183,8 @@ class DocumentValidationResult implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['document_is_valid'] = isset($data['document_is_valid']) ? $data['document_is_valid'] : null;
-        $this->container['password_protected'] = isset($data['password_protected']) ? $data['password_protected'] : null;
-        $this->container['error_count'] = isset($data['error_count']) ? $data['error_count'] : null;
-        $this->container['warning_count'] = isset($data['warning_count']) ? $data['warning_count'] : null;
-        $this->container['errors_and_warnings'] = isset($data['errors_and_warnings']) ? $data['errors_and_warnings'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['file_contents'] = isset($data['file_contents']) ? $data['file_contents'] : null;
     }
 
     /**
@@ -213,6 +195,10 @@ class DocumentValidationResult implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['file_contents']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['file_contents'])) {
+            $invalidProperties[] = "invalid value for 'file_contents', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
+        }
 
         return $invalidProperties;
     }
@@ -226,126 +212,62 @@ class DocumentValidationResult implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['file_contents'])) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets document_is_valid
+     * Gets title
      *
-     * @return bool
+     * @return string
      */
-    public function getDocumentIsValid()
+    public function getTitle()
     {
-        return $this->container['document_is_valid'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets document_is_valid
+     * Sets title
      *
-     * @param bool $document_is_valid True if the document is valid and has no errors, false otherwise
+     * @param string $title Title of the CSV file
      *
      * @return $this
      */
-    public function setDocumentIsValid($document_is_valid)
+    public function setTitle($title)
     {
-        $this->container['document_is_valid'] = $document_is_valid;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets password_protected
+     * Gets file_contents
      *
-     * @return bool
+     * @return string
      */
-    public function getPasswordProtected()
+    public function getFileContents()
     {
-        return $this->container['password_protected'];
+        return $this->container['file_contents'];
     }
 
     /**
-     * Sets password_protected
+     * Sets file_contents
      *
-     * @param bool $password_protected True if the document is password protected, false otherwise
+     * @param string $file_contents Contents of the CSV file
      *
      * @return $this
      */
-    public function setPasswordProtected($password_protected)
+    public function setFileContents($file_contents)
     {
-        $this->container['password_protected'] = $password_protected;
 
-        return $this;
-    }
+        if (!is_null($file_contents) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $file_contents))) {
+            throw new \InvalidArgumentException("invalid value for $file_contents when calling CsvFileResult., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
+        }
 
-    /**
-     * Gets error_count
-     *
-     * @return int
-     */
-    public function getErrorCount()
-    {
-        return $this->container['error_count'];
-    }
-
-    /**
-     * Sets error_count
-     *
-     * @param int $error_count Number of validation errors found in the document
-     *
-     * @return $this
-     */
-    public function setErrorCount($error_count)
-    {
-        $this->container['error_count'] = $error_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets warning_count
-     *
-     * @return int
-     */
-    public function getWarningCount()
-    {
-        return $this->container['warning_count'];
-    }
-
-    /**
-     * Sets warning_count
-     *
-     * @param int $warning_count Number of validation warnings found in the document
-     *
-     * @return $this
-     */
-    public function setWarningCount($warning_count)
-    {
-        $this->container['warning_count'] = $warning_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors_and_warnings
-     *
-     * @return \Swagger\Client\Model\DocumentValidationError[]
-     */
-    public function getErrorsAndWarnings()
-    {
-        return $this->container['errors_and_warnings'];
-    }
-
-    /**
-     * Sets errors_and_warnings
-     *
-     * @param \Swagger\Client\Model\DocumentValidationError[] $errors_and_warnings Details of errors and warnings found
-     *
-     * @return $this
-     */
-    public function setErrorsAndWarnings($errors_and_warnings)
-    {
-        $this->container['errors_and_warnings'] = $errors_and_warnings;
+        $this->container['file_contents'] = $file_contents;
 
         return $this;
     }

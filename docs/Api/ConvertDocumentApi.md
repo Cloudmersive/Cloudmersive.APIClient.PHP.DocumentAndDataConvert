@@ -31,7 +31,8 @@ Method | HTTP request | Description
 [**convertDocumentXlsToCsv**](ConvertDocumentApi.md#convertDocumentXlsToCsv) | **POST** /convert/xls/to/csv | Convert Excel XLS (97-03) Spreadsheet to CSV
 [**convertDocumentXlsToPdf**](ConvertDocumentApi.md#convertDocumentXlsToPdf) | **POST** /convert/xls/to/pdf | Convert Excel XLS (97-03) Spreadsheet to PDF
 [**convertDocumentXlsToXlsx**](ConvertDocumentApi.md#convertDocumentXlsToXlsx) | **POST** /convert/xls/to/xlsx | Convert Excel XLS (97-03) Spreadsheet to XLSX
-[**convertDocumentXlsxToCsv**](ConvertDocumentApi.md#convertDocumentXlsxToCsv) | **POST** /convert/xlsx/to/csv | Convert Excel XLSX Spreadsheet to CSV
+[**convertDocumentXlsxToCsv**](ConvertDocumentApi.md#convertDocumentXlsxToCsv) | **POST** /convert/xlsx/to/csv | Convert Excel XLSX Spreadsheet to CSV, Single Worksheet
+[**convertDocumentXlsxToCsvMulti**](ConvertDocumentApi.md#convertDocumentXlsxToCsvMulti) | **POST** /convert/xlsx/to/csv/multi | Convert Excel XLSX Spreadsheet to CSV, Multiple Worksheets
 [**convertDocumentXlsxToPdf**](ConvertDocumentApi.md#convertDocumentXlsxToPdf) | **POST** /convert/xlsx/to/pdf | Convert Excel XLSX Spreadsheet to PDF
 [**convertDocumentXlsxToTxt**](ConvertDocumentApi.md#convertDocumentXlsxToTxt) | **POST** /convert/xlsx/to/txt | Convert Excel XLSX Spreadsheet to Text (txt)
 
@@ -1548,9 +1549,9 @@ Name | Type | Description  | Notes
 # **convertDocumentXlsxToCsv**
 > string convertDocumentXlsxToCsv($input_file, $output_encoding)
 
-Convert Excel XLSX Spreadsheet to CSV
+Convert Excel XLSX Spreadsheet to CSV, Single Worksheet
 
-Convert Office Excel Workbooks (XLSX) to standard Comma-Separated Values (CSV) format.  Supports both XLSX and XLSB file Excel formats.
+Convert Office Excel Workbooks (XLSX) to standard Comma-Separated Values (CSV) format.  Supports both XLSX and XLSB file Excel formats.  If the input file contains multiple worksheets, the first one is used.  If you wish to convert all of the worksheets (not just the first one), be sure to use the xlsx/to/csv/multi API.
 
 ### Example
 ```php
@@ -1569,7 +1570,7 @@ $apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
     $config
 );
 $input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
-$output_encoding = "output_encoding_example"; // string | Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32.
+$output_encoding = "output_encoding_example"; // string | Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8.
 
 try {
     $result = $apiInstance->convertDocumentXlsxToCsv($input_file, $output_encoding);
@@ -1585,11 +1586,68 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **\SplFileObject**| Input file to perform the operation on. |
- **output_encoding** | **string**| Optional, set the output text encoding for the result; possible values are UTF-8 and UTF-32.  Default is UTF-32. | [optional]
+ **output_encoding** | **string**| Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8. | [optional]
 
 ### Return type
 
 **string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentXlsxToCsvMulti**
+> \Swagger\Client\Model\CsvCollection convertDocumentXlsxToCsvMulti($input_file, $output_encoding)
+
+Convert Excel XLSX Spreadsheet to CSV, Multiple Worksheets
+
+Convert Office Excel Workbooks (XLSX) to standard Comma-Separated Values (CSV) format, with support for multiple worksheets.  Supports both XLSX and XLSB file Excel formats.  Returns multiple CSV files, one for each worksheet (tab) in the spreadsheet.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$output_encoding = "output_encoding_example"; // string | Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8.
+
+try {
+    $result = $apiInstance->convertDocumentXlsxToCsvMulti($input_file, $output_encoding);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentXlsxToCsvMulti: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **output_encoding** | **string**| Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\CsvCollection**](../Model/CsvCollection.md)
 
 ### Authorization
 

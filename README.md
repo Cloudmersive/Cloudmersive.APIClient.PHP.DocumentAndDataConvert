@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.8.5
+- Package version: 1.8.6
 
 
 ## Requirements
@@ -130,7 +130,8 @@ Class | Method | HTTP request | Description
 *ConvertDocumentApi* | [**convertDocumentXlsToCsv**](docs/Api/ConvertDocumentApi.md#convertdocumentxlstocsv) | **POST** /convert/xls/to/csv | Convert Excel XLS (97-03) Spreadsheet to CSV
 *ConvertDocumentApi* | [**convertDocumentXlsToPdf**](docs/Api/ConvertDocumentApi.md#convertdocumentxlstopdf) | **POST** /convert/xls/to/pdf | Convert Excel XLS (97-03) Spreadsheet to PDF
 *ConvertDocumentApi* | [**convertDocumentXlsToXlsx**](docs/Api/ConvertDocumentApi.md#convertdocumentxlstoxlsx) | **POST** /convert/xls/to/xlsx | Convert Excel XLS (97-03) Spreadsheet to XLSX
-*ConvertDocumentApi* | [**convertDocumentXlsxToCsv**](docs/Api/ConvertDocumentApi.md#convertdocumentxlsxtocsv) | **POST** /convert/xlsx/to/csv | Convert Excel XLSX Spreadsheet to CSV
+*ConvertDocumentApi* | [**convertDocumentXlsxToCsv**](docs/Api/ConvertDocumentApi.md#convertdocumentxlsxtocsv) | **POST** /convert/xlsx/to/csv | Convert Excel XLSX Spreadsheet to CSV, Single Worksheet
+*ConvertDocumentApi* | [**convertDocumentXlsxToCsvMulti**](docs/Api/ConvertDocumentApi.md#convertdocumentxlsxtocsvmulti) | **POST** /convert/xlsx/to/csv/multi | Convert Excel XLSX Spreadsheet to CSV, Multiple Worksheets
 *ConvertDocumentApi* | [**convertDocumentXlsxToPdf**](docs/Api/ConvertDocumentApi.md#convertdocumentxlsxtopdf) | **POST** /convert/xlsx/to/pdf | Convert Excel XLSX Spreadsheet to PDF
 *ConvertDocumentApi* | [**convertDocumentXlsxToTxt**](docs/Api/ConvertDocumentApi.md#convertdocumentxlsxtotxt) | **POST** /convert/xlsx/to/txt | Convert Excel XLSX Spreadsheet to Text (txt)
 *ConvertImageApi* | [**convertImageGetImageInfo**](docs/Api/ConvertImageApi.md#convertimagegetimageinfo) | **POST** /convert/image/get-info | Get information about an image
@@ -282,6 +283,8 @@ Class | Method | HTTP request | Description
  - [CreateSpreadsheetFromDataRequest](docs/Model/CreateSpreadsheetFromDataRequest.md)
  - [CreateSpreadsheetFromDataResponse](docs/Model/CreateSpreadsheetFromDataResponse.md)
  - [CreateZipArchiveRequest](docs/Model/CreateZipArchiveRequest.md)
+ - [CsvCollection](docs/Model/CsvCollection.md)
+ - [CsvFileResult](docs/Model/CsvFileResult.md)
  - [DeleteDocxTableRowRangeRequest](docs/Model/DeleteDocxTableRowRangeRequest.md)
  - [DeleteDocxTableRowRangeResponse](docs/Model/DeleteDocxTableRowRangeResponse.md)
  - [DeleteDocxTableRowRequest](docs/Model/DeleteDocxTableRowRequest.md)

@@ -344,10 +344,20 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentXlsxToCsv
      *
-     * Convert Excel XLSX Spreadsheet to CSV.
+     * Convert Excel XLSX Spreadsheet to CSV, Single Worksheet.
      *
      */
     public function testConvertDocumentXlsxToCsv()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentXlsxToCsvMulti
+     *
+     * Convert Excel XLSX Spreadsheet to CSV, Multiple Worksheets.
+     *
+     */
+    public function testConvertDocumentXlsxToCsvMulti()
     {
     }
 

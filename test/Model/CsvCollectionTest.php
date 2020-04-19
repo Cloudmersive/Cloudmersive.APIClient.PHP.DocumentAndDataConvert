@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentValidationResultTest
+ * CsvCollectionTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * DocumentValidationResultTest Class Doc Comment
+ * CsvCollectionTest Class Doc Comment
  *
  * @category    Class */
-// * @description Document validation result
+// * @description Collection of CSV Files
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class DocumentValidationResultTest extends \PHPUnit_Framework_TestCase
+class CsvCollectionTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,44 +71,30 @@ class DocumentValidationResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "DocumentValidationResult"
+     * Test "CsvCollection"
      */
-    public function testDocumentValidationResult()
+    public function testCsvCollection()
     {
     }
 
     /**
-     * Test attribute "document_is_valid"
+     * Test attribute "successful"
      */
-    public function testPropertyDocumentIsValid()
+    public function testPropertySuccessful()
     {
     }
 
     /**
-     * Test attribute "password_protected"
+     * Test attribute "csv_files"
      */
-    public function testPropertyPasswordProtected()
+    public function testPropertyCsvFiles()
     {
     }
 
     /**
-     * Test attribute "error_count"
+     * Test attribute "file_count"
      */
-    public function testPropertyErrorCount()
-    {
-    }
-
-    /**
-     * Test attribute "warning_count"
-     */
-    public function testPropertyWarningCount()
-    {
-    }
-
-    /**
-     * Test attribute "errors_and_warnings"
-     */
-    public function testPropertyErrorsAndWarnings()
+    public function testPropertyFileCount()
     {
     }
 }
