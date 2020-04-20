@@ -1,6 +1,6 @@
 <?php
 /**
- * DocxParagraph
+ * ReplaceDocxParagraphResponse
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * DocxParagraph Class Doc Comment
+ * ReplaceDocxParagraphResponse Class Doc Comment
  *
  * @category Class
- * @description A paragraph in a Word Document (DOCX) file; there is where text, content and formatting are stored - similar to the paragraph tag in HTML
+ * @description Result of performing a replace matching paragraphs operation on a Word Document
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class DocxParagraph implements ModelInterface, ArrayAccess
+class ReplaceDocxParagraphResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DocxParagraph implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'DocxParagraph';
+    protected static $swaggerModelName = 'ReplaceDocxParagraphResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class DocxParagraph implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'paragraph_index' => 'int',
-        'path' => 'string',
-        'content_runs' => '\Swagger\Client\Model\DocxRun[]',
-        'style_id' => 'string'
+        'successful' => 'bool',
+        'edited_document_url' => 'string'
     ];
 
     /**
@@ -70,10 +68,8 @@ class DocxParagraph implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'paragraph_index' => 'int32',
-        'path' => null,
-        'content_runs' => null,
-        'style_id' => null
+        'successful' => null,
+        'edited_document_url' => null
     ];
 
     /**
@@ -103,10 +99,8 @@ class DocxParagraph implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'paragraph_index' => 'ParagraphIndex',
-        'path' => 'Path',
-        'content_runs' => 'ContentRuns',
-        'style_id' => 'StyleID'
+        'successful' => 'Successful',
+        'edited_document_url' => 'EditedDocumentURL'
     ];
 
     /**
@@ -115,10 +109,8 @@ class DocxParagraph implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'paragraph_index' => 'setParagraphIndex',
-        'path' => 'setPath',
-        'content_runs' => 'setContentRuns',
-        'style_id' => 'setStyleId'
+        'successful' => 'setSuccessful',
+        'edited_document_url' => 'setEditedDocumentUrl'
     ];
 
     /**
@@ -127,10 +119,8 @@ class DocxParagraph implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'paragraph_index' => 'getParagraphIndex',
-        'path' => 'getPath',
-        'content_runs' => 'getContentRuns',
-        'style_id' => 'getStyleId'
+        'successful' => 'getSuccessful',
+        'edited_document_url' => 'getEditedDocumentUrl'
     ];
 
     /**
@@ -193,10 +183,8 @@ class DocxParagraph implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['paragraph_index'] = isset($data['paragraph_index']) ? $data['paragraph_index'] : null;
-        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
-        $this->container['content_runs'] = isset($data['content_runs']) ? $data['content_runs'] : null;
-        $this->container['style_id'] = isset($data['style_id']) ? $data['style_id'] : null;
+        $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
+        $this->container['edited_document_url'] = isset($data['edited_document_url']) ? $data['edited_document_url'] : null;
     }
 
     /**
@@ -225,97 +213,49 @@ class DocxParagraph implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets paragraph_index
+     * Gets successful
      *
-     * @return int
+     * @return bool
      */
-    public function getParagraphIndex()
+    public function getSuccessful()
     {
-        return $this->container['paragraph_index'];
+        return $this->container['successful'];
     }
 
     /**
-     * Sets paragraph_index
+     * Sets successful
      *
-     * @param int $paragraph_index The index of the paragraph; 0-based
+     * @param bool $successful True if successful; false otherwise
      *
      * @return $this
      */
-    public function setParagraphIndex($paragraph_index)
+    public function setSuccessful($successful)
     {
-        $this->container['paragraph_index'] = $paragraph_index;
+        $this->container['successful'] = $successful;
 
         return $this;
     }
 
     /**
-     * Gets path
+     * Gets edited_document_url
      *
      * @return string
      */
-    public function getPath()
+    public function getEditedDocumentUrl()
     {
-        return $this->container['path'];
+        return $this->container['edited_document_url'];
     }
 
     /**
-     * Sets path
+     * Sets edited_document_url
      *
-     * @param string $path The Path of the location of this Paragraph object; leave blank during creation
+     * @param string $edited_document_url URL of the edited document
      *
      * @return $this
      */
-    public function setPath($path)
+    public function setEditedDocumentUrl($edited_document_url)
     {
-        $this->container['path'] = $path;
-
-        return $this;
-    }
-
-    /**
-     * Gets content_runs
-     *
-     * @return \Swagger\Client\Model\DocxRun[]
-     */
-    public function getContentRuns()
-    {
-        return $this->container['content_runs'];
-    }
-
-    /**
-     * Sets content_runs
-     *
-     * @param \Swagger\Client\Model\DocxRun[] $content_runs The content runs in the paragraph - this is where text is stored; similar to a span in HTML
-     *
-     * @return $this
-     */
-    public function setContentRuns($content_runs)
-    {
-        $this->container['content_runs'] = $content_runs;
-
-        return $this;
-    }
-
-    /**
-     * Gets style_id
-     *
-     * @return string
-     */
-    public function getStyleId()
-    {
-        return $this->container['style_id'];
-    }
-
-    /**
-     * Sets style_id
-     *
-     * @param string $style_id Style ID of the style applied to the paragraph; null if no style is applied
-     *
-     * @return $this
-     */
-    public function setStyleId($style_id)
-    {
-        $this->container['style_id'] = $style_id;
+        $this->container['edited_document_url'] = $edited_document_url;
 
         return $this;
     }

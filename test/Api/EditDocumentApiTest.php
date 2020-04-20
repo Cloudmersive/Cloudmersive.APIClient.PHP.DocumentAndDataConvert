@@ -132,6 +132,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxFindParagraph
+     *
+     * Find matching paragraphs in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxFindParagraph()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxGetComments
      *
      * Get comments from a Word DOCX document as a flat list.
@@ -308,6 +318,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentDocxReplace()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxReplaceParagraph
+     *
+     * Replace matching paragraphs in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxReplaceParagraph()
     {
     }
 

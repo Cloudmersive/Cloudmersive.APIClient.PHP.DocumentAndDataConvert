@@ -102,6 +102,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentGZipValidation
+     *
+     * Validate a GZip Archive file (gzip or gz).
+     *
+     */
+    public function testValidateDocumentGZipValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentJsonValidation
      *
      * Validate a JSON file.
@@ -132,6 +142,26 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentRarValidation
+     *
+     * Validate a RAR Archive file (RAR).
+     *
+     */
+    public function testValidateDocumentRarValidation()
+    {
+    }
+
+    /**
+     * Test case for validateDocumentTarValidation
+     *
+     * Validate a TAR Tarball Archive file (TAR).
+     *
+     */
+    public function testValidateDocumentTarValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentXlsxValidation
      *
      * Validate a Excel document (XLSX).
@@ -148,6 +178,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testValidateDocumentXmlValidation()
+    {
+    }
+
+    /**
+     * Test case for validateDocumentZipValidation
+     *
+     * Validate a Zip Archive file (zip).
+     *
+     */
+    public function testValidateDocumentZipValidation()
     {
     }
 }

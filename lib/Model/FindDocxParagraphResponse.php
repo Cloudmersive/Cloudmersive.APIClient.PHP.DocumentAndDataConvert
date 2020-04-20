@@ -1,6 +1,6 @@
 <?php
 /**
- * DocxRun
+ * FindDocxParagraphResponse
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * DocxRun Class Doc Comment
+ * FindDocxParagraphResponse Class Doc Comment
  *
  * @category Class
- * @description A content run in a Word Document (DOCX) file
+ * @description Result of performing a find matching paragraphs operation on a Word Document
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class DocxRun implements ModelInterface, ArrayAccess
+class FindDocxParagraphResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DocxRun implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'DocxRun';
+    protected static $swaggerModelName = 'FindDocxParagraphResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,9 @@ class DocxRun implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'run_index' => 'int',
-        'path' => 'string',
-        'text_items' => '\Swagger\Client\Model\DocxText[]',
-        'bold' => 'bool',
-        'italic' => 'bool',
-        'underline' => 'string',
-        'font_family' => 'string',
-        'font_size' => 'string'
+        'successful' => 'bool',
+        'matching_paragraphs' => '\Swagger\Client\Model\DocxParagraph[]',
+        'count' => 'int'
     ];
 
     /**
@@ -74,14 +69,9 @@ class DocxRun implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'run_index' => 'int32',
-        'path' => null,
-        'text_items' => null,
-        'bold' => null,
-        'italic' => null,
-        'underline' => null,
-        'font_family' => null,
-        'font_size' => null
+        'successful' => null,
+        'matching_paragraphs' => null,
+        'count' => 'int32'
     ];
 
     /**
@@ -111,14 +101,9 @@ class DocxRun implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'run_index' => 'RunIndex',
-        'path' => 'Path',
-        'text_items' => 'TextItems',
-        'bold' => 'Bold',
-        'italic' => 'Italic',
-        'underline' => 'Underline',
-        'font_family' => 'FontFamily',
-        'font_size' => 'FontSize'
+        'successful' => 'Successful',
+        'matching_paragraphs' => 'MatchingParagraphs',
+        'count' => 'Count'
     ];
 
     /**
@@ -127,14 +112,9 @@ class DocxRun implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'run_index' => 'setRunIndex',
-        'path' => 'setPath',
-        'text_items' => 'setTextItems',
-        'bold' => 'setBold',
-        'italic' => 'setItalic',
-        'underline' => 'setUnderline',
-        'font_family' => 'setFontFamily',
-        'font_size' => 'setFontSize'
+        'successful' => 'setSuccessful',
+        'matching_paragraphs' => 'setMatchingParagraphs',
+        'count' => 'setCount'
     ];
 
     /**
@@ -143,14 +123,9 @@ class DocxRun implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'run_index' => 'getRunIndex',
-        'path' => 'getPath',
-        'text_items' => 'getTextItems',
-        'bold' => 'getBold',
-        'italic' => 'getItalic',
-        'underline' => 'getUnderline',
-        'font_family' => 'getFontFamily',
-        'font_size' => 'getFontSize'
+        'successful' => 'getSuccessful',
+        'matching_paragraphs' => 'getMatchingParagraphs',
+        'count' => 'getCount'
     ];
 
     /**
@@ -213,14 +188,9 @@ class DocxRun implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['run_index'] = isset($data['run_index']) ? $data['run_index'] : null;
-        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
-        $this->container['text_items'] = isset($data['text_items']) ? $data['text_items'] : null;
-        $this->container['bold'] = isset($data['bold']) ? $data['bold'] : null;
-        $this->container['italic'] = isset($data['italic']) ? $data['italic'] : null;
-        $this->container['underline'] = isset($data['underline']) ? $data['underline'] : null;
-        $this->container['font_family'] = isset($data['font_family']) ? $data['font_family'] : null;
-        $this->container['font_size'] = isset($data['font_size']) ? $data['font_size'] : null;
+        $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
+        $this->container['matching_paragraphs'] = isset($data['matching_paragraphs']) ? $data['matching_paragraphs'] : null;
+        $this->container['count'] = isset($data['count']) ? $data['count'] : null;
     }
 
     /**
@@ -249,193 +219,73 @@ class DocxRun implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets run_index
+     * Gets successful
+     *
+     * @return bool
+     */
+    public function getSuccessful()
+    {
+        return $this->container['successful'];
+    }
+
+    /**
+     * Sets successful
+     *
+     * @param bool $successful True if successful; false otherwise
+     *
+     * @return $this
+     */
+    public function setSuccessful($successful)
+    {
+        $this->container['successful'] = $successful;
+
+        return $this;
+    }
+
+    /**
+     * Gets matching_paragraphs
+     *
+     * @return \Swagger\Client\Model\DocxParagraph[]
+     */
+    public function getMatchingParagraphs()
+    {
+        return $this->container['matching_paragraphs'];
+    }
+
+    /**
+     * Sets matching_paragraphs
+     *
+     * @param \Swagger\Client\Model\DocxParagraph[] $matching_paragraphs Matching paragraphs
+     *
+     * @return $this
+     */
+    public function setMatchingParagraphs($matching_paragraphs)
+    {
+        $this->container['matching_paragraphs'] = $matching_paragraphs;
+
+        return $this;
+    }
+
+    /**
+     * Gets count
      *
      * @return int
      */
-    public function getRunIndex()
+    public function getCount()
     {
-        return $this->container['run_index'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets run_index
+     * Sets count
      *
-     * @param int $run_index Index of the run, 0-based
+     * @param int $count Count of matching paragraphs
      *
      * @return $this
      */
-    public function setRunIndex($run_index)
+    public function setCount($count)
     {
-        $this->container['run_index'] = $run_index;
-
-        return $this;
-    }
-
-    /**
-     * Gets path
-     *
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->container['path'];
-    }
-
-    /**
-     * Sets path
-     *
-     * @param string $path The Path of the location of this Run object; leave blank for creation
-     *
-     * @return $this
-     */
-    public function setPath($path)
-    {
-        $this->container['path'] = $path;
-
-        return $this;
-    }
-
-    /**
-     * Gets text_items
-     *
-     * @return \Swagger\Client\Model\DocxText[]
-     */
-    public function getTextItems()
-    {
-        return $this->container['text_items'];
-    }
-
-    /**
-     * Sets text_items
-     *
-     * @param \Swagger\Client\Model\DocxText[] $text_items Text items inside the run; this is where the actual text content is stored
-     *
-     * @return $this
-     */
-    public function setTextItems($text_items)
-    {
-        $this->container['text_items'] = $text_items;
-
-        return $this;
-    }
-
-    /**
-     * Gets bold
-     *
-     * @return bool
-     */
-    public function getBold()
-    {
-        return $this->container['bold'];
-    }
-
-    /**
-     * Sets bold
-     *
-     * @param bool $bold True to make the text bold, false otherwise
-     *
-     * @return $this
-     */
-    public function setBold($bold)
-    {
-        $this->container['bold'] = $bold;
-
-        return $this;
-    }
-
-    /**
-     * Gets italic
-     *
-     * @return bool
-     */
-    public function getItalic()
-    {
-        return $this->container['italic'];
-    }
-
-    /**
-     * Sets italic
-     *
-     * @param bool $italic True to make the text italic, false otherwise
-     *
-     * @return $this
-     */
-    public function setItalic($italic)
-    {
-        $this->container['italic'] = $italic;
-
-        return $this;
-    }
-
-    /**
-     * Gets underline
-     *
-     * @return string
-     */
-    public function getUnderline()
-    {
-        return $this->container['underline'];
-    }
-
-    /**
-     * Sets underline
-     *
-     * @param string $underline Underline mode for the text; possible values are: Words, Double, Thick, Dotted, DottedHeavy, Dash, DashedHeavy, DashLong, DashLongHeavy, DotDash, DashDotHeavy, DotDotDash, DashDotDotHeavy, Wave, WavyHeavy, WavyDouble, None
-     *
-     * @return $this
-     */
-    public function setUnderline($underline)
-    {
-        $this->container['underline'] = $underline;
-
-        return $this;
-    }
-
-    /**
-     * Gets font_family
-     *
-     * @return string
-     */
-    public function getFontFamily()
-    {
-        return $this->container['font_family'];
-    }
-
-    /**
-     * Sets font_family
-     *
-     * @param string $font_family Font Family name for the text, e.g. \"Arial\" or \"Times New Roman\"
-     *
-     * @return $this
-     */
-    public function setFontFamily($font_family)
-    {
-        $this->container['font_family'] = $font_family;
-
-        return $this;
-    }
-
-    /**
-     * Gets font_size
-     *
-     * @return string
-     */
-    public function getFontSize()
-    {
-        return $this->container['font_size'];
-    }
-
-    /**
-     * Sets font_size
-     *
-     * @param string $font_size Font size in font points (e.g. \"24\")
-     *
-     * @return $this
-     */
-    public function setFontSize($font_size)
-    {
-        $this->container['font_size'] = $font_size;
+        $this->container['count'] = $count;
 
         return $this;
     }

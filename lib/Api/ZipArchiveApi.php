@@ -87,14 +87,24 @@ class ZipArchiveApi
      *
      * Compress files to create a new zip archive
      *
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return string
      */
-    public function zipArchiveZipCreate()
+    public function zipArchiveZipCreate($input_file1, $input_file2 = null, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
     {
-        list($response) = $this->zipArchiveZipCreateWithHttpInfo();
+        list($response) = $this->zipArchiveZipCreateWithHttpInfo($input_file1, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10);
         return $response;
     }
 
@@ -103,15 +113,25 @@ class ZipArchiveApi
      *
      * Compress files to create a new zip archive
      *
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function zipArchiveZipCreateWithHttpInfo()
+    public function zipArchiveZipCreateWithHttpInfo($input_file1, $input_file2 = null, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
     {
-        $returnType = 'object';
-        $request = $this->zipArchiveZipCreateRequest();
+        $returnType = 'string';
+        $request = $this->zipArchiveZipCreateRequest($input_file1, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10);
 
         try {
             $options = $this->createHttpClientOption();
@@ -162,7 +182,7 @@ class ZipArchiveApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -177,13 +197,23 @@ class ZipArchiveApi
      *
      * Compress files to create a new zip archive
      *
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function zipArchiveZipCreateAsync()
+    public function zipArchiveZipCreateAsync($input_file1, $input_file2 = null, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
     {
-        return $this->zipArchiveZipCreateAsyncWithHttpInfo()
+        return $this->zipArchiveZipCreateAsyncWithHttpInfo($input_file1, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -196,14 +226,24 @@ class ZipArchiveApi
      *
      * Compress files to create a new zip archive
      *
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function zipArchiveZipCreateAsyncWithHttpInfo()
+    public function zipArchiveZipCreateAsyncWithHttpInfo($input_file1, $input_file2 = null, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
     {
-        $returnType = 'object';
-        $request = $this->zipArchiveZipCreateRequest();
+        $returnType = 'string';
+        $request = $this->zipArchiveZipCreateRequest($input_file1, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -245,12 +285,28 @@ class ZipArchiveApi
     /**
      * Create request for operation 'zipArchiveZipCreate'
      *
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function zipArchiveZipCreateRequest()
+    protected function zipArchiveZipCreateRequest($input_file1, $input_file2 = null, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
     {
+        // verify the required parameter 'input_file1' is set
+        if ($input_file1 === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file1 when calling zipArchiveZipCreate'
+            );
+        }
 
         $resourcePath = '/convert/archive/zip/create';
         $formParams = [];
@@ -261,6 +317,56 @@ class ZipArchiveApi
 
 
 
+        // form params
+        if ($input_file1 !== null) {
+            $multipart = true;
+            $formParams['inputFile1'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file1), 'rb');
+        }
+        // form params
+        if ($input_file2 !== null) {
+            $multipart = true;
+            $formParams['inputFile2'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file2), 'rb');
+        }
+        // form params
+        if ($input_file3 !== null) {
+            $multipart = true;
+            $formParams['inputFile3'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file3), 'rb');
+        }
+        // form params
+        if ($input_file4 !== null) {
+            $multipart = true;
+            $formParams['inputFile4'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file4), 'rb');
+        }
+        // form params
+        if ($input_file5 !== null) {
+            $multipart = true;
+            $formParams['inputFile5'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file5), 'rb');
+        }
+        // form params
+        if ($input_file6 !== null) {
+            $multipart = true;
+            $formParams['inputFile6'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file6), 'rb');
+        }
+        // form params
+        if ($input_file7 !== null) {
+            $multipart = true;
+            $formParams['inputFile7'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file7), 'rb');
+        }
+        // form params
+        if ($input_file8 !== null) {
+            $multipart = true;
+            $formParams['inputFile8'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file8), 'rb');
+        }
+        // form params
+        if ($input_file9 !== null) {
+            $multipart = true;
+            $formParams['inputFile9'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file9), 'rb');
+        }
+        // form params
+        if ($input_file10 !== null) {
+            $multipart = true;
+            $formParams['inputFile10'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file10), 'rb');
+        }
         // body params
         $_tempBody = null;
 
@@ -271,7 +377,7 @@ class ZipArchiveApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/octet-stream'],
-                []
+                ['multipart/form-data']
             );
         }
 
@@ -533,6 +639,547 @@ class ZipArchiveApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/octet-stream'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation zipArchiveZipDecrypt
+     *
+     * Decrypt and remove password protection on a zip file
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $zip_password Required; Password for the input archive (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return object
+     */
+    public function zipArchiveZipDecrypt($input_file, $zip_password)
+    {
+        list($response) = $this->zipArchiveZipDecryptWithHttpInfo($input_file, $zip_password);
+        return $response;
+    }
+
+    /**
+     * Operation zipArchiveZipDecryptWithHttpInfo
+     *
+     * Decrypt and remove password protection on a zip file
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $zip_password Required; Password for the input archive (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function zipArchiveZipDecryptWithHttpInfo($input_file, $zip_password)
+    {
+        $returnType = 'object';
+        $request = $this->zipArchiveZipDecryptRequest($input_file, $zip_password);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation zipArchiveZipDecryptAsync
+     *
+     * Decrypt and remove password protection on a zip file
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $zip_password Required; Password for the input archive (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function zipArchiveZipDecryptAsync($input_file, $zip_password)
+    {
+        return $this->zipArchiveZipDecryptAsyncWithHttpInfo($input_file, $zip_password)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation zipArchiveZipDecryptAsyncWithHttpInfo
+     *
+     * Decrypt and remove password protection on a zip file
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $zip_password Required; Password for the input archive (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function zipArchiveZipDecryptAsyncWithHttpInfo($input_file, $zip_password)
+    {
+        $returnType = 'object';
+        $request = $this->zipArchiveZipDecryptRequest($input_file, $zip_password);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'zipArchiveZipDecrypt'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $zip_password Required; Password for the input archive (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function zipArchiveZipDecryptRequest($input_file, $zip_password)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling zipArchiveZipDecrypt'
+            );
+        }
+        // verify the required parameter 'zip_password' is set
+        if ($zip_password === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $zip_password when calling zipArchiveZipDecrypt'
+            );
+        }
+
+        $resourcePath = '/convert/archive/zip/decrypt';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($zip_password !== null) {
+            $headerParams['zipPassword'] = ObjectSerializer::toHeaderValue($zip_password);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation zipArchiveZipEncryptAdvanced
+     *
+     * Encrypt and password protect a zip file
+     *
+     * @param  \Swagger\Client\Model\ZipEncryptionAdvancedRequest $encryption_request Encryption request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return object
+     */
+    public function zipArchiveZipEncryptAdvanced($encryption_request)
+    {
+        list($response) = $this->zipArchiveZipEncryptAdvancedWithHttpInfo($encryption_request);
+        return $response;
+    }
+
+    /**
+     * Operation zipArchiveZipEncryptAdvancedWithHttpInfo
+     *
+     * Encrypt and password protect a zip file
+     *
+     * @param  \Swagger\Client\Model\ZipEncryptionAdvancedRequest $encryption_request Encryption request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function zipArchiveZipEncryptAdvancedWithHttpInfo($encryption_request)
+    {
+        $returnType = 'object';
+        $request = $this->zipArchiveZipEncryptAdvancedRequest($encryption_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation zipArchiveZipEncryptAdvancedAsync
+     *
+     * Encrypt and password protect a zip file
+     *
+     * @param  \Swagger\Client\Model\ZipEncryptionAdvancedRequest $encryption_request Encryption request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function zipArchiveZipEncryptAdvancedAsync($encryption_request)
+    {
+        return $this->zipArchiveZipEncryptAdvancedAsyncWithHttpInfo($encryption_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation zipArchiveZipEncryptAdvancedAsyncWithHttpInfo
+     *
+     * Encrypt and password protect a zip file
+     *
+     * @param  \Swagger\Client\Model\ZipEncryptionAdvancedRequest $encryption_request Encryption request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function zipArchiveZipEncryptAdvancedAsyncWithHttpInfo($encryption_request)
+    {
+        $returnType = 'object';
+        $request = $this->zipArchiveZipEncryptAdvancedRequest($encryption_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'zipArchiveZipEncryptAdvanced'
+     *
+     * @param  \Swagger\Client\Model\ZipEncryptionAdvancedRequest $encryption_request Encryption request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function zipArchiveZipEncryptAdvancedRequest($encryption_request)
+    {
+        // verify the required parameter 'encryption_request' is set
+        if ($encryption_request === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $encryption_request when calling zipArchiveZipEncryptAdvanced'
+            );
+        }
+
+        $resourcePath = '/convert/archive/zip/encrypt/advanced';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($encryption_request)) {
+            $_tempBody = $encryption_request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
                 ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
             );
         }

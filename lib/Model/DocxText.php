@@ -255,7 +255,7 @@ class DocxText implements ModelInterface, ArrayAccess
     /**
      * Sets path
      *
-     * @param string $path The Path of the location of this object; leave blank for new tables
+     * @param string $path The Path of the location of this Text object; leave blank for creation
      *
      * @return $this
      */

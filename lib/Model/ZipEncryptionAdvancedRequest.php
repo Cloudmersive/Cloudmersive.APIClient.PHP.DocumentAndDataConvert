@@ -1,6 +1,6 @@
 <?php
 /**
- * DocxRun
+ * ZipEncryptionAdvancedRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * DocxRun Class Doc Comment
+ * ZipEncryptionAdvancedRequest Class Doc Comment
  *
  * @category Class
- * @description A content run in a Word Document (DOCX) file
+ * @description Request to encrypt an existing Zip Archive file and protect it with a password
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class DocxRun implements ModelInterface, ArrayAccess
+class ZipEncryptionAdvancedRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DocxRun implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'DocxRun';
+    protected static $swaggerModelName = 'ZipEncryptionAdvancedRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,9 @@ class DocxRun implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'run_index' => 'int',
-        'path' => 'string',
-        'text_items' => '\Swagger\Client\Model\DocxText[]',
-        'bold' => 'bool',
-        'italic' => 'bool',
-        'underline' => 'string',
-        'font_family' => 'string',
-        'font_size' => 'string'
+        'input_file_contents' => 'string',
+        'password' => 'string',
+        'encryption_algorithm' => 'string'
     ];
 
     /**
@@ -74,14 +69,9 @@ class DocxRun implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'run_index' => 'int32',
-        'path' => null,
-        'text_items' => null,
-        'bold' => null,
-        'italic' => null,
-        'underline' => null,
-        'font_family' => null,
-        'font_size' => null
+        'input_file_contents' => 'byte',
+        'password' => null,
+        'encryption_algorithm' => null
     ];
 
     /**
@@ -111,14 +101,9 @@ class DocxRun implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'run_index' => 'RunIndex',
-        'path' => 'Path',
-        'text_items' => 'TextItems',
-        'bold' => 'Bold',
-        'italic' => 'Italic',
-        'underline' => 'Underline',
-        'font_family' => 'FontFamily',
-        'font_size' => 'FontSize'
+        'input_file_contents' => 'InputFileContents',
+        'password' => 'Password',
+        'encryption_algorithm' => 'EncryptionAlgorithm'
     ];
 
     /**
@@ -127,14 +112,9 @@ class DocxRun implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'run_index' => 'setRunIndex',
-        'path' => 'setPath',
-        'text_items' => 'setTextItems',
-        'bold' => 'setBold',
-        'italic' => 'setItalic',
-        'underline' => 'setUnderline',
-        'font_family' => 'setFontFamily',
-        'font_size' => 'setFontSize'
+        'input_file_contents' => 'setInputFileContents',
+        'password' => 'setPassword',
+        'encryption_algorithm' => 'setEncryptionAlgorithm'
     ];
 
     /**
@@ -143,14 +123,9 @@ class DocxRun implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'run_index' => 'getRunIndex',
-        'path' => 'getPath',
-        'text_items' => 'getTextItems',
-        'bold' => 'getBold',
-        'italic' => 'getItalic',
-        'underline' => 'getUnderline',
-        'font_family' => 'getFontFamily',
-        'font_size' => 'getFontSize'
+        'input_file_contents' => 'getInputFileContents',
+        'password' => 'getPassword',
+        'encryption_algorithm' => 'getEncryptionAlgorithm'
     ];
 
     /**
@@ -213,14 +188,9 @@ class DocxRun implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['run_index'] = isset($data['run_index']) ? $data['run_index'] : null;
-        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
-        $this->container['text_items'] = isset($data['text_items']) ? $data['text_items'] : null;
-        $this->container['bold'] = isset($data['bold']) ? $data['bold'] : null;
-        $this->container['italic'] = isset($data['italic']) ? $data['italic'] : null;
-        $this->container['underline'] = isset($data['underline']) ? $data['underline'] : null;
-        $this->container['font_family'] = isset($data['font_family']) ? $data['font_family'] : null;
-        $this->container['font_size'] = isset($data['font_size']) ? $data['font_size'] : null;
+        $this->container['input_file_contents'] = isset($data['input_file_contents']) ? $data['input_file_contents'] : null;
+        $this->container['password'] = isset($data['password']) ? $data['password'] : null;
+        $this->container['encryption_algorithm'] = isset($data['encryption_algorithm']) ? $data['encryption_algorithm'] : null;
     }
 
     /**
@@ -231,6 +201,10 @@ class DocxRun implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['input_file_contents']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_contents'])) {
+            $invalidProperties[] = "invalid value for 'input_file_contents', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
+        }
 
         return $invalidProperties;
     }
@@ -244,198 +218,86 @@ class DocxRun implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_contents'])) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets run_index
-     *
-     * @return int
-     */
-    public function getRunIndex()
-    {
-        return $this->container['run_index'];
-    }
-
-    /**
-     * Sets run_index
-     *
-     * @param int $run_index Index of the run, 0-based
-     *
-     * @return $this
-     */
-    public function setRunIndex($run_index)
-    {
-        $this->container['run_index'] = $run_index;
-
-        return $this;
-    }
-
-    /**
-     * Gets path
+     * Gets input_file_contents
      *
      * @return string
      */
-    public function getPath()
+    public function getInputFileContents()
     {
-        return $this->container['path'];
+        return $this->container['input_file_contents'];
     }
 
     /**
-     * Sets path
+     * Sets input_file_contents
      *
-     * @param string $path The Path of the location of this Run object; leave blank for creation
+     * @param string $input_file_contents Input Zip File archive contents in bytes
      *
      * @return $this
      */
-    public function setPath($path)
+    public function setInputFileContents($input_file_contents)
     {
-        $this->container['path'] = $path;
+
+        if (!is_null($input_file_contents) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $input_file_contents))) {
+            throw new \InvalidArgumentException("invalid value for $input_file_contents when calling ZipEncryptionAdvancedRequest., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
+        }
+
+        $this->container['input_file_contents'] = $input_file_contents;
 
         return $this;
     }
 
     /**
-     * Gets text_items
-     *
-     * @return \Swagger\Client\Model\DocxText[]
-     */
-    public function getTextItems()
-    {
-        return $this->container['text_items'];
-    }
-
-    /**
-     * Sets text_items
-     *
-     * @param \Swagger\Client\Model\DocxText[] $text_items Text items inside the run; this is where the actual text content is stored
-     *
-     * @return $this
-     */
-    public function setTextItems($text_items)
-    {
-        $this->container['text_items'] = $text_items;
-
-        return $this;
-    }
-
-    /**
-     * Gets bold
-     *
-     * @return bool
-     */
-    public function getBold()
-    {
-        return $this->container['bold'];
-    }
-
-    /**
-     * Sets bold
-     *
-     * @param bool $bold True to make the text bold, false otherwise
-     *
-     * @return $this
-     */
-    public function setBold($bold)
-    {
-        $this->container['bold'] = $bold;
-
-        return $this;
-    }
-
-    /**
-     * Gets italic
-     *
-     * @return bool
-     */
-    public function getItalic()
-    {
-        return $this->container['italic'];
-    }
-
-    /**
-     * Sets italic
-     *
-     * @param bool $italic True to make the text italic, false otherwise
-     *
-     * @return $this
-     */
-    public function setItalic($italic)
-    {
-        $this->container['italic'] = $italic;
-
-        return $this;
-    }
-
-    /**
-     * Gets underline
+     * Gets password
      *
      * @return string
      */
-    public function getUnderline()
+    public function getPassword()
     {
-        return $this->container['underline'];
+        return $this->container['password'];
     }
 
     /**
-     * Sets underline
+     * Sets password
      *
-     * @param string $underline Underline mode for the text; possible values are: Words, Double, Thick, Dotted, DottedHeavy, Dash, DashedHeavy, DashLong, DashLongHeavy, DotDash, DashDotHeavy, DotDotDash, DashDotDotHeavy, Wave, WavyHeavy, WavyDouble, None
+     * @param string $password Password to place on the Zip file; the longer the password, the more secure
      *
      * @return $this
      */
-    public function setUnderline($underline)
+    public function setPassword($password)
     {
-        $this->container['underline'] = $underline;
+        $this->container['password'] = $password;
 
         return $this;
     }
 
     /**
-     * Gets font_family
+     * Gets encryption_algorithm
      *
      * @return string
      */
-    public function getFontFamily()
+    public function getEncryptionAlgorithm()
     {
-        return $this->container['font_family'];
+        return $this->container['encryption_algorithm'];
     }
 
     /**
-     * Sets font_family
+     * Sets encryption_algorithm
      *
-     * @param string $font_family Font Family name for the text, e.g. \"Arial\" or \"Times New Roman\"
+     * @param string $encryption_algorithm Encryption algorithm to use; possible values are AES-256 (recommended), AES-128, and PK-Zip (not recommended; legacy, weak encryption algorithm).  Default is AES-256.
      *
      * @return $this
      */
-    public function setFontFamily($font_family)
+    public function setEncryptionAlgorithm($encryption_algorithm)
     {
-        $this->container['font_family'] = $font_family;
-
-        return $this;
-    }
-
-    /**
-     * Gets font_size
-     *
-     * @return string
-     */
-    public function getFontSize()
-    {
-        return $this->container['font_size'];
-    }
-
-    /**
-     * Sets font_size
-     *
-     * @param string $font_size Font size in font points (e.g. \"24\")
-     *
-     * @return $this
-     */
-    public function setFontSize($font_size)
-    {
-        $this->container['font_size'] = $font_size;
+        $this->container['encryption_algorithm'] = $encryption_algorithm;
 
         return $this;
     }

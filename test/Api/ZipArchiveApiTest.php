@@ -92,6 +92,26 @@ class ZipArchiveApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for zipArchiveZipDecrypt
+     *
+     * Decrypt and remove password protection on a zip file.
+     *
+     */
+    public function testZipArchiveZipDecrypt()
+    {
+    }
+
+    /**
+     * Test case for zipArchiveZipEncryptAdvanced
+     *
+     * Encrypt and password protect a zip file.
+     *
+     */
+    public function testZipArchiveZipEncryptAdvanced()
+    {
+    }
+
+    /**
      * Test case for zipArchiveZipExtract
      *
      * Extract, decompress files and folders from a zip archive.
