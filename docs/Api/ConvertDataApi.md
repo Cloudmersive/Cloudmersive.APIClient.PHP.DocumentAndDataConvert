@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 
 # **convertDataCsvToJson**
-> object convertDataCsvToJson($input_file)
+> object convertDataCsvToJson($input_file, $column_names_from_first_row)
 
 Convert CSV to JSON conversion
 
@@ -45,9 +45,10 @@ $apiInstance = new Swagger\Client\Api\ConvertDataApi(
     $config
 );
 $input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$column_names_from_first_row = true; // bool | Optional; If true, the first row will be used as the labels for the columns; if false, columns will be named Column0, Column1, etc.  Default is true.  Set to false if you are not using column headings, or have an irregular column structure.
 
 try {
-    $result = $apiInstance->convertDataCsvToJson($input_file);
+    $result = $apiInstance->convertDataCsvToJson($input_file, $column_names_from_first_row);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConvertDataApi->convertDataCsvToJson: ', $e->getMessage(), PHP_EOL;
@@ -60,6 +61,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **column_names_from_first_row** | **bool**| Optional; If true, the first row will be used as the labels for the columns; if false, columns will be named Column0, Column1, etc.  Default is true.  Set to false if you are not using column headings, or have an irregular column structure. | [optional]
 
 ### Return type
 

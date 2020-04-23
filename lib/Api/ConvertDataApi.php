@@ -88,14 +88,15 @@ class ConvertDataApi
      * Convert CSV to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $column_names_from_first_row Optional; If true, the first row will be used as the labels for the columns; if false, columns will be named Column0, Column1, etc.  Default is true.  Set to false if you are not using column headings, or have an irregular column structure. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return object
      */
-    public function convertDataCsvToJson($input_file)
+    public function convertDataCsvToJson($input_file, $column_names_from_first_row = null)
     {
-        list($response) = $this->convertDataCsvToJsonWithHttpInfo($input_file);
+        list($response) = $this->convertDataCsvToJsonWithHttpInfo($input_file, $column_names_from_first_row);
         return $response;
     }
 
@@ -105,15 +106,16 @@ class ConvertDataApi
      * Convert CSV to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $column_names_from_first_row Optional; If true, the first row will be used as the labels for the columns; if false, columns will be named Column0, Column1, etc.  Default is true.  Set to false if you are not using column headings, or have an irregular column structure. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function convertDataCsvToJsonWithHttpInfo($input_file)
+    public function convertDataCsvToJsonWithHttpInfo($input_file, $column_names_from_first_row = null)
     {
         $returnType = 'object';
-        $request = $this->convertDataCsvToJsonRequest($input_file);
+        $request = $this->convertDataCsvToJsonRequest($input_file, $column_names_from_first_row);
 
         try {
             $options = $this->createHttpClientOption();
@@ -180,13 +182,14 @@ class ConvertDataApi
      * Convert CSV to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $column_names_from_first_row Optional; If true, the first row will be used as the labels for the columns; if false, columns will be named Column0, Column1, etc.  Default is true.  Set to false if you are not using column headings, or have an irregular column structure. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertDataCsvToJsonAsync($input_file)
+    public function convertDataCsvToJsonAsync($input_file, $column_names_from_first_row = null)
     {
-        return $this->convertDataCsvToJsonAsyncWithHttpInfo($input_file)
+        return $this->convertDataCsvToJsonAsyncWithHttpInfo($input_file, $column_names_from_first_row)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -200,14 +203,15 @@ class ConvertDataApi
      * Convert CSV to JSON conversion
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $column_names_from_first_row Optional; If true, the first row will be used as the labels for the columns; if false, columns will be named Column0, Column1, etc.  Default is true.  Set to false if you are not using column headings, or have an irregular column structure. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertDataCsvToJsonAsyncWithHttpInfo($input_file)
+    public function convertDataCsvToJsonAsyncWithHttpInfo($input_file, $column_names_from_first_row = null)
     {
         $returnType = 'object';
-        $request = $this->convertDataCsvToJsonRequest($input_file);
+        $request = $this->convertDataCsvToJsonRequest($input_file, $column_names_from_first_row);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -250,11 +254,12 @@ class ConvertDataApi
      * Create request for operation 'convertDataCsvToJson'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $column_names_from_first_row Optional; If true, the first row will be used as the labels for the columns; if false, columns will be named Column0, Column1, etc.  Default is true.  Set to false if you are not using column headings, or have an irregular column structure. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function convertDataCsvToJsonRequest($input_file)
+    protected function convertDataCsvToJsonRequest($input_file, $column_names_from_first_row = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
@@ -270,6 +275,10 @@ class ConvertDataApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($column_names_from_first_row !== null) {
+            $headerParams['columnNamesFromFirstRow'] = ObjectSerializer::toHeaderValue($column_names_from_first_row);
+        }
 
 
         // form params

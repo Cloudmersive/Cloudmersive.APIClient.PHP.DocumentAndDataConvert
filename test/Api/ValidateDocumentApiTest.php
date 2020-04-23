@@ -82,6 +82,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentCsvValidation
+     *
+     * Validate a CSV file document (CSV).
+     *
+     */
+    public function testValidateDocumentCsvValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentDocxValidation
      *
      * Validate a Word document (DOCX).
