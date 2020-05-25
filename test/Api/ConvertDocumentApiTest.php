@@ -102,6 +102,26 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentAutodetectToThumbnail
+     *
+     * Convert File to Thumbnail Image.
+     *
+     */
+    public function testConvertDocumentAutodetectToThumbnail()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentAutodetectToThumbnailsAdvanced
+     *
+     * Convert File to Thumbnail Image Object.
+     *
+     */
+    public function testConvertDocumentAutodetectToThumbnailsAdvanced()
+    {
+    }
+
+    /**
      * Test case for convertDocumentAutodetectToTxt
      *
      * Convert Document to Text (txt).
@@ -162,12 +182,62 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentDocxToPng
+     *
+     * Convert DOCX document to PNG image array.
+     *
+     */
+    public function testConvertDocumentDocxToPng()
+    {
+    }
+
+    /**
      * Test case for convertDocumentDocxToTxt
      *
      * Convert Word DOCX Document to Text (txt).
      *
      */
     public function testConvertDocumentDocxToTxt()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentEmlToHtml
+     *
+     * Convert Email EML file to HTML string.
+     *
+     */
+    public function testConvertDocumentEmlToHtml()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentEmlToPdf
+     *
+     * Convert Email EML file to PDF document.
+     *
+     */
+    public function testConvertDocumentEmlToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentGetFileTypeIcon
+     *
+     * Get PNG icon file for the file extension.
+     *
+     */
+    public function testConvertDocumentGetFileTypeIcon()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentGetFileTypeIconAdvanced
+     *
+     * Get PNG icon byte array for the file extension.
+     *
+     */
+    public function testConvertDocumentGetFileTypeIconAdvanced()
     {
     }
 
@@ -198,6 +268,26 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testConvertDocumentHtmlToTxt()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentMsgToHtml
+     *
+     * Convert Email MSG file to HTML string.
+     *
+     */
+    public function testConvertDocumentMsgToHtml()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentMsgToPdf
+     *
+     * Convert Email MSG file to PDF document.
+     *
+     */
+    public function testConvertDocumentMsgToPdf()
     {
     }
 
@@ -302,6 +392,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentPptxToPng
+     *
+     * Convert PowerPoint PPTX to PNG image array.
+     *
+     */
+    public function testConvertDocumentPptxToPng()
+    {
+    }
+
+    /**
      * Test case for convertDocumentPptxToTxt
      *
      * Convert PowerPoint PPTX Presentation to Text (txt).
@@ -368,6 +468,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testConvertDocumentXlsxToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentXlsxToPng
+     *
+     * Convert Excel XLSX spreadsheet to PNG image array.
+     *
+     */
+    public function testConvertDocumentXlsxToPng()
     {
     }
 

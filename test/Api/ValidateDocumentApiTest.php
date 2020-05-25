@@ -102,6 +102,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentEmlValidation
+     *
+     * Validate if an EML file is executable.
+     *
+     */
+    public function testValidateDocumentEmlValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentExecutableValidation
      *
      * Validate if a file is executable.
@@ -128,6 +138,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testValidateDocumentJsonValidation()
+    {
+    }
+
+    /**
+     * Test case for validateDocumentMsgValidation
+     *
+     * Validate if an MSG file is executable.
+     *
+     */
+    public function testValidateDocumentMsgValidation()
     {
     }
 
