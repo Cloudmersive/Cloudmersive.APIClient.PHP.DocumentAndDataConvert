@@ -64,10 +64,8 @@ class EmlToHtmlResult implements ModelInterface, ArrayAccess
         'from' => 'string',
         'to' => 'string',
         'cc' => 'string',
-        'bcc' => 'string',
-        'received_time' => 'string',
+        'date_sent' => 'string',
         'subject' => 'string',
-        'organization' => 'string',
         'attachments' => '\Swagger\Client\Model\EmlAttachment[]'
     ];
 
@@ -83,10 +81,8 @@ class EmlToHtmlResult implements ModelInterface, ArrayAccess
         'from' => null,
         'to' => null,
         'cc' => null,
-        'bcc' => null,
-        'received_time' => null,
+        'date_sent' => null,
         'subject' => null,
-        'organization' => null,
         'attachments' => null
     ];
 
@@ -123,10 +119,8 @@ class EmlToHtmlResult implements ModelInterface, ArrayAccess
         'from' => 'From',
         'to' => 'To',
         'cc' => 'Cc',
-        'bcc' => 'Bcc',
-        'received_time' => 'ReceivedTime',
+        'date_sent' => 'DateSent',
         'subject' => 'Subject',
-        'organization' => 'Organization',
         'attachments' => 'Attachments'
     ];
 
@@ -142,10 +136,8 @@ class EmlToHtmlResult implements ModelInterface, ArrayAccess
         'from' => 'setFrom',
         'to' => 'setTo',
         'cc' => 'setCc',
-        'bcc' => 'setBcc',
-        'received_time' => 'setReceivedTime',
+        'date_sent' => 'setDateSent',
         'subject' => 'setSubject',
-        'organization' => 'setOrganization',
         'attachments' => 'setAttachments'
     ];
 
@@ -161,10 +153,8 @@ class EmlToHtmlResult implements ModelInterface, ArrayAccess
         'from' => 'getFrom',
         'to' => 'getTo',
         'cc' => 'getCc',
-        'bcc' => 'getBcc',
-        'received_time' => 'getReceivedTime',
+        'date_sent' => 'getDateSent',
         'subject' => 'getSubject',
-        'organization' => 'getOrganization',
         'attachments' => 'getAttachments'
     ];
 
@@ -234,10 +224,8 @@ class EmlToHtmlResult implements ModelInterface, ArrayAccess
         $this->container['from'] = isset($data['from']) ? $data['from'] : null;
         $this->container['to'] = isset($data['to']) ? $data['to'] : null;
         $this->container['cc'] = isset($data['cc']) ? $data['cc'] : null;
-        $this->container['bcc'] = isset($data['bcc']) ? $data['bcc'] : null;
-        $this->container['received_time'] = isset($data['received_time']) ? $data['received_time'] : null;
+        $this->container['date_sent'] = isset($data['date_sent']) ? $data['date_sent'] : null;
         $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
-        $this->container['organization'] = isset($data['organization']) ? $data['organization'] : null;
         $this->container['attachments'] = isset($data['attachments']) ? $data['attachments'] : null;
     }
 
@@ -411,49 +399,25 @@ class EmlToHtmlResult implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets bcc
+     * Gets date_sent
      *
      * @return string
      */
-    public function getBcc()
+    public function getDateSent()
     {
-        return $this->container['bcc'];
+        return $this->container['date_sent'];
     }
 
     /**
-     * Sets bcc
+     * Sets date_sent
      *
-     * @param string $bcc The BCC recipients of the EML file's email
+     * @param string $date_sent The date and time that the EML file's email was sent
      *
      * @return $this
      */
-    public function setBcc($bcc)
+    public function setDateSent($date_sent)
     {
-        $this->container['bcc'] = $bcc;
-
-        return $this;
-    }
-
-    /**
-     * Gets received_time
-     *
-     * @return string
-     */
-    public function getReceivedTime()
-    {
-        return $this->container['received_time'];
-    }
-
-    /**
-     * Sets received_time
-     *
-     * @param string $received_time The time that the EML file's email was received
-     *
-     * @return $this
-     */
-    public function setReceivedTime($received_time)
-    {
-        $this->container['received_time'] = $received_time;
+        $this->container['date_sent'] = $date_sent;
 
         return $this;
     }
@@ -478,30 +442,6 @@ class EmlToHtmlResult implements ModelInterface, ArrayAccess
     public function setSubject($subject)
     {
         $this->container['subject'] = $subject;
-
-        return $this;
-    }
-
-    /**
-     * Gets organization
-     *
-     * @return string
-     */
-    public function getOrganization()
-    {
-        return $this->container['organization'];
-    }
-
-    /**
-     * Sets organization
-     *
-     * @param string $organization The Organization of the EML file's email
-     *
-     * @return $this
-     */
-    public function setOrganization($organization)
-    {
-        $this->container['organization'] = $organization;
 
         return $this;
     }

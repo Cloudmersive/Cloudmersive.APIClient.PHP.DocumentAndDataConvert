@@ -886,7 +886,7 @@ class ConvertDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return string
      */
     public function convertDocumentAutodetectToThumbnail($input_file, $max_width = null, $max_height = null, $extension = null)
     {
@@ -906,11 +906,11 @@ class ConvertDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentAutodetectToThumbnailWithHttpInfo($input_file, $max_width = null, $max_height = null, $extension = null)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->convertDocumentAutodetectToThumbnailRequest($input_file, $max_width, $max_height, $extension);
 
         try {
@@ -962,7 +962,7 @@ class ConvertDocumentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1010,7 +1010,7 @@ class ConvertDocumentApi
      */
     public function convertDocumentAutodetectToThumbnailAsyncWithHttpInfo($input_file, $max_width = null, $max_height = null, $extension = null)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->convertDocumentAutodetectToThumbnailRequest($input_file, $max_width, $max_height, $extension);
 
         return $this->client
@@ -3887,7 +3887,7 @@ class ConvertDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return string
      */
     public function convertDocumentEmlToPdf($input_file, $body_only = null)
     {
@@ -3905,11 +3905,11 @@ class ConvertDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentEmlToPdfWithHttpInfo($input_file, $body_only = null)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->convertDocumentEmlToPdfRequest($input_file, $body_only);
 
         try {
@@ -3961,7 +3961,7 @@ class ConvertDocumentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4005,7 +4005,7 @@ class ConvertDocumentApi
      */
     public function convertDocumentEmlToPdfAsyncWithHttpInfo($input_file, $body_only = null)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->convertDocumentEmlToPdfRequest($input_file, $body_only);
 
         return $this->client
@@ -4160,7 +4160,7 @@ class ConvertDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return string
      */
     public function convertDocumentGetFileTypeIcon($file_extension, $icon_size = null)
     {
@@ -4178,11 +4178,11 @@ class ConvertDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentGetFileTypeIconWithHttpInfo($file_extension, $icon_size = null)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->convertDocumentGetFileTypeIconRequest($file_extension, $icon_size);
 
         try {
@@ -4234,7 +4234,7 @@ class ConvertDocumentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4278,7 +4278,7 @@ class ConvertDocumentApi
      */
     public function convertDocumentGetFileTypeIconAsyncWithHttpInfo($file_extension, $icon_size = null)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->convertDocumentGetFileTypeIconRequest($file_extension, $icon_size);
 
         return $this->client
@@ -4608,7 +4608,7 @@ class ConvertDocumentApi
             );
         }
 
-        $resourcePath = '/convert/autodetect/get-icon-advanced';
+        $resourcePath = '/convert/autodetect/get-icon/advanced';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5778,7 +5778,7 @@ class ConvertDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return string
      */
     public function convertDocumentMsgToPdf($input_file, $body_only = null)
     {
@@ -5796,11 +5796,11 @@ class ConvertDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentMsgToPdfWithHttpInfo($input_file, $body_only = null)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->convertDocumentMsgToPdfRequest($input_file, $body_only);
 
         try {
@@ -5852,7 +5852,7 @@ class ConvertDocumentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5896,7 +5896,7 @@ class ConvertDocumentApi
      */
     public function convertDocumentMsgToPdfAsyncWithHttpInfo($input_file, $body_only = null)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->convertDocumentMsgToPdfRequest($input_file, $body_only);
 
         return $this->client

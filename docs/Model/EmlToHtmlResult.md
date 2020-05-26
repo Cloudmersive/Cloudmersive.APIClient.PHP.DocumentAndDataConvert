@@ -9,10 +9,8 @@ Name | Type | Description | Notes
 **from** | **string** | The From sender of the EML file&#39;s email | [optional] 
 **to** | **string** | The To recipients of the EML file&#39;s email | [optional] 
 **cc** | **string** | The CC recipients of the EML file&#39;s email | [optional] 
-**bcc** | **string** | The BCC recipients of the EML file&#39;s email | [optional] 
-**received_time** | **string** | The time that the EML file&#39;s email was received | [optional] 
+**date_sent** | **string** | The date and time that the EML file&#39;s email was sent | [optional] 
 **subject** | **string** | The subject of the EML file&#39;s email | [optional] 
-**organization** | **string** | The Organization of the EML file&#39;s email | [optional] 
 **attachments** | [**\Swagger\Client\Model\EmlAttachment[]**](EmlAttachment.md) | List of all attachments for the EML file | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

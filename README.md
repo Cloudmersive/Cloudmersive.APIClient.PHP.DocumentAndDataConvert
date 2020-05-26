@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.8.9
+- Package version: 1.9.0
 
 
 ## Requirements
@@ -119,7 +119,7 @@ Class | Method | HTTP request | Description
 *ConvertDocumentApi* | [**convertDocumentEmlToHtml**](docs/Api/ConvertDocumentApi.md#convertdocumentemltohtml) | **POST** /convert/eml/to/html | Convert Email EML file to HTML string
 *ConvertDocumentApi* | [**convertDocumentEmlToPdf**](docs/Api/ConvertDocumentApi.md#convertdocumentemltopdf) | **POST** /convert/eml/to/pdf | Convert Email EML file to PDF document
 *ConvertDocumentApi* | [**convertDocumentGetFileTypeIcon**](docs/Api/ConvertDocumentApi.md#convertdocumentgetfiletypeicon) | **POST** /convert/autodetect/get-icon | Get PNG icon file for the file extension
-*ConvertDocumentApi* | [**convertDocumentGetFileTypeIconAdvanced**](docs/Api/ConvertDocumentApi.md#convertdocumentgetfiletypeiconadvanced) | **POST** /convert/autodetect/get-icon-advanced | Get PNG icon byte array for the file extension
+*ConvertDocumentApi* | [**convertDocumentGetFileTypeIconAdvanced**](docs/Api/ConvertDocumentApi.md#convertdocumentgetfiletypeiconadvanced) | **POST** /convert/autodetect/get-icon/advanced | Get PNG icon byte array for the file extension
 *ConvertDocumentApi* | [**convertDocumentHtmlToPdf**](docs/Api/ConvertDocumentApi.md#convertdocumenthtmltopdf) | **POST** /convert/html/to/pdf | Convert HTML document file to PDF Document
 *ConvertDocumentApi* | [**convertDocumentHtmlToPng**](docs/Api/ConvertDocumentApi.md#convertdocumenthtmltopng) | **POST** /convert/html/to/png | Convert HTML document file to PNG image array
 *ConvertDocumentApi* | [**convertDocumentHtmlToTxt**](docs/Api/ConvertDocumentApi.md#convertdocumenthtmltotxt) | **POST** /convert/html/to/txt | HTML Document file to Text (txt)

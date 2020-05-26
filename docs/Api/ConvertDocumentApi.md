@@ -20,7 +20,7 @@ Method | HTTP request | Description
 [**convertDocumentEmlToHtml**](ConvertDocumentApi.md#convertDocumentEmlToHtml) | **POST** /convert/eml/to/html | Convert Email EML file to HTML string
 [**convertDocumentEmlToPdf**](ConvertDocumentApi.md#convertDocumentEmlToPdf) | **POST** /convert/eml/to/pdf | Convert Email EML file to PDF document
 [**convertDocumentGetFileTypeIcon**](ConvertDocumentApi.md#convertDocumentGetFileTypeIcon) | **POST** /convert/autodetect/get-icon | Get PNG icon file for the file extension
-[**convertDocumentGetFileTypeIconAdvanced**](ConvertDocumentApi.md#convertDocumentGetFileTypeIconAdvanced) | **POST** /convert/autodetect/get-icon-advanced | Get PNG icon byte array for the file extension
+[**convertDocumentGetFileTypeIconAdvanced**](ConvertDocumentApi.md#convertDocumentGetFileTypeIconAdvanced) | **POST** /convert/autodetect/get-icon/advanced | Get PNG icon byte array for the file extension
 [**convertDocumentHtmlToPdf**](ConvertDocumentApi.md#convertDocumentHtmlToPdf) | **POST** /convert/html/to/pdf | Convert HTML document file to PDF Document
 [**convertDocumentHtmlToPng**](ConvertDocumentApi.md#convertDocumentHtmlToPng) | **POST** /convert/html/to/png | Convert HTML document file to PNG image array
 [**convertDocumentHtmlToTxt**](ConvertDocumentApi.md#convertDocumentHtmlToTxt) | **POST** /convert/html/to/txt | HTML Document file to Text (txt)
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **convertDocumentAutodetectToThumbnail**
-> object convertDocumentAutodetectToThumbnail($input_file, $max_width, $max_height, $extension)
+> string convertDocumentAutodetectToThumbnail($input_file, $max_width, $max_height, $extension)
 
 Convert File to Thumbnail Image
 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+**string**
 
 ### Authorization
 
@@ -841,7 +841,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **convertDocumentEmlToPdf**
-> object convertDocumentEmlToPdf($input_file, $body_only)
+> string convertDocumentEmlToPdf($input_file, $body_only)
 
 Convert Email EML file to PDF document
 
@@ -884,7 +884,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+**string**
 
 ### Authorization
 
@@ -898,7 +898,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **convertDocumentGetFileTypeIcon**
-> object convertDocumentGetFileTypeIcon($file_extension, $icon_size)
+> string convertDocumentGetFileTypeIcon($file_extension, $icon_size)
 
 Get PNG icon file for the file extension
 
@@ -941,7 +941,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+**string**
 
 ### Authorization
 
@@ -1236,7 +1236,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **convertDocumentMsgToPdf**
-> object convertDocumentMsgToPdf($input_file, $body_only)
+> string convertDocumentMsgToPdf($input_file, $body_only)
 
 Convert Email MSG file to PDF document
 
@@ -1279,7 +1279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+**string**
 
 ### Authorization
 

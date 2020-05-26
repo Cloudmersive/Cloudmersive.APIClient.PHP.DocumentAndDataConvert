@@ -120,16 +120,9 @@ class EmlToHtmlResultTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "bcc"
+     * Test attribute "date_sent"
      */
-    public function testPropertyBcc()
-    {
-    }
-
-    /**
-     * Test attribute "received_time"
-     */
-    public function testPropertyReceivedTime()
+    public function testPropertyDateSent()
     {
     }
 
@@ -137,13 +130,6 @@ class EmlToHtmlResultTest extends \PHPUnit_Framework_TestCase
      * Test attribute "subject"
      */
     public function testPropertySubject()
-    {
-    }
-
-    /**
-     * Test attribute "organization"
-     */
-    public function testPropertyOrganization()
     {
     }
 
