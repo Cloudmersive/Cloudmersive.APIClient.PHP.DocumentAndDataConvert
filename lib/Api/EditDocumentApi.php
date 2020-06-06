@@ -8993,6 +8993,268 @@ class EditDocumentApi
     }
 
     /**
+     * Operation editDocumentXlsxAppendRow
+     *
+     * Append row to a Excel XLSX spreadsheet, worksheet
+     *
+     * @param  \Swagger\Client\Model\AppendXlsxRowRequest $input Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\AppendXlsxRowResponse
+     */
+    public function editDocumentXlsxAppendRow($input)
+    {
+        list($response) = $this->editDocumentXlsxAppendRowWithHttpInfo($input);
+        return $response;
+    }
+
+    /**
+     * Operation editDocumentXlsxAppendRowWithHttpInfo
+     *
+     * Append row to a Excel XLSX spreadsheet, worksheet
+     *
+     * @param  \Swagger\Client\Model\AppendXlsxRowRequest $input Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\AppendXlsxRowResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editDocumentXlsxAppendRowWithHttpInfo($input)
+    {
+        $returnType = '\Swagger\Client\Model\AppendXlsxRowResponse';
+        $request = $this->editDocumentXlsxAppendRowRequest($input);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\AppendXlsxRowResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editDocumentXlsxAppendRowAsync
+     *
+     * Append row to a Excel XLSX spreadsheet, worksheet
+     *
+     * @param  \Swagger\Client\Model\AppendXlsxRowRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentXlsxAppendRowAsync($input)
+    {
+        return $this->editDocumentXlsxAppendRowAsyncWithHttpInfo($input)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editDocumentXlsxAppendRowAsyncWithHttpInfo
+     *
+     * Append row to a Excel XLSX spreadsheet, worksheet
+     *
+     * @param  \Swagger\Client\Model\AppendXlsxRowRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentXlsxAppendRowAsyncWithHttpInfo($input)
+    {
+        $returnType = '\Swagger\Client\Model\AppendXlsxRowResponse';
+        $request = $this->editDocumentXlsxAppendRowRequest($input);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editDocumentXlsxAppendRow'
+     *
+     * @param  \Swagger\Client\Model\AppendXlsxRowRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editDocumentXlsxAppendRowRequest($input)
+    {
+        // verify the required parameter 'input' is set
+        if ($input === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input when calling editDocumentXlsxAppendRow'
+            );
+        }
+
+        $resourcePath = '/convert/edit/xlsx/append-row';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($input)) {
+            $_tempBody = $input;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation editDocumentXlsxClearCellByIndex
      *
      * Clear cell contents in an Excel XLSX spreadsheet, worksheet by index
@@ -9174,6 +9436,268 @@ class EditDocumentApi
         }
 
         $resourcePath = '/convert/edit/xlsx/clear-cell/by-index';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($input)) {
+            $_tempBody = $input;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editDocumentXlsxClearRow
+     *
+     * Clear row from a Excel XLSX spreadsheet, worksheet
+     *
+     * @param  \Swagger\Client\Model\ClearXlsxRowRequest $input Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\ClearXlsxRowResponse
+     */
+    public function editDocumentXlsxClearRow($input)
+    {
+        list($response) = $this->editDocumentXlsxClearRowWithHttpInfo($input);
+        return $response;
+    }
+
+    /**
+     * Operation editDocumentXlsxClearRowWithHttpInfo
+     *
+     * Clear row from a Excel XLSX spreadsheet, worksheet
+     *
+     * @param  \Swagger\Client\Model\ClearXlsxRowRequest $input Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\ClearXlsxRowResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editDocumentXlsxClearRowWithHttpInfo($input)
+    {
+        $returnType = '\Swagger\Client\Model\ClearXlsxRowResponse';
+        $request = $this->editDocumentXlsxClearRowRequest($input);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ClearXlsxRowResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editDocumentXlsxClearRowAsync
+     *
+     * Clear row from a Excel XLSX spreadsheet, worksheet
+     *
+     * @param  \Swagger\Client\Model\ClearXlsxRowRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentXlsxClearRowAsync($input)
+    {
+        return $this->editDocumentXlsxClearRowAsyncWithHttpInfo($input)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editDocumentXlsxClearRowAsyncWithHttpInfo
+     *
+     * Clear row from a Excel XLSX spreadsheet, worksheet
+     *
+     * @param  \Swagger\Client\Model\ClearXlsxRowRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentXlsxClearRowAsyncWithHttpInfo($input)
+    {
+        $returnType = '\Swagger\Client\Model\ClearXlsxRowResponse';
+        $request = $this->editDocumentXlsxClearRowRequest($input);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editDocumentXlsxClearRow'
+     *
+     * @param  \Swagger\Client\Model\ClearXlsxRowRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editDocumentXlsxClearRowRequest($input)
+    {
+        // verify the required parameter 'input' is set
+        if ($input === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input when calling editDocumentXlsxClearRow'
+            );
+        }
+
+        $resourcePath = '/convert/edit/xlsx/clear-row';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9787,7 +10311,7 @@ class EditDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return string
      */
     public function editDocumentXlsxDeleteWorksheet($req_config)
     {
@@ -9804,11 +10328,11 @@ class EditDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function editDocumentXlsxDeleteWorksheetWithHttpInfo($req_config)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->editDocumentXlsxDeleteWorksheetRequest($req_config);
 
         try {
@@ -9860,7 +10384,7 @@ class EditDocumentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9902,7 +10426,7 @@ class EditDocumentApi
      */
     public function editDocumentXlsxDeleteWorksheetAsyncWithHttpInfo($req_config)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->editDocumentXlsxDeleteWorksheetRequest($req_config);
 
         return $this->client
@@ -11875,6 +12399,268 @@ class EditDocumentApi
     }
 
     /**
+     * Operation editDocumentXlsxGetSpecificRow
+     *
+     * Get a specific row from a Excel XLSX spreadsheet, worksheet by path
+     *
+     * @param  \Swagger\Client\Model\GetXlsxSpecificRowRequest $input Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\GetXlsxSpecificRowResponse
+     */
+    public function editDocumentXlsxGetSpecificRow($input)
+    {
+        list($response) = $this->editDocumentXlsxGetSpecificRowWithHttpInfo($input);
+        return $response;
+    }
+
+    /**
+     * Operation editDocumentXlsxGetSpecificRowWithHttpInfo
+     *
+     * Get a specific row from a Excel XLSX spreadsheet, worksheet by path
+     *
+     * @param  \Swagger\Client\Model\GetXlsxSpecificRowRequest $input Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\GetXlsxSpecificRowResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editDocumentXlsxGetSpecificRowWithHttpInfo($input)
+    {
+        $returnType = '\Swagger\Client\Model\GetXlsxSpecificRowResponse';
+        $request = $this->editDocumentXlsxGetSpecificRowRequest($input);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\GetXlsxSpecificRowResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editDocumentXlsxGetSpecificRowAsync
+     *
+     * Get a specific row from a Excel XLSX spreadsheet, worksheet by path
+     *
+     * @param  \Swagger\Client\Model\GetXlsxSpecificRowRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentXlsxGetSpecificRowAsync($input)
+    {
+        return $this->editDocumentXlsxGetSpecificRowAsyncWithHttpInfo($input)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editDocumentXlsxGetSpecificRowAsyncWithHttpInfo
+     *
+     * Get a specific row from a Excel XLSX spreadsheet, worksheet by path
+     *
+     * @param  \Swagger\Client\Model\GetXlsxSpecificRowRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentXlsxGetSpecificRowAsyncWithHttpInfo($input)
+    {
+        $returnType = '\Swagger\Client\Model\GetXlsxSpecificRowResponse';
+        $request = $this->editDocumentXlsxGetSpecificRowRequest($input);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editDocumentXlsxGetSpecificRow'
+     *
+     * @param  \Swagger\Client\Model\GetXlsxSpecificRowRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editDocumentXlsxGetSpecificRowRequest($input)
+    {
+        // verify the required parameter 'input' is set
+        if ($input === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input when calling editDocumentXlsxGetSpecificRow'
+            );
+        }
+
+        $resourcePath = '/convert/edit/xlsx/get-specific-row';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($input)) {
+            $_tempBody = $input;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation editDocumentXlsxGetStyles
      *
      * Get styles from a Excel XLSX spreadsheet, worksheet
@@ -12580,6 +13366,268 @@ class EditDocumentApi
         }
 
         $resourcePath = '/convert/edit/xlsx/insert-worksheet';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($input)) {
+            $_tempBody = $input;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editDocumentXlsxRenameWorksheet
+     *
+     * Rename a specific worksheet in a Excel XLSX spreadsheet
+     *
+     * @param  \Swagger\Client\Model\RenameXlsxWorksheetRequest $input Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\RenameXlsxWorksheetResponse
+     */
+    public function editDocumentXlsxRenameWorksheet($input)
+    {
+        list($response) = $this->editDocumentXlsxRenameWorksheetWithHttpInfo($input);
+        return $response;
+    }
+
+    /**
+     * Operation editDocumentXlsxRenameWorksheetWithHttpInfo
+     *
+     * Rename a specific worksheet in a Excel XLSX spreadsheet
+     *
+     * @param  \Swagger\Client\Model\RenameXlsxWorksheetRequest $input Document input request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\RenameXlsxWorksheetResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editDocumentXlsxRenameWorksheetWithHttpInfo($input)
+    {
+        $returnType = '\Swagger\Client\Model\RenameXlsxWorksheetResponse';
+        $request = $this->editDocumentXlsxRenameWorksheetRequest($input);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\RenameXlsxWorksheetResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editDocumentXlsxRenameWorksheetAsync
+     *
+     * Rename a specific worksheet in a Excel XLSX spreadsheet
+     *
+     * @param  \Swagger\Client\Model\RenameXlsxWorksheetRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentXlsxRenameWorksheetAsync($input)
+    {
+        return $this->editDocumentXlsxRenameWorksheetAsyncWithHttpInfo($input)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editDocumentXlsxRenameWorksheetAsyncWithHttpInfo
+     *
+     * Rename a specific worksheet in a Excel XLSX spreadsheet
+     *
+     * @param  \Swagger\Client\Model\RenameXlsxWorksheetRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentXlsxRenameWorksheetAsyncWithHttpInfo($input)
+    {
+        $returnType = '\Swagger\Client\Model\RenameXlsxWorksheetResponse';
+        $request = $this->editDocumentXlsxRenameWorksheetRequest($input);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editDocumentXlsxRenameWorksheet'
+     *
+     * @param  \Swagger\Client\Model\RenameXlsxWorksheetRequest $input Document input request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editDocumentXlsxRenameWorksheetRequest($input)
+    {
+        // verify the required parameter 'input' is set
+        if ($input === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input when calling editDocumentXlsxRenameWorksheet'
+            );
+        }
+
+        $resourcePath = '/convert/edit/xlsx/rename-worksheet';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

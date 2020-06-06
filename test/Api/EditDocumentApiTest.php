@@ -412,12 +412,32 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentXlsxAppendRow
+     *
+     * Append row to a Excel XLSX spreadsheet, worksheet.
+     *
+     */
+    public function testEditDocumentXlsxAppendRow()
+    {
+    }
+
+    /**
      * Test case for editDocumentXlsxClearCellByIndex
      *
      * Clear cell contents in an Excel XLSX spreadsheet, worksheet by index.
      *
      */
     public function testEditDocumentXlsxClearCellByIndex()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxClearRow
+     *
+     * Clear row from a Excel XLSX spreadsheet, worksheet.
+     *
+     */
+    public function testEditDocumentXlsxClearRow()
     {
     }
 
@@ -522,6 +542,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentXlsxGetSpecificRow
+     *
+     * Get a specific row from a Excel XLSX spreadsheet, worksheet by path.
+     *
+     */
+    public function testEditDocumentXlsxGetSpecificRow()
+    {
+    }
+
+    /**
      * Test case for editDocumentXlsxGetStyles
      *
      * Get styles from a Excel XLSX spreadsheet, worksheet.
@@ -548,6 +578,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentXlsxInsertWorksheet()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxRenameWorksheet
+     *
+     * Rename a specific worksheet in a Excel XLSX spreadsheet.
+     *
+     */
+    public function testEditDocumentXlsxRenameWorksheet()
     {
     }
 
