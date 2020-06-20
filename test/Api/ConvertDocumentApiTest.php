@@ -272,6 +272,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentKeynoteToPdf
+     *
+     * Convert Keynote Presentation (KEY) to PDF.
+     *
+     */
+    public function testConvertDocumentKeynoteToPdf()
+    {
+    }
+
+    /**
      * Test case for convertDocumentMsgToHtml
      *
      * Convert Email MSG file to HTML string.
@@ -288,6 +298,46 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testConvertDocumentMsgToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentOdpToPdf
+     *
+     * Convert Office Open Document Presentation ODP to PDF.
+     *
+     */
+    public function testConvertDocumentOdpToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentOdsToPdf
+     *
+     * Convert Office Open Document Spreadsheet ODS to PDF.
+     *
+     */
+    public function testConvertDocumentOdsToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentOdtToDocx
+     *
+     * Convert Office Open Document ODT to Word DOCX.
+     *
+     */
+    public function testConvertDocumentOdtToDocx()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentOdtToPdf
+     *
+     * Convert Office Open Document ODT to PDF.
+     *
+     */
+    public function testConvertDocumentOdtToPdf()
     {
     }
 
@@ -408,6 +458,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testConvertDocumentPptxToTxt()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentRtfToPdf
+     *
+     * Convert Rich Text Format RTF to PDF.
+     *
+     */
+    public function testConvertDocumentRtfToPdf()
     {
     }
 
