@@ -347,6 +347,279 @@ class ConvertDocumentApi
     }
 
     /**
+     * Operation convertDocumentAutodetectToJpg
+     *
+     * Convert Document to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\AutodetectToJpgResult
+     */
+    public function convertDocumentAutodetectToJpg($input_file, $quality = null)
+    {
+        list($response) = $this->convertDocumentAutodetectToJpgWithHttpInfo($input_file, $quality);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentAutodetectToJpgWithHttpInfo
+     *
+     * Convert Document to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\AutodetectToJpgResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentAutodetectToJpgWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\AutodetectToJpgResult';
+        $request = $this->convertDocumentAutodetectToJpgRequest($input_file, $quality);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\AutodetectToJpgResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentAutodetectToJpgAsync
+     *
+     * Convert Document to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentAutodetectToJpgAsync($input_file, $quality = null)
+    {
+        return $this->convertDocumentAutodetectToJpgAsyncWithHttpInfo($input_file, $quality)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentAutodetectToJpgAsyncWithHttpInfo
+     *
+     * Convert Document to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentAutodetectToJpgAsyncWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\AutodetectToJpgResult';
+        $request = $this->convertDocumentAutodetectToJpgRequest($input_file, $quality);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentAutodetectToJpg'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentAutodetectToJpgRequest($input_file, $quality = null)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentAutodetectToJpg'
+            );
+        }
+
+        $resourcePath = '/convert/autodetect/to/jpg';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($quality !== null) {
+            $headerParams['quality'] = ObjectSerializer::toHeaderValue($quality);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation convertDocumentAutodetectToPdf
      *
      * Convert Document to PDF
@@ -2795,6 +3068,543 @@ class ConvertDocumentApi
     }
 
     /**
+     * Operation convertDocumentDocxToHtml
+     *
+     * Convert Word DOCX Document to HTML Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function convertDocumentDocxToHtml($input_file)
+    {
+        list($response) = $this->convertDocumentDocxToHtmlWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentDocxToHtmlWithHttpInfo
+     *
+     * Convert Word DOCX Document to HTML Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentDocxToHtmlWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentDocxToHtmlRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentDocxToHtmlAsync
+     *
+     * Convert Word DOCX Document to HTML Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentDocxToHtmlAsync($input_file)
+    {
+        return $this->convertDocumentDocxToHtmlAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentDocxToHtmlAsyncWithHttpInfo
+     *
+     * Convert Word DOCX Document to HTML Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentDocxToHtmlAsyncWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentDocxToHtmlRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentDocxToHtml'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentDocxToHtmlRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentDocxToHtml'
+            );
+        }
+
+        $resourcePath = '/convert/docx/to/html';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentDocxToJpg
+     *
+     * Convert Word DOCX Document to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\DocxToJpgResult
+     */
+    public function convertDocumentDocxToJpg($input_file, $quality = null)
+    {
+        list($response) = $this->convertDocumentDocxToJpgWithHttpInfo($input_file, $quality);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentDocxToJpgWithHttpInfo
+     *
+     * Convert Word DOCX Document to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\DocxToJpgResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentDocxToJpgWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\DocxToJpgResult';
+        $request = $this->convertDocumentDocxToJpgRequest($input_file, $quality);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\DocxToJpgResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentDocxToJpgAsync
+     *
+     * Convert Word DOCX Document to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentDocxToJpgAsync($input_file, $quality = null)
+    {
+        return $this->convertDocumentDocxToJpgAsyncWithHttpInfo($input_file, $quality)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentDocxToJpgAsyncWithHttpInfo
+     *
+     * Convert Word DOCX Document to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentDocxToJpgAsyncWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\DocxToJpgResult';
+        $request = $this->convertDocumentDocxToJpgRequest($input_file, $quality);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentDocxToJpg'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentDocxToJpgRequest($input_file, $quality = null)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentDocxToJpg'
+            );
+        }
+
+        $resourcePath = '/convert/docx/to/jpg';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($quality !== null) {
+            $headerParams['quality'] = ObjectSerializer::toHeaderValue($quality);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation convertDocumentDocxToPdf
      *
      * Convert Word DOCX Document to PDF
@@ -3061,7 +3871,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToPng
      *
-     * Convert DOCX document to PNG image array
+     * Convert Word DOCX Document to PNG image array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3078,7 +3888,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToPngWithHttpInfo
      *
-     * Convert DOCX document to PNG image array
+     * Convert Word DOCX Document to PNG image array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3153,7 +3963,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToPngAsync
      *
-     * Convert DOCX document to PNG image array
+     * Convert Word DOCX Document to PNG image array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3173,7 +3983,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentDocxToPngAsyncWithHttpInfo
      *
-     * Convert DOCX document to PNG image array
+     * Convert Word DOCX Document to PNG image array
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -3263,6 +4073,270 @@ class ConvertDocumentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentDocxToRtf
+     *
+     * Convert Word DOCX Document to RTF
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function convertDocumentDocxToRtf($input_file)
+    {
+        list($response) = $this->convertDocumentDocxToRtfWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentDocxToRtfWithHttpInfo
+     *
+     * Convert Word DOCX Document to RTF
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentDocxToRtfWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentDocxToRtfRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentDocxToRtfAsync
+     *
+     * Convert Word DOCX Document to RTF
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentDocxToRtfAsync($input_file)
+    {
+        return $this->convertDocumentDocxToRtfAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentDocxToRtfAsyncWithHttpInfo
+     *
+     * Convert Word DOCX Document to RTF
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentDocxToRtfAsyncWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentDocxToRtfRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentDocxToRtf'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentDocxToRtfRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentDocxToRtf'
+            );
+        }
+
+        $resourcePath = '/convert/docx/to/rtf';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
                 ['multipart/form-data']
             );
         }
@@ -3878,6 +4952,279 @@ class ConvertDocumentApi
     }
 
     /**
+     * Operation convertDocumentEmlToJpg
+     *
+     * Convert Email EML file to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\EmlToJpgResult
+     */
+    public function convertDocumentEmlToJpg($input_file, $quality = null)
+    {
+        list($response) = $this->convertDocumentEmlToJpgWithHttpInfo($input_file, $quality);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentEmlToJpgWithHttpInfo
+     *
+     * Convert Email EML file to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\EmlToJpgResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentEmlToJpgWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\EmlToJpgResult';
+        $request = $this->convertDocumentEmlToJpgRequest($input_file, $quality);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\EmlToJpgResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentEmlToJpgAsync
+     *
+     * Convert Email EML file to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentEmlToJpgAsync($input_file, $quality = null)
+    {
+        return $this->convertDocumentEmlToJpgAsyncWithHttpInfo($input_file, $quality)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentEmlToJpgAsyncWithHttpInfo
+     *
+     * Convert Email EML file to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentEmlToJpgAsyncWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\EmlToJpgResult';
+        $request = $this->convertDocumentEmlToJpgRequest($input_file, $quality);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentEmlToJpg'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentEmlToJpgRequest($input_file, $quality = null)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentEmlToJpg'
+            );
+        }
+
+        $resourcePath = '/convert/eml/to/jpg';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($quality !== null) {
+            $headerParams['quality'] = ObjectSerializer::toHeaderValue($quality);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation convertDocumentEmlToPdf
      *
      * Convert Email EML file to PDF document
@@ -4091,6 +5438,270 @@ class ConvertDocumentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentEmlToPng
+     *
+     * Convert Email EML file to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\EmlToPngResult
+     */
+    public function convertDocumentEmlToPng($input_file)
+    {
+        list($response) = $this->convertDocumentEmlToPngWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentEmlToPngWithHttpInfo
+     *
+     * Convert Email EML file to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\EmlToPngResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentEmlToPngWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\EmlToPngResult';
+        $request = $this->convertDocumentEmlToPngRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\EmlToPngResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentEmlToPngAsync
+     *
+     * Convert Email EML file to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentEmlToPngAsync($input_file)
+    {
+        return $this->convertDocumentEmlToPngAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentEmlToPngAsyncWithHttpInfo
+     *
+     * Convert Email EML file to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentEmlToPngAsyncWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\EmlToPngResult';
+        $request = $this->convertDocumentEmlToPngRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentEmlToPng'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentEmlToPngRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentEmlToPng'
+            );
+        }
+
+        $resourcePath = '/convert/eml/to/png';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
                 ['multipart/form-data']
             );
         }
@@ -5487,6 +7098,279 @@ class ConvertDocumentApi
     }
 
     /**
+     * Operation convertDocumentKeynoteToJpg
+     *
+     * Convert Keynote Presentation (KEY) to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\KeynoteToJpgResult
+     */
+    public function convertDocumentKeynoteToJpg($input_file, $quality = null)
+    {
+        list($response) = $this->convertDocumentKeynoteToJpgWithHttpInfo($input_file, $quality);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentKeynoteToJpgWithHttpInfo
+     *
+     * Convert Keynote Presentation (KEY) to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\KeynoteToJpgResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentKeynoteToJpgWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\KeynoteToJpgResult';
+        $request = $this->convertDocumentKeynoteToJpgRequest($input_file, $quality);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\KeynoteToJpgResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentKeynoteToJpgAsync
+     *
+     * Convert Keynote Presentation (KEY) to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentKeynoteToJpgAsync($input_file, $quality = null)
+    {
+        return $this->convertDocumentKeynoteToJpgAsyncWithHttpInfo($input_file, $quality)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentKeynoteToJpgAsyncWithHttpInfo
+     *
+     * Convert Keynote Presentation (KEY) to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentKeynoteToJpgAsyncWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\KeynoteToJpgResult';
+        $request = $this->convertDocumentKeynoteToJpgRequest($input_file, $quality);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentKeynoteToJpg'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentKeynoteToJpgRequest($input_file, $quality = null)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentKeynoteToJpg'
+            );
+        }
+
+        $resourcePath = '/convert/key/to/jpg';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($quality !== null) {
+            $headerParams['quality'] = ObjectSerializer::toHeaderValue($quality);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation convertDocumentKeynoteToPdf
      *
      * Convert Keynote Presentation (KEY) to PDF
@@ -5667,7 +7551,535 @@ class ConvertDocumentApi
             );
         }
 
-        $resourcePath = '/convert/keynote/to/pdf';
+        $resourcePath = '/convert/key/to/pdf';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentKeynoteToPng
+     *
+     * Convert Keynote Presentation (KEY) to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\KeynoteToPngResult
+     */
+    public function convertDocumentKeynoteToPng($input_file)
+    {
+        list($response) = $this->convertDocumentKeynoteToPngWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentKeynoteToPngWithHttpInfo
+     *
+     * Convert Keynote Presentation (KEY) to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\KeynoteToPngResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentKeynoteToPngWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\KeynoteToPngResult';
+        $request = $this->convertDocumentKeynoteToPngRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\KeynoteToPngResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentKeynoteToPngAsync
+     *
+     * Convert Keynote Presentation (KEY) to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentKeynoteToPngAsync($input_file)
+    {
+        return $this->convertDocumentKeynoteToPngAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentKeynoteToPngAsyncWithHttpInfo
+     *
+     * Convert Keynote Presentation (KEY) to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentKeynoteToPngAsyncWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\KeynoteToPngResult';
+        $request = $this->convertDocumentKeynoteToPngRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentKeynoteToPng'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentKeynoteToPngRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentKeynoteToPng'
+            );
+        }
+
+        $resourcePath = '/convert/key/to/png';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentKeynoteToPptx
+     *
+     * Convert Keynote Presentation (KEY) to PPTX
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function convertDocumentKeynoteToPptx($input_file)
+    {
+        list($response) = $this->convertDocumentKeynoteToPptxWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentKeynoteToPptxWithHttpInfo
+     *
+     * Convert Keynote Presentation (KEY) to PPTX
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentKeynoteToPptxWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentKeynoteToPptxRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentKeynoteToPptxAsync
+     *
+     * Convert Keynote Presentation (KEY) to PPTX
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentKeynoteToPptxAsync($input_file)
+    {
+        return $this->convertDocumentKeynoteToPptxAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentKeynoteToPptxAsyncWithHttpInfo
+     *
+     * Convert Keynote Presentation (KEY) to PPTX
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentKeynoteToPptxAsyncWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentKeynoteToPptxRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentKeynoteToPptx'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentKeynoteToPptxRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentKeynoteToPptx'
+            );
+        }
+
+        $resourcePath = '/convert/key/to/pptx';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6033,6 +8445,279 @@ class ConvertDocumentApi
     }
 
     /**
+     * Operation convertDocumentMsgToJpg
+     *
+     * Convert Email MSG file to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\MsgToJpgResult
+     */
+    public function convertDocumentMsgToJpg($input_file, $quality = null)
+    {
+        list($response) = $this->convertDocumentMsgToJpgWithHttpInfo($input_file, $quality);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentMsgToJpgWithHttpInfo
+     *
+     * Convert Email MSG file to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\MsgToJpgResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentMsgToJpgWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\MsgToJpgResult';
+        $request = $this->convertDocumentMsgToJpgRequest($input_file, $quality);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\MsgToJpgResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentMsgToJpgAsync
+     *
+     * Convert Email MSG file to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentMsgToJpgAsync($input_file, $quality = null)
+    {
+        return $this->convertDocumentMsgToJpgAsyncWithHttpInfo($input_file, $quality)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentMsgToJpgAsyncWithHttpInfo
+     *
+     * Convert Email MSG file to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentMsgToJpgAsyncWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\MsgToJpgResult';
+        $request = $this->convertDocumentMsgToJpgRequest($input_file, $quality);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentMsgToJpg'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentMsgToJpgRequest($input_file, $quality = null)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentMsgToJpg'
+            );
+        }
+
+        $resourcePath = '/convert/msg/to/jpg';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($quality !== null) {
+            $headerParams['quality'] = ObjectSerializer::toHeaderValue($quality);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation convertDocumentMsgToPdf
      *
      * Convert Email MSG file to PDF document
@@ -6306,9 +8991,546 @@ class ConvertDocumentApi
     }
 
     /**
+     * Operation convertDocumentMsgToPng
+     *
+     * Convert Email MSG file to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\MsgToPngResult
+     */
+    public function convertDocumentMsgToPng($input_file)
+    {
+        list($response) = $this->convertDocumentMsgToPngWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentMsgToPngWithHttpInfo
+     *
+     * Convert Email MSG file to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\MsgToPngResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentMsgToPngWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\MsgToPngResult';
+        $request = $this->convertDocumentMsgToPngRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\MsgToPngResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentMsgToPngAsync
+     *
+     * Convert Email MSG file to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentMsgToPngAsync($input_file)
+    {
+        return $this->convertDocumentMsgToPngAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentMsgToPngAsyncWithHttpInfo
+     *
+     * Convert Email MSG file to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentMsgToPngAsyncWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\MsgToPngResult';
+        $request = $this->convertDocumentMsgToPngRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentMsgToPng'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentMsgToPngRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentMsgToPng'
+            );
+        }
+
+        $resourcePath = '/convert/msg/to/png';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentOdpToJpg
+     *
+     * Convert ODP Presentation to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\OdpToJpgResult
+     */
+    public function convertDocumentOdpToJpg($input_file, $quality = null)
+    {
+        list($response) = $this->convertDocumentOdpToJpgWithHttpInfo($input_file, $quality);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentOdpToJpgWithHttpInfo
+     *
+     * Convert ODP Presentation to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\OdpToJpgResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentOdpToJpgWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\OdpToJpgResult';
+        $request = $this->convertDocumentOdpToJpgRequest($input_file, $quality);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\OdpToJpgResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentOdpToJpgAsync
+     *
+     * Convert ODP Presentation to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdpToJpgAsync($input_file, $quality = null)
+    {
+        return $this->convertDocumentOdpToJpgAsyncWithHttpInfo($input_file, $quality)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentOdpToJpgAsyncWithHttpInfo
+     *
+     * Convert ODP Presentation to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdpToJpgAsyncWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\OdpToJpgResult';
+        $request = $this->convertDocumentOdpToJpgRequest($input_file, $quality);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentOdpToJpg'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentOdpToJpgRequest($input_file, $quality = null)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentOdpToJpg'
+            );
+        }
+
+        $resourcePath = '/convert/odp/to/jpg';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($quality !== null) {
+            $headerParams['quality'] = ObjectSerializer::toHeaderValue($quality);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation convertDocumentOdpToPdf
      *
-     * Convert Office Open Document Presentation ODP to PDF
+     * Convert ODP Presentation to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6325,7 +9547,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentOdpToPdfWithHttpInfo
      *
-     * Convert Office Open Document Presentation ODP to PDF
+     * Convert ODP Presentation to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6400,7 +9622,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentOdpToPdfAsync
      *
-     * Convert Office Open Document Presentation ODP to PDF
+     * Convert ODP Presentation to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6420,7 +9642,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentOdpToPdfAsyncWithHttpInfo
      *
-     * Convert Office Open Document Presentation ODP to PDF
+     * Convert ODP Presentation to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6570,9 +9792,810 @@ class ConvertDocumentApi
     }
 
     /**
+     * Operation convertDocumentOdpToPng
+     *
+     * Convert ODP Presentation to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\OdpToPngResult
+     */
+    public function convertDocumentOdpToPng($input_file)
+    {
+        list($response) = $this->convertDocumentOdpToPngWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentOdpToPngWithHttpInfo
+     *
+     * Convert ODP Presentation to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\OdpToPngResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentOdpToPngWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\OdpToPngResult';
+        $request = $this->convertDocumentOdpToPngRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\OdpToPngResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentOdpToPngAsync
+     *
+     * Convert ODP Presentation to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdpToPngAsync($input_file)
+    {
+        return $this->convertDocumentOdpToPngAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentOdpToPngAsyncWithHttpInfo
+     *
+     * Convert ODP Presentation to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdpToPngAsyncWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\OdpToPngResult';
+        $request = $this->convertDocumentOdpToPngRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentOdpToPng'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentOdpToPngRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentOdpToPng'
+            );
+        }
+
+        $resourcePath = '/convert/odp/to/png';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentOdpToPptx
+     *
+     * Convert ODP Presentation to PPTX
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function convertDocumentOdpToPptx($input_file)
+    {
+        list($response) = $this->convertDocumentOdpToPptxWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentOdpToPptxWithHttpInfo
+     *
+     * Convert ODP Presentation to PPTX
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentOdpToPptxWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentOdpToPptxRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentOdpToPptxAsync
+     *
+     * Convert ODP Presentation to PPTX
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdpToPptxAsync($input_file)
+    {
+        return $this->convertDocumentOdpToPptxAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentOdpToPptxAsyncWithHttpInfo
+     *
+     * Convert ODP Presentation to PPTX
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdpToPptxAsyncWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentOdpToPptxRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentOdpToPptx'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentOdpToPptxRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentOdpToPptx'
+            );
+        }
+
+        $resourcePath = '/convert/odp/to/pptx';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentOdsToJpg
+     *
+     * Convert ODS Spreadsheet to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\OdsToJpgResult
+     */
+    public function convertDocumentOdsToJpg($input_file, $quality = null)
+    {
+        list($response) = $this->convertDocumentOdsToJpgWithHttpInfo($input_file, $quality);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentOdsToJpgWithHttpInfo
+     *
+     * Convert ODS Spreadsheet to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\OdsToJpgResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentOdsToJpgWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\OdsToJpgResult';
+        $request = $this->convertDocumentOdsToJpgRequest($input_file, $quality);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\OdsToJpgResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentOdsToJpgAsync
+     *
+     * Convert ODS Spreadsheet to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdsToJpgAsync($input_file, $quality = null)
+    {
+        return $this->convertDocumentOdsToJpgAsyncWithHttpInfo($input_file, $quality)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentOdsToJpgAsyncWithHttpInfo
+     *
+     * Convert ODS Spreadsheet to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdsToJpgAsyncWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\OdsToJpgResult';
+        $request = $this->convertDocumentOdsToJpgRequest($input_file, $quality);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentOdsToJpg'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentOdsToJpgRequest($input_file, $quality = null)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentOdsToJpg'
+            );
+        }
+
+        $resourcePath = '/convert/ods/to/jpg';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($quality !== null) {
+            $headerParams['quality'] = ObjectSerializer::toHeaderValue($quality);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation convertDocumentOdsToPdf
      *
-     * Convert Office Open Document Spreadsheet ODS to PDF
+     * Convert ODS Spreadsheet to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6589,7 +10612,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentOdsToPdfWithHttpInfo
      *
-     * Convert Office Open Document Spreadsheet ODS to PDF
+     * Convert ODS Spreadsheet to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6664,7 +10687,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentOdsToPdfAsync
      *
-     * Convert Office Open Document Spreadsheet ODS to PDF
+     * Convert ODS Spreadsheet to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6684,7 +10707,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentOdsToPdfAsyncWithHttpInfo
      *
-     * Convert Office Open Document Spreadsheet ODS to PDF
+     * Convert ODS Spreadsheet to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6834,9 +10857,537 @@ class ConvertDocumentApi
     }
 
     /**
+     * Operation convertDocumentOdsToPng
+     *
+     * Convert ODS Spreadsheet to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\OdsToPngResult
+     */
+    public function convertDocumentOdsToPng($input_file)
+    {
+        list($response) = $this->convertDocumentOdsToPngWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentOdsToPngWithHttpInfo
+     *
+     * Convert ODS Spreadsheet to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\OdsToPngResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentOdsToPngWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\OdsToPngResult';
+        $request = $this->convertDocumentOdsToPngRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\OdsToPngResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentOdsToPngAsync
+     *
+     * Convert ODS Spreadsheet to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdsToPngAsync($input_file)
+    {
+        return $this->convertDocumentOdsToPngAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentOdsToPngAsyncWithHttpInfo
+     *
+     * Convert ODS Spreadsheet to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdsToPngAsyncWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\OdsToPngResult';
+        $request = $this->convertDocumentOdsToPngRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentOdsToPng'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentOdsToPngRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentOdsToPng'
+            );
+        }
+
+        $resourcePath = '/convert/ods/to/png';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentOdsToXlsx
+     *
+     * Convert ODS Spreadsheet to XLSX
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function convertDocumentOdsToXlsx($input_file)
+    {
+        list($response) = $this->convertDocumentOdsToXlsxWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentOdsToXlsxWithHttpInfo
+     *
+     * Convert ODS Spreadsheet to XLSX
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentOdsToXlsxWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentOdsToXlsxRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentOdsToXlsxAsync
+     *
+     * Convert ODS Spreadsheet to XLSX
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdsToXlsxAsync($input_file)
+    {
+        return $this->convertDocumentOdsToXlsxAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentOdsToXlsxAsyncWithHttpInfo
+     *
+     * Convert ODS Spreadsheet to XLSX
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdsToXlsxAsyncWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentOdsToXlsxRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentOdsToXlsx'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentOdsToXlsxRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentOdsToXlsx'
+            );
+        }
+
+        $resourcePath = '/convert/ods/to/xlsx';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation convertDocumentOdtToDocx
      *
-     * Convert Office Open Document ODT to Word DOCX
+     * Convert ODT Text File to Word DOCX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6853,7 +11404,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentOdtToDocxWithHttpInfo
      *
-     * Convert Office Open Document ODT to Word DOCX
+     * Convert ODT Text File to Word DOCX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6928,7 +11479,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentOdtToDocxAsync
      *
-     * Convert Office Open Document ODT to Word DOCX
+     * Convert ODT Text File to Word DOCX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -6948,7 +11499,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentOdtToDocxAsyncWithHttpInfo
      *
-     * Convert Office Open Document ODT to Word DOCX
+     * Convert ODT Text File to Word DOCX
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7098,9 +11649,282 @@ class ConvertDocumentApi
     }
 
     /**
+     * Operation convertDocumentOdtToJpg
+     *
+     * Convert ODT Text File to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\OdtToJpgResult
+     */
+    public function convertDocumentOdtToJpg($input_file, $quality = null)
+    {
+        list($response) = $this->convertDocumentOdtToJpgWithHttpInfo($input_file, $quality);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentOdtToJpgWithHttpInfo
+     *
+     * Convert ODT Text File to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\OdtToJpgResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentOdtToJpgWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\OdtToJpgResult';
+        $request = $this->convertDocumentOdtToJpgRequest($input_file, $quality);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\OdtToJpgResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentOdtToJpgAsync
+     *
+     * Convert ODT Text File to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdtToJpgAsync($input_file, $quality = null)
+    {
+        return $this->convertDocumentOdtToJpgAsyncWithHttpInfo($input_file, $quality)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentOdtToJpgAsyncWithHttpInfo
+     *
+     * Convert ODT Text File to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdtToJpgAsyncWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\OdtToJpgResult';
+        $request = $this->convertDocumentOdtToJpgRequest($input_file, $quality);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentOdtToJpg'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentOdtToJpgRequest($input_file, $quality = null)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentOdtToJpg'
+            );
+        }
+
+        $resourcePath = '/convert/odt/to/jpg';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($quality !== null) {
+            $headerParams['quality'] = ObjectSerializer::toHeaderValue($quality);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation convertDocumentOdtToPdf
      *
-     * Convert Office Open Document ODT to PDF
+     * Convert ODT Text File to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7117,7 +11941,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentOdtToPdfWithHttpInfo
      *
-     * Convert Office Open Document ODT to PDF
+     * Convert ODT Text File to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7192,7 +12016,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentOdtToPdfAsync
      *
-     * Convert Office Open Document ODT to PDF
+     * Convert ODT Text File to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7212,7 +12036,7 @@ class ConvertDocumentApi
     /**
      * Operation convertDocumentOdtToPdfAsyncWithHttpInfo
      *
-     * Convert Office Open Document ODT to PDF
+     * Convert ODT Text File to PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
      *
@@ -7302,6 +12126,270 @@ class ConvertDocumentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentOdtToPng
+     *
+     * Convert ODT Text File to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\OdtToPngResult
+     */
+    public function convertDocumentOdtToPng($input_file)
+    {
+        list($response) = $this->convertDocumentOdtToPngWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentOdtToPngWithHttpInfo
+     *
+     * Convert ODT Text File to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\OdtToPngResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentOdtToPngWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\OdtToPngResult';
+        $request = $this->convertDocumentOdtToPngRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\OdtToPngResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentOdtToPngAsync
+     *
+     * Convert ODT Text File to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdtToPngAsync($input_file)
+    {
+        return $this->convertDocumentOdtToPngAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentOdtToPngAsyncWithHttpInfo
+     *
+     * Convert ODT Text File to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentOdtToPngAsyncWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\OdtToPngResult';
+        $request = $this->convertDocumentOdtToPngRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentOdtToPng'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentOdtToPngRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentOdtToPng'
+            );
+        }
+
+        $resourcePath = '/convert/odt/to/png';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
                 ['multipart/form-data']
             );
         }
@@ -10635,6 +15723,807 @@ class ConvertDocumentApi
     }
 
     /**
+     * Operation convertDocumentRtfToDocx
+     *
+     * Convert Rich Text Format RTF to DOCX Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function convertDocumentRtfToDocx($input_file)
+    {
+        list($response) = $this->convertDocumentRtfToDocxWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentRtfToDocxWithHttpInfo
+     *
+     * Convert Rich Text Format RTF to DOCX Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentRtfToDocxWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentRtfToDocxRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentRtfToDocxAsync
+     *
+     * Convert Rich Text Format RTF to DOCX Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentRtfToDocxAsync($input_file)
+    {
+        return $this->convertDocumentRtfToDocxAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentRtfToDocxAsyncWithHttpInfo
+     *
+     * Convert Rich Text Format RTF to DOCX Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentRtfToDocxAsyncWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentRtfToDocxRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentRtfToDocx'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentRtfToDocxRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentRtfToDocx'
+            );
+        }
+
+        $resourcePath = '/convert/rtf/to/docx';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentRtfToHtml
+     *
+     * Convert Rich Text Format RTF to HTML Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function convertDocumentRtfToHtml($input_file)
+    {
+        list($response) = $this->convertDocumentRtfToHtmlWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentRtfToHtmlWithHttpInfo
+     *
+     * Convert Rich Text Format RTF to HTML Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentRtfToHtmlWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentRtfToHtmlRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentRtfToHtmlAsync
+     *
+     * Convert Rich Text Format RTF to HTML Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentRtfToHtmlAsync($input_file)
+    {
+        return $this->convertDocumentRtfToHtmlAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentRtfToHtmlAsyncWithHttpInfo
+     *
+     * Convert Rich Text Format RTF to HTML Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentRtfToHtmlAsyncWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentRtfToHtmlRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentRtfToHtml'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentRtfToHtmlRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentRtfToHtml'
+            );
+        }
+
+        $resourcePath = '/convert/rtf/to/html';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentRtfToJpg
+     *
+     * Convert Rich Text Format RTF to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\RtfToJpgResult
+     */
+    public function convertDocumentRtfToJpg($input_file, $quality = null)
+    {
+        list($response) = $this->convertDocumentRtfToJpgWithHttpInfo($input_file, $quality);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentRtfToJpgWithHttpInfo
+     *
+     * Convert Rich Text Format RTF to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\RtfToJpgResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentRtfToJpgWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\RtfToJpgResult';
+        $request = $this->convertDocumentRtfToJpgRequest($input_file, $quality);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\RtfToJpgResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentRtfToJpgAsync
+     *
+     * Convert Rich Text Format RTF to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentRtfToJpgAsync($input_file, $quality = null)
+    {
+        return $this->convertDocumentRtfToJpgAsyncWithHttpInfo($input_file, $quality)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentRtfToJpgAsyncWithHttpInfo
+     *
+     * Convert Rich Text Format RTF to JPG/JPEG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentRtfToJpgAsyncWithHttpInfo($input_file, $quality = null)
+    {
+        $returnType = '\Swagger\Client\Model\RtfToJpgResult';
+        $request = $this->convertDocumentRtfToJpgRequest($input_file, $quality);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentRtfToJpg'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentRtfToJpgRequest($input_file, $quality = null)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentRtfToJpg'
+            );
+        }
+
+        $resourcePath = '/convert/rtf/to/jpg';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($quality !== null) {
+            $headerParams['quality'] = ObjectSerializer::toHeaderValue($quality);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation convertDocumentRtfToPdf
      *
      * Convert Rich Text Format RTF to PDF
@@ -10839,6 +16728,270 @@ class ConvertDocumentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentRtfToPng
+     *
+     * Convert Rich Text Format RTF to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\RtfToPngResult
+     */
+    public function convertDocumentRtfToPng($input_file)
+    {
+        list($response) = $this->convertDocumentRtfToPngWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentRtfToPngWithHttpInfo
+     *
+     * Convert Rich Text Format RTF to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\RtfToPngResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentRtfToPngWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\RtfToPngResult';
+        $request = $this->convertDocumentRtfToPngRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\RtfToPngResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentRtfToPngAsync
+     *
+     * Convert Rich Text Format RTF to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentRtfToPngAsync($input_file)
+    {
+        return $this->convertDocumentRtfToPngAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentRtfToPngAsyncWithHttpInfo
+     *
+     * Convert Rich Text Format RTF to PNG image array
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentRtfToPngAsyncWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\RtfToPngResult';
+        $request = $this->convertDocumentRtfToPngRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentRtfToPng'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentRtfToPngRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentRtfToPng'
+            );
+        }
+
+        $resourcePath = '/convert/rtf/to/png';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
                 ['multipart/form-data']
             );
         }

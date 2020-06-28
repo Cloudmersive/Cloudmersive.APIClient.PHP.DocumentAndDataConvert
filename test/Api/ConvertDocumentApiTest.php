@@ -82,6 +82,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentAutodetectToJpg
+     *
+     * Convert Document to JPG/JPEG image array.
+     *
+     */
+    public function testConvertDocumentAutodetectToJpg()
+    {
+    }
+
+    /**
      * Test case for convertDocumentAutodetectToPdf
      *
      * Convert Document to PDF.
@@ -172,6 +182,26 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentDocxToHtml
+     *
+     * Convert Word DOCX Document to HTML Document.
+     *
+     */
+    public function testConvertDocumentDocxToHtml()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentDocxToJpg
+     *
+     * Convert Word DOCX Document to JPG/JPEG image array.
+     *
+     */
+    public function testConvertDocumentDocxToJpg()
+    {
+    }
+
+    /**
      * Test case for convertDocumentDocxToPdf
      *
      * Convert Word DOCX Document to PDF.
@@ -184,10 +214,20 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for convertDocumentDocxToPng
      *
-     * Convert DOCX document to PNG image array.
+     * Convert Word DOCX Document to PNG image array.
      *
      */
     public function testConvertDocumentDocxToPng()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentDocxToRtf
+     *
+     * Convert Word DOCX Document to RTF.
+     *
+     */
+    public function testConvertDocumentDocxToRtf()
     {
     }
 
@@ -212,12 +252,32 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentEmlToJpg
+     *
+     * Convert Email EML file to JPG/JPEG image array.
+     *
+     */
+    public function testConvertDocumentEmlToJpg()
+    {
+    }
+
+    /**
      * Test case for convertDocumentEmlToPdf
      *
      * Convert Email EML file to PDF document.
      *
      */
     public function testConvertDocumentEmlToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentEmlToPng
+     *
+     * Convert Email EML file to PNG image array.
+     *
+     */
+    public function testConvertDocumentEmlToPng()
     {
     }
 
@@ -272,12 +332,42 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentKeynoteToJpg
+     *
+     * Convert Keynote Presentation (KEY) to JPG/JPEG image array.
+     *
+     */
+    public function testConvertDocumentKeynoteToJpg()
+    {
+    }
+
+    /**
      * Test case for convertDocumentKeynoteToPdf
      *
      * Convert Keynote Presentation (KEY) to PDF.
      *
      */
     public function testConvertDocumentKeynoteToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentKeynoteToPng
+     *
+     * Convert Keynote Presentation (KEY) to PNG image array.
+     *
+     */
+    public function testConvertDocumentKeynoteToPng()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentKeynoteToPptx
+     *
+     * Convert Keynote Presentation (KEY) to PPTX.
+     *
+     */
+    public function testConvertDocumentKeynoteToPptx()
     {
     }
 
@@ -292,6 +382,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentMsgToJpg
+     *
+     * Convert Email MSG file to JPG/JPEG image array.
+     *
+     */
+    public function testConvertDocumentMsgToJpg()
+    {
+    }
+
+    /**
      * Test case for convertDocumentMsgToPdf
      *
      * Convert Email MSG file to PDF document.
@@ -302,9 +402,29 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentMsgToPng
+     *
+     * Convert Email MSG file to PNG image array.
+     *
+     */
+    public function testConvertDocumentMsgToPng()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentOdpToJpg
+     *
+     * Convert ODP Presentation to JPG/JPEG image array.
+     *
+     */
+    public function testConvertDocumentOdpToJpg()
+    {
+    }
+
+    /**
      * Test case for convertDocumentOdpToPdf
      *
-     * Convert Office Open Document Presentation ODP to PDF.
+     * Convert ODP Presentation to PDF.
      *
      */
     public function testConvertDocumentOdpToPdf()
@@ -312,9 +432,39 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentOdpToPng
+     *
+     * Convert ODP Presentation to PNG image array.
+     *
+     */
+    public function testConvertDocumentOdpToPng()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentOdpToPptx
+     *
+     * Convert ODP Presentation to PPTX.
+     *
+     */
+    public function testConvertDocumentOdpToPptx()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentOdsToJpg
+     *
+     * Convert ODS Spreadsheet to JPG/JPEG image array.
+     *
+     */
+    public function testConvertDocumentOdsToJpg()
+    {
+    }
+
+    /**
      * Test case for convertDocumentOdsToPdf
      *
-     * Convert Office Open Document Spreadsheet ODS to PDF.
+     * Convert ODS Spreadsheet to PDF.
      *
      */
     public function testConvertDocumentOdsToPdf()
@@ -322,9 +472,29 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentOdsToPng
+     *
+     * Convert ODS Spreadsheet to PNG image array.
+     *
+     */
+    public function testConvertDocumentOdsToPng()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentOdsToXlsx
+     *
+     * Convert ODS Spreadsheet to XLSX.
+     *
+     */
+    public function testConvertDocumentOdsToXlsx()
+    {
+    }
+
+    /**
      * Test case for convertDocumentOdtToDocx
      *
-     * Convert Office Open Document ODT to Word DOCX.
+     * Convert ODT Text File to Word DOCX.
      *
      */
     public function testConvertDocumentOdtToDocx()
@@ -332,12 +502,32 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentOdtToJpg
+     *
+     * Convert ODT Text File to JPG/JPEG image array.
+     *
+     */
+    public function testConvertDocumentOdtToJpg()
+    {
+    }
+
+    /**
      * Test case for convertDocumentOdtToPdf
      *
-     * Convert Office Open Document ODT to PDF.
+     * Convert ODT Text File to PDF.
      *
      */
     public function testConvertDocumentOdtToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentOdtToPng
+     *
+     * Convert ODT Text File to PNG image array.
+     *
+     */
+    public function testConvertDocumentOdtToPng()
     {
     }
 
@@ -462,12 +652,52 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentRtfToDocx
+     *
+     * Convert Rich Text Format RTF to DOCX Document.
+     *
+     */
+    public function testConvertDocumentRtfToDocx()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentRtfToHtml
+     *
+     * Convert Rich Text Format RTF to HTML Document.
+     *
+     */
+    public function testConvertDocumentRtfToHtml()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentRtfToJpg
+     *
+     * Convert Rich Text Format RTF to JPG/JPEG image array.
+     *
+     */
+    public function testConvertDocumentRtfToJpg()
+    {
+    }
+
+    /**
      * Test case for convertDocumentRtfToPdf
      *
      * Convert Rich Text Format RTF to PDF.
      *
      */
     public function testConvertDocumentRtfToPdf()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentRtfToPng
+     *
+     * Convert Rich Text Format RTF to PNG image array.
+     *
+     */
+    public function testConvertDocumentRtfToPng()
     {
     }
 

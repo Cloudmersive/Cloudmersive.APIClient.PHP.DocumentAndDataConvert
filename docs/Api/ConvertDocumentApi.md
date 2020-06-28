@@ -5,6 +5,7 @@ All URIs are relative to *https://api.cloudmersive.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**convertDocumentAutodetectGetInfo**](ConvertDocumentApi.md#convertDocumentAutodetectGetInfo) | **POST** /convert/autodetect/get-info | Get document type information
+[**convertDocumentAutodetectToJpg**](ConvertDocumentApi.md#convertDocumentAutodetectToJpg) | **POST** /convert/autodetect/to/jpg | Convert Document to JPG/JPEG image array
 [**convertDocumentAutodetectToPdf**](ConvertDocumentApi.md#convertDocumentAutodetectToPdf) | **POST** /convert/autodetect/to/pdf | Convert Document to PDF
 [**convertDocumentAutodetectToPngArray**](ConvertDocumentApi.md#convertDocumentAutodetectToPngArray) | **POST** /convert/autodetect/to/png | Convert Document to PNG array
 [**convertDocumentAutodetectToThumbnail**](ConvertDocumentApi.md#convertDocumentAutodetectToThumbnail) | **POST** /convert/autodetect/to/thumbnail | Convert File to Thumbnail Image
@@ -14,23 +15,41 @@ Method | HTTP request | Description
 [**convertDocumentDocToDocx**](ConvertDocumentApi.md#convertDocumentDocToDocx) | **POST** /convert/doc/to/docx | Convert Word DOC (97-03) Document to DOCX
 [**convertDocumentDocToPdf**](ConvertDocumentApi.md#convertDocumentDocToPdf) | **POST** /convert/doc/to/pdf | Convert Word DOC (97-03) Document to PDF
 [**convertDocumentDocToTxt**](ConvertDocumentApi.md#convertDocumentDocToTxt) | **POST** /convert/doc/to/txt | Convert Word DOC (97-03) Document to Text (txt)
+[**convertDocumentDocxToHtml**](ConvertDocumentApi.md#convertDocumentDocxToHtml) | **POST** /convert/docx/to/html | Convert Word DOCX Document to HTML Document
+[**convertDocumentDocxToJpg**](ConvertDocumentApi.md#convertDocumentDocxToJpg) | **POST** /convert/docx/to/jpg | Convert Word DOCX Document to JPG/JPEG image array
 [**convertDocumentDocxToPdf**](ConvertDocumentApi.md#convertDocumentDocxToPdf) | **POST** /convert/docx/to/pdf | Convert Word DOCX Document to PDF
-[**convertDocumentDocxToPng**](ConvertDocumentApi.md#convertDocumentDocxToPng) | **POST** /convert/docx/to/png | Convert DOCX document to PNG image array
+[**convertDocumentDocxToPng**](ConvertDocumentApi.md#convertDocumentDocxToPng) | **POST** /convert/docx/to/png | Convert Word DOCX Document to PNG image array
+[**convertDocumentDocxToRtf**](ConvertDocumentApi.md#convertDocumentDocxToRtf) | **POST** /convert/docx/to/rtf | Convert Word DOCX Document to RTF
 [**convertDocumentDocxToTxt**](ConvertDocumentApi.md#convertDocumentDocxToTxt) | **POST** /convert/docx/to/txt | Convert Word DOCX Document to Text (txt)
 [**convertDocumentEmlToHtml**](ConvertDocumentApi.md#convertDocumentEmlToHtml) | **POST** /convert/eml/to/html | Convert Email EML file to HTML string
+[**convertDocumentEmlToJpg**](ConvertDocumentApi.md#convertDocumentEmlToJpg) | **POST** /convert/eml/to/jpg | Convert Email EML file to JPG/JPEG image array
 [**convertDocumentEmlToPdf**](ConvertDocumentApi.md#convertDocumentEmlToPdf) | **POST** /convert/eml/to/pdf | Convert Email EML file to PDF document
+[**convertDocumentEmlToPng**](ConvertDocumentApi.md#convertDocumentEmlToPng) | **POST** /convert/eml/to/png | Convert Email EML file to PNG image array
 [**convertDocumentGetFileTypeIcon**](ConvertDocumentApi.md#convertDocumentGetFileTypeIcon) | **POST** /convert/autodetect/get-icon | Get PNG icon file for the file extension
 [**convertDocumentGetFileTypeIconAdvanced**](ConvertDocumentApi.md#convertDocumentGetFileTypeIconAdvanced) | **POST** /convert/autodetect/get-icon/advanced | Get PNG icon byte array for the file extension
 [**convertDocumentHtmlToPdf**](ConvertDocumentApi.md#convertDocumentHtmlToPdf) | **POST** /convert/html/to/pdf | Convert HTML document file to PDF Document
 [**convertDocumentHtmlToPng**](ConvertDocumentApi.md#convertDocumentHtmlToPng) | **POST** /convert/html/to/png | Convert HTML document file to PNG image array
 [**convertDocumentHtmlToTxt**](ConvertDocumentApi.md#convertDocumentHtmlToTxt) | **POST** /convert/html/to/txt | HTML Document file to Text (txt)
-[**convertDocumentKeynoteToPdf**](ConvertDocumentApi.md#convertDocumentKeynoteToPdf) | **POST** /convert/keynote/to/pdf | Convert Keynote Presentation (KEY) to PDF
+[**convertDocumentKeynoteToJpg**](ConvertDocumentApi.md#convertDocumentKeynoteToJpg) | **POST** /convert/key/to/jpg | Convert Keynote Presentation (KEY) to JPG/JPEG image array
+[**convertDocumentKeynoteToPdf**](ConvertDocumentApi.md#convertDocumentKeynoteToPdf) | **POST** /convert/key/to/pdf | Convert Keynote Presentation (KEY) to PDF
+[**convertDocumentKeynoteToPng**](ConvertDocumentApi.md#convertDocumentKeynoteToPng) | **POST** /convert/key/to/png | Convert Keynote Presentation (KEY) to PNG image array
+[**convertDocumentKeynoteToPptx**](ConvertDocumentApi.md#convertDocumentKeynoteToPptx) | **POST** /convert/key/to/pptx | Convert Keynote Presentation (KEY) to PPTX
 [**convertDocumentMsgToHtml**](ConvertDocumentApi.md#convertDocumentMsgToHtml) | **POST** /convert/msg/to/html | Convert Email MSG file to HTML string
+[**convertDocumentMsgToJpg**](ConvertDocumentApi.md#convertDocumentMsgToJpg) | **POST** /convert/msg/to/jpg | Convert Email MSG file to JPG/JPEG image array
 [**convertDocumentMsgToPdf**](ConvertDocumentApi.md#convertDocumentMsgToPdf) | **POST** /convert/msg/to/pdf | Convert Email MSG file to PDF document
-[**convertDocumentOdpToPdf**](ConvertDocumentApi.md#convertDocumentOdpToPdf) | **POST** /convert/odp/to/pdf | Convert Office Open Document Presentation ODP to PDF
-[**convertDocumentOdsToPdf**](ConvertDocumentApi.md#convertDocumentOdsToPdf) | **POST** /convert/ods/to/pdf | Convert Office Open Document Spreadsheet ODS to PDF
-[**convertDocumentOdtToDocx**](ConvertDocumentApi.md#convertDocumentOdtToDocx) | **POST** /convert/odt/to/docx | Convert Office Open Document ODT to Word DOCX
-[**convertDocumentOdtToPdf**](ConvertDocumentApi.md#convertDocumentOdtToPdf) | **POST** /convert/odt/to/pdf | Convert Office Open Document ODT to PDF
+[**convertDocumentMsgToPng**](ConvertDocumentApi.md#convertDocumentMsgToPng) | **POST** /convert/msg/to/png | Convert Email MSG file to PNG image array
+[**convertDocumentOdpToJpg**](ConvertDocumentApi.md#convertDocumentOdpToJpg) | **POST** /convert/odp/to/jpg | Convert ODP Presentation to JPG/JPEG image array
+[**convertDocumentOdpToPdf**](ConvertDocumentApi.md#convertDocumentOdpToPdf) | **POST** /convert/odp/to/pdf | Convert ODP Presentation to PDF
+[**convertDocumentOdpToPng**](ConvertDocumentApi.md#convertDocumentOdpToPng) | **POST** /convert/odp/to/png | Convert ODP Presentation to PNG image array
+[**convertDocumentOdpToPptx**](ConvertDocumentApi.md#convertDocumentOdpToPptx) | **POST** /convert/odp/to/pptx | Convert ODP Presentation to PPTX
+[**convertDocumentOdsToJpg**](ConvertDocumentApi.md#convertDocumentOdsToJpg) | **POST** /convert/ods/to/jpg | Convert ODS Spreadsheet to JPG/JPEG image array
+[**convertDocumentOdsToPdf**](ConvertDocumentApi.md#convertDocumentOdsToPdf) | **POST** /convert/ods/to/pdf | Convert ODS Spreadsheet to PDF
+[**convertDocumentOdsToPng**](ConvertDocumentApi.md#convertDocumentOdsToPng) | **POST** /convert/ods/to/png | Convert ODS Spreadsheet to PNG image array
+[**convertDocumentOdsToXlsx**](ConvertDocumentApi.md#convertDocumentOdsToXlsx) | **POST** /convert/ods/to/xlsx | Convert ODS Spreadsheet to XLSX
+[**convertDocumentOdtToDocx**](ConvertDocumentApi.md#convertDocumentOdtToDocx) | **POST** /convert/odt/to/docx | Convert ODT Text File to Word DOCX
+[**convertDocumentOdtToJpg**](ConvertDocumentApi.md#convertDocumentOdtToJpg) | **POST** /convert/odt/to/jpg | Convert ODT Text File to JPG/JPEG image array
+[**convertDocumentOdtToPdf**](ConvertDocumentApi.md#convertDocumentOdtToPdf) | **POST** /convert/odt/to/pdf | Convert ODT Text File to PDF
+[**convertDocumentOdtToPng**](ConvertDocumentApi.md#convertDocumentOdtToPng) | **POST** /convert/odt/to/png | Convert ODT Text File to PNG image array
 [**convertDocumentPdfToDocx**](ConvertDocumentApi.md#convertDocumentPdfToDocx) | **POST** /convert/pdf/to/docx | Convert PDF to Word DOCX Document
 [**convertDocumentPdfToDocxRasterize**](ConvertDocumentApi.md#convertDocumentPdfToDocxRasterize) | **POST** /convert/pdf/to/docx/rasterize | Convert PDF to Word DOCX Document based on rasterized version of the PDF
 [**convertDocumentPdfToPngArray**](ConvertDocumentApi.md#convertDocumentPdfToPngArray) | **POST** /convert/pdf/to/png | Convert PDF to PNG Image Array
@@ -43,7 +62,11 @@ Method | HTTP request | Description
 [**convertDocumentPptxToPdf**](ConvertDocumentApi.md#convertDocumentPptxToPdf) | **POST** /convert/pptx/to/pdf | Convert PowerPoint PPTX Presentation to PDF
 [**convertDocumentPptxToPng**](ConvertDocumentApi.md#convertDocumentPptxToPng) | **POST** /convert/pptx/to/png | Convert PowerPoint PPTX to PNG image array
 [**convertDocumentPptxToTxt**](ConvertDocumentApi.md#convertDocumentPptxToTxt) | **POST** /convert/pptx/to/txt | Convert PowerPoint PPTX Presentation to Text (txt)
+[**convertDocumentRtfToDocx**](ConvertDocumentApi.md#convertDocumentRtfToDocx) | **POST** /convert/rtf/to/docx | Convert Rich Text Format RTF to DOCX Document
+[**convertDocumentRtfToHtml**](ConvertDocumentApi.md#convertDocumentRtfToHtml) | **POST** /convert/rtf/to/html | Convert Rich Text Format RTF to HTML Document
+[**convertDocumentRtfToJpg**](ConvertDocumentApi.md#convertDocumentRtfToJpg) | **POST** /convert/rtf/to/jpg | Convert Rich Text Format RTF to JPG/JPEG image array
 [**convertDocumentRtfToPdf**](ConvertDocumentApi.md#convertDocumentRtfToPdf) | **POST** /convert/rtf/to/pdf | Convert Rich Text Format RTF to PDF
+[**convertDocumentRtfToPng**](ConvertDocumentApi.md#convertDocumentRtfToPng) | **POST** /convert/rtf/to/png | Convert Rich Text Format RTF to PNG image array
 [**convertDocumentXlsToCsv**](ConvertDocumentApi.md#convertDocumentXlsToCsv) | **POST** /convert/xls/to/csv | Convert Excel XLS (97-03) Spreadsheet to CSV
 [**convertDocumentXlsToPdf**](ConvertDocumentApi.md#convertDocumentXlsToPdf) | **POST** /convert/xls/to/pdf | Convert Excel XLS (97-03) Spreadsheet to PDF
 [**convertDocumentXlsToXlsx**](ConvertDocumentApi.md#convertDocumentXlsToXlsx) | **POST** /convert/xls/to/xlsx | Convert Excel XLS (97-03) Spreadsheet to XLSX
@@ -97,6 +120,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\Model\AutodetectGetInfoResult**](../Model/AutodetectGetInfoResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentAutodetectToJpg**
+> \Swagger\Client\Model\AutodetectToJpgResult convertDocumentAutodetectToJpg($input_file, $quality)
+
+Convert Document to JPG/JPEG image array
+
+Automatically detect file type and convert it to an array of JPG/JPEG Images.  Supports all of the major Office document file formats including Word (DOCX, DOC), Excel (XLSX, XLS), PowerPoint (PPTX, PPT), over 100 image formats, HTML files, and even multi-page TIFF files. Customize image quality using quality header.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$quality = 56; // int | Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75.
+
+try {
+    $result = $apiInstance->convertDocumentAutodetectToJpg($input_file, $quality);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentAutodetectToJpg: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **quality** | **int**| Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\AutodetectToJpgResult**](../Model/AutodetectToJpgResult.md)
 
 ### Authorization
 
@@ -224,7 +304,7 @@ Name | Type | Description  | Notes
 
 Convert File to Thumbnail Image
 
-Automatically detect file type and convert it to a PNG thumbnail. Supports all of the major Office document file formats including Word (DOCX, DOC), Excel (XLSX, XLS), PowerPoint (PPTX, PPT), over 100 image formats, HTML files, and even multi-page TIFF files. Returns a generic PNG thumbnail for unsupported formats.
+Automatically detect file type and convert it to a PNG thumbnail. Supports all of the major Office document file formats including Word (DOCX, DOC), Excel (XLSX, XLS), PowerPoint (PPTX, PPT), over 100 image formats, HTML files, and even multi-page TIFF files. Returns a generic PNG thumbnail for unsupported formats. Maximum thumbnail size is 2048x2048.
 
 ### Example
 ```php
@@ -285,7 +365,7 @@ Name | Type | Description  | Notes
 
 Convert File to Thumbnail Image Object
 
-Automatically detect file type and convert it to an array of PNG thumbnails, returned as an object. May specify the number of pages for multiple thumbnails; default is one thumbnail. Supports all of the major Office document file formats including Word (DOCX, DOC), Excel (XLSX, XLS), PowerPoint (PPTX, PPT), over 100 image formats, HTML files, and even multi-page TIFF files. Returns a generic PNG thumbnail for unsupported formats.
+Automatically detect file type and convert it to an array of PNG thumbnails, returned as an object. May specify the number of pages for multiple thumbnails; default is one thumbnail. Supports all of the major Office document file formats including Word (DOCX, DOC), Excel (XLSX, XLS), PowerPoint (PPTX, PPT), over 100 image formats, HTML files, and even multi-page TIFF files. Returns a generic PNG thumbnail for unsupported formats. Maximum thumbnail size is 2048x2048.
 
 ### Example
 ```php
@@ -620,6 +700,118 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **convertDocumentDocxToHtml**
+> string convertDocumentDocxToHtml($input_file)
+
+Convert Word DOCX Document to HTML Document
+
+Convert Office Word Document (DOCX) to HTML Document
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentDocxToHtml($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentDocxToHtml: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentDocxToJpg**
+> \Swagger\Client\Model\DocxToJpgResult convertDocumentDocxToJpg($input_file, $quality)
+
+Convert Word DOCX Document to JPG/JPEG image array
+
+Converts an Office Word Document (DOCX) to an array of JPG/JPEG images, one for each page. Customize image quality using quality header.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$quality = 56; // int | Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75.
+
+try {
+    $result = $apiInstance->convertDocumentDocxToJpg($input_file, $quality);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentDocxToJpg: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **quality** | **int**| Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\DocxToJpgResult**](../Model/DocxToJpgResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **convertDocumentDocxToPdf**
 > string convertDocumentDocxToPdf($input_file)
 
@@ -678,7 +870,7 @@ Name | Type | Description  | Notes
 # **convertDocumentDocxToPng**
 > \Swagger\Client\Model\DocxToPngResult convertDocumentDocxToPng($input_file)
 
-Convert DOCX document to PNG image array
+Convert Word DOCX Document to PNG image array
 
 Converts an Office Word Document (DOCX) file to an array of PNG images, one for each page.
 
@@ -727,6 +919,61 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentDocxToRtf**
+> string convertDocumentDocxToRtf($input_file)
+
+Convert Word DOCX Document to RTF
+
+Convert an Office Word Document (DOCX) to Rich Text Format Document (RTF)
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentDocxToRtf($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentDocxToRtf: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -846,6 +1093,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **convertDocumentEmlToJpg**
+> \Swagger\Client\Model\EmlToJpgResult convertDocumentEmlToJpg($input_file, $quality)
+
+Convert Email EML file to JPG/JPEG image array
+
+Converts an Outlook Email File (EML) to an array of JPG/JPEG images, one for each page. Customize image quality using quality header.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$quality = 56; // int | Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75.
+
+try {
+    $result = $apiInstance->convertDocumentEmlToJpg($input_file, $quality);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentEmlToJpg: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **quality** | **int**| Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\EmlToJpgResult**](../Model/EmlToJpgResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **convertDocumentEmlToPdf**
 > string convertDocumentEmlToPdf($input_file, $body_only)
 
@@ -900,6 +1204,61 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentEmlToPng**
+> \Swagger\Client\Model\EmlToPngResult convertDocumentEmlToPng($input_file)
+
+Convert Email EML file to PNG image array
+
+Converts an Outlook Email File (EML) to an array of PNG images, one for each page.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentEmlToPng($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentEmlToPng: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+[**\Swagger\Client\Model\EmlToPngResult**](../Model/EmlToPngResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -1182,6 +1541,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **convertDocumentKeynoteToJpg**
+> \Swagger\Client\Model\KeynoteToJpgResult convertDocumentKeynoteToJpg($input_file, $quality)
+
+Convert Keynote Presentation (KEY) to JPG/JPEG image array
+
+Converts a Mac Keynote Presentation (KEY) to an array of JPG/JPEG images, one for each page. Customize image quality using quality header.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$quality = 56; // int | Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75.
+
+try {
+    $result = $apiInstance->convertDocumentKeynoteToJpg($input_file, $quality);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentKeynoteToJpg: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **quality** | **int**| Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\KeynoteToJpgResult**](../Model/KeynoteToJpgResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **convertDocumentKeynoteToPdf**
 > string convertDocumentKeynoteToPdf($input_file)
 
@@ -1212,6 +1628,116 @@ try {
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConvertDocumentApi->convertDocumentKeynoteToPdf: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentKeynoteToPng**
+> \Swagger\Client\Model\KeynoteToPngResult convertDocumentKeynoteToPng($input_file)
+
+Convert Keynote Presentation (KEY) to PNG image array
+
+Converts a Mac Keynote Presentation (KEY) to an array of PNG images, one for each page.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentKeynoteToPng($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentKeynoteToPng: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+[**\Swagger\Client\Model\KeynoteToPngResult**](../Model/KeynoteToPngResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentKeynoteToPptx**
+> string convertDocumentKeynoteToPptx($input_file)
+
+Convert Keynote Presentation (KEY) to PPTX
+
+Convert Mac Keynote Presentation (KEY) to PowerPoint Presentation (PPTX)
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentKeynoteToPptx($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentKeynoteToPptx: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1296,6 +1822,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **convertDocumentMsgToJpg**
+> \Swagger\Client\Model\MsgToJpgResult convertDocumentMsgToJpg($input_file, $quality)
+
+Convert Email MSG file to JPG/JPEG image array
+
+Converts an Outlook Message File (MSG) to an array of JPG/JPEG images, one for each page. Customize image quality using quality header.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$quality = 56; // int | Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75.
+
+try {
+    $result = $apiInstance->convertDocumentMsgToJpg($input_file, $quality);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentMsgToJpg: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **quality** | **int**| Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\MsgToJpgResult**](../Model/MsgToJpgResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **convertDocumentMsgToPdf**
 > string convertDocumentMsgToPdf($input_file, $body_only)
 
@@ -1353,10 +1936,122 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **convertDocumentMsgToPng**
+> \Swagger\Client\Model\MsgToPngResult convertDocumentMsgToPng($input_file)
+
+Convert Email MSG file to PNG image array
+
+Converts an Outlook Email Message File (MSG) to an array of PNG images, one for each page.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentMsgToPng($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentMsgToPng: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+[**\Swagger\Client\Model\MsgToPngResult**](../Model/MsgToPngResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentOdpToJpg**
+> \Swagger\Client\Model\OdpToJpgResult convertDocumentOdpToJpg($input_file, $quality)
+
+Convert ODP Presentation to JPG/JPEG image array
+
+Converts an Open Document Presentation (ODP) to an array of JPG/JPEG images, one for each page. Customize image quality using quality header.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$quality = 56; // int | Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75.
+
+try {
+    $result = $apiInstance->convertDocumentOdpToJpg($input_file, $quality);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentOdpToJpg: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **quality** | **int**| Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\OdpToJpgResult**](../Model/OdpToJpgResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **convertDocumentOdpToPdf**
 > string convertDocumentOdpToPdf($input_file)
 
-Convert Office Open Document Presentation ODP to PDF
+Convert ODP Presentation to PDF
 
 Convert Office Open Document Presentation (ODP) to standard PDF
 
@@ -1408,10 +2103,177 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **convertDocumentOdpToPng**
+> \Swagger\Client\Model\OdpToPngResult convertDocumentOdpToPng($input_file)
+
+Convert ODP Presentation to PNG image array
+
+Converts an Office Open Document Presentation (ODP) to an array of PNG images, one for each page.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentOdpToPng($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentOdpToPng: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+[**\Swagger\Client\Model\OdpToPngResult**](../Model/OdpToPngResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentOdpToPptx**
+> string convertDocumentOdpToPptx($input_file)
+
+Convert ODP Presentation to PPTX
+
+Convert Office Open Document Presentation (ODP) to PowerPoint Presentation (PPTX)
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentOdpToPptx($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentOdpToPptx: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentOdsToJpg**
+> \Swagger\Client\Model\OdsToJpgResult convertDocumentOdsToJpg($input_file, $quality)
+
+Convert ODS Spreadsheet to JPG/JPEG image array
+
+Converts an Open Document Spreadsheet (ODS) to an array of JPG/JPEG images, one for each page. Customize image quality using quality header.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$quality = 56; // int | Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75.
+
+try {
+    $result = $apiInstance->convertDocumentOdsToJpg($input_file, $quality);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentOdsToJpg: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **quality** | **int**| Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\OdsToJpgResult**](../Model/OdsToJpgResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **convertDocumentOdsToPdf**
 > string convertDocumentOdsToPdf($input_file)
 
-Convert Office Open Document Spreadsheet ODS to PDF
+Convert ODS Spreadsheet to PDF
 
 Convert Office Open Document Spreadsheet (ODS) to standard PDF
 
@@ -1463,10 +2325,120 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **convertDocumentOdsToPng**
+> \Swagger\Client\Model\OdsToPngResult convertDocumentOdsToPng($input_file)
+
+Convert ODS Spreadsheet to PNG image array
+
+Converts an Office Open Document Spreadsheet (ODS) to an array of PNG images, one for each page.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentOdsToPng($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentOdsToPng: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+[**\Swagger\Client\Model\OdsToPngResult**](../Model/OdsToPngResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentOdsToXlsx**
+> string convertDocumentOdsToXlsx($input_file)
+
+Convert ODS Spreadsheet to XLSX
+
+Convert Office Open Document Spreadsheet (ODS) to Excel Spreadsheet (XLSX)
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentOdsToXlsx($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentOdsToXlsx: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **convertDocumentOdtToDocx**
 > string convertDocumentOdtToDocx($input_file)
 
-Convert Office Open Document ODT to Word DOCX
+Convert ODT Text File to Word DOCX
 
 Convert Office Open Document Text File (ODT) to Word DOCX Document
 
@@ -1518,10 +2490,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **convertDocumentOdtToJpg**
+> \Swagger\Client\Model\OdtToJpgResult convertDocumentOdtToJpg($input_file, $quality)
+
+Convert ODT Text File to JPG/JPEG image array
+
+Converts an Open Document Text File (ODT) to an array of JPG/JPEG images, one for each page. Customize image quality using quality header.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$quality = 56; // int | Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75.
+
+try {
+    $result = $apiInstance->convertDocumentOdtToJpg($input_file, $quality);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentOdtToJpg: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **quality** | **int**| Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\OdtToJpgResult**](../Model/OdtToJpgResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **convertDocumentOdtToPdf**
 > string convertDocumentOdtToPdf($input_file)
 
-Convert Office Open Document ODT to PDF
+Convert ODT Text File to PDF
 
 Convert Office Open Document Text File (ODT) to standard PDF
 
@@ -1570,6 +2599,61 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentOdtToPng**
+> \Swagger\Client\Model\OdtToPngResult convertDocumentOdtToPng($input_file)
+
+Convert ODT Text File to PNG image array
+
+Converts an Office Open Document Text File (ODT) to an array of PNG images, one for each page.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentOdtToPng($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentOdtToPng: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+[**\Swagger\Client\Model\OdtToPngResult**](../Model/OdtToPngResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -2253,6 +3337,173 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **convertDocumentRtfToDocx**
+> string convertDocumentRtfToDocx($input_file)
+
+Convert Rich Text Format RTF to DOCX Document
+
+Convert Rich Text Format Document (RTF) to Word DOCX Document
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentRtfToDocx($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentRtfToDocx: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentRtfToHtml**
+> string convertDocumentRtfToHtml($input_file)
+
+Convert Rich Text Format RTF to HTML Document
+
+Convert Rich Text Format Document (RTF) to HTML Document
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentRtfToHtml($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentRtfToHtml: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentRtfToJpg**
+> \Swagger\Client\Model\RtfToJpgResult convertDocumentRtfToJpg($input_file, $quality)
+
+Convert Rich Text Format RTF to JPG/JPEG image array
+
+Converts a Rich Text Format Document (RTF) to an array of JPG/JPEG images, one for each page. Customize image quality using quality header.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$quality = 56; // int | Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75.
+
+try {
+    $result = $apiInstance->convertDocumentRtfToJpg($input_file, $quality);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentRtfToJpg: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **quality** | **int**| Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\RtfToJpgResult**](../Model/RtfToJpgResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **convertDocumentRtfToPdf**
 > string convertDocumentRtfToPdf($input_file)
 
@@ -2305,6 +3556,61 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentRtfToPng**
+> \Swagger\Client\Model\RtfToPngResult convertDocumentRtfToPng($input_file)
+
+Convert Rich Text Format RTF to PNG image array
+
+Converts a Rich Text Format Document (RTF) to an array of PNG images, one for each page.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentRtfToPng($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentRtfToPng: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+[**\Swagger\Client\Model\RtfToPngResult**](../Model/RtfToPngResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
