@@ -552,6 +552,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentPdfToJpg
+     *
+     * Convert PDF to JPG/JPEG image array.
+     *
+     */
+    public function testConvertDocumentPdfToJpg()
+    {
+    }
+
+    /**
      * Test case for convertDocumentPdfToPngArray
      *
      * Convert PDF to PNG Image Array.

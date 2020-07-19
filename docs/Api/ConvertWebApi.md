@@ -37,7 +37,7 @@ $apiInstance = new Swagger\Client\Api\ConvertWebApi(
     new GuzzleHttp\Client(),
     $config
 );
-$input_request = new \Swagger\Client\Model\HtmlToOfficeRequest(); // \Swagger\Client\Model\HtmlToOfficeRequest | HTL input to convert to DOCX
+$input_request = new \Swagger\Client\Model\HtmlToOfficeRequest(); // \Swagger\Client\Model\HtmlToOfficeRequest | HTML input to convert to DOCX
 
 try {
     $result = $apiInstance->convertWebHtmlToDocx($input_request);
@@ -52,7 +52,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **input_request** | [**\Swagger\Client\Model\HtmlToOfficeRequest**](../Model/HtmlToOfficeRequest.md)| HTL input to convert to DOCX |
+ **input_request** | [**\Swagger\Client\Model\HtmlToOfficeRequest**](../Model/HtmlToOfficeRequest.md)| HTML input to convert to DOCX |
 
 ### Return type
 

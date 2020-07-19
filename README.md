@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.9.3
+- Package version: 1.9.4
 
 
 ## Requirements
@@ -151,6 +151,7 @@ Class | Method | HTTP request | Description
 *ConvertDocumentApi* | [**convertDocumentOdtToPng**](docs/Api/ConvertDocumentApi.md#convertdocumentodttopng) | **POST** /convert/odt/to/png | Convert ODT Text File to PNG image array
 *ConvertDocumentApi* | [**convertDocumentPdfToDocx**](docs/Api/ConvertDocumentApi.md#convertdocumentpdftodocx) | **POST** /convert/pdf/to/docx | Convert PDF to Word DOCX Document
 *ConvertDocumentApi* | [**convertDocumentPdfToDocxRasterize**](docs/Api/ConvertDocumentApi.md#convertdocumentpdftodocxrasterize) | **POST** /convert/pdf/to/docx/rasterize | Convert PDF to Word DOCX Document based on rasterized version of the PDF
+*ConvertDocumentApi* | [**convertDocumentPdfToJpg**](docs/Api/ConvertDocumentApi.md#convertdocumentpdftojpg) | **POST** /convert/pdf/to/jpg | Convert PDF to JPG/JPEG image array
 *ConvertDocumentApi* | [**convertDocumentPdfToPngArray**](docs/Api/ConvertDocumentApi.md#convertdocumentpdftopngarray) | **POST** /convert/pdf/to/png | Convert PDF to PNG Image Array
 *ConvertDocumentApi* | [**convertDocumentPdfToPngSingle**](docs/Api/ConvertDocumentApi.md#convertdocumentpdftopngsingle) | **POST** /convert/pdf/to/png/merge-single | Convert PDF to Single PNG image
 *ConvertDocumentApi* | [**convertDocumentPdfToPptx**](docs/Api/ConvertDocumentApi.md#convertdocumentpdftopptx) | **POST** /convert/pdf/to/pptx | Convert PDF to PowerPoint PPTX Presentation
@@ -482,6 +483,7 @@ Class | Method | HTTP request | Description
  - [PdfMetadata](docs/Model/PdfMetadata.md)
  - [PdfPageText](docs/Model/PdfPageText.md)
  - [PdfTextByPageResult](docs/Model/PdfTextByPageResult.md)
+ - [PdfToJpgResult](docs/Model/PdfToJpgResult.md)
  - [PdfToPngResult](docs/Model/PdfToPngResult.md)
  - [PptxToPngResult](docs/Model/PptxToPngResult.md)
  - [PresentationResult](docs/Model/PresentationResult.md)

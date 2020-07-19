@@ -87,7 +87,7 @@ class ConvertWebApi
      *
      * Convert HTML to Word DOCX Document
      *
-     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTL input to convert to DOCX (required)
+     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTML input to convert to DOCX (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -104,7 +104,7 @@ class ConvertWebApi
      *
      * Convert HTML to Word DOCX Document
      *
-     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTL input to convert to DOCX (required)
+     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTML input to convert to DOCX (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -179,7 +179,7 @@ class ConvertWebApi
      *
      * Convert HTML to Word DOCX Document
      *
-     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTL input to convert to DOCX (required)
+     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTML input to convert to DOCX (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -199,7 +199,7 @@ class ConvertWebApi
      *
      * Convert HTML to Word DOCX Document
      *
-     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTL input to convert to DOCX (required)
+     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTML input to convert to DOCX (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -249,7 +249,7 @@ class ConvertWebApi
     /**
      * Create request for operation 'convertWebHtmlToDocx'
      *
-     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTL input to convert to DOCX (required)
+     * @param  \Swagger\Client\Model\HtmlToOfficeRequest $input_request HTML input to convert to DOCX (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
