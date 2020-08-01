@@ -1,6 +1,6 @@
 <?php
 /**
- * HtmlToPdfRequestTest
+ * SingleReplaceStringTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * HtmlToPdfRequestTest Class Doc Comment
+ * SingleReplaceStringTest Class Doc Comment
  *
  * @category    Class */
-// * @description Details of the HTML to PDF request
+// * @description A single string replacement request
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class HtmlToPdfRequestTest extends \PHPUnit_Framework_TestCase
+class SingleReplaceStringTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,37 +71,30 @@ class HtmlToPdfRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "HtmlToPdfRequest"
+     * Test "SingleReplaceString"
      */
-    public function testHtmlToPdfRequest()
+    public function testSingleReplaceString()
     {
     }
 
     /**
-     * Test attribute "html"
+     * Test attribute "match_string"
      */
-    public function testPropertyHtml()
+    public function testPropertyMatchString()
     {
     }
 
     /**
-     * Test attribute "extra_loading_wait"
+     * Test attribute "replace_string"
      */
-    public function testPropertyExtraLoadingWait()
+    public function testPropertyReplaceString()
     {
     }
 
     /**
-     * Test attribute "include_background_graphics"
+     * Test attribute "match_case"
      */
-    public function testPropertyIncludeBackgroundGraphics()
-    {
-    }
-
-    /**
-     * Test attribute "scale_factor"
-     */
-    public function testPropertyScaleFactor()
+    public function testPropertyMatchCase()
     {
     }
 }

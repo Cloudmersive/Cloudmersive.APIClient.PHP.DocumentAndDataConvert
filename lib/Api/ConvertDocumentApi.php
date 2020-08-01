@@ -2012,6 +2012,903 @@ class ConvertDocumentApi
     }
 
     /**
+     * Operation convertDocumentCsvMultiToXlsx
+     *
+     * Convert Multiple CSV Files into a Single XLSX Spreadsheet
+     *
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  string $worksheet_names Optional; Specify the name of each CSV&#39;s worksheet in order, separated with commas (e.g. \&quot;worksheet1,worksheet2,worksheet3\&quot;). Defaults to the names of the input CSV files. Recommended when inputting the files directly, without file names. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function convertDocumentCsvMultiToXlsx($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null, $worksheet_names = null)
+    {
+        list($response) = $this->convertDocumentCsvMultiToXlsxWithHttpInfo($input_file1, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10, $worksheet_names);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentCsvMultiToXlsxWithHttpInfo
+     *
+     * Convert Multiple CSV Files into a Single XLSX Spreadsheet
+     *
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  string $worksheet_names Optional; Specify the name of each CSV&#39;s worksheet in order, separated with commas (e.g. \&quot;worksheet1,worksheet2,worksheet3\&quot;). Defaults to the names of the input CSV files. Recommended when inputting the files directly, without file names. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentCsvMultiToXlsxWithHttpInfo($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null, $worksheet_names = null)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentCsvMultiToXlsxRequest($input_file1, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10, $worksheet_names);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentCsvMultiToXlsxAsync
+     *
+     * Convert Multiple CSV Files into a Single XLSX Spreadsheet
+     *
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  string $worksheet_names Optional; Specify the name of each CSV&#39;s worksheet in order, separated with commas (e.g. \&quot;worksheet1,worksheet2,worksheet3\&quot;). Defaults to the names of the input CSV files. Recommended when inputting the files directly, without file names. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentCsvMultiToXlsxAsync($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null, $worksheet_names = null)
+    {
+        return $this->convertDocumentCsvMultiToXlsxAsyncWithHttpInfo($input_file1, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10, $worksheet_names)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentCsvMultiToXlsxAsyncWithHttpInfo
+     *
+     * Convert Multiple CSV Files into a Single XLSX Spreadsheet
+     *
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  string $worksheet_names Optional; Specify the name of each CSV&#39;s worksheet in order, separated with commas (e.g. \&quot;worksheet1,worksheet2,worksheet3\&quot;). Defaults to the names of the input CSV files. Recommended when inputting the files directly, without file names. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentCsvMultiToXlsxAsyncWithHttpInfo($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null, $worksheet_names = null)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentCsvMultiToXlsxRequest($input_file1, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10, $worksheet_names);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentCsvMultiToXlsx'
+     *
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  string $worksheet_names Optional; Specify the name of each CSV&#39;s worksheet in order, separated with commas (e.g. \&quot;worksheet1,worksheet2,worksheet3\&quot;). Defaults to the names of the input CSV files. Recommended when inputting the files directly, without file names. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentCsvMultiToXlsxRequest($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null, $worksheet_names = null)
+    {
+        // verify the required parameter 'input_file1' is set
+        if ($input_file1 === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file1 when calling convertDocumentCsvMultiToXlsx'
+            );
+        }
+        // verify the required parameter 'input_file2' is set
+        if ($input_file2 === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file2 when calling convertDocumentCsvMultiToXlsx'
+            );
+        }
+
+        $resourcePath = '/convert/csv/multi/to/xlsx';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($worksheet_names !== null) {
+            $headerParams['worksheetNames'] = ObjectSerializer::toHeaderValue($worksheet_names);
+        }
+
+
+        // form params
+        if ($input_file1 !== null) {
+            $multipart = true;
+            $formParams['inputFile1'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file1), 'rb');
+        }
+        // form params
+        if ($input_file2 !== null) {
+            $multipart = true;
+            $formParams['inputFile2'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file2), 'rb');
+        }
+        // form params
+        if ($input_file3 !== null) {
+            $multipart = true;
+            $formParams['inputFile3'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file3), 'rb');
+        }
+        // form params
+        if ($input_file4 !== null) {
+            $multipart = true;
+            $formParams['inputFile4'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file4), 'rb');
+        }
+        // form params
+        if ($input_file5 !== null) {
+            $multipart = true;
+            $formParams['inputFile5'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file5), 'rb');
+        }
+        // form params
+        if ($input_file6 !== null) {
+            $multipart = true;
+            $formParams['inputFile6'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file6), 'rb');
+        }
+        // form params
+        if ($input_file7 !== null) {
+            $multipart = true;
+            $formParams['inputFile7'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file7), 'rb');
+        }
+        // form params
+        if ($input_file8 !== null) {
+            $multipart = true;
+            $formParams['inputFile8'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file8), 'rb');
+        }
+        // form params
+        if ($input_file9 !== null) {
+            $multipart = true;
+            $formParams['inputFile9'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file9), 'rb');
+        }
+        // form params
+        if ($input_file10 !== null) {
+            $multipart = true;
+            $formParams['inputFile10'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file10), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentCsvToHtml
+     *
+     * Convert CSV to HTML document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function convertDocumentCsvToHtml($input_file)
+    {
+        list($response) = $this->convertDocumentCsvToHtmlWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentCsvToHtmlWithHttpInfo
+     *
+     * Convert CSV to HTML document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentCsvToHtmlWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentCsvToHtmlRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentCsvToHtmlAsync
+     *
+     * Convert CSV to HTML document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentCsvToHtmlAsync($input_file)
+    {
+        return $this->convertDocumentCsvToHtmlAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentCsvToHtmlAsyncWithHttpInfo
+     *
+     * Convert CSV to HTML document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentCsvToHtmlAsyncWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentCsvToHtmlRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentCsvToHtml'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentCsvToHtmlRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentCsvToHtml'
+            );
+        }
+
+        $resourcePath = '/convert/csv/to/html';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentCsvToPdf
+     *
+     * Convert CSV to PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function convertDocumentCsvToPdf($input_file)
+    {
+        list($response) = $this->convertDocumentCsvToPdfWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentCsvToPdfWithHttpInfo
+     *
+     * Convert CSV to PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentCsvToPdfWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentCsvToPdfRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentCsvToPdfAsync
+     *
+     * Convert CSV to PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentCsvToPdfAsync($input_file)
+    {
+        return $this->convertDocumentCsvToPdfAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentCsvToPdfAsyncWithHttpInfo
+     *
+     * Convert CSV to PDF document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentCsvToPdfAsyncWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentCsvToPdfRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentCsvToPdf'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentCsvToPdfRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentCsvToPdf'
+            );
+        }
+
+        $resourcePath = '/convert/csv/to/pdf';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation convertDocumentCsvToXlsx
      *
      * Convert CSV to Excel XLSX Spreadsheet
@@ -6311,14 +7208,16 @@ class ConvertDocumentApi
      * Convert HTML document file to PDF Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true. (optional)
+     * @param  int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function convertDocumentHtmlToPdf($input_file)
+    public function convertDocumentHtmlToPdf($input_file, $include_background_graphics = null, $scale_factor = null)
     {
-        list($response) = $this->convertDocumentHtmlToPdfWithHttpInfo($input_file);
+        list($response) = $this->convertDocumentHtmlToPdfWithHttpInfo($input_file, $include_background_graphics, $scale_factor);
         return $response;
     }
 
@@ -6328,15 +7227,17 @@ class ConvertDocumentApi
      * Convert HTML document file to PDF Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true. (optional)
+     * @param  int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function convertDocumentHtmlToPdfWithHttpInfo($input_file)
+    public function convertDocumentHtmlToPdfWithHttpInfo($input_file, $include_background_graphics = null, $scale_factor = null)
     {
         $returnType = 'string';
-        $request = $this->convertDocumentHtmlToPdfRequest($input_file);
+        $request = $this->convertDocumentHtmlToPdfRequest($input_file, $include_background_graphics, $scale_factor);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6403,13 +7304,15 @@ class ConvertDocumentApi
      * Convert HTML document file to PDF Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true. (optional)
+     * @param  int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertDocumentHtmlToPdfAsync($input_file)
+    public function convertDocumentHtmlToPdfAsync($input_file, $include_background_graphics = null, $scale_factor = null)
     {
-        return $this->convertDocumentHtmlToPdfAsyncWithHttpInfo($input_file)
+        return $this->convertDocumentHtmlToPdfAsyncWithHttpInfo($input_file, $include_background_graphics, $scale_factor)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6423,14 +7326,16 @@ class ConvertDocumentApi
      * Convert HTML document file to PDF Document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true. (optional)
+     * @param  int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function convertDocumentHtmlToPdfAsyncWithHttpInfo($input_file)
+    public function convertDocumentHtmlToPdfAsyncWithHttpInfo($input_file, $include_background_graphics = null, $scale_factor = null)
     {
         $returnType = 'string';
-        $request = $this->convertDocumentHtmlToPdfRequest($input_file);
+        $request = $this->convertDocumentHtmlToPdfRequest($input_file, $include_background_graphics, $scale_factor);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6473,11 +7378,13 @@ class ConvertDocumentApi
      * Create request for operation 'convertDocumentHtmlToPdf'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true. (optional)
+     * @param  int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function convertDocumentHtmlToPdfRequest($input_file)
+    protected function convertDocumentHtmlToPdfRequest($input_file, $include_background_graphics = null, $scale_factor = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
@@ -6493,6 +7400,14 @@ class ConvertDocumentApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($include_background_graphics !== null) {
+            $headerParams['includeBackgroundGraphics'] = ObjectSerializer::toHeaderValue($include_background_graphics);
+        }
+        // header params
+        if ($scale_factor !== null) {
+            $headerParams['scaleFactor'] = ObjectSerializer::toHeaderValue($scale_factor);
+        }
 
 
         // form params
@@ -18586,6 +19501,270 @@ class ConvertDocumentApi
         if ($output_encoding !== null) {
             $headerParams['outputEncoding'] = ObjectSerializer::toHeaderValue($output_encoding);
         }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation convertDocumentXlsxToHtml
+     *
+     * Convert Excel XLSX Spreadsheet to HTML Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function convertDocumentXlsxToHtml($input_file)
+    {
+        list($response) = $this->convertDocumentXlsxToHtmlWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation convertDocumentXlsxToHtmlWithHttpInfo
+     *
+     * Convert Excel XLSX Spreadsheet to HTML Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function convertDocumentXlsxToHtmlWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentXlsxToHtmlRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation convertDocumentXlsxToHtmlAsync
+     *
+     * Convert Excel XLSX Spreadsheet to HTML Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentXlsxToHtmlAsync($input_file)
+    {
+        return $this->convertDocumentXlsxToHtmlAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation convertDocumentXlsxToHtmlAsyncWithHttpInfo
+     *
+     * Convert Excel XLSX Spreadsheet to HTML Document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function convertDocumentXlsxToHtmlAsyncWithHttpInfo($input_file)
+    {
+        $returnType = 'string';
+        $request = $this->convertDocumentXlsxToHtmlRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'convertDocumentXlsxToHtml'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function convertDocumentXlsxToHtmlRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling convertDocumentXlsxToHtml'
+            );
+        }
+
+        $resourcePath = '/convert/xlsx/to/html';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
 
 
         // form params

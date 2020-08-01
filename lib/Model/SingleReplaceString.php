@@ -1,6 +1,6 @@
 <?php
 /**
- * HtmlToPdfRequest
+ * SingleReplaceString
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * HtmlToPdfRequest Class Doc Comment
+ * SingleReplaceString Class Doc Comment
  *
  * @category Class
- * @description Details of the HTML to PDF request
+ * @description A single string replacement request
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class HtmlToPdfRequest implements ModelInterface, ArrayAccess
+class SingleReplaceString implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'HtmlToPdfRequest';
+    protected static $swaggerModelName = 'SingleReplaceString';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'html' => 'string',
-        'extra_loading_wait' => 'int',
-        'include_background_graphics' => 'bool',
-        'scale_factor' => 'int'
+        'match_string' => 'string',
+        'replace_string' => 'string',
+        'match_case' => 'bool'
     ];
 
     /**
@@ -70,10 +69,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'html' => null,
-        'extra_loading_wait' => 'int32',
-        'include_background_graphics' => null,
-        'scale_factor' => 'int32'
+        'match_string' => null,
+        'replace_string' => null,
+        'match_case' => null
     ];
 
     /**
@@ -103,10 +101,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'html' => 'Html',
-        'extra_loading_wait' => 'ExtraLoadingWait',
-        'include_background_graphics' => 'IncludeBackgroundGraphics',
-        'scale_factor' => 'ScaleFactor'
+        'match_string' => 'MatchString',
+        'replace_string' => 'ReplaceString',
+        'match_case' => 'MatchCase'
     ];
 
     /**
@@ -115,10 +112,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'html' => 'setHtml',
-        'extra_loading_wait' => 'setExtraLoadingWait',
-        'include_background_graphics' => 'setIncludeBackgroundGraphics',
-        'scale_factor' => 'setScaleFactor'
+        'match_string' => 'setMatchString',
+        'replace_string' => 'setReplaceString',
+        'match_case' => 'setMatchCase'
     ];
 
     /**
@@ -127,10 +123,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'html' => 'getHtml',
-        'extra_loading_wait' => 'getExtraLoadingWait',
-        'include_background_graphics' => 'getIncludeBackgroundGraphics',
-        'scale_factor' => 'getScaleFactor'
+        'match_string' => 'getMatchString',
+        'replace_string' => 'getReplaceString',
+        'match_case' => 'getMatchCase'
     ];
 
     /**
@@ -193,10 +188,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['html'] = isset($data['html']) ? $data['html'] : null;
-        $this->container['extra_loading_wait'] = isset($data['extra_loading_wait']) ? $data['extra_loading_wait'] : null;
-        $this->container['include_background_graphics'] = isset($data['include_background_graphics']) ? $data['include_background_graphics'] : null;
-        $this->container['scale_factor'] = isset($data['scale_factor']) ? $data['scale_factor'] : null;
+        $this->container['match_string'] = isset($data['match_string']) ? $data['match_string'] : null;
+        $this->container['replace_string'] = isset($data['replace_string']) ? $data['replace_string'] : null;
+        $this->container['match_case'] = isset($data['match_case']) ? $data['match_case'] : null;
     }
 
     /**
@@ -225,97 +219,73 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets html
+     * Gets match_string
      *
      * @return string
      */
-    public function getHtml()
+    public function getMatchString()
     {
-        return $this->container['html'];
+        return $this->container['match_string'];
     }
 
     /**
-     * Sets html
+     * Sets match_string
      *
-     * @param string $html HTML to render to PDF
+     * @param string $match_string String to search for and match against, to be replaced
      *
      * @return $this
      */
-    public function setHtml($html)
+    public function setMatchString($match_string)
     {
-        $this->container['html'] = $html;
+        $this->container['match_string'] = $match_string;
 
         return $this;
     }
 
     /**
-     * Gets extra_loading_wait
+     * Gets replace_string
      *
-     * @return int
+     * @return string
      */
-    public function getExtraLoadingWait()
+    public function getReplaceString()
     {
-        return $this->container['extra_loading_wait'];
+        return $this->container['replace_string'];
     }
 
     /**
-     * Sets extra_loading_wait
+     * Sets replace_string
      *
-     * @param int $extra_loading_wait Optional: Additional number of milliseconds to wait once the web page has finished loading before taking the screenshot.  Can be helpful for highly asynchronous websites. Provide a value of 0 for the default of 5000 milliseconds (5 seconds). Maximum is 30000 milliseconds (30 seconds).
+     * @param string $replace_string String to replace the matched values with
      *
      * @return $this
      */
-    public function setExtraLoadingWait($extra_loading_wait)
+    public function setReplaceString($replace_string)
     {
-        $this->container['extra_loading_wait'] = $extra_loading_wait;
+        $this->container['replace_string'] = $replace_string;
 
         return $this;
     }
 
     /**
-     * Gets include_background_graphics
+     * Gets match_case
      *
      * @return bool
      */
-    public function getIncludeBackgroundGraphics()
+    public function getMatchCase()
     {
-        return $this->container['include_background_graphics'];
+        return $this->container['match_case'];
     }
 
     /**
-     * Sets include_background_graphics
+     * Sets match_case
      *
-     * @param bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true.
+     * @param bool $match_case True if the case should be matched, false for case insensitive match
      *
      * @return $this
      */
-    public function setIncludeBackgroundGraphics($include_background_graphics)
+    public function setMatchCase($match_case)
     {
-        $this->container['include_background_graphics'] = $include_background_graphics;
-
-        return $this;
-    }
-
-    /**
-     * Gets scale_factor
-     *
-     * @return int
-     */
-    public function getScaleFactor()
-    {
-        return $this->container['scale_factor'];
-    }
-
-    /**
-     * Sets scale_factor
-     *
-     * @param int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%.
-     *
-     * @return $this
-     */
-    public function setScaleFactor($scale_factor)
-    {
-        $this->container['scale_factor'] = $scale_factor;
+        $this->container['match_case'] = $match_case;
 
         return $this;
     }

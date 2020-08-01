@@ -322,6 +322,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxReplaceMulti
+     *
+     * Replace multiple strings in Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxReplaceMulti()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxReplaceParagraph
      *
      * Replace matching paragraphs in a Word DOCX document.

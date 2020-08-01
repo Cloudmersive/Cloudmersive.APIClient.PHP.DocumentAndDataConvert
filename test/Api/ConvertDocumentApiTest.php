@@ -142,6 +142,36 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentCsvMultiToXlsx
+     *
+     * Convert Multiple CSV Files into a Single XLSX Spreadsheet.
+     *
+     */
+    public function testConvertDocumentCsvMultiToXlsx()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentCsvToHtml
+     *
+     * Convert CSV to HTML document.
+     *
+     */
+    public function testConvertDocumentCsvToHtml()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentCsvToPdf
+     *
+     * Convert CSV to PDF document.
+     *
+     */
+    public function testConvertDocumentCsvToPdf()
+    {
+    }
+
+    /**
      * Test case for convertDocumentCsvToXlsx
      *
      * Convert CSV to Excel XLSX Spreadsheet.
@@ -758,6 +788,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testConvertDocumentXlsxToCsvMulti()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentXlsxToHtml
+     *
+     * Convert Excel XLSX Spreadsheet to HTML Document.
+     *
+     */
+    public function testConvertDocumentXlsxToHtml()
     {
     }
 

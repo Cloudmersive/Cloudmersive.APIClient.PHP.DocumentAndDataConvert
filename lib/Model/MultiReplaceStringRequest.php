@@ -1,6 +1,6 @@
 <?php
 /**
- * HtmlToPdfRequest
+ * MultiReplaceStringRequest
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * HtmlToPdfRequest Class Doc Comment
+ * MultiReplaceStringRequest Class Doc Comment
  *
  * @category Class
- * @description Details of the HTML to PDF request
+ * @description Input to a multiple string replacement request
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class HtmlToPdfRequest implements ModelInterface, ArrayAccess
+class MultiReplaceStringRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'HtmlToPdfRequest';
+    protected static $swaggerModelName = 'MultiReplaceStringRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'html' => 'string',
-        'extra_loading_wait' => 'int',
-        'include_background_graphics' => 'bool',
-        'scale_factor' => 'int'
+        'input_file_bytes' => 'string',
+        'input_file_url' => 'string',
+        'replace_strings' => '\Swagger\Client\Model\SingleReplaceString[]'
     ];
 
     /**
@@ -70,10 +69,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'html' => null,
-        'extra_loading_wait' => 'int32',
-        'include_background_graphics' => null,
-        'scale_factor' => 'int32'
+        'input_file_bytes' => 'byte',
+        'input_file_url' => null,
+        'replace_strings' => null
     ];
 
     /**
@@ -103,10 +101,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'html' => 'Html',
-        'extra_loading_wait' => 'ExtraLoadingWait',
-        'include_background_graphics' => 'IncludeBackgroundGraphics',
-        'scale_factor' => 'ScaleFactor'
+        'input_file_bytes' => 'InputFileBytes',
+        'input_file_url' => 'InputFileUrl',
+        'replace_strings' => 'ReplaceStrings'
     ];
 
     /**
@@ -115,10 +112,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'html' => 'setHtml',
-        'extra_loading_wait' => 'setExtraLoadingWait',
-        'include_background_graphics' => 'setIncludeBackgroundGraphics',
-        'scale_factor' => 'setScaleFactor'
+        'input_file_bytes' => 'setInputFileBytes',
+        'input_file_url' => 'setInputFileUrl',
+        'replace_strings' => 'setReplaceStrings'
     ];
 
     /**
@@ -127,10 +123,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'html' => 'getHtml',
-        'extra_loading_wait' => 'getExtraLoadingWait',
-        'include_background_graphics' => 'getIncludeBackgroundGraphics',
-        'scale_factor' => 'getScaleFactor'
+        'input_file_bytes' => 'getInputFileBytes',
+        'input_file_url' => 'getInputFileUrl',
+        'replace_strings' => 'getReplaceStrings'
     ];
 
     /**
@@ -193,10 +188,9 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['html'] = isset($data['html']) ? $data['html'] : null;
-        $this->container['extra_loading_wait'] = isset($data['extra_loading_wait']) ? $data['extra_loading_wait'] : null;
-        $this->container['include_background_graphics'] = isset($data['include_background_graphics']) ? $data['include_background_graphics'] : null;
-        $this->container['scale_factor'] = isset($data['scale_factor']) ? $data['scale_factor'] : null;
+        $this->container['input_file_bytes'] = isset($data['input_file_bytes']) ? $data['input_file_bytes'] : null;
+        $this->container['input_file_url'] = isset($data['input_file_url']) ? $data['input_file_url'] : null;
+        $this->container['replace_strings'] = isset($data['replace_strings']) ? $data['replace_strings'] : null;
     }
 
     /**
@@ -207,6 +201,10 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['input_file_bytes']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
+            $invalidProperties[] = "invalid value for 'input_file_bytes', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
+        }
 
         return $invalidProperties;
     }
@@ -220,102 +218,86 @@ class HtmlToPdfRequest implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        if (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['input_file_bytes'])) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets html
+     * Gets input_file_bytes
      *
      * @return string
      */
-    public function getHtml()
+    public function getInputFileBytes()
     {
-        return $this->container['html'];
+        return $this->container['input_file_bytes'];
     }
 
     /**
-     * Sets html
+     * Sets input_file_bytes
      *
-     * @param string $html HTML to render to PDF
+     * @param string $input_file_bytes Optional: Bytes of the input file to operate on
      *
      * @return $this
      */
-    public function setHtml($html)
+    public function setInputFileBytes($input_file_bytes)
     {
-        $this->container['html'] = $html;
+
+        if (!is_null($input_file_bytes) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $input_file_bytes))) {
+            throw new \InvalidArgumentException("invalid value for $input_file_bytes when calling MultiReplaceStringRequest., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
+        }
+
+        $this->container['input_file_bytes'] = $input_file_bytes;
 
         return $this;
     }
 
     /**
-     * Gets extra_loading_wait
+     * Gets input_file_url
      *
-     * @return int
+     * @return string
      */
-    public function getExtraLoadingWait()
+    public function getInputFileUrl()
     {
-        return $this->container['extra_loading_wait'];
+        return $this->container['input_file_url'];
     }
 
     /**
-     * Sets extra_loading_wait
+     * Sets input_file_url
      *
-     * @param int $extra_loading_wait Optional: Additional number of milliseconds to wait once the web page has finished loading before taking the screenshot.  Can be helpful for highly asynchronous websites. Provide a value of 0 for the default of 5000 milliseconds (5 seconds). Maximum is 30000 milliseconds (30 seconds).
+     * @param string $input_file_url Optional: URL of a file to operate on as input.  This can be a public URL, or you can also use the begin-editing API to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public).
      *
      * @return $this
      */
-    public function setExtraLoadingWait($extra_loading_wait)
+    public function setInputFileUrl($input_file_url)
     {
-        $this->container['extra_loading_wait'] = $extra_loading_wait;
+        $this->container['input_file_url'] = $input_file_url;
 
         return $this;
     }
 
     /**
-     * Gets include_background_graphics
+     * Gets replace_strings
      *
-     * @return bool
+     * @return \Swagger\Client\Model\SingleReplaceString[]
      */
-    public function getIncludeBackgroundGraphics()
+    public function getReplaceStrings()
     {
-        return $this->container['include_background_graphics'];
+        return $this->container['replace_strings'];
     }
 
     /**
-     * Sets include_background_graphics
+     * Sets replace_strings
      *
-     * @param bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true.
+     * @param \Swagger\Client\Model\SingleReplaceString[] $replace_strings An array of individual string replacement requests
      *
      * @return $this
      */
-    public function setIncludeBackgroundGraphics($include_background_graphics)
+    public function setReplaceStrings($replace_strings)
     {
-        $this->container['include_background_graphics'] = $include_background_graphics;
-
-        return $this;
-    }
-
-    /**
-     * Gets scale_factor
-     *
-     * @return int
-     */
-    public function getScaleFactor()
-    {
-        return $this->container['scale_factor'];
-    }
-
-    /**
-     * Sets scale_factor
-     *
-     * @param int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%.
-     *
-     * @return $this
-     */
-    public function setScaleFactor($scale_factor)
-    {
-        $this->container['scale_factor'] = $scale_factor;
+        $this->container['replace_strings'] = $replace_strings;
 
         return $this;
     }

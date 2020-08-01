@@ -261,7 +261,7 @@ class UrlToPdfRequest implements ModelInterface, ArrayAccess
     /**
      * Sets extra_loading_wait
      *
-     * @param int $extra_loading_wait Optional: Additional number of milliseconds to wait once the web page has finished loading before taking the screenshot.  Can be helpful for highly asynchronous websites.  Provide a value of 0 for the default of 5000 milliseconds (5 seconds)
+     * @param int $extra_loading_wait Optional: Additional number of milliseconds to wait once the web page has finished loading before taking the screenshot.  Can be helpful for highly asynchronous websites.  Provide a value of 0 for the default of 5000 milliseconds (5 seconds). Maximum is 20000 milliseconds (20 seconds).
      *
      * @return $this
      */
@@ -309,7 +309,7 @@ class UrlToPdfRequest implements ModelInterface, ArrayAccess
     /**
      * Sets scale_factor
      *
-     * @param int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%
+     * @param int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%
      *
      * @return $this
      */

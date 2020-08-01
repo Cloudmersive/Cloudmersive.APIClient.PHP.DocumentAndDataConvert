@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **convertWebHtmlToPng**
-> object convertWebHtmlToPng($input)
+> string convertWebHtmlToPng($input)
 
 Convert HTML string to PNG screenshot
 
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+**string**
 
 ### Authorization
 

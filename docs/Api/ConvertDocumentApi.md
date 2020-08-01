@@ -11,6 +11,9 @@ Method | HTTP request | Description
 [**convertDocumentAutodetectToThumbnail**](ConvertDocumentApi.md#convertDocumentAutodetectToThumbnail) | **POST** /convert/autodetect/to/thumbnail | Convert File to Thumbnail Image
 [**convertDocumentAutodetectToThumbnailsAdvanced**](ConvertDocumentApi.md#convertDocumentAutodetectToThumbnailsAdvanced) | **POST** /convert/autodetect/to/thumbnail/advanced | Convert File to Thumbnail Image Object
 [**convertDocumentAutodetectToTxt**](ConvertDocumentApi.md#convertDocumentAutodetectToTxt) | **POST** /convert/autodetect/to/txt | Convert Document to Text (txt)
+[**convertDocumentCsvMultiToXlsx**](ConvertDocumentApi.md#convertDocumentCsvMultiToXlsx) | **POST** /convert/csv/multi/to/xlsx | Convert Multiple CSV Files into a Single XLSX Spreadsheet
+[**convertDocumentCsvToHtml**](ConvertDocumentApi.md#convertDocumentCsvToHtml) | **POST** /convert/csv/to/html | Convert CSV to HTML document
+[**convertDocumentCsvToPdf**](ConvertDocumentApi.md#convertDocumentCsvToPdf) | **POST** /convert/csv/to/pdf | Convert CSV to PDF document
 [**convertDocumentCsvToXlsx**](ConvertDocumentApi.md#convertDocumentCsvToXlsx) | **POST** /convert/csv/to/xlsx | Convert CSV to Excel XLSX Spreadsheet
 [**convertDocumentDocToDocx**](ConvertDocumentApi.md#convertDocumentDocToDocx) | **POST** /convert/doc/to/docx | Convert Word DOC (97-03) Document to DOCX
 [**convertDocumentDocToPdf**](ConvertDocumentApi.md#convertDocumentDocToPdf) | **POST** /convert/doc/to/pdf | Convert Word DOC (97-03) Document to PDF
@@ -73,6 +76,7 @@ Method | HTTP request | Description
 [**convertDocumentXlsToXlsx**](ConvertDocumentApi.md#convertDocumentXlsToXlsx) | **POST** /convert/xls/to/xlsx | Convert Excel XLS (97-03) Spreadsheet to XLSX
 [**convertDocumentXlsxToCsv**](ConvertDocumentApi.md#convertDocumentXlsxToCsv) | **POST** /convert/xlsx/to/csv | Convert Excel XLSX Spreadsheet to CSV, Single Worksheet
 [**convertDocumentXlsxToCsvMulti**](ConvertDocumentApi.md#convertDocumentXlsxToCsvMulti) | **POST** /convert/xlsx/to/csv/multi | Convert Excel XLSX Spreadsheet to CSV, Multiple Worksheets
+[**convertDocumentXlsxToHtml**](ConvertDocumentApi.md#convertDocumentXlsxToHtml) | **POST** /convert/xlsx/to/html | Convert Excel XLSX Spreadsheet to HTML Document
 [**convertDocumentXlsxToPdf**](ConvertDocumentApi.md#convertDocumentXlsxToPdf) | **POST** /convert/xlsx/to/pdf | Convert Excel XLSX Spreadsheet to PDF
 [**convertDocumentXlsxToPng**](ConvertDocumentApi.md#convertDocumentXlsxToPng) | **POST** /convert/xlsx/to/png | Convert Excel XLSX spreadsheet to PNG image array
 [**convertDocumentXlsxToTxt**](ConvertDocumentApi.md#convertDocumentXlsxToTxt) | **POST** /convert/xlsx/to/txt | Convert Excel XLSX Spreadsheet to Text (txt)
@@ -478,6 +482,191 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentCsvMultiToXlsx**
+> string convertDocumentCsvMultiToXlsx($input_file1, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10, $worksheet_names)
+
+Convert Multiple CSV Files into a Single XLSX Spreadsheet
+
+Convert multiple Comma-Separated Values (CSV) files into a single Excel XLSX Spreadsheet, with one worksheet corresponding to each CSV file.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file1 = "/path/to/file.txt"; // \SplFileObject | First input file to perform the operation on.
+$input_file2 = "/path/to/file.txt"; // \SplFileObject | Second input file to perform the operation on.
+$input_file3 = "/path/to/file.txt"; // \SplFileObject | Third input file to perform the operation on.
+$input_file4 = "/path/to/file.txt"; // \SplFileObject | Fourth input file to perform the operation on.
+$input_file5 = "/path/to/file.txt"; // \SplFileObject | Fifth input file to perform the operation on.
+$input_file6 = "/path/to/file.txt"; // \SplFileObject | Sixth input file to perform the operation on.
+$input_file7 = "/path/to/file.txt"; // \SplFileObject | Seventh input file to perform the operation on.
+$input_file8 = "/path/to/file.txt"; // \SplFileObject | Eighth input file to perform the operation on.
+$input_file9 = "/path/to/file.txt"; // \SplFileObject | Ninth input file to perform the operation on.
+$input_file10 = "/path/to/file.txt"; // \SplFileObject | Tenth input file to perform the operation on.
+$worksheet_names = "worksheet_names_example"; // string | Optional; Specify the name of each CSV's worksheet in order, separated with commas (e.g. \"worksheet1,worksheet2,worksheet3\"). Defaults to the names of the input CSV files. Recommended when inputting the files directly, without file names.
+
+try {
+    $result = $apiInstance->convertDocumentCsvMultiToXlsx($input_file1, $input_file2, $input_file3, $input_file4, $input_file5, $input_file6, $input_file7, $input_file8, $input_file9, $input_file10, $worksheet_names);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentCsvMultiToXlsx: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file1** | **\SplFileObject**| First input file to perform the operation on. |
+ **input_file2** | **\SplFileObject**| Second input file to perform the operation on. |
+ **input_file3** | **\SplFileObject**| Third input file to perform the operation on. | [optional]
+ **input_file4** | **\SplFileObject**| Fourth input file to perform the operation on. | [optional]
+ **input_file5** | **\SplFileObject**| Fifth input file to perform the operation on. | [optional]
+ **input_file6** | **\SplFileObject**| Sixth input file to perform the operation on. | [optional]
+ **input_file7** | **\SplFileObject**| Seventh input file to perform the operation on. | [optional]
+ **input_file8** | **\SplFileObject**| Eighth input file to perform the operation on. | [optional]
+ **input_file9** | **\SplFileObject**| Ninth input file to perform the operation on. | [optional]
+ **input_file10** | **\SplFileObject**| Tenth input file to perform the operation on. | [optional]
+ **worksheet_names** | **string**| Optional; Specify the name of each CSV&#39;s worksheet in order, separated with commas (e.g. \&quot;worksheet1,worksheet2,worksheet3\&quot;). Defaults to the names of the input CSV files. Recommended when inputting the files directly, without file names. | [optional]
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentCsvToHtml**
+> string convertDocumentCsvToHtml($input_file)
+
+Convert CSV to HTML document
+
+Convert Comma-Separated Values (CSV) file to HTML document.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentCsvToHtml($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentCsvToHtml: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentCsvToPdf**
+> string convertDocumentCsvToPdf($input_file)
+
+Convert CSV to PDF document
+
+Convert Comma-Separated Values (CSV) file to PDF document.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentCsvToPdf($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentCsvToPdf: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -1378,7 +1567,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **convertDocumentHtmlToPdf**
-> string convertDocumentHtmlToPdf($input_file)
+> string convertDocumentHtmlToPdf($input_file, $include_background_graphics, $scale_factor)
 
 Convert HTML document file to PDF Document
 
@@ -1401,9 +1590,11 @@ $apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
     $config
 );
 $input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$include_background_graphics = true; // bool | Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true.
+$scale_factor = 56; // int | Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%.
 
 try {
-    $result = $apiInstance->convertDocumentHtmlToPdf($input_file);
+    $result = $apiInstance->convertDocumentHtmlToPdf($input_file, $include_background_graphics, $scale_factor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConvertDocumentApi->convertDocumentHtmlToPdf: ', $e->getMessage(), PHP_EOL;
@@ -1416,6 +1607,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **include_background_graphics** | **bool**| Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true. | [optional]
+ **scale_factor** | **int**| Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%. | [optional]
 
 ### Return type
 
@@ -3939,6 +4132,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\Model\CsvCollection**](../Model/CsvCollection.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **convertDocumentXlsxToHtml**
+> string convertDocumentXlsxToHtml($input_file)
+
+Convert Excel XLSX Spreadsheet to HTML Document
+
+Convert Office Excel Spreadsheet (XLSX) to HTML Document.  Converts all worksheets to HTML.  Supports both XLSX and XLSB Excel file formats.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ConvertDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->convertDocumentXlsxToHtml($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConvertDocumentApi->convertDocumentXlsxToHtml: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+**string**
 
 ### Authorization
 

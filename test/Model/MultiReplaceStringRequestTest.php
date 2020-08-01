@@ -1,6 +1,6 @@
 <?php
 /**
- * HtmlToPdfRequestTest
+ * MultiReplaceStringRequestTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Swagger\Client;
 
 /**
- * HtmlToPdfRequestTest Class Doc Comment
+ * MultiReplaceStringRequestTest Class Doc Comment
  *
  * @category    Class */
-// * @description Details of the HTML to PDF request
+// * @description Input to a multiple string replacement request
 /**
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class HtmlToPdfRequestTest extends \PHPUnit_Framework_TestCase
+class MultiReplaceStringRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,37 +71,30 @@ class HtmlToPdfRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "HtmlToPdfRequest"
+     * Test "MultiReplaceStringRequest"
      */
-    public function testHtmlToPdfRequest()
+    public function testMultiReplaceStringRequest()
     {
     }
 
     /**
-     * Test attribute "html"
+     * Test attribute "input_file_bytes"
      */
-    public function testPropertyHtml()
+    public function testPropertyInputFileBytes()
     {
     }
 
     /**
-     * Test attribute "extra_loading_wait"
+     * Test attribute "input_file_url"
      */
-    public function testPropertyExtraLoadingWait()
+    public function testPropertyInputFileUrl()
     {
     }
 
     /**
-     * Test attribute "include_background_graphics"
+     * Test attribute "replace_strings"
      */
-    public function testPropertyIncludeBackgroundGraphics()
-    {
-    }
-
-    /**
-     * Test attribute "scale_factor"
-     */
-    public function testPropertyScaleFactor()
+    public function testPropertyReplaceStrings()
     {
     }
 }
