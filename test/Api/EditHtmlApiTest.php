@@ -110,4 +110,14 @@ class EditHtmlApiTest extends \PHPUnit_Framework_TestCase
     public function testEditHtmlHtmlAppendParagraph()
     {
     }
+
+    /**
+     * Test case for editHtmlHtmlCreateBlankDocument
+     *
+     * Create a Blank HTML Document.
+     *
+     */
+    public function testEditHtmlHtmlCreateBlankDocument()
+    {
+    }
 }

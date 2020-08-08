@@ -192,6 +192,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editPdfResize
+     *
+     * Change PDF Document's Paper Size.
+     *
+     */
+    public function testEditPdfResize()
+    {
+    }
+
+    /**
      * Test case for editPdfRotateAllPages
      *
      * Rotate all pages in a PDF document.
