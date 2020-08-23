@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.9.6
+- Package version: 1.9.7
 
 
 ## Requirements
@@ -194,11 +194,14 @@ Class | Method | HTTP request | Description
 *ConvertWebApi* | [**convertWebUrlToScreenshot**](docs/Api/ConvertWebApi.md#convertweburltoscreenshot) | **POST** /convert/web/url/to/screenshot | Take screenshot of URL
 *ConvertWebApi* | [**convertWebUrlToTxt**](docs/Api/ConvertWebApi.md#convertweburltotxt) | **POST** /convert/web/url/to/txt | Convert website URL page to text (txt)
 *EditDocumentApi* | [**editDocumentBeginEditing**](docs/Api/EditDocumentApi.md#editdocumentbeginediting) | **POST** /convert/edit/begin-editing | Begin editing a document
+*EditDocumentApi* | [**editDocumentDocxAcceptAllTrackChanges**](docs/Api/EditDocumentApi.md#editdocumentdocxacceptalltrackchanges) | **POST** /convert/edit/docx/track-changes/accept-all | Accept all tracked changes, revisions in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxBody**](docs/Api/EditDocumentApi.md#editdocumentdocxbody) | **POST** /convert/edit/docx/get-body | Get body from a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxCreateBlankDocument**](docs/Api/EditDocumentApi.md#editdocumentdocxcreateblankdocument) | **POST** /convert/edit/docx/create/blank | Create a blank Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxDeletePages**](docs/Api/EditDocumentApi.md#editdocumentdocxdeletepages) | **POST** /convert/edit/docx/delete-pages | Delete, remove pages from a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxDeleteTableRow**](docs/Api/EditDocumentApi.md#editdocumentdocxdeletetablerow) | **POST** /convert/edit/docx/delete-table-row | Deletes a table row in an existing table in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxDeleteTableRowRange**](docs/Api/EditDocumentApi.md#editdocumentdocxdeletetablerowrange) | **POST** /convert/edit/docx/delete-table-row/range | Deletes a range of multiple table rows in an existing table in a Word DOCX document
+*EditDocumentApi* | [**editDocumentDocxDisableTrackChanges**](docs/Api/EditDocumentApi.md#editdocumentdocxdisabletrackchanges) | **POST** /convert/edit/docx/track-changes/disable | Disable track changes, revisions in a Word DOCX document
+*EditDocumentApi* | [**editDocumentDocxEnableTrackChanges**](docs/Api/EditDocumentApi.md#editdocumentdocxenabletrackchanges) | **POST** /convert/edit/docx/track-changes/enable | Enable track changes, revisions in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxFindParagraph**](docs/Api/EditDocumentApi.md#editdocumentdocxfindparagraph) | **POST** /convert/edit/docx/find/paragraph | Find matching paragraphs in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxGetComments**](docs/Api/EditDocumentApi.md#editdocumentdocxgetcomments) | **POST** /convert/edit/docx/get-comments/flat-list | Get comments from a Word DOCX document as a flat list
 *EditDocumentApi* | [**editDocumentDocxGetCommentsHierarchical**](docs/Api/EditDocumentApi.md#editdocumentdocxgetcommentshierarchical) | **POST** /convert/edit/docx/get-comments/hierarchical | Get comments from a Word DOCX document hierarchically
@@ -215,6 +218,7 @@ Class | Method | HTTP request | Description
 *EditDocumentApi* | [**editDocumentDocxInsertTable**](docs/Api/EditDocumentApi.md#editdocumentdocxinserttable) | **POST** /convert/edit/docx/insert-table | Insert a new table into a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxInsertTableRow**](docs/Api/EditDocumentApi.md#editdocumentdocxinserttablerow) | **POST** /convert/edit/docx/insert-table-row | Insert a new row into an existing table in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxPages**](docs/Api/EditDocumentApi.md#editdocumentdocxpages) | **POST** /convert/edit/docx/get-pages | Get pages and content from a Word DOCX document
+*EditDocumentApi* | [**editDocumentDocxRemoveAllComments**](docs/Api/EditDocumentApi.md#editdocumentdocxremoveallcomments) | **POST** /convert/edit/docx/comments/remove-all | Remove all comments from a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxRemoveHeadersAndFooters**](docs/Api/EditDocumentApi.md#editdocumentdocxremoveheadersandfooters) | **POST** /convert/edit/docx/remove-headers-and-footers | Remove headers and footers from Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxRemoveObject**](docs/Api/EditDocumentApi.md#editdocumentdocxremoveobject) | **POST** /convert/edit/docx/remove-object | Delete any object in a Word DOCX document
 *EditDocumentApi* | [**editDocumentDocxReplace**](docs/Api/EditDocumentApi.md#editdocumentdocxreplace) | **POST** /convert/edit/docx/replace-all | Replace string in Word DOCX document

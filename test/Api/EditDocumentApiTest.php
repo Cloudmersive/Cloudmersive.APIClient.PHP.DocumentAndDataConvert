@@ -82,6 +82,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxAcceptAllTrackChanges
+     *
+     * Accept all tracked changes, revisions in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxAcceptAllTrackChanges()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxBody
      *
      * Get body from a Word DOCX document.
@@ -128,6 +138,26 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentDocxDeleteTableRowRange()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxDisableTrackChanges
+     *
+     * Disable track changes, revisions in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxDisableTrackChanges()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxEnableTrackChanges
+     *
+     * Enable track changes, revisions in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxEnableTrackChanges()
     {
     }
 
@@ -288,6 +318,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentDocxPages()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxRemoveAllComments
+     *
+     * Remove all comments from a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxRemoveAllComments()
     {
     }
 
