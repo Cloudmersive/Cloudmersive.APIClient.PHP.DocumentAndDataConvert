@@ -132,6 +132,26 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentHtmlValidation
+     *
+     * Validate an HTML file.
+     *
+     */
+    public function testValidateDocumentHtmlValidation()
+    {
+    }
+
+    /**
+     * Test case for validateDocumentImageValidation
+     *
+     * Validate an Image File.
+     *
+     */
+    public function testValidateDocumentImageValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentJsonValidation
      *
      * Validate a JSON file.

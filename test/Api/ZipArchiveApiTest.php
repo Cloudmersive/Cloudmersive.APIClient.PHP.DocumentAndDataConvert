@@ -92,6 +92,16 @@ class ZipArchiveApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for zipArchiveZipCreateEncrypted
+     *
+     * Compress files to create a new, encrypted and password-protected zip archive.
+     *
+     */
+    public function testZipArchiveZipCreateEncrypted()
+    {
+    }
+
+    /**
      * Test case for zipArchiveZipDecrypt
      *
      * Decrypt and remove password protection on a zip file.

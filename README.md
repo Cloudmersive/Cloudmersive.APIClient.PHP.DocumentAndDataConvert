@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 1.9.7
+- Package version: 1.9.8
 
 
 ## Requirements
@@ -315,6 +315,8 @@ Class | Method | HTTP request | Description
 *ValidateDocumentApi* | [**validateDocumentEmlValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentemlvalidation) | **POST** /convert/validate/eml | Validate if an EML file is executable
 *ValidateDocumentApi* | [**validateDocumentExecutableValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentexecutablevalidation) | **POST** /convert/validate/executable | Validate if a file is executable
 *ValidateDocumentApi* | [**validateDocumentGZipValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentgzipvalidation) | **POST** /convert/validate/gzip | Validate a GZip Archive file (gzip or gz)
+*ValidateDocumentApi* | [**validateDocumentHtmlValidation**](docs/Api/ValidateDocumentApi.md#validatedocumenthtmlvalidation) | **POST** /convert/validate/html | Validate an HTML file
+*ValidateDocumentApi* | [**validateDocumentImageValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentimagevalidation) | **POST** /convert/validate/image | Validate an Image File
 *ValidateDocumentApi* | [**validateDocumentJsonValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentjsonvalidation) | **POST** /convert/validate/json | Validate a JSON file
 *ValidateDocumentApi* | [**validateDocumentMsgValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentmsgvalidation) | **POST** /convert/validate/msg | Validate if an MSG file is executable
 *ValidateDocumentApi* | [**validateDocumentPdfValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentpdfvalidation) | **POST** /convert/validate/pdf | Validate a PDF document file
@@ -327,6 +329,7 @@ Class | Method | HTTP request | Description
 *ViewerToolsApi* | [**viewerToolsCreateSimple**](docs/Api/ViewerToolsApi.md#viewertoolscreatesimple) | **POST** /convert/viewer/create/web/simple | Create a web-based viewer
 *ZipArchiveApi* | [**zipArchiveZipCreate**](docs/Api/ZipArchiveApi.md#ziparchivezipcreate) | **POST** /convert/archive/zip/create | Compress files to create a new zip archive
 *ZipArchiveApi* | [**zipArchiveZipCreateAdvanced**](docs/Api/ZipArchiveApi.md#ziparchivezipcreateadvanced) | **POST** /convert/archive/zip/create/advanced | Compress files and folders to create a new zip archive with advanced options
+*ZipArchiveApi* | [**zipArchiveZipCreateEncrypted**](docs/Api/ZipArchiveApi.md#ziparchivezipcreateencrypted) | **POST** /convert/archive/zip/create/encrypted | Compress files to create a new, encrypted and password-protected zip archive
 *ZipArchiveApi* | [**zipArchiveZipDecrypt**](docs/Api/ZipArchiveApi.md#ziparchivezipdecrypt) | **POST** /convert/archive/zip/decrypt | Decrypt and remove password protection on a zip file
 *ZipArchiveApi* | [**zipArchiveZipEncryptAdvanced**](docs/Api/ZipArchiveApi.md#ziparchivezipencryptadvanced) | **POST** /convert/archive/zip/encrypt/advanced | Encrypt and password protect a zip file
 *ZipArchiveApi* | [**zipArchiveZipExtract**](docs/Api/ZipArchiveApi.md#ziparchivezipextract) | **POST** /convert/archive/zip/extract | Extract, decompress files and folders from a zip archive
