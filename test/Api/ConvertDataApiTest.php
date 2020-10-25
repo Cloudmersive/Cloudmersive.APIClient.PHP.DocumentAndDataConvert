@@ -82,6 +82,16 @@ class ConvertDataApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDataCsvToXml
+     *
+     * Convert CSV to XML conversion.
+     *
+     */
+    public function testConvertDataCsvToXml()
+    {
+    }
+
+    /**
      * Test case for convertDataJsonToXml
      *
      * Convert JSON to XML conversion.
@@ -108,6 +118,16 @@ class ConvertDataApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testConvertDataXlsxToJson()
+    {
+    }
+
+    /**
+     * Test case for convertDataXlsxToXml
+     *
+     * Convert Excel XLSX to XML conversion.
+     *
+     */
+    public function testConvertDataXlsxToXml()
     {
     }
 

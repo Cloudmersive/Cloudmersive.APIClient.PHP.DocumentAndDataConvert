@@ -212,6 +212,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentDocxToDoc
+     *
+     * Convert Word DOCX Document to Legacy Word DOC (97-03).
+     *
+     */
+    public function testConvertDocumentDocxToDoc()
+    {
+    }
+
+    /**
      * Test case for convertDocumentDocxToHtml
      *
      * Convert Word DOCX Document to HTML Document.
@@ -682,6 +692,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentPptxToPpt
+     *
+     * Convert PowerPoint PPTX presentation to Legacy PowerPoint PPT (97-03).
+     *
+     */
+    public function testConvertDocumentPptxToPpt()
+    {
+    }
+
+    /**
      * Test case for convertDocumentPptxToTxt
      *
      * Convert PowerPoint PPTX Presentation to Text (txt).
@@ -828,6 +848,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testConvertDocumentXlsxToTxt()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentXlsxToXls
+     *
+     * Convert Excel XLSX Spreadsheet to Legacy Excel XLS (97-03).
+     *
+     */
+    public function testConvertDocumentXlsxToXls()
     {
     }
 }

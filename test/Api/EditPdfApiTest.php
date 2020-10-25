@@ -82,6 +82,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editPdfConvertToPdfA
+     *
+     * Convert a PDF file to PDF/A.
+     *
+     */
+    public function testEditPdfConvertToPdfA()
+    {
+    }
+
+    /**
      * Test case for editPdfDecrypt
      *
      * Decrypt and password-protect a PDF.
@@ -162,12 +172,32 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editPdfLinearize
+     *
+     * Linearize and optimize a PDF for streaming download.
+     *
+     */
+    public function testEditPdfLinearize()
+    {
+    }
+
+    /**
      * Test case for editPdfRasterize
      *
      * Rasterize a PDF to an image-based PDF.
      *
      */
     public function testEditPdfRasterize()
+    {
+    }
+
+    /**
+     * Test case for editPdfReduceFileSize
+     *
+     * Reduce the file size and optimize a PDF.
+     *
+     */
+    public function testEditPdfReduceFileSize()
     {
     }
 
