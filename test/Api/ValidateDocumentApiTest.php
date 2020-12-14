@@ -212,6 +212,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentTxtValidation
+     *
+     * Validate an TXT file.
+     *
+     */
+    public function testValidateDocumentTxtValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentXlsxValidation
      *
      * Validate a Excel document (XLSX).

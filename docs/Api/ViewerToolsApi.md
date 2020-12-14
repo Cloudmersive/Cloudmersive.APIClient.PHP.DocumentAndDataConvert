@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **viewerToolsCreateSimple**
-> \Swagger\Client\Model\ViewerResponse viewerToolsCreateSimple($input_file)
+> \Swagger\Client\Model\ViewerResponse viewerToolsCreateSimple($input_file, $width, $height)
 
 Create a web-based viewer
 
@@ -31,9 +31,11 @@ $apiInstance = new Swagger\Client\Api\ViewerToolsApi(
     $config
 );
 $input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$width = 56; // int | Optional; width of the output viewer in pixels
+$height = 56; // int | Optional; height of the output viewer in pixels
 
 try {
-    $result = $apiInstance->viewerToolsCreateSimple($input_file);
+    $result = $apiInstance->viewerToolsCreateSimple($input_file, $width, $height);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ViewerToolsApi->viewerToolsCreateSimple: ', $e->getMessage(), PHP_EOL;
@@ -46,6 +48,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **width** | **int**| Optional; width of the output viewer in pixels | [optional]
+ **height** | **int**| Optional; height of the output viewer in pixels | [optional]
 
 ### Return type
 

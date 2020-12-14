@@ -88,14 +88,16 @@ class ViewerToolsApi
      * Create a web-based viewer
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $width Optional; width of the output viewer in pixels (optional)
+     * @param  int $height Optional; height of the output viewer in pixels (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\ViewerResponse
      */
-    public function viewerToolsCreateSimple($input_file)
+    public function viewerToolsCreateSimple($input_file, $width = null, $height = null)
     {
-        list($response) = $this->viewerToolsCreateSimpleWithHttpInfo($input_file);
+        list($response) = $this->viewerToolsCreateSimpleWithHttpInfo($input_file, $width, $height);
         return $response;
     }
 
@@ -105,15 +107,17 @@ class ViewerToolsApi
      * Create a web-based viewer
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $width Optional; width of the output viewer in pixels (optional)
+     * @param  int $height Optional; height of the output viewer in pixels (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\ViewerResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function viewerToolsCreateSimpleWithHttpInfo($input_file)
+    public function viewerToolsCreateSimpleWithHttpInfo($input_file, $width = null, $height = null)
     {
         $returnType = '\Swagger\Client\Model\ViewerResponse';
-        $request = $this->viewerToolsCreateSimpleRequest($input_file);
+        $request = $this->viewerToolsCreateSimpleRequest($input_file, $width, $height);
 
         try {
             $options = $this->createHttpClientOption();
@@ -180,13 +184,15 @@ class ViewerToolsApi
      * Create a web-based viewer
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $width Optional; width of the output viewer in pixels (optional)
+     * @param  int $height Optional; height of the output viewer in pixels (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function viewerToolsCreateSimpleAsync($input_file)
+    public function viewerToolsCreateSimpleAsync($input_file, $width = null, $height = null)
     {
-        return $this->viewerToolsCreateSimpleAsyncWithHttpInfo($input_file)
+        return $this->viewerToolsCreateSimpleAsyncWithHttpInfo($input_file, $width, $height)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -200,14 +206,16 @@ class ViewerToolsApi
      * Create a web-based viewer
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $width Optional; width of the output viewer in pixels (optional)
+     * @param  int $height Optional; height of the output viewer in pixels (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function viewerToolsCreateSimpleAsyncWithHttpInfo($input_file)
+    public function viewerToolsCreateSimpleAsyncWithHttpInfo($input_file, $width = null, $height = null)
     {
         $returnType = '\Swagger\Client\Model\ViewerResponse';
-        $request = $this->viewerToolsCreateSimpleRequest($input_file);
+        $request = $this->viewerToolsCreateSimpleRequest($input_file, $width, $height);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -250,11 +258,13 @@ class ViewerToolsApi
      * Create request for operation 'viewerToolsCreateSimple'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $width Optional; width of the output viewer in pixels (optional)
+     * @param  int $height Optional; height of the output viewer in pixels (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function viewerToolsCreateSimpleRequest($input_file)
+    protected function viewerToolsCreateSimpleRequest($input_file, $width = null, $height = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
@@ -270,6 +280,14 @@ class ViewerToolsApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($width !== null) {
+            $headerParams['width'] = ObjectSerializer::toHeaderValue($width);
+        }
+        // header params
+        if ($height !== null) {
+            $headerParams['height'] = ObjectSerializer::toHeaderValue($height);
+        }
 
 
         // form params
