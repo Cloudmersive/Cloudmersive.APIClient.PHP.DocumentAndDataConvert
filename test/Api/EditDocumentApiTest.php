@@ -212,6 +212,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxGetMetadataProperties
+     *
+     * Get all metadata properties in Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxGetMetadataProperties()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxGetSections
      *
      * Get sections from a Word DOCX document.
@@ -378,6 +388,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentDocxReplaceParagraph()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxSetCustomMetadataProperties
+     *
+     * Set custom property metadata properties in Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxSetCustomMetadataProperties()
     {
     }
 
