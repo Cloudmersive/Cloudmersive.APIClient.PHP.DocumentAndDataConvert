@@ -152,6 +152,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentJpgValidation
+     *
+     * Validate a JPG File.
+     *
+     */
+    public function testValidateDocumentJpgValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentJsonValidation
      *
      * Validate a JSON file.
@@ -178,6 +188,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testValidateDocumentPdfValidation()
+    {
+    }
+
+    /**
+     * Test case for validateDocumentPngValidation
+     *
+     * Validate a PNG File.
+     *
+     */
+    public function testValidateDocumentPngValidation()
     {
     }
 
