@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**editHtmlHtmlAppendImageInline**](EditHtmlApi.md#editHtmlHtmlAppendImageInline) | **POST** /convert/edit/html/append/image/inline | Append a Base64 Inline Image to an HTML Document
 [**editHtmlHtmlAppendParagraph**](EditHtmlApi.md#editHtmlHtmlAppendParagraph) | **POST** /convert/edit/html/append/paragraph | Append a Paragraph to an HTML Document
 [**editHtmlHtmlCreateBlankDocument**](EditHtmlApi.md#editHtmlHtmlCreateBlankDocument) | **POST** /convert/edit/html/create/blank | Create a Blank HTML Document
+[**editHtmlHtmlGetLinks**](EditHtmlApi.md#editHtmlHtmlGetLinks) | **POST** /convert/edit/html/extract/links | Extract resolved link URLs from HTML File
 
 
 # **editHtmlHtmlAppendHeading**
@@ -312,6 +313,65 @@ Name | Type | Description  | Notes
 ### Return type
 
 **string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editHtmlHtmlGetLinks**
+> \Swagger\Client\Model\HtmlGetLinksResponse editHtmlHtmlGetLinks($input_file, $input_file_url, $base_url)
+
+Extract resolved link URLs from HTML File
+
+Extracts the resolved link URLs, fully-qualified if possible, from an input HTML file.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditHtmlApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Optional: Input file to perform the operation on.
+$input_file_url = "input_file_url_example"; // string | Optional: URL of a file to operate on as input.
+$base_url = "base_url_example"; // string | Optional: Base URL of the page, such as https://mydomain.com
+
+try {
+    $result = $apiInstance->editHtmlHtmlGetLinks($input_file, $input_file_url, $base_url);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditHtmlApi->editHtmlHtmlGetLinks: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Optional: Input file to perform the operation on. | [optional]
+ **input_file_url** | **string**| Optional: URL of a file to operate on as input. | [optional]
+ **base_url** | **string**| Optional: Base URL of the page, such as https://mydomain.com | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\HtmlGetLinksResponse**](../Model/HtmlGetLinksResponse.md)
 
 ### Authorization
 

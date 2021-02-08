@@ -120,4 +120,14 @@ class EditHtmlApiTest extends \PHPUnit_Framework_TestCase
     public function testEditHtmlHtmlCreateBlankDocument()
     {
     }
+
+    /**
+     * Test case for editHtmlHtmlGetLinks
+     *
+     * Extract resolved link URLs from HTML File.
+     *
+     */
+    public function testEditHtmlHtmlGetLinks()
+    {
+    }
 }

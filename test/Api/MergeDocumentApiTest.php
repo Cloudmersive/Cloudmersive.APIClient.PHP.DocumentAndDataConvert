@@ -92,6 +92,26 @@ class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for mergeDocumentHtml
+     *
+     * Merge Two HTML (HTM) Files Together.
+     *
+     */
+    public function testMergeDocumentHtml()
+    {
+    }
+
+    /**
+     * Test case for mergeDocumentHtmlMulti
+     *
+     * Merge Multple HTML (HTM) Files Together.
+     *
+     */
+    public function testMergeDocumentHtmlMulti()
+    {
+    }
+
+    /**
      * Test case for mergeDocumentPdf
      *
      * Merge Two PDF Files Together.

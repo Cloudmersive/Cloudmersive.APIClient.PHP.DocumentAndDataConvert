@@ -1562,6 +1562,282 @@ class EditHtmlApi
     }
 
     /**
+     * Operation editHtmlHtmlGetLinks
+     *
+     * Extract resolved link URLs from HTML File
+     *
+     * @param  \SplFileObject $input_file Optional: Input file to perform the operation on. (optional)
+     * @param  string $input_file_url Optional: URL of a file to operate on as input. (optional)
+     * @param  string $base_url Optional: Base URL of the page, such as https://mydomain.com (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\HtmlGetLinksResponse
+     */
+    public function editHtmlHtmlGetLinks($input_file = null, $input_file_url = null, $base_url = null)
+    {
+        list($response) = $this->editHtmlHtmlGetLinksWithHttpInfo($input_file, $input_file_url, $base_url);
+        return $response;
+    }
+
+    /**
+     * Operation editHtmlHtmlGetLinksWithHttpInfo
+     *
+     * Extract resolved link URLs from HTML File
+     *
+     * @param  \SplFileObject $input_file Optional: Input file to perform the operation on. (optional)
+     * @param  string $input_file_url Optional: URL of a file to operate on as input. (optional)
+     * @param  string $base_url Optional: Base URL of the page, such as https://mydomain.com (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\HtmlGetLinksResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editHtmlHtmlGetLinksWithHttpInfo($input_file = null, $input_file_url = null, $base_url = null)
+    {
+        $returnType = '\Swagger\Client\Model\HtmlGetLinksResponse';
+        $request = $this->editHtmlHtmlGetLinksRequest($input_file, $input_file_url, $base_url);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\HtmlGetLinksResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editHtmlHtmlGetLinksAsync
+     *
+     * Extract resolved link URLs from HTML File
+     *
+     * @param  \SplFileObject $input_file Optional: Input file to perform the operation on. (optional)
+     * @param  string $input_file_url Optional: URL of a file to operate on as input. (optional)
+     * @param  string $base_url Optional: Base URL of the page, such as https://mydomain.com (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editHtmlHtmlGetLinksAsync($input_file = null, $input_file_url = null, $base_url = null)
+    {
+        return $this->editHtmlHtmlGetLinksAsyncWithHttpInfo($input_file, $input_file_url, $base_url)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editHtmlHtmlGetLinksAsyncWithHttpInfo
+     *
+     * Extract resolved link URLs from HTML File
+     *
+     * @param  \SplFileObject $input_file Optional: Input file to perform the operation on. (optional)
+     * @param  string $input_file_url Optional: URL of a file to operate on as input. (optional)
+     * @param  string $base_url Optional: Base URL of the page, such as https://mydomain.com (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editHtmlHtmlGetLinksAsyncWithHttpInfo($input_file = null, $input_file_url = null, $base_url = null)
+    {
+        $returnType = '\Swagger\Client\Model\HtmlGetLinksResponse';
+        $request = $this->editHtmlHtmlGetLinksRequest($input_file, $input_file_url, $base_url);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editHtmlHtmlGetLinks'
+     *
+     * @param  \SplFileObject $input_file Optional: Input file to perform the operation on. (optional)
+     * @param  string $input_file_url Optional: URL of a file to operate on as input. (optional)
+     * @param  string $base_url Optional: Base URL of the page, such as https://mydomain.com (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editHtmlHtmlGetLinksRequest($input_file = null, $input_file_url = null, $base_url = null)
+    {
+
+        $resourcePath = '/convert/edit/html/extract/links';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($input_file_url !== null) {
+            $headerParams['inputFileUrl'] = ObjectSerializer::toHeaderValue($input_file_url);
+        }
+        // header params
+        if ($base_url !== null) {
+            $headerParams['baseUrl'] = ObjectSerializer::toHeaderValue($base_url);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Create http client option
      *
      * @throws \RuntimeException on file opening failure

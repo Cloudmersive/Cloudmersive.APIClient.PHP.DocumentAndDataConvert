@@ -4,7 +4,7 @@ Convert API lets you effortlessly convert file formats and types.
 [Cloudmersive Document and Data Conversion API](https://www.cloudmersive.com/convert-api) provides advanced document conversion, editing and generation capabilities.
 
 - API version: v1
-- Package version: 2.0.3
+- Package version: 2.0.4
 
 
 ## Requirements
@@ -264,6 +264,7 @@ Class | Method | HTTP request | Description
 *EditHtmlApi* | [**editHtmlHtmlAppendImageInline**](docs/Api/EditHtmlApi.md#edithtmlhtmlappendimageinline) | **POST** /convert/edit/html/append/image/inline | Append a Base64 Inline Image to an HTML Document
 *EditHtmlApi* | [**editHtmlHtmlAppendParagraph**](docs/Api/EditHtmlApi.md#edithtmlhtmlappendparagraph) | **POST** /convert/edit/html/append/paragraph | Append a Paragraph to an HTML Document
 *EditHtmlApi* | [**editHtmlHtmlCreateBlankDocument**](docs/Api/EditHtmlApi.md#edithtmlhtmlcreateblankdocument) | **POST** /convert/edit/html/create/blank | Create a Blank HTML Document
+*EditHtmlApi* | [**editHtmlHtmlGetLinks**](docs/Api/EditHtmlApi.md#edithtmlhtmlgetlinks) | **POST** /convert/edit/html/extract/links | Extract resolved link URLs from HTML File
 *EditPdfApi* | [**editPdfAddAnnotations**](docs/Api/EditPdfApi.md#editpdfaddannotations) | **POST** /convert/edit/pdf/annotations/add-item | Add one or more PDF annotations, comments in the PDF document
 *EditPdfApi* | [**editPdfConvertToPdfA**](docs/Api/EditPdfApi.md#editpdfconverttopdfa) | **POST** /convert/edit/pdf/optimize/pdf-a | Convert a PDF file to PDF/A
 *EditPdfApi* | [**editPdfDecrypt**](docs/Api/EditPdfApi.md#editpdfdecrypt) | **POST** /convert/edit/pdf/decrypt | Decrypt and password-protect a PDF
@@ -301,6 +302,8 @@ Class | Method | HTTP request | Description
 *EditTextApi* | [**editTextTrimWhitespace**](docs/Api/EditTextApi.md#edittexttrimwhitespace) | **POST** /convert/edit/text/remove/whitespace/trim | Trim leading and trailing whitespace from text string
 *MergeDocumentApi* | [**mergeDocumentDocx**](docs/Api/MergeDocumentApi.md#mergedocumentdocx) | **POST** /convert/merge/docx | Merge Two Word DOCX Together
 *MergeDocumentApi* | [**mergeDocumentDocxMulti**](docs/Api/MergeDocumentApi.md#mergedocumentdocxmulti) | **POST** /convert/merge/docx/multi | Merge Multple Word DOCX Together
+*MergeDocumentApi* | [**mergeDocumentHtml**](docs/Api/MergeDocumentApi.md#mergedocumenthtml) | **POST** /convert/merge/html | Merge Two HTML (HTM) Files Together
+*MergeDocumentApi* | [**mergeDocumentHtmlMulti**](docs/Api/MergeDocumentApi.md#mergedocumenthtmlmulti) | **POST** /convert/merge/html/multi | Merge Multple HTML (HTM) Files Together
 *MergeDocumentApi* | [**mergeDocumentPdf**](docs/Api/MergeDocumentApi.md#mergedocumentpdf) | **POST** /convert/merge/pdf | Merge Two PDF Files Together
 *MergeDocumentApi* | [**mergeDocumentPdfMulti**](docs/Api/MergeDocumentApi.md#mergedocumentpdfmulti) | **POST** /convert/merge/pdf/multi | Merge Multple PDF Files Together
 *MergeDocumentApi* | [**mergeDocumentPng**](docs/Api/MergeDocumentApi.md#mergedocumentpng) | **POST** /convert/merge/png/vertical | Merge Two PNG Files Together
@@ -325,6 +328,7 @@ Class | Method | HTTP request | Description
 *ValidateDocumentApi* | [**validateDocumentEmlValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentemlvalidation) | **POST** /convert/validate/eml | Validate if an EML file is executable
 *ValidateDocumentApi* | [**validateDocumentExecutableValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentexecutablevalidation) | **POST** /convert/validate/executable | Validate if a file is executable
 *ValidateDocumentApi* | [**validateDocumentGZipValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentgzipvalidation) | **POST** /convert/validate/gzip | Validate a GZip Archive file (gzip or gz)
+*ValidateDocumentApi* | [**validateDocumentHtmlSsrfValidation**](docs/Api/ValidateDocumentApi.md#validatedocumenthtmlssrfvalidation) | **POST** /convert/validate/html/ssrf-threat-check | Validate an HTML file and checks for SSRF threats
 *ValidateDocumentApi* | [**validateDocumentHtmlValidation**](docs/Api/ValidateDocumentApi.md#validatedocumenthtmlvalidation) | **POST** /convert/validate/html | Validate an HTML file
 *ValidateDocumentApi* | [**validateDocumentImageValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentimagevalidation) | **POST** /convert/validate/image | Validate an Image File
 *ValidateDocumentApi* | [**validateDocumentJpgValidation**](docs/Api/ValidateDocumentApi.md#validatedocumentjpgvalidation) | **POST** /convert/validate/jpg | Validate a JPG File
@@ -480,10 +484,14 @@ Class | Method | HTTP request | Description
  - [GetXlsxStylesResponse](docs/Model/GetXlsxStylesResponse.md)
  - [GetXlsxWorksheetsRequest](docs/Model/GetXlsxWorksheetsRequest.md)
  - [GetXlsxWorksheetsResponse](docs/Model/GetXlsxWorksheetsResponse.md)
+ - [HtmlGetLinksResponse](docs/Model/HtmlGetLinksResponse.md)
+ - [HtmlHyperlink](docs/Model/HtmlHyperlink.md)
  - [HtmlMdResult](docs/Model/HtmlMdResult.md)
+ - [HtmlSsrfThreatCheckResult](docs/Model/HtmlSsrfThreatCheckResult.md)
  - [HtmlTemplateApplicationRequest](docs/Model/HtmlTemplateApplicationRequest.md)
  - [HtmlTemplateApplicationResponse](docs/Model/HtmlTemplateApplicationResponse.md)
  - [HtmlTemplateOperation](docs/Model/HtmlTemplateOperation.md)
+ - [HtmlThreatLink](docs/Model/HtmlThreatLink.md)
  - [HtmlToOfficeRequest](docs/Model/HtmlToOfficeRequest.md)
  - [HtmlToPdfRequest](docs/Model/HtmlToPdfRequest.md)
  - [HtmlToPngRequest](docs/Model/HtmlToPngRequest.md)

@@ -132,6 +132,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentHtmlSsrfValidation
+     *
+     * Validate an HTML file and checks for SSRF threats.
+     *
+     */
+    public function testValidateDocumentHtmlSsrfValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentHtmlValidation
      *
      * Validate an HTML file.
