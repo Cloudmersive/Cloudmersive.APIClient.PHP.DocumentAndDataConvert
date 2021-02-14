@@ -212,6 +212,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxGetMacroInformation
+     *
+     * Get macro information from a Word DOCX/DOCM document.
+     *
+     */
+    public function testEditDocumentDocxGetMacroInformation()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxGetMetadataProperties
      *
      * Get all metadata properties in Word DOCX document.
@@ -472,6 +482,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentPptxGetMacroInformation
+     *
+     * Get macro information from a PowerPoint PPTX/PPTM presentation document.
+     *
+     */
+    public function testEditDocumentPptxGetMacroInformation()
+    {
+    }
+
+    /**
      * Test case for editDocumentPptxReplace
      *
      * Replace string in PowerPoint PPTX presentation.
@@ -598,6 +618,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentXlsxGetImages()
+    {
+    }
+
+    /**
+     * Test case for editDocumentXlsxGetMacroInformation
+     *
+     * Get macro information from a Excel XLSX/XLSM spreadsheet, worksheet.
+     *
+     */
+    public function testEditDocumentXlsxGetMacroInformation()
     {
     }
 
