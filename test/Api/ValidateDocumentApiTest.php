@@ -272,6 +272,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentXmlXxeThreatValidation
+     *
+     * Validate an XML file for XML External Entity (XXE) threats.
+     *
+     */
+    public function testValidateDocumentXmlXxeThreatValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentZipValidation
      *
      * Validate a Zip Archive file (zip).

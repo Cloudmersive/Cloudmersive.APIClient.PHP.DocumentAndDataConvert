@@ -102,6 +102,16 @@ class ZipArchiveApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for zipArchiveZipCreateQuarantine
+     *
+     * Create an encrypted zip file to quarantine a dangerous file.
+     *
+     */
+    public function testZipArchiveZipCreateQuarantine()
+    {
+    }
+
+    /**
      * Test case for zipArchiveZipDecrypt
      *
      * Decrypt and remove password protection on a zip file.

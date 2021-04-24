@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**validateDocumentTxtValidation**](ValidateDocumentApi.md#validateDocumentTxtValidation) | **POST** /convert/validate/txt | Validate an TXT file
 [**validateDocumentXlsxValidation**](ValidateDocumentApi.md#validateDocumentXlsxValidation) | **POST** /convert/validate/xlsx | Validate a Excel document (XLSX)
 [**validateDocumentXmlValidation**](ValidateDocumentApi.md#validateDocumentXmlValidation) | **POST** /convert/validate/xml | Validate an XML file
+[**validateDocumentXmlXxeThreatValidation**](ValidateDocumentApi.md#validateDocumentXmlXxeThreatValidation) | **POST** /convert/validate/xml/xxe-threats | Validate an XML file for XML External Entity (XXE) threats
 [**validateDocumentZipValidation**](ValidateDocumentApi.md#validateDocumentZipValidation) | **POST** /convert/validate/zip | Validate a Zip Archive file (zip)
 
 
@@ -1115,6 +1116,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\Model\DocumentValidationResult**](../Model/DocumentValidationResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **validateDocumentXmlXxeThreatValidation**
+> \Swagger\Client\Model\XxeThreatDetectionResult validateDocumentXmlXxeThreatValidation($input_file)
+
+Validate an XML file for XML External Entity (XXE) threats
+
+Validate an XML document file for XML External Entity (XXE) threats; if the document is not valid, identifies the errors in the document.  XXE threats are a type of threat that exploits vulnerabilities in the XML standard relating to external or local entity URIs in XML documents.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ValidateDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->validateDocumentXmlXxeThreatValidation($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ValidateDocumentApi->validateDocumentXmlXxeThreatValidation: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+[**\Swagger\Client\Model\XxeThreatDetectionResult**](../Model/XxeThreatDetectionResult.md)
 
 ### Authorization
 
