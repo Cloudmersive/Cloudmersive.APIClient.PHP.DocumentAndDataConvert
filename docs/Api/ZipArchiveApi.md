@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **zipArchiveZipCreateQuarantine**
-> object zipArchiveZipCreateQuarantine()
+> object zipArchiveZipCreateQuarantine($password, $input_file1, $encryption_algorithm)
 
 Create an encrypted zip file to quarantine a dangerous file
 
@@ -241,9 +241,12 @@ $apiInstance = new Swagger\Client\Api\ZipArchiveApi(
     new GuzzleHttp\Client(),
     $config
 );
+$password = "password_example"; // string | Password to place on the Zip file; the longer the password, the more secure
+$input_file1 = "/path/to/file.txt"; // \SplFileObject | First input file to perform the operation on.
+$encryption_algorithm = "encryption_algorithm_example"; // string | Encryption algorithm to use; possible values are AES-256 (recommended), AES-128, and PK-Zip (not recommended; legacy, weak encryption algorithm). Default is AES-256.
 
 try {
-    $result = $apiInstance->zipArchiveZipCreateQuarantine();
+    $result = $apiInstance->zipArchiveZipCreateQuarantine($password, $input_file1, $encryption_algorithm);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ZipArchiveApi->zipArchiveZipCreateQuarantine: ', $e->getMessage(), PHP_EOL;
@@ -252,7 +255,12 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **password** | **string**| Password to place on the Zip file; the longer the password, the more secure |
+ **input_file1** | **\SplFileObject**| First input file to perform the operation on. |
+ **encryption_algorithm** | **string**| Encryption algorithm to use; possible values are AES-256 (recommended), AES-128, and PK-Zip (not recommended; legacy, weak encryption algorithm). Default is AES-256. | [optional]
 
 ### Return type
 

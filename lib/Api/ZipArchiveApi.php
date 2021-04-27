@@ -1081,14 +1081,17 @@ class ZipArchiveApi
      *
      * Create an encrypted zip file to quarantine a dangerous file
      *
+     * @param  string $password Password to place on the Zip file; the longer the password, the more secure (required)
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  string $encryption_algorithm Encryption algorithm to use; possible values are AES-256 (recommended), AES-128, and PK-Zip (not recommended; legacy, weak encryption algorithm). Default is AES-256. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return object
      */
-    public function zipArchiveZipCreateQuarantine()
+    public function zipArchiveZipCreateQuarantine($password, $input_file1, $encryption_algorithm = null)
     {
-        list($response) = $this->zipArchiveZipCreateQuarantineWithHttpInfo();
+        list($response) = $this->zipArchiveZipCreateQuarantineWithHttpInfo($password, $input_file1, $encryption_algorithm);
         return $response;
     }
 
@@ -1097,15 +1100,18 @@ class ZipArchiveApi
      *
      * Create an encrypted zip file to quarantine a dangerous file
      *
+     * @param  string $password Password to place on the Zip file; the longer the password, the more secure (required)
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  string $encryption_algorithm Encryption algorithm to use; possible values are AES-256 (recommended), AES-128, and PK-Zip (not recommended; legacy, weak encryption algorithm). Default is AES-256. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function zipArchiveZipCreateQuarantineWithHttpInfo()
+    public function zipArchiveZipCreateQuarantineWithHttpInfo($password, $input_file1, $encryption_algorithm = null)
     {
         $returnType = 'object';
-        $request = $this->zipArchiveZipCreateQuarantineRequest();
+        $request = $this->zipArchiveZipCreateQuarantineRequest($password, $input_file1, $encryption_algorithm);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1171,13 +1177,16 @@ class ZipArchiveApi
      *
      * Create an encrypted zip file to quarantine a dangerous file
      *
+     * @param  string $password Password to place on the Zip file; the longer the password, the more secure (required)
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  string $encryption_algorithm Encryption algorithm to use; possible values are AES-256 (recommended), AES-128, and PK-Zip (not recommended; legacy, weak encryption algorithm). Default is AES-256. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function zipArchiveZipCreateQuarantineAsync()
+    public function zipArchiveZipCreateQuarantineAsync($password, $input_file1, $encryption_algorithm = null)
     {
-        return $this->zipArchiveZipCreateQuarantineAsyncWithHttpInfo()
+        return $this->zipArchiveZipCreateQuarantineAsyncWithHttpInfo($password, $input_file1, $encryption_algorithm)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1190,14 +1199,17 @@ class ZipArchiveApi
      *
      * Create an encrypted zip file to quarantine a dangerous file
      *
+     * @param  string $password Password to place on the Zip file; the longer the password, the more secure (required)
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  string $encryption_algorithm Encryption algorithm to use; possible values are AES-256 (recommended), AES-128, and PK-Zip (not recommended; legacy, weak encryption algorithm). Default is AES-256. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function zipArchiveZipCreateQuarantineAsyncWithHttpInfo()
+    public function zipArchiveZipCreateQuarantineAsyncWithHttpInfo($password, $input_file1, $encryption_algorithm = null)
     {
         $returnType = 'object';
-        $request = $this->zipArchiveZipCreateQuarantineRequest();
+        $request = $this->zipArchiveZipCreateQuarantineRequest($password, $input_file1, $encryption_algorithm);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1239,12 +1251,27 @@ class ZipArchiveApi
     /**
      * Create request for operation 'zipArchiveZipCreateQuarantine'
      *
+     * @param  string $password Password to place on the Zip file; the longer the password, the more secure (required)
+     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  string $encryption_algorithm Encryption algorithm to use; possible values are AES-256 (recommended), AES-128, and PK-Zip (not recommended; legacy, weak encryption algorithm). Default is AES-256. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function zipArchiveZipCreateQuarantineRequest()
+    protected function zipArchiveZipCreateQuarantineRequest($password, $input_file1, $encryption_algorithm = null)
     {
+        // verify the required parameter 'password' is set
+        if ($password === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $password when calling zipArchiveZipCreateQuarantine'
+            );
+        }
+        // verify the required parameter 'input_file1' is set
+        if ($input_file1 === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file1 when calling zipArchiveZipCreateQuarantine'
+            );
+        }
 
         $resourcePath = '/convert/archive/zip/create/quarantine';
         $formParams = [];
@@ -1253,8 +1280,21 @@ class ZipArchiveApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($password !== null) {
+            $headerParams['password'] = ObjectSerializer::toHeaderValue($password);
+        }
+        // header params
+        if ($encryption_algorithm !== null) {
+            $headerParams['encryptionAlgorithm'] = ObjectSerializer::toHeaderValue($encryption_algorithm);
+        }
 
 
+        // form params
+        if ($input_file1 !== null) {
+            $multipart = true;
+            $formParams['inputFile1'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file1), 'rb');
+        }
         // body params
         $_tempBody = null;
 
