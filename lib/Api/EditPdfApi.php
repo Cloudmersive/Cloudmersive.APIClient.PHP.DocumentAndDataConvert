@@ -3405,14 +3405,15 @@ class EditPdfApi
      * Reduce the file size and optimize a PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  float $quality Quality level for the images in the PDF, ranging from 0.0 (low quality) to 1.0 (high quality); default is 0.3 (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function editPdfReduceFileSize($input_file)
+    public function editPdfReduceFileSize($input_file, $quality = null)
     {
-        list($response) = $this->editPdfReduceFileSizeWithHttpInfo($input_file);
+        list($response) = $this->editPdfReduceFileSizeWithHttpInfo($input_file, $quality);
         return $response;
     }
 
@@ -3422,15 +3423,16 @@ class EditPdfApi
      * Reduce the file size and optimize a PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  float $quality Quality level for the images in the PDF, ranging from 0.0 (low quality) to 1.0 (high quality); default is 0.3 (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function editPdfReduceFileSizeWithHttpInfo($input_file)
+    public function editPdfReduceFileSizeWithHttpInfo($input_file, $quality = null)
     {
         $returnType = 'string';
-        $request = $this->editPdfReduceFileSizeRequest($input_file);
+        $request = $this->editPdfReduceFileSizeRequest($input_file, $quality);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3497,13 +3499,14 @@ class EditPdfApi
      * Reduce the file size and optimize a PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  float $quality Quality level for the images in the PDF, ranging from 0.0 (low quality) to 1.0 (high quality); default is 0.3 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editPdfReduceFileSizeAsync($input_file)
+    public function editPdfReduceFileSizeAsync($input_file, $quality = null)
     {
-        return $this->editPdfReduceFileSizeAsyncWithHttpInfo($input_file)
+        return $this->editPdfReduceFileSizeAsyncWithHttpInfo($input_file, $quality)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3517,14 +3520,15 @@ class EditPdfApi
      * Reduce the file size and optimize a PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  float $quality Quality level for the images in the PDF, ranging from 0.0 (low quality) to 1.0 (high quality); default is 0.3 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editPdfReduceFileSizeAsyncWithHttpInfo($input_file)
+    public function editPdfReduceFileSizeAsyncWithHttpInfo($input_file, $quality = null)
     {
         $returnType = 'string';
-        $request = $this->editPdfReduceFileSizeRequest($input_file);
+        $request = $this->editPdfReduceFileSizeRequest($input_file, $quality);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3567,11 +3571,12 @@ class EditPdfApi
      * Create request for operation 'editPdfReduceFileSize'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  float $quality Quality level for the images in the PDF, ranging from 0.0 (low quality) to 1.0 (high quality); default is 0.3 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function editPdfReduceFileSizeRequest($input_file)
+    protected function editPdfReduceFileSizeRequest($input_file, $quality = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
@@ -3587,6 +3592,10 @@ class EditPdfApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($quality !== null) {
+            $headerParams['quality'] = ObjectSerializer::toHeaderValue($quality);
+        }
 
 
         // form params

@@ -4,13 +4,79 @@ All URIs are relative to *https://api.cloudmersive.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**editHtmlHtmlAppendHeaderTag**](EditHtmlApi.md#editHtmlHtmlAppendHeaderTag) | **POST** /convert/edit/html/head/append/tag | Append an HTML tag to the HEAD section of an HTML Document
 [**editHtmlHtmlAppendHeading**](EditHtmlApi.md#editHtmlHtmlAppendHeading) | **POST** /convert/edit/html/append/heading | Append a Heading to an HTML Document
 [**editHtmlHtmlAppendImageFromUrl**](EditHtmlApi.md#editHtmlHtmlAppendImageFromUrl) | **POST** /convert/edit/html/append/image/from-url | Append an Image to an HTML Document from a URL
 [**editHtmlHtmlAppendImageInline**](EditHtmlApi.md#editHtmlHtmlAppendImageInline) | **POST** /convert/edit/html/append/image/inline | Append a Base64 Inline Image to an HTML Document
 [**editHtmlHtmlAppendParagraph**](EditHtmlApi.md#editHtmlHtmlAppendParagraph) | **POST** /convert/edit/html/append/paragraph | Append a Paragraph to an HTML Document
 [**editHtmlHtmlCreateBlankDocument**](EditHtmlApi.md#editHtmlHtmlCreateBlankDocument) | **POST** /convert/edit/html/create/blank | Create a Blank HTML Document
+[**editHtmlHtmlGetLanguage**](EditHtmlApi.md#editHtmlHtmlGetLanguage) | **POST** /convert/edit/html/head/get/language | Gets the language for the HTML document
 [**editHtmlHtmlGetLinks**](EditHtmlApi.md#editHtmlHtmlGetLinks) | **POST** /convert/edit/html/extract/links | Extract resolved link URLs from HTML File
+[**editHtmlHtmlGetRelCanonical**](EditHtmlApi.md#editHtmlHtmlGetRelCanonical) | **POST** /convert/edit/html/head/get/rel-canonical-url | Gets the rel canonical URL for the HTML document
+[**editHtmlHtmlGetSitemap**](EditHtmlApi.md#editHtmlHtmlGetSitemap) | **POST** /convert/edit/html/head/get/sitemap-url | Gets the sitemap URL for the HTML document
+[**editHtmlHtmlSetLanguage**](EditHtmlApi.md#editHtmlHtmlSetLanguage) | **POST** /convert/edit/html/head/set/language | Sets the language for the HTML document
+[**editHtmlHtmlSetRelCanonical**](EditHtmlApi.md#editHtmlHtmlSetRelCanonical) | **POST** /convert/edit/html/head/set/rel-canonical-url | Sets the rel canonical URL for the HTML document
+[**editHtmlHtmlSetSitemapUrl**](EditHtmlApi.md#editHtmlHtmlSetSitemapUrl) | **POST** /convert/edit/html/head/set/sitemap-url | Sets the sitemap URL for the HTML document
 
+
+# **editHtmlHtmlAppendHeaderTag**
+> string editHtmlHtmlAppendHeaderTag($html_tag, $input_file, $input_file_url)
+
+Append an HTML tag to the HEAD section of an HTML Document
+
+Appends an HTML tag to the HEAD section of an HTML document.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditHtmlApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$html_tag = "html_tag_example"; // string | The HTML tag to append.
+$input_file = "/path/to/file.txt"; // \SplFileObject | Optional: Input file to perform the operation on.
+$input_file_url = "input_file_url_example"; // string | Optional: URL of a file to operate on as input.
+
+try {
+    $result = $apiInstance->editHtmlHtmlAppendHeaderTag($html_tag, $input_file, $input_file_url);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditHtmlApi->editHtmlHtmlAppendHeaderTag: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **html_tag** | **string**| The HTML tag to append. |
+ **input_file** | **\SplFileObject**| Optional: Input file to perform the operation on. | [optional]
+ **input_file_url** | **string**| Optional: URL of a file to operate on as input. | [optional]
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **editHtmlHtmlAppendHeading**
 > string editHtmlHtmlAppendHeading($heading_text, $input_file, $input_file_url, $heading_size, $css_style)
@@ -325,6 +391,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **editHtmlHtmlGetLanguage**
+> \Swagger\Client\Model\HtmlGetLanguageResult editHtmlHtmlGetLanguage($input_file, $input_file_url)
+
+Gets the language for the HTML document
+
+Retrieves the language code (e.g. \"en\" or \"de\") of an HTML document.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditHtmlApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Optional: Input file to perform the operation on.
+$input_file_url = "input_file_url_example"; // string | Optional: URL of a file to operate on as input.
+
+try {
+    $result = $apiInstance->editHtmlHtmlGetLanguage($input_file, $input_file_url);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditHtmlApi->editHtmlHtmlGetLanguage: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Optional: Input file to perform the operation on. | [optional]
+ **input_file_url** | **string**| Optional: URL of a file to operate on as input. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\HtmlGetLanguageResult**](../Model/HtmlGetLanguageResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **editHtmlHtmlGetLinks**
 > \Swagger\Client\Model\HtmlGetLinksResponse editHtmlHtmlGetLinks($input_file, $input_file_url, $base_url)
 
@@ -372,6 +495,297 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\Model\HtmlGetLinksResponse**](../Model/HtmlGetLinksResponse.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editHtmlHtmlGetRelCanonical**
+> \Swagger\Client\Model\HtmlGetRelCanonicalUrlResult editHtmlHtmlGetRelCanonical($input_file, $input_file_url)
+
+Gets the rel canonical URL for the HTML document
+
+Gets the rel canonical URL of an HTML document.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditHtmlApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Optional: Input file to perform the operation on.
+$input_file_url = "input_file_url_example"; // string | Optional: URL of a file to operate on as input.
+
+try {
+    $result = $apiInstance->editHtmlHtmlGetRelCanonical($input_file, $input_file_url);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditHtmlApi->editHtmlHtmlGetRelCanonical: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Optional: Input file to perform the operation on. | [optional]
+ **input_file_url** | **string**| Optional: URL of a file to operate on as input. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\HtmlGetRelCanonicalUrlResult**](../Model/HtmlGetRelCanonicalUrlResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editHtmlHtmlGetSitemap**
+> \Swagger\Client\Model\HtmlGetSitemapUrlResult editHtmlHtmlGetSitemap($input_file, $input_file_url)
+
+Gets the sitemap URL for the HTML document
+
+Gets the sitemap link URL of an HTML document.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditHtmlApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Optional: Input file to perform the operation on.
+$input_file_url = "input_file_url_example"; // string | Optional: URL of a file to operate on as input.
+
+try {
+    $result = $apiInstance->editHtmlHtmlGetSitemap($input_file, $input_file_url);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditHtmlApi->editHtmlHtmlGetSitemap: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Optional: Input file to perform the operation on. | [optional]
+ **input_file_url** | **string**| Optional: URL of a file to operate on as input. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\HtmlGetSitemapUrlResult**](../Model/HtmlGetSitemapUrlResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editHtmlHtmlSetLanguage**
+> string editHtmlHtmlSetLanguage($language_code, $input_file, $input_file_url)
+
+Sets the language for the HTML document
+
+Sets the language code of an HTML document.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditHtmlApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$language_code = "language_code_example"; // string | The HTML langauge code to set.
+$input_file = "/path/to/file.txt"; // \SplFileObject | Optional: Input file to perform the operation on.
+$input_file_url = "input_file_url_example"; // string | Optional: URL of a file to operate on as input.
+
+try {
+    $result = $apiInstance->editHtmlHtmlSetLanguage($language_code, $input_file, $input_file_url);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditHtmlApi->editHtmlHtmlSetLanguage: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **language_code** | **string**| The HTML langauge code to set. |
+ **input_file** | **\SplFileObject**| Optional: Input file to perform the operation on. | [optional]
+ **input_file_url** | **string**| Optional: URL of a file to operate on as input. | [optional]
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editHtmlHtmlSetRelCanonical**
+> string editHtmlHtmlSetRelCanonical($canonical_url, $input_file, $input_file_url)
+
+Sets the rel canonical URL for the HTML document
+
+Sets the rel canonical URL of an HTML document.  This is useful for telling search engines and other indexers which pages are duplicates of eachother; any pages with the rel=canonical tag will be treated as duplicates of the canonical URL.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditHtmlApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$canonical_url = "canonical_url_example"; // string | The HTML canonical URL to set.
+$input_file = "/path/to/file.txt"; // \SplFileObject | Optional: Input file to perform the operation on.
+$input_file_url = "input_file_url_example"; // string | Optional: URL of a file to operate on as input.
+
+try {
+    $result = $apiInstance->editHtmlHtmlSetRelCanonical($canonical_url, $input_file, $input_file_url);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditHtmlApi->editHtmlHtmlSetRelCanonical: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **canonical_url** | **string**| The HTML canonical URL to set. |
+ **input_file** | **\SplFileObject**| Optional: Input file to perform the operation on. | [optional]
+ **input_file_url** | **string**| Optional: URL of a file to operate on as input. | [optional]
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editHtmlHtmlSetSitemapUrl**
+> string editHtmlHtmlSetSitemapUrl($sitemap_url, $input_file, $input_file_url)
+
+Sets the sitemap URL for the HTML document
+
+Sets the sitemap URL of an HTML document.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditHtmlApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$sitemap_url = "sitemap_url_example"; // string | The HTML sitemap URL to set.
+$input_file = "/path/to/file.txt"; // \SplFileObject | Optional: Input file to perform the operation on.
+$input_file_url = "input_file_url_example"; // string | Optional: URL of a file to operate on as input.
+
+try {
+    $result = $apiInstance->editHtmlHtmlSetSitemapUrl($sitemap_url, $input_file, $input_file_url);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditHtmlApi->editHtmlHtmlSetSitemapUrl: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sitemap_url** | **string**| The HTML sitemap URL to set. |
+ **input_file** | **\SplFileObject**| Optional: Input file to perform the operation on. | [optional]
+ **input_file_url** | **string**| Optional: URL of a file to operate on as input. | [optional]
+
+### Return type
+
+**string**
 
 ### Authorization
 

@@ -72,6 +72,16 @@ class EditHtmlApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editHtmlHtmlAppendHeaderTag
+     *
+     * Append an HTML tag to the HEAD section of an HTML Document.
+     *
+     */
+    public function testEditHtmlHtmlAppendHeaderTag()
+    {
+    }
+
+    /**
      * Test case for editHtmlHtmlAppendHeading
      *
      * Append a Heading to an HTML Document.
@@ -122,12 +132,72 @@ class EditHtmlApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editHtmlHtmlGetLanguage
+     *
+     * Gets the language for the HTML document.
+     *
+     */
+    public function testEditHtmlHtmlGetLanguage()
+    {
+    }
+
+    /**
      * Test case for editHtmlHtmlGetLinks
      *
      * Extract resolved link URLs from HTML File.
      *
      */
     public function testEditHtmlHtmlGetLinks()
+    {
+    }
+
+    /**
+     * Test case for editHtmlHtmlGetRelCanonical
+     *
+     * Gets the rel canonical URL for the HTML document.
+     *
+     */
+    public function testEditHtmlHtmlGetRelCanonical()
+    {
+    }
+
+    /**
+     * Test case for editHtmlHtmlGetSitemap
+     *
+     * Gets the sitemap URL for the HTML document.
+     *
+     */
+    public function testEditHtmlHtmlGetSitemap()
+    {
+    }
+
+    /**
+     * Test case for editHtmlHtmlSetLanguage
+     *
+     * Sets the language for the HTML document.
+     *
+     */
+    public function testEditHtmlHtmlSetLanguage()
+    {
+    }
+
+    /**
+     * Test case for editHtmlHtmlSetRelCanonical
+     *
+     * Sets the rel canonical URL for the HTML document.
+     *
+     */
+    public function testEditHtmlHtmlSetRelCanonical()
+    {
+    }
+
+    /**
+     * Test case for editHtmlHtmlSetSitemapUrl
+     *
+     * Sets the sitemap URL for the HTML document.
+     *
+     */
+    public function testEditHtmlHtmlSetSitemapUrl()
     {
     }
 }

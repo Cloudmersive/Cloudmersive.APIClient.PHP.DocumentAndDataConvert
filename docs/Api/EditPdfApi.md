@@ -713,7 +713,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **editPdfReduceFileSize**
-> string editPdfReduceFileSize($input_file)
+> string editPdfReduceFileSize($input_file, $quality)
 
 Reduce the file size and optimize a PDF
 
@@ -736,9 +736,10 @@ $apiInstance = new Swagger\Client\Api\EditPdfApi(
     $config
 );
 $input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$quality = 8.14; // float | Quality level for the images in the PDF, ranging from 0.0 (low quality) to 1.0 (high quality); default is 0.3
 
 try {
-    $result = $apiInstance->editPdfReduceFileSize($input_file);
+    $result = $apiInstance->editPdfReduceFileSize($input_file, $quality);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EditPdfApi->editPdfReduceFileSize: ', $e->getMessage(), PHP_EOL;
@@ -751,6 +752,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **quality** | **float**| Quality level for the images in the PDF, ranging from 0.0 (low quality) to 1.0 (high quality); default is 0.3 | [optional]
 
 ### Return type
 
