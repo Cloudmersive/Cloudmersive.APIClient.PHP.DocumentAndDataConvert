@@ -74,7 +74,7 @@ class TransformDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for transformDocumentDocxReplace
      *
-     * Replace string in Word DOCX document.
+     * Replace string in Word DOCX document, return result.
      *
      */
     public function testTransformDocumentDocxReplace()
@@ -82,9 +82,19 @@ class TransformDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for transformDocumentDocxReplaceEditSession
+     *
+     * Replace string in Word DOCX document, return edit session.
+     *
+     */
+    public function testTransformDocumentDocxReplaceEditSession()
+    {
+    }
+
+    /**
      * Test case for transformDocumentDocxTableFillIn
      *
-     * Fill in data in a table in a Word DOCX document.
+     * Fill in data in a table in a Word DOCX document, return result.
      *
      */
     public function testTransformDocumentDocxTableFillIn()
@@ -92,9 +102,19 @@ class TransformDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for transformDocumentDocxTableFillInEditSession
+     *
+     * Fill in data in a table in a Word DOCX document, return edit session.
+     *
+     */
+    public function testTransformDocumentDocxTableFillInEditSession()
+    {
+    }
+
+    /**
      * Test case for transformDocumentPptxReplace
      *
-     * Replace string in PowerPoint PPTX presentation.
+     * Replace string in PowerPoint PPTX presentation, return result.
      *
      */
     public function testTransformDocumentPptxReplace()

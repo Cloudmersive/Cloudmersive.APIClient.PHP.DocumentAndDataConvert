@@ -384,10 +384,20 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for editDocumentDocxReplaceMulti
      *
-     * Replace multiple strings in Word DOCX document.
+     * Replace multiple strings in Word DOCX document, return result.
      *
      */
     public function testEditDocumentDocxReplaceMulti()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxReplaceMultiEditSession
+     *
+     * Replace multiple strings in Word DOCX document, return edit session.
+     *
+     */
+    public function testEditDocumentDocxReplaceMultiEditSession()
     {
     }
 

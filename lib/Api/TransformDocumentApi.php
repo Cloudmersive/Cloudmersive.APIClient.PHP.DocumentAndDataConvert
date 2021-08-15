@@ -85,7 +85,7 @@ class TransformDocumentApi
     /**
      * Operation transformDocumentDocxReplace
      *
-     * Replace string in Word DOCX document
+     * Replace string in Word DOCX document, return result
      *
      * @param  string $match_string String to search for and match against, to be replaced (required)
      * @param  string $replace_string String to replace the matched values with (required)
@@ -106,7 +106,7 @@ class TransformDocumentApi
     /**
      * Operation transformDocumentDocxReplaceWithHttpInfo
      *
-     * Replace string in Word DOCX document
+     * Replace string in Word DOCX document, return result
      *
      * @param  string $match_string String to search for and match against, to be replaced (required)
      * @param  string $replace_string String to replace the matched values with (required)
@@ -185,7 +185,7 @@ class TransformDocumentApi
     /**
      * Operation transformDocumentDocxReplaceAsync
      *
-     * Replace string in Word DOCX document
+     * Replace string in Word DOCX document, return result
      *
      * @param  string $match_string String to search for and match against, to be replaced (required)
      * @param  string $replace_string String to replace the matched values with (required)
@@ -209,7 +209,7 @@ class TransformDocumentApi
     /**
      * Operation transformDocumentDocxReplaceAsyncWithHttpInfo
      *
-     * Replace string in Word DOCX document
+     * Replace string in Word DOCX document, return result
      *
      * @param  string $match_string String to search for and match against, to be replaced (required)
      * @param  string $replace_string String to replace the matched values with (required)
@@ -389,9 +389,315 @@ class TransformDocumentApi
     }
 
     /**
+     * Operation transformDocumentDocxReplaceEditSession
+     *
+     * Replace string in Word DOCX document, return edit session
+     *
+     * @param  string $match_string String to search for and match against, to be replaced (required)
+     * @param  string $replace_string String to replace the matched values with (required)
+     * @param  \SplFileObject $input_file Optional: Input file to perform the operation on. (optional)
+     * @param  string $input_file_url Optional: URL of a file to operate on as input.  This can be a public URL, or you can also use the begin-editing API (part of EditDocumentApi) to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public). (optional)
+     * @param  bool $match_case Optional: True if the case should be matched, false for case insensitive match. Default is false. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\DocumentTransformEditSession
+     */
+    public function transformDocumentDocxReplaceEditSession($match_string, $replace_string, $input_file = null, $input_file_url = null, $match_case = null)
+    {
+        list($response) = $this->transformDocumentDocxReplaceEditSessionWithHttpInfo($match_string, $replace_string, $input_file, $input_file_url, $match_case);
+        return $response;
+    }
+
+    /**
+     * Operation transformDocumentDocxReplaceEditSessionWithHttpInfo
+     *
+     * Replace string in Word DOCX document, return edit session
+     *
+     * @param  string $match_string String to search for and match against, to be replaced (required)
+     * @param  string $replace_string String to replace the matched values with (required)
+     * @param  \SplFileObject $input_file Optional: Input file to perform the operation on. (optional)
+     * @param  string $input_file_url Optional: URL of a file to operate on as input.  This can be a public URL, or you can also use the begin-editing API (part of EditDocumentApi) to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public). (optional)
+     * @param  bool $match_case Optional: True if the case should be matched, false for case insensitive match. Default is false. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\DocumentTransformEditSession, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function transformDocumentDocxReplaceEditSessionWithHttpInfo($match_string, $replace_string, $input_file = null, $input_file_url = null, $match_case = null)
+    {
+        $returnType = '\Swagger\Client\Model\DocumentTransformEditSession';
+        $request = $this->transformDocumentDocxReplaceEditSessionRequest($match_string, $replace_string, $input_file, $input_file_url, $match_case);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\DocumentTransformEditSession',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation transformDocumentDocxReplaceEditSessionAsync
+     *
+     * Replace string in Word DOCX document, return edit session
+     *
+     * @param  string $match_string String to search for and match against, to be replaced (required)
+     * @param  string $replace_string String to replace the matched values with (required)
+     * @param  \SplFileObject $input_file Optional: Input file to perform the operation on. (optional)
+     * @param  string $input_file_url Optional: URL of a file to operate on as input.  This can be a public URL, or you can also use the begin-editing API (part of EditDocumentApi) to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public). (optional)
+     * @param  bool $match_case Optional: True if the case should be matched, false for case insensitive match. Default is false. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function transformDocumentDocxReplaceEditSessionAsync($match_string, $replace_string, $input_file = null, $input_file_url = null, $match_case = null)
+    {
+        return $this->transformDocumentDocxReplaceEditSessionAsyncWithHttpInfo($match_string, $replace_string, $input_file, $input_file_url, $match_case)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation transformDocumentDocxReplaceEditSessionAsyncWithHttpInfo
+     *
+     * Replace string in Word DOCX document, return edit session
+     *
+     * @param  string $match_string String to search for and match against, to be replaced (required)
+     * @param  string $replace_string String to replace the matched values with (required)
+     * @param  \SplFileObject $input_file Optional: Input file to perform the operation on. (optional)
+     * @param  string $input_file_url Optional: URL of a file to operate on as input.  This can be a public URL, or you can also use the begin-editing API (part of EditDocumentApi) to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public). (optional)
+     * @param  bool $match_case Optional: True if the case should be matched, false for case insensitive match. Default is false. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function transformDocumentDocxReplaceEditSessionAsyncWithHttpInfo($match_string, $replace_string, $input_file = null, $input_file_url = null, $match_case = null)
+    {
+        $returnType = '\Swagger\Client\Model\DocumentTransformEditSession';
+        $request = $this->transformDocumentDocxReplaceEditSessionRequest($match_string, $replace_string, $input_file, $input_file_url, $match_case);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'transformDocumentDocxReplaceEditSession'
+     *
+     * @param  string $match_string String to search for and match against, to be replaced (required)
+     * @param  string $replace_string String to replace the matched values with (required)
+     * @param  \SplFileObject $input_file Optional: Input file to perform the operation on. (optional)
+     * @param  string $input_file_url Optional: URL of a file to operate on as input.  This can be a public URL, or you can also use the begin-editing API (part of EditDocumentApi) to upload a document and pass in the secure URL result from that operation as the URL here (this URL is not public). (optional)
+     * @param  bool $match_case Optional: True if the case should be matched, false for case insensitive match. Default is false. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function transformDocumentDocxReplaceEditSessionRequest($match_string, $replace_string, $input_file = null, $input_file_url = null, $match_case = null)
+    {
+        // verify the required parameter 'match_string' is set
+        if ($match_string === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $match_string when calling transformDocumentDocxReplaceEditSession'
+            );
+        }
+        // verify the required parameter 'replace_string' is set
+        if ($replace_string === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $replace_string when calling transformDocumentDocxReplaceEditSession'
+            );
+        }
+
+        $resourcePath = '/convert/transform/docx/replace-all/edit-session';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($input_file_url !== null) {
+            $headerParams['inputFileUrl'] = ObjectSerializer::toHeaderValue($input_file_url);
+        }
+        // header params
+        if ($match_string !== null) {
+            $headerParams['matchString'] = ObjectSerializer::toHeaderValue($match_string);
+        }
+        // header params
+        if ($replace_string !== null) {
+            $headerParams['replaceString'] = ObjectSerializer::toHeaderValue($replace_string);
+        }
+        // header params
+        if ($match_case !== null) {
+            $headerParams['matchCase'] = ObjectSerializer::toHeaderValue($match_case);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation transformDocumentDocxTableFillIn
      *
-     * Fill in data in a table in a Word DOCX document
+     * Fill in data in a table in a Word DOCX document, return result
      *
      * @param  \Swagger\Client\Model\DocxTableTableFillRequest $request request (required)
      *
@@ -408,7 +714,7 @@ class TransformDocumentApi
     /**
      * Operation transformDocumentDocxTableFillInWithHttpInfo
      *
-     * Fill in data in a table in a Word DOCX document
+     * Fill in data in a table in a Word DOCX document, return result
      *
      * @param  \Swagger\Client\Model\DocxTableTableFillRequest $request (required)
      *
@@ -483,7 +789,7 @@ class TransformDocumentApi
     /**
      * Operation transformDocumentDocxTableFillInAsync
      *
-     * Fill in data in a table in a Word DOCX document
+     * Fill in data in a table in a Word DOCX document, return result
      *
      * @param  \Swagger\Client\Model\DocxTableTableFillRequest $request (required)
      *
@@ -503,7 +809,7 @@ class TransformDocumentApi
     /**
      * Operation transformDocumentDocxTableFillInAsyncWithHttpInfo
      *
-     * Fill in data in a table in a Word DOCX document
+     * Fill in data in a table in a Word DOCX document, return result
      *
      * @param  \Swagger\Client\Model\DocxTableTableFillRequest $request (required)
      *
@@ -651,9 +957,271 @@ class TransformDocumentApi
     }
 
     /**
+     * Operation transformDocumentDocxTableFillInEditSession
+     *
+     * Fill in data in a table in a Word DOCX document, return edit session
+     *
+     * @param  \Swagger\Client\Model\DocxTableTableFillRequest $request request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\DocumentTransformEditSession
+     */
+    public function transformDocumentDocxTableFillInEditSession($request)
+    {
+        list($response) = $this->transformDocumentDocxTableFillInEditSessionWithHttpInfo($request);
+        return $response;
+    }
+
+    /**
+     * Operation transformDocumentDocxTableFillInEditSessionWithHttpInfo
+     *
+     * Fill in data in a table in a Word DOCX document, return edit session
+     *
+     * @param  \Swagger\Client\Model\DocxTableTableFillRequest $request (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\DocumentTransformEditSession, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function transformDocumentDocxTableFillInEditSessionWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\DocumentTransformEditSession';
+        $request = $this->transformDocumentDocxTableFillInEditSessionRequest($request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\DocumentTransformEditSession',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation transformDocumentDocxTableFillInEditSessionAsync
+     *
+     * Fill in data in a table in a Word DOCX document, return edit session
+     *
+     * @param  \Swagger\Client\Model\DocxTableTableFillRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function transformDocumentDocxTableFillInEditSessionAsync($request)
+    {
+        return $this->transformDocumentDocxTableFillInEditSessionAsyncWithHttpInfo($request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation transformDocumentDocxTableFillInEditSessionAsyncWithHttpInfo
+     *
+     * Fill in data in a table in a Word DOCX document, return edit session
+     *
+     * @param  \Swagger\Client\Model\DocxTableTableFillRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function transformDocumentDocxTableFillInEditSessionAsyncWithHttpInfo($request)
+    {
+        $returnType = '\Swagger\Client\Model\DocumentTransformEditSession';
+        $request = $this->transformDocumentDocxTableFillInEditSessionRequest($request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'transformDocumentDocxTableFillInEditSession'
+     *
+     * @param  \Swagger\Client\Model\DocxTableTableFillRequest $request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function transformDocumentDocxTableFillInEditSessionRequest($request)
+    {
+        // verify the required parameter 'request' is set
+        if ($request === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request when calling transformDocumentDocxTableFillInEditSession'
+            );
+        }
+
+        $resourcePath = '/convert/transform/docx/table/fill/data/edit-session';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($request)) {
+            $_tempBody = $request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation transformDocumentPptxReplace
      *
-     * Replace string in PowerPoint PPTX presentation
+     * Replace string in PowerPoint PPTX presentation, return result
      *
      * @param  string $match_string String to search for and match against, to be replaced (required)
      * @param  string $replace_string String to replace the matched values with (required)
@@ -674,7 +1242,7 @@ class TransformDocumentApi
     /**
      * Operation transformDocumentPptxReplaceWithHttpInfo
      *
-     * Replace string in PowerPoint PPTX presentation
+     * Replace string in PowerPoint PPTX presentation, return result
      *
      * @param  string $match_string String to search for and match against, to be replaced (required)
      * @param  string $replace_string String to replace the matched values with (required)
@@ -753,7 +1321,7 @@ class TransformDocumentApi
     /**
      * Operation transformDocumentPptxReplaceAsync
      *
-     * Replace string in PowerPoint PPTX presentation
+     * Replace string in PowerPoint PPTX presentation, return result
      *
      * @param  string $match_string String to search for and match against, to be replaced (required)
      * @param  string $replace_string String to replace the matched values with (required)
@@ -777,7 +1345,7 @@ class TransformDocumentApi
     /**
      * Operation transformDocumentPptxReplaceAsyncWithHttpInfo
      *
-     * Replace string in PowerPoint PPTX presentation
+     * Replace string in PowerPoint PPTX presentation, return result
      *
      * @param  string $match_string String to search for and match against, to be replaced (required)
      * @param  string $replace_string String to replace the matched values with (required)
