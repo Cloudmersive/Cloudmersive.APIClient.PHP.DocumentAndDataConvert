@@ -112,6 +112,16 @@ class TransformDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for transformDocumentDocxTableFillInMulti
+     *
+     * Fill in data in multiple tables in a Word DOCX document, return result.
+     *
+     */
+    public function testTransformDocumentDocxTableFillInMulti()
+    {
+    }
+
+    /**
      * Test case for transformDocumentPptxReplace
      *
      * Replace string in PowerPoint PPTX presentation, return result.
