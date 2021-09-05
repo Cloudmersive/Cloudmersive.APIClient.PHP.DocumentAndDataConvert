@@ -16,6 +16,8 @@ Method | HTTP request | Description
 [**editDocumentDocxFindParagraph**](EditDocumentApi.md#editDocumentDocxFindParagraph) | **POST** /convert/edit/docx/find/paragraph | Find matching paragraphs in a Word DOCX document
 [**editDocumentDocxGetComments**](EditDocumentApi.md#editDocumentDocxGetComments) | **POST** /convert/edit/docx/get-comments/flat-list | Get comments from a Word DOCX document as a flat list
 [**editDocumentDocxGetCommentsHierarchical**](EditDocumentApi.md#editDocumentDocxGetCommentsHierarchical) | **POST** /convert/edit/docx/get-comments/hierarchical | Get comments from a Word DOCX document hierarchically
+[**editDocumentDocxGetContentControls**](EditDocumentApi.md#editDocumentDocxGetContentControls) | **POST** /convert/edit/docx/get-content-controls | Get all content controls (form fields) and values in a Word DOCX document
+[**editDocumentDocxGetFormFields**](EditDocumentApi.md#editDocumentDocxGetFormFields) | **POST** /convert/edit/docx/get-form-fields | Get all form fields in a Word DOCX document
 [**editDocumentDocxGetHeadersAndFooters**](EditDocumentApi.md#editDocumentDocxGetHeadersAndFooters) | **POST** /convert/edit/docx/get-headers-and-footers | Get content of a footer from a Word DOCX document
 [**editDocumentDocxGetImages**](EditDocumentApi.md#editDocumentDocxGetImages) | **POST** /convert/edit/docx/get-images | Get images from a Word DOCX document
 [**editDocumentDocxGetMacroInformation**](EditDocumentApi.md#editDocumentDocxGetMacroInformation) | **POST** /convert/edit/docx/get-macros | Get macro information from a Word DOCX/DOCM document
@@ -41,6 +43,7 @@ Method | HTTP request | Description
 [**editDocumentDocxSetCustomMetadataProperties**](EditDocumentApi.md#editDocumentDocxSetCustomMetadataProperties) | **POST** /convert/edit/docx/set-metadata/custom-property | Set custom property metadata properties in Word DOCX document
 [**editDocumentDocxSetFooter**](EditDocumentApi.md#editDocumentDocxSetFooter) | **POST** /convert/edit/docx/set-footer | Set the footer in a Word DOCX document
 [**editDocumentDocxSetFooterAddPageNumber**](EditDocumentApi.md#editDocumentDocxSetFooterAddPageNumber) | **POST** /convert/edit/docx/set-footer/add-page-number | Add page number to footer in a Word DOCX document
+[**editDocumentDocxSetFormFields**](EditDocumentApi.md#editDocumentDocxSetFormFields) | **POST** /convert/edit/docx/set-form-fields | Set and fill values for form fields in a Word DOCX document
 [**editDocumentDocxSetHeader**](EditDocumentApi.md#editDocumentDocxSetHeader) | **POST** /convert/edit/docx/set-header | Set the header in a Word DOCX document
 [**editDocumentDocxUpdateTableCell**](EditDocumentApi.md#editDocumentDocxUpdateTableCell) | **POST** /convert/edit/docx/update-table-cell | Update, set contents of a table cell in an existing table in a Word DOCX document
 [**editDocumentDocxUpdateTableRow**](EditDocumentApi.md#editDocumentDocxUpdateTableRow) | **POST** /convert/edit/docx/update-table-row | Update, set contents of a table row in an existing table in a Word DOCX document
@@ -727,6 +730,116 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editDocumentDocxGetContentControls**
+> \Swagger\Client\Model\GetDocxContentControlsResponse editDocumentDocxGetContentControls($input_file)
+
+Get all content controls (form fields) and values in a Word DOCX document
+
+Returns all the content controls, used for creating form fields, in a Office Word Document (docx)
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->editDocumentDocxGetContentControls($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditDocumentApi->editDocumentDocxGetContentControls: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+[**\Swagger\Client\Model\GetDocxContentControlsResponse**](../Model/GetDocxContentControlsResponse.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editDocumentDocxGetFormFields**
+> \Swagger\Client\Model\GetDocxGetFormFieldsResponse editDocumentDocxGetFormFields($input_file)
+
+Get all form fields in a Word DOCX document
+
+Returns all the content controls, used for creating form fields, as well as handlebar style text-based form fields such as \"{{FieldName}}\", in a Office Word Document (docx)
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->editDocumentDocxGetFormFields($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditDocumentApi->editDocumentDocxGetFormFields: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+[**\Swagger\Client\Model\GetDocxGetFormFieldsResponse**](../Model/GetDocxGetFormFieldsResponse.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -2094,6 +2207,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\Model\DocxSetFooterResponse**](../Model/DocxSetFooterResponse.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editDocumentDocxSetFormFields**
+> string editDocumentDocxSetFormFields($req_config)
+
+Set and fill values for form fields in a Word DOCX document
+
+Modifies a Office Word Document (docx) by filling in form fields using the provided values.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$req_config = new \Swagger\Client\Model\DocxSetFormFieldsRequest(); // \Swagger\Client\Model\DocxSetFormFieldsRequest | 
+
+try {
+    $result = $apiInstance->editDocumentDocxSetFormFields($req_config);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditDocumentApi->editDocumentDocxSetFormFields: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **req_config** | [**\Swagger\Client\Model\DocxSetFormFieldsRequest**](../Model/DocxSetFormFieldsRequest.md)|  |
+
+### Return type
+
+**string**
 
 ### Authorization
 

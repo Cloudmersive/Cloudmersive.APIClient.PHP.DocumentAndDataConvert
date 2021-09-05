@@ -192,6 +192,26 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentDocxGetContentControls
+     *
+     * Get all content controls (form fields) and values in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxGetContentControls()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxGetFormFields
+     *
+     * Get all form fields in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxGetFormFields()
+    {
+    }
+
+    /**
      * Test case for editDocumentDocxGetHeadersAndFooters
      *
      * Get content of a footer from a Word DOCX document.
@@ -438,6 +458,16 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditDocumentDocxSetFooterAddPageNumber()
+    {
+    }
+
+    /**
+     * Test case for editDocumentDocxSetFormFields
+     *
+     * Set and fill values for form fields in a Word DOCX document.
+     *
+     */
+    public function testEditDocumentDocxSetFormFields()
     {
     }
 
