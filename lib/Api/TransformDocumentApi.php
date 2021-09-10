@@ -1227,7 +1227,7 @@ class TransformDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return string
      */
     public function transformDocumentDocxTableFillInMulti($request)
     {
@@ -1244,11 +1244,11 @@ class TransformDocumentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function transformDocumentDocxTableFillInMultiWithHttpInfo($request)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->transformDocumentDocxTableFillInMultiRequest($request);
 
         try {
@@ -1300,7 +1300,7 @@ class TransformDocumentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1342,7 +1342,7 @@ class TransformDocumentApi
      */
     public function transformDocumentDocxTableFillInMultiAsyncWithHttpInfo($request)
     {
-        $returnType = 'object';
+        $returnType = 'string';
         $request = $this->transformDocumentDocxTableFillInMultiRequest($request);
 
         return $this->client
@@ -1416,11 +1416,11 @@ class TransformDocumentApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/octet-stream']
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/octet-stream'],
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
                 ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded']
             );
         }
