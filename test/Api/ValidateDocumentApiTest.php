@@ -92,6 +92,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentDocValidation
+     *
+     * Validate a Word 97-2003 Legacy document (DOC).
+     *
+     */
+    public function testValidateDocumentDocValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentDocxValidation
      *
      * Validate a Word document (DOCX).
@@ -212,6 +222,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentPptValidation
+     *
+     * Validate a PowerPoint 97-2003 Legacy presentation (PPT).
+     *
+     */
+    public function testValidateDocumentPptValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentPptxValidation
      *
      * Validate a PowerPoint presentation (PPTX).
@@ -232,6 +252,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentRtfValidation
+     *
+     * Validate a Rich Text Format document (RTF).
+     *
+     */
+    public function testValidateDocumentRtfValidation()
+    {
+    }
+
+    /**
      * Test case for validateDocumentTarValidation
      *
      * Validate a TAR Tarball Archive file (TAR).
@@ -248,6 +278,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testValidateDocumentTxtValidation()
+    {
+    }
+
+    /**
+     * Test case for validateDocumentXlsValidation
+     *
+     * Validate a Excel 97-2003 Legacy spreadsheet (XLS).
+     *
+     */
+    public function testValidateDocumentXlsValidation()
     {
     }
 
