@@ -31,12 +31,48 @@ namespace Swagger\Client\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
+use GuzzleHttp\Psr7\Query;
 use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Utils;
 use GuzzleHttp\RequestOptions;
+use InvalidArgumentException;
+use RuntimeException;
+use SplFileObject;
+use stdClass;
 use Swagger\Client\ApiException;
 use Swagger\Client\Configuration;
 use Swagger\Client\HeaderSelector;
+use Swagger\Client\Model\AutodetectGetInfoResult;
+use Swagger\Client\Model\AutodetectToJpgResult;
+use Swagger\Client\Model\AutodetectToPngResult;
+use Swagger\Client\Model\AutodetectToThumbnailsResult;
+use Swagger\Client\Model\CsvCollection;
+use Swagger\Client\Model\DocxToJpgResult;
+use Swagger\Client\Model\DocxToPngResult;
+use Swagger\Client\Model\EmlToHtmlResult;
+use Swagger\Client\Model\EmlToJpgResult;
+use Swagger\Client\Model\EmlToPngResult;
+use Swagger\Client\Model\GetFileTypeIconResult;
+use Swagger\Client\Model\KeynoteToJpgResult;
+use Swagger\Client\Model\KeynoteToPngResult;
+use Swagger\Client\Model\MsgToHtmlResult;
+use Swagger\Client\Model\MsgToJpgResult;
+use Swagger\Client\Model\MsgToPngResult;
+use Swagger\Client\Model\OdpToJpgResult;
+use Swagger\Client\Model\OdpToPngResult;
+use Swagger\Client\Model\OdsToJpgResult;
+use Swagger\Client\Model\OdsToPngResult;
+use Swagger\Client\Model\OdtToJpgResult;
+use Swagger\Client\Model\OdtToPngResult;
+use Swagger\Client\Model\PdfToJpgResult;
+use Swagger\Client\Model\PdfToPngResult;
+use Swagger\Client\Model\PptxToPngResult;
+use Swagger\Client\Model\RtfToJpgResult;
+use Swagger\Client\Model\RtfToPngResult;
+use Swagger\Client\Model\TextConversionResult;
+use Swagger\Client\Model\XlsxToPngResult;
 use Swagger\Client\ObjectSerializer;
 
 /**
@@ -87,11 +123,11 @@ class ConvertDocumentApi
      *
      * Get document type information
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\AutodetectGetInfoResult
+     * @throws InvalidArgumentException
+     * @return AutodetectGetInfoResult
      */
     public function convertDocumentAutodetectGetInfo($input_file)
     {
@@ -104,10 +140,10 @@ class ConvertDocumentApi
      *
      * Get document type information
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\AutodetectGetInfoResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentAutodetectGetInfoWithHttpInfo($input_file)
@@ -179,10 +215,10 @@ class ConvertDocumentApi
      *
      * Get document type information
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectGetInfoAsync($input_file)
     {
@@ -199,10 +235,10 @@ class ConvertDocumentApi
      *
      * Get document type information
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectGetInfoAsyncWithHttpInfo($input_file)
     {
@@ -249,16 +285,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentAutodetectGetInfo'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentAutodetectGetInfoRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentAutodetectGetInfo'
             );
         }
@@ -275,7 +311,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -296,7 +332,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -316,7 +352,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -337,7 +373,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -351,12 +387,12 @@ class ConvertDocumentApi
      *
      * Convert Document to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\AutodetectToJpgResult
+     * @throws InvalidArgumentException
+     * @return AutodetectToJpgResult
      */
     public function convertDocumentAutodetectToJpg($input_file, $quality = null)
     {
@@ -369,11 +405,11 @@ class ConvertDocumentApi
      *
      * Convert Document to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\AutodetectToJpgResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentAutodetectToJpgWithHttpInfo($input_file, $quality = null)
@@ -445,11 +481,11 @@ class ConvertDocumentApi
      *
      * Convert Document to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectToJpgAsync($input_file, $quality = null)
     {
@@ -466,11 +502,11 @@ class ConvertDocumentApi
      *
      * Convert Document to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectToJpgAsyncWithHttpInfo($input_file, $quality = null)
     {
@@ -517,17 +553,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentAutodetectToJpg'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentAutodetectToJpgRequest($input_file, $quality = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentAutodetectToJpg'
             );
         }
@@ -548,7 +584,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -569,7 +605,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -589,7 +625,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -610,7 +646,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -624,10 +660,10 @@ class ConvertDocumentApi
      *
      * Convert Document to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentAutodetectToPdf($input_file)
@@ -641,10 +677,10 @@ class ConvertDocumentApi
      *
      * Convert Document to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentAutodetectToPdfWithHttpInfo($input_file)
@@ -716,10 +752,10 @@ class ConvertDocumentApi
      *
      * Convert Document to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectToPdfAsync($input_file)
     {
@@ -736,10 +772,10 @@ class ConvertDocumentApi
      *
      * Convert Document to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectToPdfAsyncWithHttpInfo($input_file)
     {
@@ -786,16 +822,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentAutodetectToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentAutodetectToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentAutodetectToPdf'
             );
         }
@@ -812,7 +848,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -833,7 +869,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -853,7 +889,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -874,7 +910,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -888,11 +924,11 @@ class ConvertDocumentApi
      *
      * Convert Document to PNG array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\AutodetectToPngResult
+     * @throws InvalidArgumentException
+     * @return AutodetectToPngResult
      */
     public function convertDocumentAutodetectToPngArray($input_file)
     {
@@ -905,10 +941,10 @@ class ConvertDocumentApi
      *
      * Convert Document to PNG array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\AutodetectToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentAutodetectToPngArrayWithHttpInfo($input_file)
@@ -980,10 +1016,10 @@ class ConvertDocumentApi
      *
      * Convert Document to PNG array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectToPngArrayAsync($input_file)
     {
@@ -1000,10 +1036,10 @@ class ConvertDocumentApi
      *
      * Convert Document to PNG array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectToPngArrayAsyncWithHttpInfo($input_file)
     {
@@ -1050,16 +1086,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentAutodetectToPngArray'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentAutodetectToPngArrayRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentAutodetectToPngArray'
             );
         }
@@ -1076,7 +1112,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -1097,7 +1133,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -1117,7 +1153,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -1138,7 +1174,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1152,13 +1188,13 @@ class ConvertDocumentApi
      *
      * Convert File to Thumbnail Image
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $max_width Optional; Maximum width of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  int $max_height Optional; Maximum height of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  string $extension Optional; Specify the file extension of the inputFile. This will improve the response time in most cases. Also allows unsupported files without extensions to still return a corresponding generic icon. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentAutodetectToThumbnail($input_file, $max_width = null, $max_height = null, $extension = null)
@@ -1172,13 +1208,13 @@ class ConvertDocumentApi
      *
      * Convert File to Thumbnail Image
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $max_width Optional; Maximum width of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  int $max_height Optional; Maximum height of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  string $extension Optional; Specify the file extension of the inputFile. This will improve the response time in most cases. Also allows unsupported files without extensions to still return a corresponding generic icon. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentAutodetectToThumbnailWithHttpInfo($input_file, $max_width = null, $max_height = null, $extension = null)
@@ -1250,13 +1286,13 @@ class ConvertDocumentApi
      *
      * Convert File to Thumbnail Image
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $max_width Optional; Maximum width of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  int $max_height Optional; Maximum height of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  string $extension Optional; Specify the file extension of the inputFile. This will improve the response time in most cases. Also allows unsupported files without extensions to still return a corresponding generic icon. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectToThumbnailAsync($input_file, $max_width = null, $max_height = null, $extension = null)
     {
@@ -1273,13 +1309,13 @@ class ConvertDocumentApi
      *
      * Convert File to Thumbnail Image
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $max_width Optional; Maximum width of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  int $max_height Optional; Maximum height of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  string $extension Optional; Specify the file extension of the inputFile. This will improve the response time in most cases. Also allows unsupported files without extensions to still return a corresponding generic icon. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectToThumbnailAsyncWithHttpInfo($input_file, $max_width = null, $max_height = null, $extension = null)
     {
@@ -1326,19 +1362,19 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentAutodetectToThumbnail'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $max_width Optional; Maximum width of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  int $max_height Optional; Maximum height of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  string $extension Optional; Specify the file extension of the inputFile. This will improve the response time in most cases. Also allows unsupported files without extensions to still return a corresponding generic icon. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentAutodetectToThumbnailRequest($input_file, $max_width = null, $max_height = null, $extension = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentAutodetectToThumbnail'
             );
         }
@@ -1367,7 +1403,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -1388,7 +1424,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -1408,7 +1444,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -1429,7 +1465,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1443,15 +1479,15 @@ class ConvertDocumentApi
      *
      * Convert File to Thumbnail Image Object
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $pages Optional; Specify how many pages of the document will be converted to thumbnails. Default is 1 page. (optional)
      * @param  int $max_width Optional; Maximum width of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  int $max_height Optional; Maximum height of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  string $extension Optional; Specify the file extension of the inputFile. This will improve the response time in most cases. Also allows unsupported files without extensions to still return a corresponding generic icon. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\AutodetectToThumbnailsResult
+     * @throws InvalidArgumentException
+     * @return AutodetectToThumbnailsResult
      */
     public function convertDocumentAutodetectToThumbnailsAdvanced($input_file, $pages = null, $max_width = null, $max_height = null, $extension = null)
     {
@@ -1464,14 +1500,14 @@ class ConvertDocumentApi
      *
      * Convert File to Thumbnail Image Object
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $pages Optional; Specify how many pages of the document will be converted to thumbnails. Default is 1 page. (optional)
      * @param  int $max_width Optional; Maximum width of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  int $max_height Optional; Maximum height of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  string $extension Optional; Specify the file extension of the inputFile. This will improve the response time in most cases. Also allows unsupported files without extensions to still return a corresponding generic icon. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\AutodetectToThumbnailsResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentAutodetectToThumbnailsAdvancedWithHttpInfo($input_file, $pages = null, $max_width = null, $max_height = null, $extension = null)
@@ -1543,14 +1579,14 @@ class ConvertDocumentApi
      *
      * Convert File to Thumbnail Image Object
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $pages Optional; Specify how many pages of the document will be converted to thumbnails. Default is 1 page. (optional)
      * @param  int $max_width Optional; Maximum width of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  int $max_height Optional; Maximum height of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  string $extension Optional; Specify the file extension of the inputFile. This will improve the response time in most cases. Also allows unsupported files without extensions to still return a corresponding generic icon. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectToThumbnailsAdvancedAsync($input_file, $pages = null, $max_width = null, $max_height = null, $extension = null)
     {
@@ -1567,14 +1603,14 @@ class ConvertDocumentApi
      *
      * Convert File to Thumbnail Image Object
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $pages Optional; Specify how many pages of the document will be converted to thumbnails. Default is 1 page. (optional)
      * @param  int $max_width Optional; Maximum width of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  int $max_height Optional; Maximum height of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  string $extension Optional; Specify the file extension of the inputFile. This will improve the response time in most cases. Also allows unsupported files without extensions to still return a corresponding generic icon. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectToThumbnailsAdvancedAsyncWithHttpInfo($input_file, $pages = null, $max_width = null, $max_height = null, $extension = null)
     {
@@ -1621,20 +1657,20 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentAutodetectToThumbnailsAdvanced'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $pages Optional; Specify how many pages of the document will be converted to thumbnails. Default is 1 page. (optional)
      * @param  int $max_width Optional; Maximum width of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  int $max_height Optional; Maximum height of the output thumbnail - final image will be as large as possible while less than or equal to this width. Default is 128. (optional)
      * @param  string $extension Optional; Specify the file extension of the inputFile. This will improve the response time in most cases. Also allows unsupported files without extensions to still return a corresponding generic icon. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentAutodetectToThumbnailsAdvancedRequest($input_file, $pages = null, $max_width = null, $max_height = null, $extension = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentAutodetectToThumbnailsAdvanced'
             );
         }
@@ -1667,7 +1703,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -1688,7 +1724,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -1708,7 +1744,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -1729,7 +1765,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1743,12 +1779,12 @@ class ConvertDocumentApi
      *
      * Convert Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\TextConversionResult
+     * @throws InvalidArgumentException
+     * @return TextConversionResult
      */
     public function convertDocumentAutodetectToTxt($input_file, $text_formatting_mode = null)
     {
@@ -1761,11 +1797,11 @@ class ConvertDocumentApi
      *
      * Convert Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\TextConversionResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentAutodetectToTxtWithHttpInfo($input_file, $text_formatting_mode = null)
@@ -1837,11 +1873,11 @@ class ConvertDocumentApi
      *
      * Convert Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectToTxtAsync($input_file, $text_formatting_mode = null)
     {
@@ -1858,11 +1894,11 @@ class ConvertDocumentApi
      *
      * Convert Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentAutodetectToTxtAsyncWithHttpInfo($input_file, $text_formatting_mode = null)
     {
@@ -1909,17 +1945,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentAutodetectToTxt'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentAutodetectToTxtRequest($input_file, $text_formatting_mode = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentAutodetectToTxt'
             );
         }
@@ -1940,7 +1976,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -1961,7 +1997,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -1981,7 +2017,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -2002,7 +2038,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2016,20 +2052,20 @@ class ConvertDocumentApi
      *
      * Convert Multiple CSV Files into a Single XLSX Spreadsheet
      *
-     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      * @param  string $worksheet_names Optional; Specify the name of each CSV&#39;s worksheet in order, separated with commas (e.g. \&quot;worksheet1,worksheet2,worksheet3\&quot;). Defaults to the names of the input CSV files. Recommended when inputting the files directly, without file names. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentCsvMultiToXlsx($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null, $worksheet_names = null)
@@ -2043,20 +2079,20 @@ class ConvertDocumentApi
      *
      * Convert Multiple CSV Files into a Single XLSX Spreadsheet
      *
-     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      * @param  string $worksheet_names Optional; Specify the name of each CSV&#39;s worksheet in order, separated with commas (e.g. \&quot;worksheet1,worksheet2,worksheet3\&quot;). Defaults to the names of the input CSV files. Recommended when inputting the files directly, without file names. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentCsvMultiToXlsxWithHttpInfo($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null, $worksheet_names = null)
@@ -2128,20 +2164,20 @@ class ConvertDocumentApi
      *
      * Convert Multiple CSV Files into a Single XLSX Spreadsheet
      *
-     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      * @param  string $worksheet_names Optional; Specify the name of each CSV&#39;s worksheet in order, separated with commas (e.g. \&quot;worksheet1,worksheet2,worksheet3\&quot;). Defaults to the names of the input CSV files. Recommended when inputting the files directly, without file names. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentCsvMultiToXlsxAsync($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null, $worksheet_names = null)
     {
@@ -2158,20 +2194,20 @@ class ConvertDocumentApi
      *
      * Convert Multiple CSV Files into a Single XLSX Spreadsheet
      *
-     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      * @param  string $worksheet_names Optional; Specify the name of each CSV&#39;s worksheet in order, separated with commas (e.g. \&quot;worksheet1,worksheet2,worksheet3\&quot;). Defaults to the names of the input CSV files. Recommended when inputting the files directly, without file names. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentCsvMultiToXlsxAsyncWithHttpInfo($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null, $worksheet_names = null)
     {
@@ -2218,32 +2254,32 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentCsvMultiToXlsx'
      *
-     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      * @param  string $worksheet_names Optional; Specify the name of each CSV&#39;s worksheet in order, separated with commas (e.g. \&quot;worksheet1,worksheet2,worksheet3\&quot;). Defaults to the names of the input CSV files. Recommended when inputting the files directly, without file names. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentCsvMultiToXlsxRequest($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null, $worksheet_names = null)
     {
         // verify the required parameter 'input_file1' is set
         if ($input_file1 === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file1 when calling convertDocumentCsvMultiToXlsx'
             );
         }
         // verify the required parameter 'input_file2' is set
         if ($input_file2 === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file2 when calling convertDocumentCsvMultiToXlsx'
             );
         }
@@ -2264,52 +2300,52 @@ class ConvertDocumentApi
         // form params
         if ($input_file1 !== null) {
             $multipart = true;
-            $formParams['inputFile1'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file1), 'rb');
+            $formParams['inputFile1'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file1), 'rb');
         }
         // form params
         if ($input_file2 !== null) {
             $multipart = true;
-            $formParams['inputFile2'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file2), 'rb');
+            $formParams['inputFile2'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file2), 'rb');
         }
         // form params
         if ($input_file3 !== null) {
             $multipart = true;
-            $formParams['inputFile3'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file3), 'rb');
+            $formParams['inputFile3'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file3), 'rb');
         }
         // form params
         if ($input_file4 !== null) {
             $multipart = true;
-            $formParams['inputFile4'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file4), 'rb');
+            $formParams['inputFile4'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file4), 'rb');
         }
         // form params
         if ($input_file5 !== null) {
             $multipart = true;
-            $formParams['inputFile5'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file5), 'rb');
+            $formParams['inputFile5'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file5), 'rb');
         }
         // form params
         if ($input_file6 !== null) {
             $multipart = true;
-            $formParams['inputFile6'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file6), 'rb');
+            $formParams['inputFile6'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file6), 'rb');
         }
         // form params
         if ($input_file7 !== null) {
             $multipart = true;
-            $formParams['inputFile7'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file7), 'rb');
+            $formParams['inputFile7'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file7), 'rb');
         }
         // form params
         if ($input_file8 !== null) {
             $multipart = true;
-            $formParams['inputFile8'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file8), 'rb');
+            $formParams['inputFile8'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file8), 'rb');
         }
         // form params
         if ($input_file9 !== null) {
             $multipart = true;
-            $formParams['inputFile9'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file9), 'rb');
+            $formParams['inputFile9'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file9), 'rb');
         }
         // form params
         if ($input_file10 !== null) {
             $multipart = true;
-            $formParams['inputFile10'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file10), 'rb');
+            $formParams['inputFile10'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file10), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -2330,7 +2366,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -2350,7 +2386,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -2371,7 +2407,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2385,10 +2421,10 @@ class ConvertDocumentApi
      *
      * Convert CSV to HTML document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentCsvToHtml($input_file)
@@ -2402,10 +2438,10 @@ class ConvertDocumentApi
      *
      * Convert CSV to HTML document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentCsvToHtmlWithHttpInfo($input_file)
@@ -2477,10 +2513,10 @@ class ConvertDocumentApi
      *
      * Convert CSV to HTML document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentCsvToHtmlAsync($input_file)
     {
@@ -2497,10 +2533,10 @@ class ConvertDocumentApi
      *
      * Convert CSV to HTML document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentCsvToHtmlAsyncWithHttpInfo($input_file)
     {
@@ -2547,16 +2583,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentCsvToHtml'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentCsvToHtmlRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentCsvToHtml'
             );
         }
@@ -2573,7 +2609,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -2594,7 +2630,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -2614,7 +2650,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -2635,7 +2671,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2649,10 +2685,10 @@ class ConvertDocumentApi
      *
      * Convert CSV to PDF document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentCsvToPdf($input_file)
@@ -2666,10 +2702,10 @@ class ConvertDocumentApi
      *
      * Convert CSV to PDF document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentCsvToPdfWithHttpInfo($input_file)
@@ -2741,10 +2777,10 @@ class ConvertDocumentApi
      *
      * Convert CSV to PDF document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentCsvToPdfAsync($input_file)
     {
@@ -2761,10 +2797,10 @@ class ConvertDocumentApi
      *
      * Convert CSV to PDF document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentCsvToPdfAsyncWithHttpInfo($input_file)
     {
@@ -2811,16 +2847,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentCsvToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentCsvToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentCsvToPdf'
             );
         }
@@ -2837,7 +2873,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -2858,7 +2894,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -2878,7 +2914,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -2899,7 +2935,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2913,10 +2949,10 @@ class ConvertDocumentApi
      *
      * Convert CSV to Excel XLSX Spreadsheet
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentCsvToXlsx($input_file)
@@ -2930,10 +2966,10 @@ class ConvertDocumentApi
      *
      * Convert CSV to Excel XLSX Spreadsheet
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentCsvToXlsxWithHttpInfo($input_file)
@@ -3005,10 +3041,10 @@ class ConvertDocumentApi
      *
      * Convert CSV to Excel XLSX Spreadsheet
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentCsvToXlsxAsync($input_file)
     {
@@ -3025,10 +3061,10 @@ class ConvertDocumentApi
      *
      * Convert CSV to Excel XLSX Spreadsheet
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentCsvToXlsxAsyncWithHttpInfo($input_file)
     {
@@ -3075,16 +3111,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentCsvToXlsx'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentCsvToXlsxRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentCsvToXlsx'
             );
         }
@@ -3101,7 +3137,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -3122,7 +3158,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -3142,7 +3178,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -3163,7 +3199,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3177,10 +3213,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOC (97-03) Document to DOCX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentDocToDocx($input_file)
@@ -3194,10 +3230,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOC (97-03) Document to DOCX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentDocToDocxWithHttpInfo($input_file)
@@ -3269,10 +3305,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOC (97-03) Document to DOCX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocToDocxAsync($input_file)
     {
@@ -3289,10 +3325,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOC (97-03) Document to DOCX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocToDocxAsyncWithHttpInfo($input_file)
     {
@@ -3339,16 +3375,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentDocToDocx'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentDocToDocxRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentDocToDocx'
             );
         }
@@ -3365,7 +3401,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -3386,7 +3422,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -3406,7 +3442,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -3427,7 +3463,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3441,10 +3477,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOC (97-03) Document to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentDocToPdf($input_file)
@@ -3458,10 +3494,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOC (97-03) Document to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentDocToPdfWithHttpInfo($input_file)
@@ -3533,10 +3569,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOC (97-03) Document to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocToPdfAsync($input_file)
     {
@@ -3553,10 +3589,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOC (97-03) Document to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocToPdfAsyncWithHttpInfo($input_file)
     {
@@ -3603,16 +3639,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentDocToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentDocToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentDocToPdf'
             );
         }
@@ -3629,7 +3665,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -3650,7 +3686,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -3670,7 +3706,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -3691,7 +3727,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3705,11 +3741,11 @@ class ConvertDocumentApi
      *
      * Convert Word DOC (97-03) Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\TextConversionResult
+     * @throws InvalidArgumentException
+     * @return TextConversionResult
      */
     public function convertDocumentDocToTxt($input_file)
     {
@@ -3722,10 +3758,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOC (97-03) Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\TextConversionResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentDocToTxtWithHttpInfo($input_file)
@@ -3797,10 +3833,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOC (97-03) Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocToTxtAsync($input_file)
     {
@@ -3817,10 +3853,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOC (97-03) Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocToTxtAsyncWithHttpInfo($input_file)
     {
@@ -3867,16 +3903,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentDocToTxt'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentDocToTxtRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentDocToTxt'
             );
         }
@@ -3893,7 +3929,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -3914,7 +3950,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -3934,7 +3970,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -3955,7 +3991,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3969,10 +4005,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to Legacy Word DOC (97-03)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentDocxToDoc($input_file)
@@ -3986,10 +4022,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to Legacy Word DOC (97-03)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentDocxToDocWithHttpInfo($input_file)
@@ -4061,10 +4097,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to Legacy Word DOC (97-03)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToDocAsync($input_file)
     {
@@ -4081,10 +4117,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to Legacy Word DOC (97-03)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToDocAsyncWithHttpInfo($input_file)
     {
@@ -4131,16 +4167,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentDocxToDoc'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentDocxToDocRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentDocxToDoc'
             );
         }
@@ -4157,7 +4193,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -4178,7 +4214,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -4198,7 +4234,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -4219,7 +4255,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4233,10 +4269,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to HTML Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentDocxToHtml($input_file)
@@ -4250,10 +4286,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to HTML Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentDocxToHtmlWithHttpInfo($input_file)
@@ -4325,10 +4361,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to HTML Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToHtmlAsync($input_file)
     {
@@ -4345,10 +4381,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to HTML Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToHtmlAsyncWithHttpInfo($input_file)
     {
@@ -4395,16 +4431,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentDocxToHtml'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentDocxToHtmlRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentDocxToHtml'
             );
         }
@@ -4421,7 +4457,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -4442,7 +4478,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -4462,7 +4498,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -4483,7 +4519,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4497,12 +4533,12 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\DocxToJpgResult
+     * @throws InvalidArgumentException
+     * @return DocxToJpgResult
      */
     public function convertDocumentDocxToJpg($input_file, $quality = null)
     {
@@ -4515,11 +4551,11 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\DocxToJpgResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentDocxToJpgWithHttpInfo($input_file, $quality = null)
@@ -4591,11 +4627,11 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToJpgAsync($input_file, $quality = null)
     {
@@ -4612,11 +4648,11 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToJpgAsyncWithHttpInfo($input_file, $quality = null)
     {
@@ -4663,17 +4699,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentDocxToJpg'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentDocxToJpgRequest($input_file, $quality = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentDocxToJpg'
             );
         }
@@ -4694,7 +4730,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -4715,7 +4751,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -4735,7 +4771,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -4756,7 +4792,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4770,10 +4806,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentDocxToPdf($input_file)
@@ -4787,10 +4823,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentDocxToPdfWithHttpInfo($input_file)
@@ -4862,10 +4898,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToPdfAsync($input_file)
     {
@@ -4882,10 +4918,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToPdfAsyncWithHttpInfo($input_file)
     {
@@ -4932,16 +4968,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentDocxToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentDocxToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentDocxToPdf'
             );
         }
@@ -4958,7 +4994,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -4979,7 +5015,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -4999,7 +5035,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -5020,7 +5056,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5034,11 +5070,11 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\DocxToPngResult
+     * @throws InvalidArgumentException
+     * @return DocxToPngResult
      */
     public function convertDocumentDocxToPng($input_file)
     {
@@ -5051,10 +5087,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\DocxToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentDocxToPngWithHttpInfo($input_file)
@@ -5126,10 +5162,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToPngAsync($input_file)
     {
@@ -5146,10 +5182,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToPngAsyncWithHttpInfo($input_file)
     {
@@ -5196,16 +5232,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentDocxToPng'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentDocxToPngRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentDocxToPng'
             );
         }
@@ -5222,7 +5258,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -5243,7 +5279,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -5263,7 +5299,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -5284,7 +5320,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5298,10 +5334,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to RTF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentDocxToRtf($input_file)
@@ -5315,10 +5351,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to RTF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentDocxToRtfWithHttpInfo($input_file)
@@ -5390,10 +5426,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to RTF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToRtfAsync($input_file)
     {
@@ -5410,10 +5446,10 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to RTF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToRtfAsyncWithHttpInfo($input_file)
     {
@@ -5460,16 +5496,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentDocxToRtf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentDocxToRtfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentDocxToRtf'
             );
         }
@@ -5486,7 +5522,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -5507,7 +5543,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -5527,7 +5563,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -5548,7 +5584,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5562,12 +5598,12 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;minimizeWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\TextConversionResult
+     * @throws InvalidArgumentException
+     * @return TextConversionResult
      */
     public function convertDocumentDocxToTxt($input_file, $text_formatting_mode = null)
     {
@@ -5580,11 +5616,11 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;minimizeWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\TextConversionResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentDocxToTxtWithHttpInfo($input_file, $text_formatting_mode = null)
@@ -5656,11 +5692,11 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;minimizeWhitespace&#39;. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToTxtAsync($input_file, $text_formatting_mode = null)
     {
@@ -5677,11 +5713,11 @@ class ConvertDocumentApi
      *
      * Convert Word DOCX Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;minimizeWhitespace&#39;. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentDocxToTxtAsyncWithHttpInfo($input_file, $text_formatting_mode = null)
     {
@@ -5728,17 +5764,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentDocxToTxt'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting the document to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;minimizeWhitespace&#39;. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentDocxToTxtRequest($input_file, $text_formatting_mode = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentDocxToTxt'
             );
         }
@@ -5759,7 +5795,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -5780,7 +5816,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -5800,7 +5836,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -5821,7 +5857,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5835,13 +5871,13 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to HTML string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      * @param  bool $include_attachments Optional; If false, the response object will not include any attachment files from the input file. Default is true. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\EmlToHtmlResult
+     * @throws InvalidArgumentException
+     * @return EmlToHtmlResult
      */
     public function convertDocumentEmlToHtml($input_file, $body_only = null, $include_attachments = null)
     {
@@ -5854,12 +5890,12 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to HTML string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      * @param  bool $include_attachments Optional; If false, the response object will not include any attachment files from the input file. Default is true. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\EmlToHtmlResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentEmlToHtmlWithHttpInfo($input_file, $body_only = null, $include_attachments = null)
@@ -5931,12 +5967,12 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to HTML string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      * @param  bool $include_attachments Optional; If false, the response object will not include any attachment files from the input file. Default is true. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentEmlToHtmlAsync($input_file, $body_only = null, $include_attachments = null)
     {
@@ -5953,12 +5989,12 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to HTML string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      * @param  bool $include_attachments Optional; If false, the response object will not include any attachment files from the input file. Default is true. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentEmlToHtmlAsyncWithHttpInfo($input_file, $body_only = null, $include_attachments = null)
     {
@@ -6005,18 +6041,18 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentEmlToHtml'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      * @param  bool $include_attachments Optional; If false, the response object will not include any attachment files from the input file. Default is true. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentEmlToHtmlRequest($input_file, $body_only = null, $include_attachments = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentEmlToHtml'
             );
         }
@@ -6041,7 +6077,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -6062,7 +6098,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -6082,7 +6118,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -6103,7 +6139,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6117,12 +6153,12 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\EmlToJpgResult
+     * @throws InvalidArgumentException
+     * @return EmlToJpgResult
      */
     public function convertDocumentEmlToJpg($input_file, $quality = null)
     {
@@ -6135,11 +6171,11 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\EmlToJpgResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentEmlToJpgWithHttpInfo($input_file, $quality = null)
@@ -6211,11 +6247,11 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentEmlToJpgAsync($input_file, $quality = null)
     {
@@ -6232,11 +6268,11 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentEmlToJpgAsyncWithHttpInfo($input_file, $quality = null)
     {
@@ -6283,17 +6319,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentEmlToJpg'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentEmlToJpgRequest($input_file, $quality = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentEmlToJpg'
             );
         }
@@ -6314,7 +6350,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -6335,7 +6371,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -6355,7 +6391,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -6376,7 +6412,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6390,11 +6426,11 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to PDF document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentEmlToPdf($input_file, $body_only = null)
@@ -6408,11 +6444,11 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to PDF document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentEmlToPdfWithHttpInfo($input_file, $body_only = null)
@@ -6484,11 +6520,11 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to PDF document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentEmlToPdfAsync($input_file, $body_only = null)
     {
@@ -6505,11 +6541,11 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to PDF document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentEmlToPdfAsyncWithHttpInfo($input_file, $body_only = null)
     {
@@ -6556,17 +6592,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentEmlToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentEmlToPdfRequest($input_file, $body_only = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentEmlToPdf'
             );
         }
@@ -6587,7 +6623,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -6608,7 +6644,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -6628,7 +6664,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -6649,7 +6685,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6663,11 +6699,11 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\EmlToPngResult
+     * @throws InvalidArgumentException
+     * @return EmlToPngResult
      */
     public function convertDocumentEmlToPng($input_file)
     {
@@ -6680,10 +6716,10 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\EmlToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentEmlToPngWithHttpInfo($input_file)
@@ -6755,10 +6791,10 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentEmlToPngAsync($input_file)
     {
@@ -6775,10 +6811,10 @@ class ConvertDocumentApi
      *
      * Convert Email EML file to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentEmlToPngAsyncWithHttpInfo($input_file)
     {
@@ -6825,16 +6861,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentEmlToPng'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentEmlToPngRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentEmlToPng'
             );
         }
@@ -6851,7 +6887,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -6872,7 +6908,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -6892,7 +6928,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -6913,7 +6949,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6931,7 +6967,7 @@ class ConvertDocumentApi
      * @param  int $icon_size Optional; The desired width of the icon, preserving its aspect ratio. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentGetFileTypeIcon($file_extension, $icon_size = null)
@@ -6949,7 +6985,7 @@ class ConvertDocumentApi
      * @param  int $icon_size Optional; The desired width of the icon, preserving its aspect ratio. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentGetFileTypeIconWithHttpInfo($file_extension, $icon_size = null)
@@ -7024,8 +7060,8 @@ class ConvertDocumentApi
      * @param  string $file_extension Required; The file extension to be used for the icon. Limited to 4 AlphaNumeric characters. (required)
      * @param  int $icon_size Optional; The desired width of the icon, preserving its aspect ratio. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentGetFileTypeIconAsync($file_extension, $icon_size = null)
     {
@@ -7045,8 +7081,8 @@ class ConvertDocumentApi
      * @param  string $file_extension Required; The file extension to be used for the icon. Limited to 4 AlphaNumeric characters. (required)
      * @param  int $icon_size Optional; The desired width of the icon, preserving its aspect ratio. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentGetFileTypeIconAsyncWithHttpInfo($file_extension, $icon_size = null)
     {
@@ -7096,14 +7132,14 @@ class ConvertDocumentApi
      * @param  string $file_extension Required; The file extension to be used for the icon. Limited to 4 AlphaNumeric characters. (required)
      * @param  int $icon_size Optional; The desired width of the icon, preserving its aspect ratio. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentGetFileTypeIconRequest($file_extension, $icon_size = null)
     {
         // verify the required parameter 'file_extension' is set
         if ($file_extension === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $file_extension when calling convertDocumentGetFileTypeIcon'
             );
         }
@@ -7144,7 +7180,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -7164,7 +7200,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -7185,7 +7221,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7203,8 +7239,8 @@ class ConvertDocumentApi
      * @param  int $icon_size Optional; The desired width of the icon, preserving its aspect ratio. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\GetFileTypeIconResult
+     * @throws InvalidArgumentException
+     * @return GetFileTypeIconResult
      */
     public function convertDocumentGetFileTypeIconAdvanced($file_extension, $icon_size = null)
     {
@@ -7221,7 +7257,7 @@ class ConvertDocumentApi
      * @param  int $icon_size Optional; The desired width of the icon, preserving its aspect ratio. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\GetFileTypeIconResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentGetFileTypeIconAdvancedWithHttpInfo($file_extension, $icon_size = null)
@@ -7296,8 +7332,8 @@ class ConvertDocumentApi
      * @param  string $file_extension Required; The file extension to be used for the icon. Limited to 4 AlphaNumeric characters. (required)
      * @param  int $icon_size Optional; The desired width of the icon, preserving its aspect ratio. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentGetFileTypeIconAdvancedAsync($file_extension, $icon_size = null)
     {
@@ -7317,8 +7353,8 @@ class ConvertDocumentApi
      * @param  string $file_extension Required; The file extension to be used for the icon. Limited to 4 AlphaNumeric characters. (required)
      * @param  int $icon_size Optional; The desired width of the icon, preserving its aspect ratio. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentGetFileTypeIconAdvancedAsyncWithHttpInfo($file_extension, $icon_size = null)
     {
@@ -7368,14 +7404,14 @@ class ConvertDocumentApi
      * @param  string $file_extension Required; The file extension to be used for the icon. Limited to 4 AlphaNumeric characters. (required)
      * @param  int $icon_size Optional; The desired width of the icon, preserving its aspect ratio. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentGetFileTypeIconAdvancedRequest($file_extension, $icon_size = null)
     {
         // verify the required parameter 'file_extension' is set
         if ($file_extension === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $file_extension when calling convertDocumentGetFileTypeIconAdvanced'
             );
         }
@@ -7416,7 +7452,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -7436,7 +7472,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -7457,7 +7493,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7471,12 +7507,12 @@ class ConvertDocumentApi
      *
      * Convert HTML document file to PDF Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true. (optional)
      * @param  int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentHtmlToPdf($input_file, $include_background_graphics = null, $scale_factor = null)
@@ -7490,12 +7526,12 @@ class ConvertDocumentApi
      *
      * Convert HTML document file to PDF Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true. (optional)
      * @param  int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentHtmlToPdfWithHttpInfo($input_file, $include_background_graphics = null, $scale_factor = null)
@@ -7567,12 +7603,12 @@ class ConvertDocumentApi
      *
      * Convert HTML document file to PDF Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true. (optional)
      * @param  int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentHtmlToPdfAsync($input_file, $include_background_graphics = null, $scale_factor = null)
     {
@@ -7589,12 +7625,12 @@ class ConvertDocumentApi
      *
      * Convert HTML document file to PDF Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true. (optional)
      * @param  int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentHtmlToPdfAsyncWithHttpInfo($input_file, $include_background_graphics = null, $scale_factor = null)
     {
@@ -7641,18 +7677,18 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentHtmlToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $include_background_graphics Optional: Set to true to include background graphics in the PDF, or false to not include.  Default is true. (optional)
      * @param  int $scale_factor Optional: Set to 100 to scale at 100%, set to 50% to scale down to 50% scale, set to 200% to scale up to 200% scale, etc.  Default is 100%. Maximum is 1000%. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentHtmlToPdfRequest($input_file, $include_background_graphics = null, $scale_factor = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentHtmlToPdf'
             );
         }
@@ -7677,7 +7713,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -7698,7 +7734,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -7718,7 +7754,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -7739,7 +7775,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7753,11 +7789,11 @@ class ConvertDocumentApi
      *
      * Convert HTML document file to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\PdfToPngResult
+     * @throws InvalidArgumentException
+     * @return PdfToPngResult
      */
     public function convertDocumentHtmlToPng($input_file)
     {
@@ -7770,10 +7806,10 @@ class ConvertDocumentApi
      *
      * Convert HTML document file to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\PdfToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentHtmlToPngWithHttpInfo($input_file)
@@ -7845,10 +7881,10 @@ class ConvertDocumentApi
      *
      * Convert HTML document file to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentHtmlToPngAsync($input_file)
     {
@@ -7865,10 +7901,10 @@ class ConvertDocumentApi
      *
      * Convert HTML document file to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentHtmlToPngAsyncWithHttpInfo($input_file)
     {
@@ -7915,16 +7951,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentHtmlToPng'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentHtmlToPngRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentHtmlToPng'
             );
         }
@@ -7941,7 +7977,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -7962,7 +7998,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -7982,7 +8018,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -8003,7 +8039,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -8017,11 +8053,11 @@ class ConvertDocumentApi
      *
      * HTML Document file to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\TextConversionResult
+     * @throws InvalidArgumentException
+     * @return TextConversionResult
      */
     public function convertDocumentHtmlToTxt($input_file)
     {
@@ -8034,10 +8070,10 @@ class ConvertDocumentApi
      *
      * HTML Document file to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\TextConversionResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentHtmlToTxtWithHttpInfo($input_file)
@@ -8109,10 +8145,10 @@ class ConvertDocumentApi
      *
      * HTML Document file to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentHtmlToTxtAsync($input_file)
     {
@@ -8129,10 +8165,10 @@ class ConvertDocumentApi
      *
      * HTML Document file to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentHtmlToTxtAsyncWithHttpInfo($input_file)
     {
@@ -8179,16 +8215,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentHtmlToTxt'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentHtmlToTxtRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentHtmlToTxt'
             );
         }
@@ -8205,7 +8241,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -8226,7 +8262,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -8246,7 +8282,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -8267,7 +8303,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -8281,12 +8317,12 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\KeynoteToJpgResult
+     * @throws InvalidArgumentException
+     * @return KeynoteToJpgResult
      */
     public function convertDocumentKeynoteToJpg($input_file, $quality = null)
     {
@@ -8299,11 +8335,11 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\KeynoteToJpgResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentKeynoteToJpgWithHttpInfo($input_file, $quality = null)
@@ -8375,11 +8411,11 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentKeynoteToJpgAsync($input_file, $quality = null)
     {
@@ -8396,11 +8432,11 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentKeynoteToJpgAsyncWithHttpInfo($input_file, $quality = null)
     {
@@ -8447,17 +8483,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentKeynoteToJpg'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentKeynoteToJpgRequest($input_file, $quality = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentKeynoteToJpg'
             );
         }
@@ -8478,7 +8514,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -8499,7 +8535,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -8519,7 +8555,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -8540,7 +8576,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -8554,10 +8590,10 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentKeynoteToPdf($input_file)
@@ -8571,10 +8607,10 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentKeynoteToPdfWithHttpInfo($input_file)
@@ -8646,10 +8682,10 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentKeynoteToPdfAsync($input_file)
     {
@@ -8666,10 +8702,10 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentKeynoteToPdfAsyncWithHttpInfo($input_file)
     {
@@ -8716,16 +8752,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentKeynoteToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentKeynoteToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentKeynoteToPdf'
             );
         }
@@ -8742,7 +8778,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -8763,7 +8799,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -8783,7 +8819,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -8804,7 +8840,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -8818,11 +8854,11 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\KeynoteToPngResult
+     * @throws InvalidArgumentException
+     * @return KeynoteToPngResult
      */
     public function convertDocumentKeynoteToPng($input_file)
     {
@@ -8835,10 +8871,10 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\KeynoteToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentKeynoteToPngWithHttpInfo($input_file)
@@ -8910,10 +8946,10 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentKeynoteToPngAsync($input_file)
     {
@@ -8930,10 +8966,10 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentKeynoteToPngAsyncWithHttpInfo($input_file)
     {
@@ -8980,16 +9016,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentKeynoteToPng'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentKeynoteToPngRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentKeynoteToPng'
             );
         }
@@ -9006,7 +9042,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -9027,7 +9063,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -9047,7 +9083,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -9068,7 +9104,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -9082,10 +9118,10 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to PPTX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentKeynoteToPptx($input_file)
@@ -9099,10 +9135,10 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to PPTX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentKeynoteToPptxWithHttpInfo($input_file)
@@ -9174,10 +9210,10 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to PPTX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentKeynoteToPptxAsync($input_file)
     {
@@ -9194,10 +9230,10 @@ class ConvertDocumentApi
      *
      * Convert Keynote Presentation (KEY) to PPTX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentKeynoteToPptxAsyncWithHttpInfo($input_file)
     {
@@ -9244,16 +9280,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentKeynoteToPptx'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentKeynoteToPptxRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentKeynoteToPptx'
             );
         }
@@ -9270,7 +9306,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -9291,7 +9327,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -9311,7 +9347,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -9332,7 +9368,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -9346,13 +9382,13 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to HTML string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the MSG. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      * @param  bool $include_attachments Optional; If false, the response object will not include any attachment files from the input file. Default is true. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\MsgToHtmlResult
+     * @throws InvalidArgumentException
+     * @return MsgToHtmlResult
      */
     public function convertDocumentMsgToHtml($input_file, $body_only = null, $include_attachments = null)
     {
@@ -9365,12 +9401,12 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to HTML string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the MSG. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      * @param  bool $include_attachments Optional; If false, the response object will not include any attachment files from the input file. Default is true. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\MsgToHtmlResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentMsgToHtmlWithHttpInfo($input_file, $body_only = null, $include_attachments = null)
@@ -9442,12 +9478,12 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to HTML string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the MSG. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      * @param  bool $include_attachments Optional; If false, the response object will not include any attachment files from the input file. Default is true. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentMsgToHtmlAsync($input_file, $body_only = null, $include_attachments = null)
     {
@@ -9464,12 +9500,12 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to HTML string
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the MSG. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      * @param  bool $include_attachments Optional; If false, the response object will not include any attachment files from the input file. Default is true. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentMsgToHtmlAsyncWithHttpInfo($input_file, $body_only = null, $include_attachments = null)
     {
@@ -9516,18 +9552,18 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentMsgToHtml'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the MSG. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      * @param  bool $include_attachments Optional; If false, the response object will not include any attachment files from the input file. Default is true. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentMsgToHtmlRequest($input_file, $body_only = null, $include_attachments = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentMsgToHtml'
             );
         }
@@ -9552,7 +9588,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -9573,7 +9609,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -9593,7 +9629,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -9614,7 +9650,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -9628,12 +9664,12 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\MsgToJpgResult
+     * @throws InvalidArgumentException
+     * @return MsgToJpgResult
      */
     public function convertDocumentMsgToJpg($input_file, $quality = null)
     {
@@ -9646,11 +9682,11 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\MsgToJpgResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentMsgToJpgWithHttpInfo($input_file, $quality = null)
@@ -9722,11 +9758,11 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentMsgToJpgAsync($input_file, $quality = null)
     {
@@ -9743,11 +9779,11 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentMsgToJpgAsyncWithHttpInfo($input_file, $quality = null)
     {
@@ -9794,17 +9830,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentMsgToJpg'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentMsgToJpgRequest($input_file, $quality = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentMsgToJpg'
             );
         }
@@ -9825,7 +9861,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -9846,7 +9882,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -9866,7 +9902,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -9887,7 +9923,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -9901,11 +9937,11 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to PDF document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentMsgToPdf($input_file, $body_only = null)
@@ -9919,11 +9955,11 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to PDF document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentMsgToPdfWithHttpInfo($input_file, $body_only = null)
@@ -9995,11 +10031,11 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to PDF document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentMsgToPdfAsync($input_file, $body_only = null)
     {
@@ -10016,11 +10052,11 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to PDF document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentMsgToPdfAsyncWithHttpInfo($input_file, $body_only = null)
     {
@@ -10067,17 +10103,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentMsgToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  bool $body_only Optional; If true, the HTML string will only include the body of the email. Other information such as subject will still be given as properties in the response object. Default is false. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentMsgToPdfRequest($input_file, $body_only = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentMsgToPdf'
             );
         }
@@ -10098,7 +10134,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -10119,7 +10155,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -10139,7 +10175,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -10160,7 +10196,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -10174,11 +10210,11 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\MsgToPngResult
+     * @throws InvalidArgumentException
+     * @return MsgToPngResult
      */
     public function convertDocumentMsgToPng($input_file)
     {
@@ -10191,10 +10227,10 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\MsgToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentMsgToPngWithHttpInfo($input_file)
@@ -10266,10 +10302,10 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentMsgToPngAsync($input_file)
     {
@@ -10286,10 +10322,10 @@ class ConvertDocumentApi
      *
      * Convert Email MSG file to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentMsgToPngAsyncWithHttpInfo($input_file)
     {
@@ -10336,16 +10372,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentMsgToPng'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentMsgToPngRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentMsgToPng'
             );
         }
@@ -10362,7 +10398,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -10383,7 +10419,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -10403,7 +10439,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -10424,7 +10460,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -10438,12 +10474,12 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\OdpToJpgResult
+     * @throws InvalidArgumentException
+     * @return OdpToJpgResult
      */
     public function convertDocumentOdpToJpg($input_file, $quality = null)
     {
@@ -10456,11 +10492,11 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\OdpToJpgResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentOdpToJpgWithHttpInfo($input_file, $quality = null)
@@ -10532,11 +10568,11 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdpToJpgAsync($input_file, $quality = null)
     {
@@ -10553,11 +10589,11 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdpToJpgAsyncWithHttpInfo($input_file, $quality = null)
     {
@@ -10604,17 +10640,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentOdpToJpg'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentOdpToJpgRequest($input_file, $quality = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentOdpToJpg'
             );
         }
@@ -10635,7 +10671,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -10656,7 +10692,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -10676,7 +10712,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -10697,7 +10733,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -10711,10 +10747,10 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentOdpToPdf($input_file)
@@ -10728,10 +10764,10 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentOdpToPdfWithHttpInfo($input_file)
@@ -10803,10 +10839,10 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdpToPdfAsync($input_file)
     {
@@ -10823,10 +10859,10 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdpToPdfAsyncWithHttpInfo($input_file)
     {
@@ -10873,16 +10909,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentOdpToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentOdpToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentOdpToPdf'
             );
         }
@@ -10899,7 +10935,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -10920,7 +10956,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -10940,7 +10976,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -10961,7 +10997,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -10975,11 +11011,11 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\OdpToPngResult
+     * @throws InvalidArgumentException
+     * @return OdpToPngResult
      */
     public function convertDocumentOdpToPng($input_file)
     {
@@ -10992,10 +11028,10 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\OdpToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentOdpToPngWithHttpInfo($input_file)
@@ -11067,10 +11103,10 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdpToPngAsync($input_file)
     {
@@ -11087,10 +11123,10 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdpToPngAsyncWithHttpInfo($input_file)
     {
@@ -11137,16 +11173,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentOdpToPng'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentOdpToPngRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentOdpToPng'
             );
         }
@@ -11163,7 +11199,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -11184,7 +11220,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -11204,7 +11240,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -11225,7 +11261,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -11239,10 +11275,10 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to PPTX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentOdpToPptx($input_file)
@@ -11256,10 +11292,10 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to PPTX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentOdpToPptxWithHttpInfo($input_file)
@@ -11331,10 +11367,10 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to PPTX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdpToPptxAsync($input_file)
     {
@@ -11351,10 +11387,10 @@ class ConvertDocumentApi
      *
      * Convert ODP Presentation to PPTX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdpToPptxAsyncWithHttpInfo($input_file)
     {
@@ -11401,16 +11437,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentOdpToPptx'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentOdpToPptxRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentOdpToPptx'
             );
         }
@@ -11427,7 +11463,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -11448,7 +11484,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -11468,7 +11504,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -11489,7 +11525,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -11503,12 +11539,12 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\OdsToJpgResult
+     * @throws InvalidArgumentException
+     * @return OdsToJpgResult
      */
     public function convertDocumentOdsToJpg($input_file, $quality = null)
     {
@@ -11521,11 +11557,11 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\OdsToJpgResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentOdsToJpgWithHttpInfo($input_file, $quality = null)
@@ -11597,11 +11633,11 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdsToJpgAsync($input_file, $quality = null)
     {
@@ -11618,11 +11654,11 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdsToJpgAsyncWithHttpInfo($input_file, $quality = null)
     {
@@ -11669,17 +11705,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentOdsToJpg'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentOdsToJpgRequest($input_file, $quality = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentOdsToJpg'
             );
         }
@@ -11700,7 +11736,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -11721,7 +11757,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -11741,7 +11777,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -11762,7 +11798,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -11776,10 +11812,10 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentOdsToPdf($input_file)
@@ -11793,10 +11829,10 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentOdsToPdfWithHttpInfo($input_file)
@@ -11868,10 +11904,10 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdsToPdfAsync($input_file)
     {
@@ -11888,10 +11924,10 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdsToPdfAsyncWithHttpInfo($input_file)
     {
@@ -11938,16 +11974,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentOdsToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentOdsToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentOdsToPdf'
             );
         }
@@ -11964,7 +12000,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -11985,7 +12021,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -12005,7 +12041,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -12026,7 +12062,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -12040,11 +12076,11 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\OdsToPngResult
+     * @throws InvalidArgumentException
+     * @return OdsToPngResult
      */
     public function convertDocumentOdsToPng($input_file)
     {
@@ -12057,10 +12093,10 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\OdsToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentOdsToPngWithHttpInfo($input_file)
@@ -12132,10 +12168,10 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdsToPngAsync($input_file)
     {
@@ -12152,10 +12188,10 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdsToPngAsyncWithHttpInfo($input_file)
     {
@@ -12202,16 +12238,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentOdsToPng'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentOdsToPngRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentOdsToPng'
             );
         }
@@ -12228,7 +12264,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -12249,7 +12285,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -12269,7 +12305,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -12290,7 +12326,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -12304,10 +12340,10 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to XLSX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentOdsToXlsx($input_file)
@@ -12321,10 +12357,10 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to XLSX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentOdsToXlsxWithHttpInfo($input_file)
@@ -12396,10 +12432,10 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to XLSX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdsToXlsxAsync($input_file)
     {
@@ -12416,10 +12452,10 @@ class ConvertDocumentApi
      *
      * Convert ODS Spreadsheet to XLSX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdsToXlsxAsyncWithHttpInfo($input_file)
     {
@@ -12466,16 +12502,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentOdsToXlsx'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentOdsToXlsxRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentOdsToXlsx'
             );
         }
@@ -12492,7 +12528,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -12513,7 +12549,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -12533,7 +12569,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -12554,7 +12590,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -12568,10 +12604,10 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to Word DOCX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentOdtToDocx($input_file)
@@ -12585,10 +12621,10 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to Word DOCX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentOdtToDocxWithHttpInfo($input_file)
@@ -12660,10 +12696,10 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to Word DOCX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdtToDocxAsync($input_file)
     {
@@ -12680,10 +12716,10 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to Word DOCX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdtToDocxAsyncWithHttpInfo($input_file)
     {
@@ -12730,16 +12766,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentOdtToDocx'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentOdtToDocxRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentOdtToDocx'
             );
         }
@@ -12756,7 +12792,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -12777,7 +12813,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -12797,7 +12833,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -12818,7 +12854,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -12832,12 +12868,12 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\OdtToJpgResult
+     * @throws InvalidArgumentException
+     * @return OdtToJpgResult
      */
     public function convertDocumentOdtToJpg($input_file, $quality = null)
     {
@@ -12850,11 +12886,11 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\OdtToJpgResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentOdtToJpgWithHttpInfo($input_file, $quality = null)
@@ -12926,11 +12962,11 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdtToJpgAsync($input_file, $quality = null)
     {
@@ -12947,11 +12983,11 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdtToJpgAsyncWithHttpInfo($input_file, $quality = null)
     {
@@ -12998,17 +13034,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentOdtToJpg'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentOdtToJpgRequest($input_file, $quality = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentOdtToJpg'
             );
         }
@@ -13029,7 +13065,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -13050,7 +13086,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -13070,7 +13106,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -13091,7 +13127,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -13105,10 +13141,10 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentOdtToPdf($input_file)
@@ -13122,10 +13158,10 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentOdtToPdfWithHttpInfo($input_file)
@@ -13197,10 +13233,10 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdtToPdfAsync($input_file)
     {
@@ -13217,10 +13253,10 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdtToPdfAsyncWithHttpInfo($input_file)
     {
@@ -13267,16 +13303,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentOdtToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentOdtToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentOdtToPdf'
             );
         }
@@ -13293,7 +13329,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -13314,7 +13350,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -13334,7 +13370,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -13355,7 +13391,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -13369,11 +13405,11 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\OdtToPngResult
+     * @throws InvalidArgumentException
+     * @return OdtToPngResult
      */
     public function convertDocumentOdtToPng($input_file)
     {
@@ -13386,10 +13422,10 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\OdtToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentOdtToPngWithHttpInfo($input_file)
@@ -13461,10 +13497,10 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdtToPngAsync($input_file)
     {
@@ -13481,10 +13517,10 @@ class ConvertDocumentApi
      *
      * Convert ODT Text File to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentOdtToPngAsyncWithHttpInfo($input_file)
     {
@@ -13531,16 +13567,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentOdtToPng'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentOdtToPngRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentOdtToPng'
             );
         }
@@ -13557,7 +13593,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -13578,7 +13614,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -13598,7 +13634,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -13619,7 +13655,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -13633,10 +13669,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to Word DOCX Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentPdfToDocx($input_file)
@@ -13650,10 +13686,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to Word DOCX Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPdfToDocxWithHttpInfo($input_file)
@@ -13725,10 +13761,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to Word DOCX Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToDocxAsync($input_file)
     {
@@ -13745,10 +13781,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to Word DOCX Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToDocxAsyncWithHttpInfo($input_file)
     {
@@ -13795,16 +13831,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPdfToDocx'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPdfToDocxRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentPdfToDocx'
             );
         }
@@ -13821,7 +13857,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -13842,7 +13878,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -13862,7 +13898,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -13883,7 +13919,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -13897,10 +13933,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to Word DOCX Document based on rasterized version of the PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentPdfToDocxRasterize($input_file)
@@ -13914,10 +13950,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to Word DOCX Document based on rasterized version of the PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPdfToDocxRasterizeWithHttpInfo($input_file)
@@ -13989,10 +14025,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to Word DOCX Document based on rasterized version of the PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToDocxRasterizeAsync($input_file)
     {
@@ -14009,10 +14045,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to Word DOCX Document based on rasterized version of the PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToDocxRasterizeAsyncWithHttpInfo($input_file)
     {
@@ -14059,16 +14095,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPdfToDocxRasterize'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPdfToDocxRasterizeRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentPdfToDocxRasterize'
             );
         }
@@ -14085,7 +14121,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -14106,7 +14142,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -14126,7 +14162,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -14147,7 +14183,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -14161,12 +14197,12 @@ class ConvertDocumentApi
      *
      * Convert PDF to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\PdfToJpgResult
+     * @throws InvalidArgumentException
+     * @return PdfToJpgResult
      */
     public function convertDocumentPdfToJpg($input_file, $quality = null)
     {
@@ -14179,11 +14215,11 @@ class ConvertDocumentApi
      *
      * Convert PDF to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\PdfToJpgResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPdfToJpgWithHttpInfo($input_file, $quality = null)
@@ -14255,11 +14291,11 @@ class ConvertDocumentApi
      *
      * Convert PDF to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToJpgAsync($input_file, $quality = null)
     {
@@ -14276,11 +14312,11 @@ class ConvertDocumentApi
      *
      * Convert PDF to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToJpgAsyncWithHttpInfo($input_file, $quality = null)
     {
@@ -14327,17 +14363,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPdfToJpg'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPdfToJpgRequest($input_file, $quality = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentPdfToJpg'
             );
         }
@@ -14358,7 +14394,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -14379,7 +14415,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -14399,7 +14435,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -14420,7 +14456,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -14434,11 +14470,11 @@ class ConvertDocumentApi
      *
      * Convert PDF to PNG Image Array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\PdfToPngResult
+     * @throws InvalidArgumentException
+     * @return PdfToPngResult
      */
     public function convertDocumentPdfToPngArray($input_file)
     {
@@ -14451,10 +14487,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to PNG Image Array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\PdfToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPdfToPngArrayWithHttpInfo($input_file)
@@ -14526,10 +14562,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to PNG Image Array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToPngArrayAsync($input_file)
     {
@@ -14546,10 +14582,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to PNG Image Array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToPngArrayAsyncWithHttpInfo($input_file)
     {
@@ -14596,16 +14632,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPdfToPngArray'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPdfToPngArrayRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentPdfToPngArray'
             );
         }
@@ -14622,7 +14658,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -14643,7 +14679,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -14663,7 +14699,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -14684,7 +14720,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -14698,10 +14734,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to Single PNG image
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentPdfToPngSingle($input_file)
@@ -14715,10 +14751,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to Single PNG image
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPdfToPngSingleWithHttpInfo($input_file)
@@ -14790,10 +14826,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to Single PNG image
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToPngSingleAsync($input_file)
     {
@@ -14810,10 +14846,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to Single PNG image
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToPngSingleAsyncWithHttpInfo($input_file)
     {
@@ -14860,16 +14896,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPdfToPngSingle'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPdfToPngSingleRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentPdfToPngSingle'
             );
         }
@@ -14886,7 +14922,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -14907,7 +14943,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -14927,7 +14963,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -14948,7 +14984,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -14962,10 +14998,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to PowerPoint PPTX Presentation
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentPdfToPptx($input_file)
@@ -14979,10 +15015,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to PowerPoint PPTX Presentation
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPdfToPptxWithHttpInfo($input_file)
@@ -15054,10 +15090,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to PowerPoint PPTX Presentation
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToPptxAsync($input_file)
     {
@@ -15074,10 +15110,10 @@ class ConvertDocumentApi
      *
      * Convert PDF to PowerPoint PPTX Presentation
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToPptxAsyncWithHttpInfo($input_file)
     {
@@ -15124,16 +15160,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPdfToPptx'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPdfToPptxRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentPdfToPptx'
             );
         }
@@ -15150,7 +15186,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -15171,7 +15207,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -15191,7 +15227,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -15212,7 +15248,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -15226,12 +15262,12 @@ class ConvertDocumentApi
      *
      * Convert PDF Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting PDF to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\TextConversionResult
+     * @throws InvalidArgumentException
+     * @return TextConversionResult
      */
     public function convertDocumentPdfToTxt($input_file, $text_formatting_mode = null)
     {
@@ -15244,11 +15280,11 @@ class ConvertDocumentApi
      *
      * Convert PDF Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting PDF to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\TextConversionResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPdfToTxtWithHttpInfo($input_file, $text_formatting_mode = null)
@@ -15320,11 +15356,11 @@ class ConvertDocumentApi
      *
      * Convert PDF Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting PDF to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToTxtAsync($input_file, $text_formatting_mode = null)
     {
@@ -15341,11 +15377,11 @@ class ConvertDocumentApi
      *
      * Convert PDF Document to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting PDF to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPdfToTxtAsyncWithHttpInfo($input_file, $text_formatting_mode = null)
     {
@@ -15392,17 +15428,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPdfToTxt'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $text_formatting_mode Optional; specify how whitespace should be handled when converting PDF to text.  Possible values are &#39;preserveWhitespace&#39; which will attempt to preserve whitespace in the document and relative positioning of text within the document, and &#39;minimizeWhitespace&#39; which will not insert additional spaces into the document in most cases.  Default is &#39;preserveWhitespace&#39;. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPdfToTxtRequest($input_file, $text_formatting_mode = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentPdfToTxt'
             );
         }
@@ -15423,7 +15459,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -15444,7 +15480,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -15464,7 +15500,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -15485,7 +15521,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -15499,19 +15535,19 @@ class ConvertDocumentApi
      *
      * Convert PNG Array to PDF
      *
-     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentPngArrayToPdf($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
@@ -15525,19 +15561,19 @@ class ConvertDocumentApi
      *
      * Convert PNG Array to PDF
      *
-     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPngArrayToPdfWithHttpInfo($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
@@ -15609,19 +15645,19 @@ class ConvertDocumentApi
      *
      * Convert PNG Array to PDF
      *
-     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPngArrayToPdfAsync($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
     {
@@ -15638,19 +15674,19 @@ class ConvertDocumentApi
      *
      * Convert PNG Array to PDF
      *
-     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPngArrayToPdfAsyncWithHttpInfo($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
     {
@@ -15697,31 +15733,31 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPngArrayToPdf'
      *
-     * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file2 Second input file to perform the operation on. (required)
-     * @param  \SplFileObject $input_file3 Third input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
-     * @param  \SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file1 First input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file2 Second input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file3 Third input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file4 Fourth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file5 Fifth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file6 Sixth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file7 Seventh input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file8 Eighth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file9 Ninth input file to perform the operation on. (optional)
+     * @param  SplFileObject $input_file10 Tenth input file to perform the operation on. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPngArrayToPdfRequest($input_file1, $input_file2, $input_file3 = null, $input_file4 = null, $input_file5 = null, $input_file6 = null, $input_file7 = null, $input_file8 = null, $input_file9 = null, $input_file10 = null)
     {
         // verify the required parameter 'input_file1' is set
         if ($input_file1 === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file1 when calling convertDocumentPngArrayToPdf'
             );
         }
         // verify the required parameter 'input_file2' is set
         if ($input_file2 === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file2 when calling convertDocumentPngArrayToPdf'
             );
         }
@@ -15738,52 +15774,52 @@ class ConvertDocumentApi
         // form params
         if ($input_file1 !== null) {
             $multipart = true;
-            $formParams['inputFile1'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file1), 'rb');
+            $formParams['inputFile1'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file1), 'rb');
         }
         // form params
         if ($input_file2 !== null) {
             $multipart = true;
-            $formParams['inputFile2'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file2), 'rb');
+            $formParams['inputFile2'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file2), 'rb');
         }
         // form params
         if ($input_file3 !== null) {
             $multipart = true;
-            $formParams['inputFile3'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file3), 'rb');
+            $formParams['inputFile3'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file3), 'rb');
         }
         // form params
         if ($input_file4 !== null) {
             $multipart = true;
-            $formParams['inputFile4'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file4), 'rb');
+            $formParams['inputFile4'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file4), 'rb');
         }
         // form params
         if ($input_file5 !== null) {
             $multipart = true;
-            $formParams['inputFile5'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file5), 'rb');
+            $formParams['inputFile5'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file5), 'rb');
         }
         // form params
         if ($input_file6 !== null) {
             $multipart = true;
-            $formParams['inputFile6'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file6), 'rb');
+            $formParams['inputFile6'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file6), 'rb');
         }
         // form params
         if ($input_file7 !== null) {
             $multipart = true;
-            $formParams['inputFile7'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file7), 'rb');
+            $formParams['inputFile7'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file7), 'rb');
         }
         // form params
         if ($input_file8 !== null) {
             $multipart = true;
-            $formParams['inputFile8'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file8), 'rb');
+            $formParams['inputFile8'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file8), 'rb');
         }
         // form params
         if ($input_file9 !== null) {
             $multipart = true;
-            $formParams['inputFile9'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file9), 'rb');
+            $formParams['inputFile9'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file9), 'rb');
         }
         // form params
         if ($input_file10 !== null) {
             $multipart = true;
-            $formParams['inputFile10'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file10), 'rb');
+            $formParams['inputFile10'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file10), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -15804,7 +15840,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -15824,7 +15860,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -15845,7 +15881,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -15859,10 +15895,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPT (97-03) Presentation to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentPptToPdf($input_file)
@@ -15876,10 +15912,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPT (97-03) Presentation to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPptToPdfWithHttpInfo($input_file)
@@ -15951,10 +15987,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPT (97-03) Presentation to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPptToPdfAsync($input_file)
     {
@@ -15971,10 +16007,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPT (97-03) Presentation to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPptToPdfAsyncWithHttpInfo($input_file)
     {
@@ -16021,16 +16057,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPptToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPptToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentPptToPdf'
             );
         }
@@ -16047,7 +16083,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -16068,7 +16104,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -16088,7 +16124,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -16109,7 +16145,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -16123,10 +16159,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPT (97-03) Presentation to PPTX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentPptToPptx($input_file)
@@ -16140,10 +16176,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPT (97-03) Presentation to PPTX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPptToPptxWithHttpInfo($input_file)
@@ -16215,10 +16251,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPT (97-03) Presentation to PPTX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPptToPptxAsync($input_file)
     {
@@ -16235,10 +16271,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPT (97-03) Presentation to PPTX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPptToPptxAsyncWithHttpInfo($input_file)
     {
@@ -16285,16 +16321,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPptToPptx'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPptToPptxRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentPptToPptx'
             );
         }
@@ -16311,7 +16347,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -16332,7 +16368,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -16352,7 +16388,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -16373,7 +16409,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -16387,10 +16423,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPTX Presentation to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentPptxToPdf($input_file)
@@ -16404,10 +16440,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPTX Presentation to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPptxToPdfWithHttpInfo($input_file)
@@ -16479,10 +16515,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPTX Presentation to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPptxToPdfAsync($input_file)
     {
@@ -16499,10 +16535,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPTX Presentation to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPptxToPdfAsyncWithHttpInfo($input_file)
     {
@@ -16549,16 +16585,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPptxToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPptxToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentPptxToPdf'
             );
         }
@@ -16575,7 +16611,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -16596,7 +16632,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -16616,7 +16652,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -16637,7 +16673,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -16651,11 +16687,11 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPTX to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\PptxToPngResult
+     * @throws InvalidArgumentException
+     * @return PptxToPngResult
      */
     public function convertDocumentPptxToPng($input_file)
     {
@@ -16668,10 +16704,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPTX to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\PptxToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPptxToPngWithHttpInfo($input_file)
@@ -16743,10 +16779,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPTX to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPptxToPngAsync($input_file)
     {
@@ -16763,10 +16799,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPTX to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPptxToPngAsyncWithHttpInfo($input_file)
     {
@@ -16813,16 +16849,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPptxToPng'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPptxToPngRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentPptxToPng'
             );
         }
@@ -16839,7 +16875,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -16860,7 +16896,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -16880,7 +16916,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -16901,7 +16937,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -16917,7 +16953,7 @@ class ConvertDocumentApi
      *
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return object
      */
     public function convertDocumentPptxToPpt()
@@ -16933,7 +16969,7 @@ class ConvertDocumentApi
      *
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPptxToPptWithHttpInfo()
@@ -17006,8 +17042,8 @@ class ConvertDocumentApi
      * Convert PowerPoint PPTX presentation to Legacy PowerPoint PPT (97-03)
      *
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPptxToPptAsync()
     {
@@ -17025,8 +17061,8 @@ class ConvertDocumentApi
      * Convert PowerPoint PPTX presentation to Legacy PowerPoint PPT (97-03)
      *
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPptxToPptAsyncWithHttpInfo()
     {
@@ -17074,7 +17110,7 @@ class ConvertDocumentApi
      * Create request for operation 'convertDocumentPptxToPpt'
      *
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPptxToPptRequest()
@@ -17108,7 +17144,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -17128,7 +17164,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -17149,7 +17185,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -17163,11 +17199,11 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPTX Presentation to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\TextConversionResult
+     * @throws InvalidArgumentException
+     * @return TextConversionResult
      */
     public function convertDocumentPptxToTxt($input_file)
     {
@@ -17180,10 +17216,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPTX Presentation to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\TextConversionResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentPptxToTxtWithHttpInfo($input_file)
@@ -17255,10 +17291,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPTX Presentation to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPptxToTxtAsync($input_file)
     {
@@ -17275,10 +17311,10 @@ class ConvertDocumentApi
      *
      * Convert PowerPoint PPTX Presentation to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentPptxToTxtAsyncWithHttpInfo($input_file)
     {
@@ -17325,16 +17361,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentPptxToTxt'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentPptxToTxtRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentPptxToTxt'
             );
         }
@@ -17351,7 +17387,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -17372,7 +17408,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -17392,7 +17428,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -17413,7 +17449,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -17427,10 +17463,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to DOCX Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentRtfToDocx($input_file)
@@ -17444,10 +17480,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to DOCX Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentRtfToDocxWithHttpInfo($input_file)
@@ -17519,10 +17555,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to DOCX Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentRtfToDocxAsync($input_file)
     {
@@ -17539,10 +17575,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to DOCX Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentRtfToDocxAsyncWithHttpInfo($input_file)
     {
@@ -17589,16 +17625,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentRtfToDocx'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentRtfToDocxRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentRtfToDocx'
             );
         }
@@ -17615,7 +17651,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -17636,7 +17672,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -17656,7 +17692,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -17677,7 +17713,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -17691,10 +17727,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to HTML Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentRtfToHtml($input_file)
@@ -17708,10 +17744,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to HTML Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentRtfToHtmlWithHttpInfo($input_file)
@@ -17783,10 +17819,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to HTML Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentRtfToHtmlAsync($input_file)
     {
@@ -17803,10 +17839,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to HTML Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentRtfToHtmlAsyncWithHttpInfo($input_file)
     {
@@ -17853,16 +17889,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentRtfToHtml'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentRtfToHtmlRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentRtfToHtml'
             );
         }
@@ -17879,7 +17915,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -17900,7 +17936,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -17920,7 +17956,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -17941,7 +17977,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -17955,12 +17991,12 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\RtfToJpgResult
+     * @throws InvalidArgumentException
+     * @return RtfToJpgResult
      */
     public function convertDocumentRtfToJpg($input_file, $quality = null)
     {
@@ -17973,11 +18009,11 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\RtfToJpgResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentRtfToJpgWithHttpInfo($input_file, $quality = null)
@@ -18049,11 +18085,11 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentRtfToJpgAsync($input_file, $quality = null)
     {
@@ -18070,11 +18106,11 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to JPG/JPEG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentRtfToJpgAsyncWithHttpInfo($input_file, $quality = null)
     {
@@ -18121,17 +18157,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentRtfToJpg'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  int $quality Optional; Set the JPEG quality level; lowest quality is 1 (highest compression), highest quality (lowest compression) is 100; recommended value is 75. Default value is 75. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentRtfToJpgRequest($input_file, $quality = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentRtfToJpg'
             );
         }
@@ -18152,7 +18188,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -18173,7 +18209,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -18193,7 +18229,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -18214,7 +18250,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -18228,10 +18264,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentRtfToPdf($input_file)
@@ -18245,10 +18281,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentRtfToPdfWithHttpInfo($input_file)
@@ -18320,10 +18356,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentRtfToPdfAsync($input_file)
     {
@@ -18340,10 +18376,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentRtfToPdfAsyncWithHttpInfo($input_file)
     {
@@ -18390,16 +18426,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentRtfToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentRtfToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentRtfToPdf'
             );
         }
@@ -18416,7 +18452,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -18437,7 +18473,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -18457,7 +18493,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -18478,7 +18514,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -18492,11 +18528,11 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\RtfToPngResult
+     * @throws InvalidArgumentException
+     * @return RtfToPngResult
      */
     public function convertDocumentRtfToPng($input_file)
     {
@@ -18509,10 +18545,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\RtfToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentRtfToPngWithHttpInfo($input_file)
@@ -18584,10 +18620,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentRtfToPngAsync($input_file)
     {
@@ -18604,10 +18640,10 @@ class ConvertDocumentApi
      *
      * Convert Rich Text Format RTF to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentRtfToPngAsyncWithHttpInfo($input_file)
     {
@@ -18654,16 +18690,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentRtfToPng'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentRtfToPngRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentRtfToPng'
             );
         }
@@ -18680,7 +18716,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -18701,7 +18737,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -18721,7 +18757,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -18742,7 +18778,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -18756,10 +18792,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLS (97-03) Spreadsheet to CSV
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentXlsToCsv($input_file)
@@ -18773,10 +18809,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLS (97-03) Spreadsheet to CSV
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentXlsToCsvWithHttpInfo($input_file)
@@ -18848,10 +18884,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLS (97-03) Spreadsheet to CSV
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsToCsvAsync($input_file)
     {
@@ -18868,10 +18904,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLS (97-03) Spreadsheet to CSV
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsToCsvAsyncWithHttpInfo($input_file)
     {
@@ -18918,16 +18954,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentXlsToCsv'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentXlsToCsvRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentXlsToCsv'
             );
         }
@@ -18944,7 +18980,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -18965,7 +19001,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -18985,7 +19021,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -19006,7 +19042,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -19020,10 +19056,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLS (97-03) Spreadsheet to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentXlsToPdf($input_file)
@@ -19037,10 +19073,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLS (97-03) Spreadsheet to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentXlsToPdfWithHttpInfo($input_file)
@@ -19112,10 +19148,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLS (97-03) Spreadsheet to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsToPdfAsync($input_file)
     {
@@ -19132,10 +19168,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLS (97-03) Spreadsheet to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsToPdfAsyncWithHttpInfo($input_file)
     {
@@ -19182,16 +19218,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentXlsToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentXlsToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentXlsToPdf'
             );
         }
@@ -19208,7 +19244,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -19229,7 +19265,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -19249,7 +19285,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -19270,7 +19306,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -19284,10 +19320,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLS (97-03) Spreadsheet to XLSX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentXlsToXlsx($input_file)
@@ -19301,10 +19337,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLS (97-03) Spreadsheet to XLSX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentXlsToXlsxWithHttpInfo($input_file)
@@ -19376,10 +19412,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLS (97-03) Spreadsheet to XLSX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsToXlsxAsync($input_file)
     {
@@ -19396,10 +19432,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLS (97-03) Spreadsheet to XLSX
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsToXlsxAsyncWithHttpInfo($input_file)
     {
@@ -19446,16 +19482,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentXlsToXlsx'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentXlsToXlsxRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentXlsToXlsx'
             );
         }
@@ -19472,7 +19508,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -19493,7 +19529,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -19513,7 +19549,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -19534,7 +19570,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -19548,11 +19584,11 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to CSV, Single Worksheet
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentXlsxToCsv($input_file, $output_encoding = null)
@@ -19566,11 +19602,11 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to CSV, Single Worksheet
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentXlsxToCsvWithHttpInfo($input_file, $output_encoding = null)
@@ -19642,11 +19678,11 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to CSV, Single Worksheet
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToCsvAsync($input_file, $output_encoding = null)
     {
@@ -19663,11 +19699,11 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to CSV, Single Worksheet
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToCsvAsyncWithHttpInfo($input_file, $output_encoding = null)
     {
@@ -19714,17 +19750,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentXlsxToCsv'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentXlsxToCsvRequest($input_file, $output_encoding = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentXlsxToCsv'
             );
         }
@@ -19745,7 +19781,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -19766,7 +19802,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -19786,7 +19822,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -19807,7 +19843,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -19821,12 +19857,12 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to CSV, Multiple Worksheets
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\CsvCollection
+     * @throws InvalidArgumentException
+     * @return CsvCollection
      */
     public function convertDocumentXlsxToCsvMulti($input_file, $output_encoding = null)
     {
@@ -19839,11 +19875,11 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to CSV, Multiple Worksheets
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\CsvCollection, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentXlsxToCsvMultiWithHttpInfo($input_file, $output_encoding = null)
@@ -19915,11 +19951,11 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to CSV, Multiple Worksheets
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToCsvMultiAsync($input_file, $output_encoding = null)
     {
@@ -19936,11 +19972,11 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to CSV, Multiple Worksheets
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8. (optional)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToCsvMultiAsyncWithHttpInfo($input_file, $output_encoding = null)
     {
@@ -19987,17 +20023,17 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentXlsxToCsvMulti'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      * @param  string $output_encoding Optional, set the output text encoding for the result; possible values are UTF-8, ASCII and UTF-32.  Default is UTF-8. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentXlsxToCsvMultiRequest($input_file, $output_encoding = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentXlsxToCsvMulti'
             );
         }
@@ -20018,7 +20054,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -20039,7 +20075,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -20059,7 +20095,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -20080,7 +20116,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -20094,10 +20130,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to HTML Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentXlsxToHtml($input_file)
@@ -20111,10 +20147,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to HTML Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentXlsxToHtmlWithHttpInfo($input_file)
@@ -20186,10 +20222,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to HTML Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToHtmlAsync($input_file)
     {
@@ -20206,10 +20242,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to HTML Document
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToHtmlAsyncWithHttpInfo($input_file)
     {
@@ -20256,16 +20292,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentXlsxToHtml'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentXlsxToHtmlRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentXlsxToHtml'
             );
         }
@@ -20282,7 +20318,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -20303,7 +20339,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -20323,7 +20359,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -20344,7 +20380,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -20358,10 +20394,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentXlsxToPdf($input_file)
@@ -20375,10 +20411,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentXlsxToPdfWithHttpInfo($input_file)
@@ -20450,10 +20486,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToPdfAsync($input_file)
     {
@@ -20470,10 +20506,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to PDF
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToPdfAsyncWithHttpInfo($input_file)
     {
@@ -20520,16 +20556,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentXlsxToPdf'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentXlsxToPdfRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentXlsxToPdf'
             );
         }
@@ -20546,7 +20582,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -20567,7 +20603,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -20587,7 +20623,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -20608,7 +20644,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -20622,11 +20658,11 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX spreadsheet to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\XlsxToPngResult
+     * @throws InvalidArgumentException
+     * @return XlsxToPngResult
      */
     public function convertDocumentXlsxToPng($input_file)
     {
@@ -20639,10 +20675,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX spreadsheet to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\XlsxToPngResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentXlsxToPngWithHttpInfo($input_file)
@@ -20714,10 +20750,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX spreadsheet to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToPngAsync($input_file)
     {
@@ -20734,10 +20770,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX spreadsheet to PNG image array
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToPngAsyncWithHttpInfo($input_file)
     {
@@ -20784,16 +20820,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentXlsxToPng'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentXlsxToPngRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentXlsxToPng'
             );
         }
@@ -20810,7 +20846,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -20831,7 +20867,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -20851,7 +20887,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -20872,7 +20908,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -20886,11 +20922,11 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\TextConversionResult
+     * @throws InvalidArgumentException
+     * @return TextConversionResult
      */
     public function convertDocumentXlsxToTxt($input_file)
     {
@@ -20903,10 +20939,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of \Swagger\Client\Model\TextConversionResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentXlsxToTxtWithHttpInfo($input_file)
@@ -20978,10 +21014,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToTxtAsync($input_file)
     {
@@ -20998,10 +21034,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to Text (txt)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToTxtAsyncWithHttpInfo($input_file)
     {
@@ -21048,16 +21084,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentXlsxToTxt'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentXlsxToTxtRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentXlsxToTxt'
             );
         }
@@ -21074,7 +21110,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -21095,7 +21131,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -21115,7 +21151,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -21136,7 +21172,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -21150,10 +21186,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to Legacy Excel XLS (97-03)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function convertDocumentXlsxToXls($input_file)
@@ -21167,10 +21203,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to Legacy Excel XLS (97-03)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function convertDocumentXlsxToXlsWithHttpInfo($input_file)
@@ -21242,10 +21278,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to Legacy Excel XLS (97-03)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToXlsAsync($input_file)
     {
@@ -21262,10 +21298,10 @@ class ConvertDocumentApi
      *
      * Convert Excel XLSX Spreadsheet to Legacy Excel XLS (97-03)
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @throws InvalidArgumentException
+     * @return PromiseInterface
      */
     public function convertDocumentXlsxToXlsAsyncWithHttpInfo($input_file)
     {
@@ -21312,16 +21348,16 @@ class ConvertDocumentApi
     /**
      * Create request for operation 'convertDocumentXlsxToXls'
      *
-     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  SplFileObject $input_file Input file to perform the operation on. (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function convertDocumentXlsxToXlsRequest($input_file)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $input_file when calling convertDocumentXlsxToXls'
             );
         }
@@ -21338,7 +21374,7 @@ class ConvertDocumentApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -21359,7 +21395,7 @@ class ConvertDocumentApi
             // $_tempBody is the method argument, if present
             $httpBody = $_tempBody;
             // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+            if ($httpBody instanceof stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
@@ -21379,7 +21415,7 @@ class ConvertDocumentApi
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = Query::build($formParams);
             }
         }
 
@@ -21400,7 +21436,7 @@ class ConvertDocumentApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        $query = Query::build($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -21412,7 +21448,7 @@ class ConvertDocumentApi
     /**
      * Create http client option
      *
-     * @throws \RuntimeException on file opening failure
+     * @throws RuntimeException on file opening failure
      * @return array of http client options
      */
     protected function createHttpClientOption()
@@ -21421,7 +21457,7 @@ class ConvertDocumentApi
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+                throw new RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
 
