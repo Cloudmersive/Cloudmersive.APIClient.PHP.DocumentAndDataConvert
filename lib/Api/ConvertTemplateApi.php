@@ -289,7 +289,7 @@ class ConvertTemplateApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;

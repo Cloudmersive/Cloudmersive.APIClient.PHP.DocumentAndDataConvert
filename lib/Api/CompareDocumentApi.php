@@ -291,12 +291,12 @@ class CompareDocumentApi
         // form params
         if ($input_file1 !== null) {
             $multipart = true;
-            $formParams['inputFile1'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file1), 'rb');
+            $formParams['inputFile1'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file1), 'rb');
         }
         // form params
         if ($input_file2 !== null) {
             $multipart = true;
-            $formParams['inputFile2'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file2), 'rb');
+            $formParams['inputFile2'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file2), 'rb');
         }
         // body params
         $_tempBody = null;

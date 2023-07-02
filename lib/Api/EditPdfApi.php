@@ -558,7 +558,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -844,7 +844,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -1145,7 +1145,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -1443,7 +1443,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -1714,7 +1714,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -1985,7 +1985,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -2256,7 +2256,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -2536,7 +2536,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -2863,12 +2863,12 @@ class EditPdfApi
         // form params
         if ($source_file !== null) {
             $multipart = true;
-            $formParams['sourceFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($source_file), 'rb');
+            $formParams['sourceFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($source_file), 'rb');
         }
         // form params
         if ($destination_file !== null) {
             $multipart = true;
-            $formParams['destinationFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($destination_file), 'rb');
+            $formParams['destinationFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($destination_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -3139,7 +3139,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -3410,7 +3410,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -3690,7 +3690,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -3961,7 +3961,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -4247,7 +4247,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -4533,7 +4533,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -4819,7 +4819,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -5135,7 +5135,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -6046,7 +6046,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
@@ -6368,7 +6368,7 @@ class EditPdfApi
         // form params
         if ($input_file !== null) {
             $multipart = true;
-            $formParams['inputFile'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($input_file), 'rb');
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
         }
         // body params
         $_tempBody = null;
