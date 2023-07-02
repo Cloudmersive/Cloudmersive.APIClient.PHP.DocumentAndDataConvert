@@ -32,7 +32,7 @@ $apiInstance = new Swagger\Client\Api\ConvertTemplateApi(
     $config
 );
 $input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
-$template_definition = "template_definition_example"; // string | Template definition for the document, including what values to replace
+$template_definition = new \stdClass; // object | Template definition for the document, including what values to replace
 
 try {
     $result = $apiInstance->convertTemplateApplyDocxTemplate($input_file, $template_definition);
@@ -48,7 +48,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **\SplFileObject**| Input file to perform the operation on. |
- **template_definition** | **string**| Template definition for the document, including what values to replace | [optional]
+ **template_definition** | [**object**](../Model/.md)| Template definition for the document, including what values to replace | [optional]
 
 ### Return type
 
