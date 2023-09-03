@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'cloudmersive/cloudmersive_document_convert_api_client',
-        'pretty_version' => '3.0.1',
-        'version' => '3.0.1.0',
+        'pretty_version' => '3.1.1',
+        'version' => '3.1.1.0',
         'reference' => NULL,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
@@ -11,8 +11,8 @@
     ),
     'versions' => array(
         'cloudmersive/cloudmersive_document_convert_api_client' => array(
-            'pretty_version' => '3.0.1',
-            'version' => '3.0.1.0',
+            'pretty_version' => '3.1.1',
+            'version' => '3.1.1.0',
             'reference' => NULL,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
