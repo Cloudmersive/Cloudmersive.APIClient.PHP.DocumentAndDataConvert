@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **compareDocumentDocx**
-> string compareDocumentDocx($input_file1, $input_file2)
+> string compareDocumentDocx($input_file1, $input_file2, $autorepair)
 
 Compare Two Word DOCX
 
@@ -32,9 +32,10 @@ $apiInstance = new Swagger\Client\Api\CompareDocumentApi(
 );
 $input_file1 = "/path/to/file.txt"; // \SplFileObject | First input file to perform the operation on.
 $input_file2 = "/path/to/file.txt"; // \SplFileObject | Second input file to perform the operation on (more than 2 can be supplied).
+$autorepair = true; // bool | Optional; automatically repair input documents that have errors (default is true)
 
 try {
-    $result = $apiInstance->compareDocumentDocx($input_file1, $input_file2);
+    $result = $apiInstance->compareDocumentDocx($input_file1, $input_file2, $autorepair);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CompareDocumentApi->compareDocumentDocx: ', $e->getMessage(), PHP_EOL;
@@ -48,6 +49,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file1** | **\SplFileObject**| First input file to perform the operation on. |
  **input_file2** | **\SplFileObject**| Second input file to perform the operation on (more than 2 can be supplied). |
+ **autorepair** | **bool**| Optional; automatically repair input documents that have errors (default is true) | [optional]
 
 ### Return type
 

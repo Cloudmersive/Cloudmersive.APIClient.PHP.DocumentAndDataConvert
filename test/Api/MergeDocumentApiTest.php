@@ -72,6 +72,16 @@ class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for mergeDocumentBatchJobCreate
+     *
+     * Merge an array of Documents into a Single Document by Page as a Batch Job.
+     *
+     */
+    public function testMergeDocumentBatchJobCreate()
+    {
+    }
+
+    /**
      * Test case for mergeDocumentDocx
      *
      * Merge Two Word DOCX Together.
@@ -98,6 +108,16 @@ class MergeDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testMergeDocumentDocxMultiArray()
+    {
+    }
+
+    /**
+     * Test case for mergeDocumentGetAsyncJobStatus
+     *
+     * Get the status and result of a Merge Document Batch Job.
+     *
+     */
+    public function testMergeDocumentGetAsyncJobStatus()
     {
     }
 

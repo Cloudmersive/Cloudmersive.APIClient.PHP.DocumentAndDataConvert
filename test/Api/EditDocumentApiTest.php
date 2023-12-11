@@ -522,12 +522,32 @@ class EditDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editDocumentPptxEditSizeAndOrientation
+     *
+     * Set the size and/or orientation of a PowerPoint PPTX presentation document.
+     *
+     */
+    public function testEditDocumentPptxEditSizeAndOrientation()
+    {
+    }
+
+    /**
      * Test case for editDocumentPptxGetMacroInformation
      *
      * Get macro information from a PowerPoint PPTX/PPTM presentation document.
      *
      */
     public function testEditDocumentPptxGetMacroInformation()
+    {
+    }
+
+    /**
+     * Test case for editDocumentPptxGetSizeAndOrientation
+     *
+     * Get the page layout information, including size and orientation of a PowerPoint PPTX presentation document.
+     *
+     */
+    public function testEditDocumentPptxGetSizeAndOrientation()
     {
     }
 

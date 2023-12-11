@@ -1,6 +1,6 @@
 <?php
 /**
- * JobStatusResult
+ * PptxPageLayoutInformation
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * JobStatusResult Class Doc Comment
+ * PptxPageLayoutInformation Class Doc Comment
  *
  * @category Class
- * @description Result of performing a batch job operation
+ * @description Result of getting the page layout information of a PowerPoint PPTX presentation
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class JobStatusResult implements ModelInterface, ArrayAccess
+class PptxPageLayoutInformation implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'JobStatusResult';
+    protected static $swaggerModelName = 'PptxPageLayoutInformation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,9 @@ class JobStatusResult implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'successful' => 'bool',
-        'async_job_status' => 'string',
-        'async_job_id' => 'string',
-        'pptx_result' => '\Swagger\Client\Model\SplitPptxPresentationResult',
-        'error_message' => 'string'
+        'orientation' => 'string',
+        'width' => 'int',
+        'height' => 'int'
     ];
 
     /**
@@ -72,10 +71,9 @@ class JobStatusResult implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'successful' => null,
-        'async_job_status' => null,
-        'async_job_id' => null,
-        'pptx_result' => null,
-        'error_message' => null
+        'orientation' => null,
+        'width' => 'int32',
+        'height' => 'int32'
     ];
 
     /**
@@ -106,10 +104,9 @@ class JobStatusResult implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'successful' => 'Successful',
-        'async_job_status' => 'AsyncJobStatus',
-        'async_job_id' => 'AsyncJobID',
-        'pptx_result' => 'PptxResult',
-        'error_message' => 'ErrorMessage'
+        'orientation' => 'Orientation',
+        'width' => 'Width',
+        'height' => 'Height'
     ];
 
     /**
@@ -119,10 +116,9 @@ class JobStatusResult implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'successful' => 'setSuccessful',
-        'async_job_status' => 'setAsyncJobStatus',
-        'async_job_id' => 'setAsyncJobId',
-        'pptx_result' => 'setPptxResult',
-        'error_message' => 'setErrorMessage'
+        'orientation' => 'setOrientation',
+        'width' => 'setWidth',
+        'height' => 'setHeight'
     ];
 
     /**
@@ -132,10 +128,9 @@ class JobStatusResult implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'successful' => 'getSuccessful',
-        'async_job_status' => 'getAsyncJobStatus',
-        'async_job_id' => 'getAsyncJobId',
-        'pptx_result' => 'getPptxResult',
-        'error_message' => 'getErrorMessage'
+        'orientation' => 'getOrientation',
+        'width' => 'getWidth',
+        'height' => 'getHeight'
     ];
 
     /**
@@ -199,10 +194,9 @@ class JobStatusResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
-        $this->container['async_job_status'] = isset($data['async_job_status']) ? $data['async_job_status'] : null;
-        $this->container['async_job_id'] = isset($data['async_job_id']) ? $data['async_job_id'] : null;
-        $this->container['pptx_result'] = isset($data['pptx_result']) ? $data['pptx_result'] : null;
-        $this->container['error_message'] = isset($data['error_message']) ? $data['error_message'] : null;
+        $this->container['orientation'] = isset($data['orientation']) ? $data['orientation'] : null;
+        $this->container['width'] = isset($data['width']) ? $data['width'] : null;
+        $this->container['height'] = isset($data['height']) ? $data['height'] : null;
     }
 
     /**
@@ -242,7 +236,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
     /**
      * Sets successful
      *
-     * @param bool $successful True if the operation to check the status of the job was successful, false otherwise
+     * @param bool $successful True if successful, false otherwise
      *
      * @return $this
      */
@@ -254,97 +248,73 @@ class JobStatusResult implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets async_job_status
+     * Gets orientation
      *
      * @return string
      */
-    public function getAsyncJobStatus()
+    public function getOrientation()
     {
-        return $this->container['async_job_status'];
+        return $this->container['orientation'];
     }
 
     /**
-     * Sets async_job_status
+     * Sets orientation
      *
-     * @param string $async_job_status Returns the job status of the Async Job, if applicable.  Possible states are STARTED and COMPLETED
+     * @param string $orientation Orientation of the presentation, either portrait or landscape
      *
      * @return $this
      */
-    public function setAsyncJobStatus($async_job_status)
+    public function setOrientation($orientation)
     {
-        $this->container['async_job_status'] = $async_job_status;
+        $this->container['orientation'] = $orientation;
 
         return $this;
     }
 
     /**
-     * Gets async_job_id
+     * Gets width
      *
-     * @return string
+     * @return int
      */
-    public function getAsyncJobId()
+    public function getWidth()
     {
-        return $this->container['async_job_id'];
+        return $this->container['width'];
     }
 
     /**
-     * Sets async_job_id
+     * Sets width
      *
-     * @param string $async_job_id When the job exceeds 25 pages, an Async Job ID is returned.  Use the CheckPdfOcrJobStatus API to check on the status of this job using the AsyncJobID and get the result when it finishes
+     * @param int $width Width of the presentation in Emu, where 1 inch equals 914400 emu.
      *
      * @return $this
      */
-    public function setAsyncJobId($async_job_id)
+    public function setWidth($width)
     {
-        $this->container['async_job_id'] = $async_job_id;
+        $this->container['width'] = $width;
 
         return $this;
     }
 
     /**
-     * Gets pptx_result
+     * Gets height
      *
-     * @return \Swagger\Client\Model\SplitPptxPresentationResult
+     * @return int
      */
-    public function getPptxResult()
+    public function getHeight()
     {
-        return $this->container['pptx_result'];
+        return $this->container['height'];
     }
 
     /**
-     * Sets pptx_result
+     * Sets height
      *
-     * @param \Swagger\Client\Model\SplitPptxPresentationResult $pptx_result PowerPoint split result (if applicable)
+     * @param int $height Height of the presentation in Emu, where 1 inch equals 914400 emu.
      *
      * @return $this
      */
-    public function setPptxResult($pptx_result)
+    public function setHeight($height)
     {
-        $this->container['pptx_result'] = $pptx_result;
-
-        return $this;
-    }
-
-    /**
-     * Gets error_message
-     *
-     * @return string
-     */
-    public function getErrorMessage()
-    {
-        return $this->container['error_message'];
-    }
-
-    /**
-     * Sets error_message
-     *
-     * @param string $error_message Error message (if any)
-     *
-     * @return $this
-     */
-    public function setErrorMessage($error_message)
-    {
-        $this->container['error_message'] = $error_message;
+        $this->container['height'] = $height;
 
         return $this;
     }

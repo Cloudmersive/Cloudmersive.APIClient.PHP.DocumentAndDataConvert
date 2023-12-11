@@ -650,7 +650,7 @@ class SplitDocumentApi
     /**
      * Operation splitDocumentGetAsyncJobStatus
      *
-     * Get the status and result of a Batch Job
+     * Get the status and result of a Split Document Batch Job
      *
      * @param  string $async_job_id async_job_id (required)
      *
@@ -667,7 +667,7 @@ class SplitDocumentApi
     /**
      * Operation splitDocumentGetAsyncJobStatusWithHttpInfo
      *
-     * Get the status and result of a Batch Job
+     * Get the status and result of a Split Document Batch Job
      *
      * @param  string $async_job_id (required)
      *
@@ -742,7 +742,7 @@ class SplitDocumentApi
     /**
      * Operation splitDocumentGetAsyncJobStatusAsync
      *
-     * Get the status and result of a Batch Job
+     * Get the status and result of a Split Document Batch Job
      *
      * @param  string $async_job_id (required)
      *
@@ -762,7 +762,7 @@ class SplitDocumentApi
     /**
      * Operation splitDocumentGetAsyncJobStatusAsyncWithHttpInfo
      *
-     * Get the status and result of a Batch Job
+     * Get the status and result of a Split Document Batch Job
      *
      * @param  string $async_job_id (required)
      *

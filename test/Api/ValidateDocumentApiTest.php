@@ -102,6 +102,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentDocxRepair
+     *
+     * Repair a Word document (DOCX) that contains errors.
+     *
+     */
+    public function testValidateDocumentDocxRepair()
+    {
+    }
+
+    /**
      * Test case for validateDocumentDocxValidation
      *
      * Validate a Word document (DOCX).
@@ -232,6 +242,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for validateDocumentPptxRepair
+     *
+     * Repair a PowerPoint presentation (PPTX) that contains errors.
+     *
+     */
+    public function testValidateDocumentPptxRepair()
+    {
+    }
+
+    /**
      * Test case for validateDocumentPptxValidation
      *
      * Validate a PowerPoint presentation (PPTX).
@@ -288,6 +308,16 @@ class ValidateDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testValidateDocumentXlsValidation()
+    {
+    }
+
+    /**
+     * Test case for validateDocumentXlsxRepair
+     *
+     * Repair an Excel spreadsheet (XLSX) that contains errors.
+     *
+     */
+    public function testValidateDocumentXlsxRepair()
     {
     }
 

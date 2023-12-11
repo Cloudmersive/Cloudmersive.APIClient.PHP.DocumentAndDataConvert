@@ -102,6 +102,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for convertDocumentAutodetectToPdfBatchJob
+     *
+     * Convert Document to PDF as Batch Job.
+     *
+     */
+    public function testConvertDocumentAutodetectToPdfBatchJob()
+    {
+    }
+
+    /**
      * Test case for convertDocumentAutodetectToPngArray
      *
      * Convert Document to PNG array.
@@ -318,6 +328,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testConvertDocumentEmlToPng()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentGetAsyncJobStatus
+     *
+     * Get the status and result of a Convert Document Batch Job.
+     *
+     */
+    public function testConvertDocumentGetAsyncJobStatus()
     {
     }
 
@@ -638,6 +658,16 @@ class ConvertDocumentApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testConvertDocumentPdfToPptx()
+    {
+    }
+
+    /**
+     * Test case for convertDocumentPdfToTiff
+     *
+     * Convert PDF to TIFF image.
+     *
+     */
+    public function testConvertDocumentPdfToTiff()
     {
     }
 

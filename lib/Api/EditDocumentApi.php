@@ -364,14 +364,15 @@ class EditDocumentApi
      * Accept all tracked changes, revisions in a Word DOCX document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $autorepair Optional; automatically repair input documents that have errors (default is true) (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function editDocumentDocxAcceptAllTrackChanges($input_file)
+    public function editDocumentDocxAcceptAllTrackChanges($input_file, $autorepair = null)
     {
-        list($response) = $this->editDocumentDocxAcceptAllTrackChangesWithHttpInfo($input_file);
+        list($response) = $this->editDocumentDocxAcceptAllTrackChangesWithHttpInfo($input_file, $autorepair);
         return $response;
     }
 
@@ -381,15 +382,16 @@ class EditDocumentApi
      * Accept all tracked changes, revisions in a Word DOCX document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $autorepair Optional; automatically repair input documents that have errors (default is true) (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function editDocumentDocxAcceptAllTrackChangesWithHttpInfo($input_file)
+    public function editDocumentDocxAcceptAllTrackChangesWithHttpInfo($input_file, $autorepair = null)
     {
         $returnType = 'string';
-        $request = $this->editDocumentDocxAcceptAllTrackChangesRequest($input_file);
+        $request = $this->editDocumentDocxAcceptAllTrackChangesRequest($input_file, $autorepair);
 
         try {
             $options = $this->createHttpClientOption();
@@ -456,13 +458,14 @@ class EditDocumentApi
      * Accept all tracked changes, revisions in a Word DOCX document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $autorepair Optional; automatically repair input documents that have errors (default is true) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editDocumentDocxAcceptAllTrackChangesAsync($input_file)
+    public function editDocumentDocxAcceptAllTrackChangesAsync($input_file, $autorepair = null)
     {
-        return $this->editDocumentDocxAcceptAllTrackChangesAsyncWithHttpInfo($input_file)
+        return $this->editDocumentDocxAcceptAllTrackChangesAsyncWithHttpInfo($input_file, $autorepair)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -476,14 +479,15 @@ class EditDocumentApi
      * Accept all tracked changes, revisions in a Word DOCX document
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $autorepair Optional; automatically repair input documents that have errors (default is true) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editDocumentDocxAcceptAllTrackChangesAsyncWithHttpInfo($input_file)
+    public function editDocumentDocxAcceptAllTrackChangesAsyncWithHttpInfo($input_file, $autorepair = null)
     {
         $returnType = 'string';
-        $request = $this->editDocumentDocxAcceptAllTrackChangesRequest($input_file);
+        $request = $this->editDocumentDocxAcceptAllTrackChangesRequest($input_file, $autorepair);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -526,11 +530,12 @@ class EditDocumentApi
      * Create request for operation 'editDocumentDocxAcceptAllTrackChanges'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  bool $autorepair Optional; automatically repair input documents that have errors (default is true) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function editDocumentDocxAcceptAllTrackChangesRequest($input_file)
+    protected function editDocumentDocxAcceptAllTrackChangesRequest($input_file, $autorepair = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null || (is_array($input_file) && count($input_file) === 0)) {
@@ -546,6 +551,10 @@ class EditDocumentApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($autorepair !== null) {
+            $headerParams['autorepair'] = ObjectSerializer::toHeaderValue($autorepair);
+        }
 
 
         // form params
@@ -12211,6 +12220,304 @@ class EditDocumentApi
     }
 
     /**
+     * Operation editDocumentPptxEditSizeAndOrientation
+     *
+     * Set the size and/or orientation of a PowerPoint PPTX presentation document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $orientation Optional: The desired slide orientation; can be landscape or portrait. (optional)
+     * @param  int $width Optional: The desired slide width in Emu, where 1 inch equals 914400 emu. (optional)
+     * @param  int $height Optional: The desired slide height in Emu, where 1 inch equals 914400 emu (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function editDocumentPptxEditSizeAndOrientation($input_file, $orientation = null, $width = null, $height = null)
+    {
+        list($response) = $this->editDocumentPptxEditSizeAndOrientationWithHttpInfo($input_file, $orientation, $width, $height);
+        return $response;
+    }
+
+    /**
+     * Operation editDocumentPptxEditSizeAndOrientationWithHttpInfo
+     *
+     * Set the size and/or orientation of a PowerPoint PPTX presentation document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $orientation Optional: The desired slide orientation; can be landscape or portrait. (optional)
+     * @param  int $width Optional: The desired slide width in Emu, where 1 inch equals 914400 emu. (optional)
+     * @param  int $height Optional: The desired slide height in Emu, where 1 inch equals 914400 emu (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editDocumentPptxEditSizeAndOrientationWithHttpInfo($input_file, $orientation = null, $width = null, $height = null)
+    {
+        $returnType = 'string';
+        $request = $this->editDocumentPptxEditSizeAndOrientationRequest($input_file, $orientation, $width, $height);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editDocumentPptxEditSizeAndOrientationAsync
+     *
+     * Set the size and/or orientation of a PowerPoint PPTX presentation document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $orientation Optional: The desired slide orientation; can be landscape or portrait. (optional)
+     * @param  int $width Optional: The desired slide width in Emu, where 1 inch equals 914400 emu. (optional)
+     * @param  int $height Optional: The desired slide height in Emu, where 1 inch equals 914400 emu (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentPptxEditSizeAndOrientationAsync($input_file, $orientation = null, $width = null, $height = null)
+    {
+        return $this->editDocumentPptxEditSizeAndOrientationAsyncWithHttpInfo($input_file, $orientation, $width, $height)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editDocumentPptxEditSizeAndOrientationAsyncWithHttpInfo
+     *
+     * Set the size and/or orientation of a PowerPoint PPTX presentation document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $orientation Optional: The desired slide orientation; can be landscape or portrait. (optional)
+     * @param  int $width Optional: The desired slide width in Emu, where 1 inch equals 914400 emu. (optional)
+     * @param  int $height Optional: The desired slide height in Emu, where 1 inch equals 914400 emu (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentPptxEditSizeAndOrientationAsyncWithHttpInfo($input_file, $orientation = null, $width = null, $height = null)
+    {
+        $returnType = 'string';
+        $request = $this->editDocumentPptxEditSizeAndOrientationRequest($input_file, $orientation, $width, $height);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editDocumentPptxEditSizeAndOrientation'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  string $orientation Optional: The desired slide orientation; can be landscape or portrait. (optional)
+     * @param  int $width Optional: The desired slide width in Emu, where 1 inch equals 914400 emu. (optional)
+     * @param  int $height Optional: The desired slide height in Emu, where 1 inch equals 914400 emu (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editDocumentPptxEditSizeAndOrientationRequest($input_file, $orientation = null, $width = null, $height = null)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null || (is_array($input_file) && count($input_file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling editDocumentPptxEditSizeAndOrientation'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pptx/set-size-and-orientation';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($orientation !== null) {
+            $headerParams['orientation'] = ObjectSerializer::toHeaderValue($orientation);
+        }
+        // header params
+        if ($width !== null) {
+            $headerParams['width'] = ObjectSerializer::toHeaderValue($width);
+        }
+        // header params
+        if ($height !== null) {
+            $headerParams['height'] = ObjectSerializer::toHeaderValue($height);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation editDocumentPptxGetMacroInformation
      *
      * Get macro information from a PowerPoint PPTX/PPTM presentation document
@@ -12392,6 +12699,277 @@ class EditDocumentApi
         }
 
         $resourcePath = '/convert/edit/pptx/get-macros';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editDocumentPptxGetSizeAndOrientation
+     *
+     * Get the page layout information, including size and orientation of a PowerPoint PPTX presentation document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\PptxPageLayoutInformation
+     */
+    public function editDocumentPptxGetSizeAndOrientation($input_file)
+    {
+        list($response) = $this->editDocumentPptxGetSizeAndOrientationWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation editDocumentPptxGetSizeAndOrientationWithHttpInfo
+     *
+     * Get the page layout information, including size and orientation of a PowerPoint PPTX presentation document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\PptxPageLayoutInformation, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editDocumentPptxGetSizeAndOrientationWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\PptxPageLayoutInformation';
+        $request = $this->editDocumentPptxGetSizeAndOrientationRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\PptxPageLayoutInformation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editDocumentPptxGetSizeAndOrientationAsync
+     *
+     * Get the page layout information, including size and orientation of a PowerPoint PPTX presentation document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentPptxGetSizeAndOrientationAsync($input_file)
+    {
+        return $this->editDocumentPptxGetSizeAndOrientationAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editDocumentPptxGetSizeAndOrientationAsyncWithHttpInfo
+     *
+     * Get the page layout information, including size and orientation of a PowerPoint PPTX presentation document
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editDocumentPptxGetSizeAndOrientationAsyncWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\PptxPageLayoutInformation';
+        $request = $this->editDocumentPptxGetSizeAndOrientationRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editDocumentPptxGetSizeAndOrientation'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editDocumentPptxGetSizeAndOrientationRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null || (is_array($input_file) && count($input_file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling editDocumentPptxGetSizeAndOrientation'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pptx/get-size-and-orientation';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

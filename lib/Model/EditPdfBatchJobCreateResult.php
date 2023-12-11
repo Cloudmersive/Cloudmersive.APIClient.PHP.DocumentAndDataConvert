@@ -1,6 +1,6 @@
 <?php
 /**
- * JobStatusResult
+ * EditPdfBatchJobCreateResult
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * JobStatusResult Class Doc Comment
+ * EditPdfBatchJobCreateResult Class Doc Comment
  *
  * @category Class
- * @description Result of performing a batch job operation
+ * @description Result of performing an edit PDF batch job operation
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class JobStatusResult implements ModelInterface, ArrayAccess
+class EditPdfBatchJobCreateResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'JobStatusResult';
+    protected static $swaggerModelName = 'EditPdfBatchJobCreateResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'successful' => 'bool',
-        'async_job_status' => 'string',
-        'async_job_id' => 'string',
-        'pptx_result' => '\Swagger\Client\Model\SplitPptxPresentationResult',
-        'error_message' => 'string'
+        'async_job_id' => 'string'
     ];
 
     /**
@@ -72,10 +69,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'successful' => null,
-        'async_job_status' => null,
-        'async_job_id' => null,
-        'pptx_result' => null,
-        'error_message' => null
+        'async_job_id' => null
     ];
 
     /**
@@ -106,10 +100,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'successful' => 'Successful',
-        'async_job_status' => 'AsyncJobStatus',
-        'async_job_id' => 'AsyncJobID',
-        'pptx_result' => 'PptxResult',
-        'error_message' => 'ErrorMessage'
+        'async_job_id' => 'AsyncJobID'
     ];
 
     /**
@@ -119,10 +110,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'successful' => 'setSuccessful',
-        'async_job_status' => 'setAsyncJobStatus',
-        'async_job_id' => 'setAsyncJobId',
-        'pptx_result' => 'setPptxResult',
-        'error_message' => 'setErrorMessage'
+        'async_job_id' => 'setAsyncJobId'
     ];
 
     /**
@@ -132,10 +120,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'successful' => 'getSuccessful',
-        'async_job_status' => 'getAsyncJobStatus',
-        'async_job_id' => 'getAsyncJobId',
-        'pptx_result' => 'getPptxResult',
-        'error_message' => 'getErrorMessage'
+        'async_job_id' => 'getAsyncJobId'
     ];
 
     /**
@@ -199,10 +184,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
-        $this->container['async_job_status'] = isset($data['async_job_status']) ? $data['async_job_status'] : null;
         $this->container['async_job_id'] = isset($data['async_job_id']) ? $data['async_job_id'] : null;
-        $this->container['pptx_result'] = isset($data['pptx_result']) ? $data['pptx_result'] : null;
-        $this->container['error_message'] = isset($data['error_message']) ? $data['error_message'] : null;
     }
 
     /**
@@ -242,37 +224,13 @@ class JobStatusResult implements ModelInterface, ArrayAccess
     /**
      * Sets successful
      *
-     * @param bool $successful True if the operation to check the status of the job was successful, false otherwise
+     * @param bool $successful True if successful, false otherwise
      *
      * @return $this
      */
     public function setSuccessful($successful)
     {
         $this->container['successful'] = $successful;
-
-        return $this;
-    }
-
-    /**
-     * Gets async_job_status
-     *
-     * @return string
-     */
-    public function getAsyncJobStatus()
-    {
-        return $this->container['async_job_status'];
-    }
-
-    /**
-     * Sets async_job_status
-     *
-     * @param string $async_job_status Returns the job status of the Async Job, if applicable.  Possible states are STARTED and COMPLETED
-     *
-     * @return $this
-     */
-    public function setAsyncJobStatus($async_job_status)
-    {
-        $this->container['async_job_status'] = $async_job_status;
 
         return $this;
     }
@@ -290,61 +248,13 @@ class JobStatusResult implements ModelInterface, ArrayAccess
     /**
      * Sets async_job_id
      *
-     * @param string $async_job_id When the job exceeds 25 pages, an Async Job ID is returned.  Use the CheckPdfOcrJobStatus API to check on the status of this job using the AsyncJobID and get the result when it finishes
+     * @param string $async_job_id When creating a job, an Async Job ID is returned.  Use the GetAsyncJobStatus API to check on the status of this job using the AsyncJobID and get the result when it finishes
      *
      * @return $this
      */
     public function setAsyncJobId($async_job_id)
     {
         $this->container['async_job_id'] = $async_job_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets pptx_result
-     *
-     * @return \Swagger\Client\Model\SplitPptxPresentationResult
-     */
-    public function getPptxResult()
-    {
-        return $this->container['pptx_result'];
-    }
-
-    /**
-     * Sets pptx_result
-     *
-     * @param \Swagger\Client\Model\SplitPptxPresentationResult $pptx_result PowerPoint split result (if applicable)
-     *
-     * @return $this
-     */
-    public function setPptxResult($pptx_result)
-    {
-        $this->container['pptx_result'] = $pptx_result;
-
-        return $this;
-    }
-
-    /**
-     * Gets error_message
-     *
-     * @return string
-     */
-    public function getErrorMessage()
-    {
-        return $this->container['error_message'];
-    }
-
-    /**
-     * Sets error_message
-     *
-     * @param string $error_message Error message (if any)
-     *
-     * @return $this
-     */
-    public function setErrorMessage($error_message)
-    {
-        $this->container['error_message'] = $error_message;
 
         return $this;
     }

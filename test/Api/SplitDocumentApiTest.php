@@ -94,7 +94,7 @@ class SplitDocumentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for splitDocumentGetAsyncJobStatus
      *
-     * Get the status and result of a Batch Job.
+     * Get the status and result of a Split Document Batch Job.
      *
      */
     public function testSplitDocumentGetAsyncJobStatus()

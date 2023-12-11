@@ -37,4 +37,4 @@ Get-ChildItem ./lib -Recurse -Filter *.php | ForEach-Object {
     }
 }
 
-& php C:\Users\adm101\composer.phar install
+& php C:\ProgramData\ComposerSetup\bin\composer.phar install

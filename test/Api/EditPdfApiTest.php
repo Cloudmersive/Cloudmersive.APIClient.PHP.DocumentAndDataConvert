@@ -112,6 +112,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editPdfDeletePagesBatchJob
+     *
+     * Remove, delete pages from a PDF document as Batch Job.
+     *
+     */
+    public function testEditPdfDeletePagesBatchJob()
+    {
+    }
+
+    /**
      * Test case for editPdfEncrypt
      *
      * Encrypt and password-protect a PDF.
@@ -128,6 +138,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditPdfGetAnnotations()
+    {
+    }
+
+    /**
+     * Test case for editPdfGetAsyncJobStatus
+     *
+     * Get the status and result of a PDF Batch Job.
+     *
+     */
+    public function testEditPdfGetAsyncJobStatus()
     {
     }
 
@@ -172,6 +192,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for editPdfInsertPagesBatchJob
+     *
+     * Insert, copy pages from one PDF document into another as a batch job.
+     *
+     */
+    public function testEditPdfInsertPagesBatchJob()
+    {
+    }
+
+    /**
      * Test case for editPdfLinearize
      *
      * Linearize and optimize a PDF for streaming download.
@@ -188,6 +218,16 @@ class EditPdfApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testEditPdfRasterize()
+    {
+    }
+
+    /**
+     * Test case for editPdfRasterizeBatchJob
+     *
+     * Rasterize a PDF to an image-based PDF as Batch Job.
+     *
+     */
+    public function testEditPdfRasterizeBatchJob()
     {
     }
 

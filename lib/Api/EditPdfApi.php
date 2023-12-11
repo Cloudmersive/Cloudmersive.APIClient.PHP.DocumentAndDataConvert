@@ -1224,6 +1224,307 @@ class EditPdfApi
     }
 
     /**
+     * Operation editPdfDeletePagesBatchJob
+     *
+     * Remove, delete pages from a PDF document as Batch Job
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop deleting pages from (inclusive). (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\EditPdfBatchJobCreateResult
+     */
+    public function editPdfDeletePagesBatchJob($input_file, $page_start, $page_end)
+    {
+        list($response) = $this->editPdfDeletePagesBatchJobWithHttpInfo($input_file, $page_start, $page_end);
+        return $response;
+    }
+
+    /**
+     * Operation editPdfDeletePagesBatchJobWithHttpInfo
+     *
+     * Remove, delete pages from a PDF document as Batch Job
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop deleting pages from (inclusive). (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\EditPdfBatchJobCreateResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editPdfDeletePagesBatchJobWithHttpInfo($input_file, $page_start, $page_end)
+    {
+        $returnType = '\Swagger\Client\Model\EditPdfBatchJobCreateResult';
+        $request = $this->editPdfDeletePagesBatchJobRequest($input_file, $page_start, $page_end);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\EditPdfBatchJobCreateResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editPdfDeletePagesBatchJobAsync
+     *
+     * Remove, delete pages from a PDF document as Batch Job
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop deleting pages from (inclusive). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfDeletePagesBatchJobAsync($input_file, $page_start, $page_end)
+    {
+        return $this->editPdfDeletePagesBatchJobAsyncWithHttpInfo($input_file, $page_start, $page_end)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editPdfDeletePagesBatchJobAsyncWithHttpInfo
+     *
+     * Remove, delete pages from a PDF document as Batch Job
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop deleting pages from (inclusive). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfDeletePagesBatchJobAsyncWithHttpInfo($input_file, $page_start, $page_end)
+    {
+        $returnType = '\Swagger\Client\Model\EditPdfBatchJobCreateResult';
+        $request = $this->editPdfDeletePagesBatchJobRequest($input_file, $page_start, $page_end);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editPdfDeletePagesBatchJob'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $page_start Page number (1 based) to start deleting pages from (inclusive). (required)
+     * @param  int $page_end Page number (1 based) to stop deleting pages from (inclusive). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editPdfDeletePagesBatchJobRequest($input_file, $page_start, $page_end)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null || (is_array($input_file) && count($input_file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling editPdfDeletePagesBatchJob'
+            );
+        }
+        // verify the required parameter 'page_start' is set
+        if ($page_start === null || (is_array($page_start) && count($page_start) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_start when calling editPdfDeletePagesBatchJob'
+            );
+        }
+        // verify the required parameter 'page_end' is set
+        if ($page_end === null || (is_array($page_end) && count($page_end) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_end when calling editPdfDeletePagesBatchJob'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pdf/pages/delete/batch-job';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($page_start !== null) {
+            $headerParams['pageStart'] = ObjectSerializer::toHeaderValue($page_start);
+        }
+        // header params
+        if ($page_end !== null) {
+            $headerParams['pageEnd'] = ObjectSerializer::toHeaderValue($page_end);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation editPdfEncrypt
      *
      * Encrypt and password-protect a PDF
@@ -1786,6 +2087,276 @@ class EditPdfApi
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editPdfGetAsyncJobStatus
+     *
+     * Get the status and result of a PDF Batch Job
+     *
+     * @param  string $async_job_id async_job_id (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\EditPdfJobStatusResult
+     */
+    public function editPdfGetAsyncJobStatus($async_job_id)
+    {
+        list($response) = $this->editPdfGetAsyncJobStatusWithHttpInfo($async_job_id);
+        return $response;
+    }
+
+    /**
+     * Operation editPdfGetAsyncJobStatusWithHttpInfo
+     *
+     * Get the status and result of a PDF Batch Job
+     *
+     * @param  string $async_job_id (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\EditPdfJobStatusResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editPdfGetAsyncJobStatusWithHttpInfo($async_job_id)
+    {
+        $returnType = '\Swagger\Client\Model\EditPdfJobStatusResult';
+        $request = $this->editPdfGetAsyncJobStatusRequest($async_job_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\EditPdfJobStatusResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editPdfGetAsyncJobStatusAsync
+     *
+     * Get the status and result of a PDF Batch Job
+     *
+     * @param  string $async_job_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfGetAsyncJobStatusAsync($async_job_id)
+    {
+        return $this->editPdfGetAsyncJobStatusAsyncWithHttpInfo($async_job_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editPdfGetAsyncJobStatusAsyncWithHttpInfo
+     *
+     * Get the status and result of a PDF Batch Job
+     *
+     * @param  string $async_job_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfGetAsyncJobStatusAsyncWithHttpInfo($async_job_id)
+    {
+        $returnType = '\Swagger\Client\Model\EditPdfJobStatusResult';
+        $request = $this->editPdfGetAsyncJobStatusRequest($async_job_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editPdfGetAsyncJobStatus'
+     *
+     * @param  string $async_job_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editPdfGetAsyncJobStatusRequest($async_job_id)
+    {
+        // verify the required parameter 'async_job_id' is set
+        if ($async_job_id === null || (is_array($async_job_id) && count($async_job_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $async_job_id when calling editPdfGetAsyncJobStatus'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pdf/batch-job/status';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($async_job_id !== null) {
+            $queryParams['AsyncJobID'] = ObjectSerializer::toQueryValue($async_job_id);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json', 'text/json', 'application/xml', 'text/xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json', 'text/json', 'application/xml', 'text/xml'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -2947,6 +3518,338 @@ class EditPdfApi
     }
 
     /**
+     * Operation editPdfInsertPagesBatchJob
+     *
+     * Insert, copy pages from one PDF document into another as a batch job
+     *
+     * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
+     * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
+     * @param  int $page_start_source Page number (1 based) to start copying pages from (inclusive) in the Source file. (required)
+     * @param  int $page_end_source Page number (1 based) to stop copying pages pages from (inclusive) in the Source file. (required)
+     * @param  int $page_insert_before_desitnation Page number (1 based) to insert the pages before in the Destination file. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\EditPdfBatchJobCreateResult
+     */
+    public function editPdfInsertPagesBatchJob($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+    {
+        list($response) = $this->editPdfInsertPagesBatchJobWithHttpInfo($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation);
+        return $response;
+    }
+
+    /**
+     * Operation editPdfInsertPagesBatchJobWithHttpInfo
+     *
+     * Insert, copy pages from one PDF document into another as a batch job
+     *
+     * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
+     * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
+     * @param  int $page_start_source Page number (1 based) to start copying pages from (inclusive) in the Source file. (required)
+     * @param  int $page_end_source Page number (1 based) to stop copying pages pages from (inclusive) in the Source file. (required)
+     * @param  int $page_insert_before_desitnation Page number (1 based) to insert the pages before in the Destination file. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\EditPdfBatchJobCreateResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editPdfInsertPagesBatchJobWithHttpInfo($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+    {
+        $returnType = '\Swagger\Client\Model\EditPdfBatchJobCreateResult';
+        $request = $this->editPdfInsertPagesBatchJobRequest($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\EditPdfBatchJobCreateResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editPdfInsertPagesBatchJobAsync
+     *
+     * Insert, copy pages from one PDF document into another as a batch job
+     *
+     * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
+     * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
+     * @param  int $page_start_source Page number (1 based) to start copying pages from (inclusive) in the Source file. (required)
+     * @param  int $page_end_source Page number (1 based) to stop copying pages pages from (inclusive) in the Source file. (required)
+     * @param  int $page_insert_before_desitnation Page number (1 based) to insert the pages before in the Destination file. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfInsertPagesBatchJobAsync($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+    {
+        return $this->editPdfInsertPagesBatchJobAsyncWithHttpInfo($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editPdfInsertPagesBatchJobAsyncWithHttpInfo
+     *
+     * Insert, copy pages from one PDF document into another as a batch job
+     *
+     * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
+     * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
+     * @param  int $page_start_source Page number (1 based) to start copying pages from (inclusive) in the Source file. (required)
+     * @param  int $page_end_source Page number (1 based) to stop copying pages pages from (inclusive) in the Source file. (required)
+     * @param  int $page_insert_before_desitnation Page number (1 based) to insert the pages before in the Destination file. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfInsertPagesBatchJobAsyncWithHttpInfo($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+    {
+        $returnType = '\Swagger\Client\Model\EditPdfBatchJobCreateResult';
+        $request = $this->editPdfInsertPagesBatchJobRequest($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editPdfInsertPagesBatchJob'
+     *
+     * @param  \SplFileObject $source_file Source PDF file to copy pages from. (required)
+     * @param  \SplFileObject $destination_file Destination PDF file to copy pages into. (required)
+     * @param  int $page_start_source Page number (1 based) to start copying pages from (inclusive) in the Source file. (required)
+     * @param  int $page_end_source Page number (1 based) to stop copying pages pages from (inclusive) in the Source file. (required)
+     * @param  int $page_insert_before_desitnation Page number (1 based) to insert the pages before in the Destination file. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editPdfInsertPagesBatchJobRequest($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+    {
+        // verify the required parameter 'source_file' is set
+        if ($source_file === null || (is_array($source_file) && count($source_file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $source_file when calling editPdfInsertPagesBatchJob'
+            );
+        }
+        // verify the required parameter 'destination_file' is set
+        if ($destination_file === null || (is_array($destination_file) && count($destination_file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $destination_file when calling editPdfInsertPagesBatchJob'
+            );
+        }
+        // verify the required parameter 'page_start_source' is set
+        if ($page_start_source === null || (is_array($page_start_source) && count($page_start_source) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_start_source when calling editPdfInsertPagesBatchJob'
+            );
+        }
+        // verify the required parameter 'page_end_source' is set
+        if ($page_end_source === null || (is_array($page_end_source) && count($page_end_source) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_end_source when calling editPdfInsertPagesBatchJob'
+            );
+        }
+        // verify the required parameter 'page_insert_before_desitnation' is set
+        if ($page_insert_before_desitnation === null || (is_array($page_insert_before_desitnation) && count($page_insert_before_desitnation) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page_insert_before_desitnation when calling editPdfInsertPagesBatchJob'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pdf/pages/insert/batch-job';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($page_start_source !== null) {
+            $headerParams['pageStartSource'] = ObjectSerializer::toHeaderValue($page_start_source);
+        }
+        // header params
+        if ($page_end_source !== null) {
+            $headerParams['pageEndSource'] = ObjectSerializer::toHeaderValue($page_end_source);
+        }
+        // header params
+        if ($page_insert_before_desitnation !== null) {
+            $headerParams['pageInsertBeforeDesitnation'] = ObjectSerializer::toHeaderValue($page_insert_before_desitnation);
+        }
+
+
+        // form params
+        if ($source_file !== null) {
+            $multipart = true;
+            $formParams['sourceFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($source_file), 'rb');
+        }
+        // form params
+        if ($destination_file !== null) {
+            $multipart = true;
+            $formParams['destinationFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($destination_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation editPdfLinearize
      *
      * Linearize and optimize a PDF for streaming download
@@ -3223,14 +4126,15 @@ class EditPdfApi
      * Rasterize a PDF to an image-based PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $dpi Optional; configures the pixel density in Dots per Inch (DPI) (default is 300).  This parameter can only be used with Cloudmersive Managed Instance and Private Cloud. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function editPdfRasterize($input_file)
+    public function editPdfRasterize($input_file, $dpi = null)
     {
-        list($response) = $this->editPdfRasterizeWithHttpInfo($input_file);
+        list($response) = $this->editPdfRasterizeWithHttpInfo($input_file, $dpi);
         return $response;
     }
 
@@ -3240,15 +4144,16 @@ class EditPdfApi
      * Rasterize a PDF to an image-based PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $dpi Optional; configures the pixel density in Dots per Inch (DPI) (default is 300).  This parameter can only be used with Cloudmersive Managed Instance and Private Cloud. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function editPdfRasterizeWithHttpInfo($input_file)
+    public function editPdfRasterizeWithHttpInfo($input_file, $dpi = null)
     {
         $returnType = 'string';
-        $request = $this->editPdfRasterizeRequest($input_file);
+        $request = $this->editPdfRasterizeRequest($input_file, $dpi);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3315,13 +4220,14 @@ class EditPdfApi
      * Rasterize a PDF to an image-based PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $dpi Optional; configures the pixel density in Dots per Inch (DPI) (default is 300).  This parameter can only be used with Cloudmersive Managed Instance and Private Cloud. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editPdfRasterizeAsync($input_file)
+    public function editPdfRasterizeAsync($input_file, $dpi = null)
     {
-        return $this->editPdfRasterizeAsyncWithHttpInfo($input_file)
+        return $this->editPdfRasterizeAsyncWithHttpInfo($input_file, $dpi)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3335,14 +4241,15 @@ class EditPdfApi
      * Rasterize a PDF to an image-based PDF
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $dpi Optional; configures the pixel density in Dots per Inch (DPI) (default is 300).  This parameter can only be used with Cloudmersive Managed Instance and Private Cloud. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function editPdfRasterizeAsyncWithHttpInfo($input_file)
+    public function editPdfRasterizeAsyncWithHttpInfo($input_file, $dpi = null)
     {
         $returnType = 'string';
-        $request = $this->editPdfRasterizeRequest($input_file);
+        $request = $this->editPdfRasterizeRequest($input_file, $dpi);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3385,11 +4292,12 @@ class EditPdfApi
      * Create request for operation 'editPdfRasterize'
      *
      * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     * @param  int $dpi Optional; configures the pixel density in Dots per Inch (DPI) (default is 300).  This parameter can only be used with Cloudmersive Managed Instance and Private Cloud. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function editPdfRasterizeRequest($input_file)
+    protected function editPdfRasterizeRequest($input_file, $dpi = null)
     {
         // verify the required parameter 'input_file' is set
         if ($input_file === null || (is_array($input_file) && count($input_file) === 0)) {
@@ -3399,6 +4307,281 @@ class EditPdfApi
         }
 
         $resourcePath = '/convert/edit/pdf/rasterize';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($dpi !== null) {
+            $headerParams['dpi'] = ObjectSerializer::toHeaderValue($dpi);
+        }
+
+
+        // form params
+        if ($input_file !== null) {
+            $multipart = true;
+            $formParams['inputFile'] = \GuzzleHttp\Psr7\Utils::tryFopen(ObjectSerializer::toFormValue($input_file), 'rb');
+        }
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/octet-stream']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/octet-stream'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Apikey');
+        if ($apiKey !== null) {
+            $headers['Apikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editPdfRasterizeBatchJob
+     *
+     * Rasterize a PDF to an image-based PDF as Batch Job
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\EditPdfBatchJobCreateResult
+     */
+    public function editPdfRasterizeBatchJob($input_file)
+    {
+        list($response) = $this->editPdfRasterizeBatchJobWithHttpInfo($input_file);
+        return $response;
+    }
+
+    /**
+     * Operation editPdfRasterizeBatchJobWithHttpInfo
+     *
+     * Rasterize a PDF to an image-based PDF as Batch Job
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\EditPdfBatchJobCreateResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editPdfRasterizeBatchJobWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\EditPdfBatchJobCreateResult';
+        $request = $this->editPdfRasterizeBatchJobRequest($input_file);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\EditPdfBatchJobCreateResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editPdfRasterizeBatchJobAsync
+     *
+     * Rasterize a PDF to an image-based PDF as Batch Job
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfRasterizeBatchJobAsync($input_file)
+    {
+        return $this->editPdfRasterizeBatchJobAsyncWithHttpInfo($input_file)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editPdfRasterizeBatchJobAsyncWithHttpInfo
+     *
+     * Rasterize a PDF to an image-based PDF as Batch Job
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editPdfRasterizeBatchJobAsyncWithHttpInfo($input_file)
+    {
+        $returnType = '\Swagger\Client\Model\EditPdfBatchJobCreateResult';
+        $request = $this->editPdfRasterizeBatchJobRequest($input_file);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editPdfRasterizeBatchJob'
+     *
+     * @param  \SplFileObject $input_file Input file to perform the operation on. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function editPdfRasterizeBatchJobRequest($input_file)
+    {
+        // verify the required parameter 'input_file' is set
+        if ($input_file === null || (is_array($input_file) && count($input_file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $input_file when calling editPdfRasterizeBatchJob'
+            );
+        }
+
+        $resourcePath = '/convert/edit/pdf/rasterize/batch-job';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

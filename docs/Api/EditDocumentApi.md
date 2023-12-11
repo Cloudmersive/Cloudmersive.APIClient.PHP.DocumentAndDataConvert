@@ -49,7 +49,9 @@ Method | HTTP request | Description
 [**editDocumentDocxUpdateTableRow**](EditDocumentApi.md#editDocumentDocxUpdateTableRow) | **POST** /convert/edit/docx/update-table-row | Update, set contents of a table row in an existing table in a Word DOCX document
 [**editDocumentFinishEditing**](EditDocumentApi.md#editDocumentFinishEditing) | **POST** /convert/edit/finish-editing | Finish editing document, and download result from document editing
 [**editDocumentPptxDeleteSlides**](EditDocumentApi.md#editDocumentPptxDeleteSlides) | **POST** /convert/edit/pptx/delete-slides | Delete, remove slides from a PowerPoint PPTX presentation document
+[**editDocumentPptxEditSizeAndOrientation**](EditDocumentApi.md#editDocumentPptxEditSizeAndOrientation) | **POST** /convert/edit/pptx/set-size-and-orientation | Set the size and/or orientation of a PowerPoint PPTX presentation document
 [**editDocumentPptxGetMacroInformation**](EditDocumentApi.md#editDocumentPptxGetMacroInformation) | **POST** /convert/edit/pptx/get-macros | Get macro information from a PowerPoint PPTX/PPTM presentation document
+[**editDocumentPptxGetSizeAndOrientation**](EditDocumentApi.md#editDocumentPptxGetSizeAndOrientation) | **POST** /convert/edit/pptx/get-size-and-orientation | Get the page layout information, including size and orientation of a PowerPoint PPTX presentation document
 [**editDocumentPptxReplace**](EditDocumentApi.md#editDocumentPptxReplace) | **POST** /convert/edit/pptx/replace-all | Replace string in PowerPoint PPTX presentation
 [**editDocumentXlsxAppendRow**](EditDocumentApi.md#editDocumentXlsxAppendRow) | **POST** /convert/edit/xlsx/append-row | Append row to a Excel XLSX spreadsheet, worksheet
 [**editDocumentXlsxClearCellByIndex**](EditDocumentApi.md#editDocumentXlsxClearCellByIndex) | **POST** /convert/edit/xlsx/clear-cell/by-index | Clear cell contents in an Excel XLSX spreadsheet, worksheet by index
@@ -130,7 +132,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **editDocumentDocxAcceptAllTrackChanges**
-> string editDocumentDocxAcceptAllTrackChanges($input_file)
+> string editDocumentDocxAcceptAllTrackChanges($input_file, $autorepair)
 
 Accept all tracked changes, revisions in a Word DOCX document
 
@@ -153,9 +155,10 @@ $apiInstance = new Swagger\Client\Api\EditDocumentApi(
     $config
 );
 $input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$autorepair = true; // bool | Optional; automatically repair input documents that have errors (default is true)
 
 try {
-    $result = $apiInstance->editDocumentDocxAcceptAllTrackChanges($input_file);
+    $result = $apiInstance->editDocumentDocxAcceptAllTrackChanges($input_file, $autorepair);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EditDocumentApi->editDocumentDocxAcceptAllTrackChanges: ', $e->getMessage(), PHP_EOL;
@@ -168,6 +171,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **autorepair** | **bool**| Optional; automatically repair input documents that have errors (default is true) | [optional]
 
 ### Return type
 
@@ -2549,6 +2553,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **editDocumentPptxEditSizeAndOrientation**
+> string editDocumentPptxEditSizeAndOrientation($input_file, $orientation, $width, $height)
+
+Set the size and/or orientation of a PowerPoint PPTX presentation document
+
+Edits the input PowerPoint PPTX presentation document to be a different orientation and/or size
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$orientation = "orientation_example"; // string | Optional: The desired slide orientation; can be landscape or portrait.
+$width = 56; // int | Optional: The desired slide width in Emu, where 1 inch equals 914400 emu.
+$height = 56; // int | Optional: The desired slide height in Emu, where 1 inch equals 914400 emu
+
+try {
+    $result = $apiInstance->editDocumentPptxEditSizeAndOrientation($input_file, $orientation, $width, $height);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditDocumentApi->editDocumentPptxEditSizeAndOrientation: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **orientation** | **string**| Optional: The desired slide orientation; can be landscape or portrait. | [optional]
+ **width** | **int**| Optional: The desired slide width in Emu, where 1 inch equals 914400 emu. | [optional]
+ **height** | **int**| Optional: The desired slide height in Emu, where 1 inch equals 914400 emu | [optional]
+
+### Return type
+
+**string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **editDocumentPptxGetMacroInformation**
 > \Swagger\Client\Model\GetMacrosResponse editDocumentPptxGetMacroInformation($input_file)
 
@@ -2592,6 +2657,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\Model\GetMacrosResponse**](../Model/GetMacrosResponse.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editDocumentPptxGetSizeAndOrientation**
+> \Swagger\Client\Model\PptxPageLayoutInformation editDocumentPptxGetSizeAndOrientation($input_file)
+
+Get the page layout information, including size and orientation of a PowerPoint PPTX presentation document
+
+Gets size and orientation of an input PowerPoint PPTX presentation
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditDocumentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->editDocumentPptxGetSizeAndOrientation($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditDocumentApi->editDocumentPptxGetSizeAndOrientation: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+[**\Swagger\Client\Model\PptxPageLayoutInformation**](../Model/PptxPageLayoutInformation.md)
 
 ### Authorization
 

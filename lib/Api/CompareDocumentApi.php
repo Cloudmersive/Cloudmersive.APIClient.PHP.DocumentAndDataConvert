@@ -94,14 +94,15 @@ class CompareDocumentApi
      *
      * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
      * @param  \SplFileObject $input_file2 Second input file to perform the operation on (more than 2 can be supplied). (required)
+     * @param  bool $autorepair Optional; automatically repair input documents that have errors (default is true) (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function compareDocumentDocx($input_file1, $input_file2)
+    public function compareDocumentDocx($input_file1, $input_file2, $autorepair = null)
     {
-        list($response) = $this->compareDocumentDocxWithHttpInfo($input_file1, $input_file2);
+        list($response) = $this->compareDocumentDocxWithHttpInfo($input_file1, $input_file2, $autorepair);
         return $response;
     }
 
@@ -112,15 +113,16 @@ class CompareDocumentApi
      *
      * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
      * @param  \SplFileObject $input_file2 Second input file to perform the operation on (more than 2 can be supplied). (required)
+     * @param  bool $autorepair Optional; automatically repair input documents that have errors (default is true) (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function compareDocumentDocxWithHttpInfo($input_file1, $input_file2)
+    public function compareDocumentDocxWithHttpInfo($input_file1, $input_file2, $autorepair = null)
     {
         $returnType = 'string';
-        $request = $this->compareDocumentDocxRequest($input_file1, $input_file2);
+        $request = $this->compareDocumentDocxRequest($input_file1, $input_file2, $autorepair);
 
         try {
             $options = $this->createHttpClientOption();
@@ -188,13 +190,14 @@ class CompareDocumentApi
      *
      * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
      * @param  \SplFileObject $input_file2 Second input file to perform the operation on (more than 2 can be supplied). (required)
+     * @param  bool $autorepair Optional; automatically repair input documents that have errors (default is true) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function compareDocumentDocxAsync($input_file1, $input_file2)
+    public function compareDocumentDocxAsync($input_file1, $input_file2, $autorepair = null)
     {
-        return $this->compareDocumentDocxAsyncWithHttpInfo($input_file1, $input_file2)
+        return $this->compareDocumentDocxAsyncWithHttpInfo($input_file1, $input_file2, $autorepair)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -209,14 +212,15 @@ class CompareDocumentApi
      *
      * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
      * @param  \SplFileObject $input_file2 Second input file to perform the operation on (more than 2 can be supplied). (required)
+     * @param  bool $autorepair Optional; automatically repair input documents that have errors (default is true) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function compareDocumentDocxAsyncWithHttpInfo($input_file1, $input_file2)
+    public function compareDocumentDocxAsyncWithHttpInfo($input_file1, $input_file2, $autorepair = null)
     {
         $returnType = 'string';
-        $request = $this->compareDocumentDocxRequest($input_file1, $input_file2);
+        $request = $this->compareDocumentDocxRequest($input_file1, $input_file2, $autorepair);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -260,11 +264,12 @@ class CompareDocumentApi
      *
      * @param  \SplFileObject $input_file1 First input file to perform the operation on. (required)
      * @param  \SplFileObject $input_file2 Second input file to perform the operation on (more than 2 can be supplied). (required)
+     * @param  bool $autorepair Optional; automatically repair input documents that have errors (default is true) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function compareDocumentDocxRequest($input_file1, $input_file2)
+    protected function compareDocumentDocxRequest($input_file1, $input_file2, $autorepair = null)
     {
         // verify the required parameter 'input_file1' is set
         if ($input_file1 === null || (is_array($input_file1) && count($input_file1) === 0)) {
@@ -286,6 +291,10 @@ class CompareDocumentApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($autorepair !== null) {
+            $headerParams['autorepair'] = ObjectSerializer::toHeaderValue($autorepair);
+        }
 
 
         // form params

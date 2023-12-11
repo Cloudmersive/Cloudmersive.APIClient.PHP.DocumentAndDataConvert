@@ -8,14 +8,18 @@ Method | HTTP request | Description
 [**editPdfConvertToPdfA**](EditPdfApi.md#editPdfConvertToPdfA) | **POST** /convert/edit/pdf/optimize/pdf-a | Convert a PDF file to PDF/A
 [**editPdfDecrypt**](EditPdfApi.md#editPdfDecrypt) | **POST** /convert/edit/pdf/decrypt | Decrypt and password-protect a PDF
 [**editPdfDeletePages**](EditPdfApi.md#editPdfDeletePages) | **POST** /convert/edit/pdf/pages/delete | Remove, delete pages from a PDF document
+[**editPdfDeletePagesBatchJob**](EditPdfApi.md#editPdfDeletePagesBatchJob) | **POST** /convert/edit/pdf/pages/delete/batch-job | Remove, delete pages from a PDF document as Batch Job
 [**editPdfEncrypt**](EditPdfApi.md#editPdfEncrypt) | **POST** /convert/edit/pdf/encrypt | Encrypt and password-protect a PDF
 [**editPdfGetAnnotations**](EditPdfApi.md#editPdfGetAnnotations) | **POST** /convert/edit/pdf/annotations/list | Get PDF annotations, including comments in the document
+[**editPdfGetAsyncJobStatus**](EditPdfApi.md#editPdfGetAsyncJobStatus) | **GET** /convert/edit/pdf/batch-job/status | Get the status and result of a PDF Batch Job
 [**editPdfGetFormFields**](EditPdfApi.md#editPdfGetFormFields) | **POST** /convert/edit/pdf/form/get-fields | Gets PDF Form fields and values
 [**editPdfGetMetadata**](EditPdfApi.md#editPdfGetMetadata) | **POST** /convert/edit/pdf/get-metadata | Get PDF document metadata
 [**editPdfGetPdfTextByPages**](EditPdfApi.md#editPdfGetPdfTextByPages) | **POST** /convert/edit/pdf/pages/get-text | Get text in a PDF document by page
 [**editPdfInsertPages**](EditPdfApi.md#editPdfInsertPages) | **POST** /convert/edit/pdf/pages/insert | Insert, copy pages from one PDF document into another
+[**editPdfInsertPagesBatchJob**](EditPdfApi.md#editPdfInsertPagesBatchJob) | **POST** /convert/edit/pdf/pages/insert/batch-job | Insert, copy pages from one PDF document into another as a batch job
 [**editPdfLinearize**](EditPdfApi.md#editPdfLinearize) | **POST** /convert/edit/pdf/optimize/linearize | Linearize and optimize a PDF for streaming download
 [**editPdfRasterize**](EditPdfApi.md#editPdfRasterize) | **POST** /convert/edit/pdf/rasterize | Rasterize a PDF to an image-based PDF
+[**editPdfRasterizeBatchJob**](EditPdfApi.md#editPdfRasterizeBatchJob) | **POST** /convert/edit/pdf/rasterize/batch-job | Rasterize a PDF to an image-based PDF as Batch Job
 [**editPdfReduceFileSize**](EditPdfApi.md#editPdfReduceFileSize) | **POST** /convert/edit/pdf/optimize/reduce-file-size | Reduce the file size and optimize a PDF
 [**editPdfRemoveAllAnnotations**](EditPdfApi.md#editPdfRemoveAllAnnotations) | **POST** /convert/edit/pdf/annotations/remove-all | Remove all PDF annotations, including comments in the document
 [**editPdfRemoveAnnotationItem**](EditPdfApi.md#editPdfRemoveAnnotationItem) | **POST** /convert/edit/pdf/annotations/remove-item | Remove a specific PDF annotation, comment in the document
@@ -256,6 +260,65 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **editPdfDeletePagesBatchJob**
+> \Swagger\Client\Model\EditPdfBatchJobCreateResult editPdfDeletePagesBatchJob($input_file, $page_start, $page_end)
+
+Remove, delete pages from a PDF document as Batch Job
+
+Remove one or more pages from a PDF document.  Runs as a batch job async and returns a batch job ID that you can check the status of to get the result.  Requires Cloudmersive Private Cloud or Managed Instance.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditPdfApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$page_start = 56; // int | Page number (1 based) to start deleting pages from (inclusive).
+$page_end = 56; // int | Page number (1 based) to stop deleting pages from (inclusive).
+
+try {
+    $result = $apiInstance->editPdfDeletePagesBatchJob($input_file, $page_start, $page_end);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditPdfApi->editPdfDeletePagesBatchJob: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **page_start** | **int**| Page number (1 based) to start deleting pages from (inclusive). |
+ **page_end** | **int**| Page number (1 based) to stop deleting pages from (inclusive). |
+
+### Return type
+
+[**\Swagger\Client\Model\EditPdfBatchJobCreateResult**](../Model/EditPdfBatchJobCreateResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **editPdfEncrypt**
 > string editPdfEncrypt($input_file, $user_password, $owner_password, $encryption_key_length)
 
@@ -369,6 +432,61 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editPdfGetAsyncJobStatus**
+> \Swagger\Client\Model\EditPdfJobStatusResult editPdfGetAsyncJobStatus($async_job_id)
+
+Get the status and result of a PDF Batch Job
+
+Returns the result of the Async Job - possible states can be STARTED or COMPLETED.  This API is only available for Cloudmersive Managed Instance and Private Cloud deployments.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditPdfApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$async_job_id = "async_job_id_example"; // string | 
+
+try {
+    $result = $apiInstance->editPdfGetAsyncJobStatus($async_job_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditPdfApi->editPdfGetAsyncJobStatus: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **async_job_id** | **string**|  |
+
+### Return type
+
+[**\Swagger\Client\Model\EditPdfJobStatusResult**](../Model/EditPdfJobStatusResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -602,6 +720,69 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **editPdfInsertPagesBatchJob**
+> \Swagger\Client\Model\EditPdfBatchJobCreateResult editPdfInsertPagesBatchJob($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation)
+
+Insert, copy pages from one PDF document into another as a batch job
+
+Copy one or more pages from one PDF document (source document) and insert them into a second PDF document (destination document).  Runs as a batch job async and returns a batch job ID that you can check the status of to get the result.  Requires Cloudmersive Private Cloud or Managed Instance.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditPdfApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$source_file = "/path/to/file.txt"; // \SplFileObject | Source PDF file to copy pages from.
+$destination_file = "/path/to/file.txt"; // \SplFileObject | Destination PDF file to copy pages into.
+$page_start_source = 56; // int | Page number (1 based) to start copying pages from (inclusive) in the Source file.
+$page_end_source = 56; // int | Page number (1 based) to stop copying pages pages from (inclusive) in the Source file.
+$page_insert_before_desitnation = 56; // int | Page number (1 based) to insert the pages before in the Destination file.
+
+try {
+    $result = $apiInstance->editPdfInsertPagesBatchJob($source_file, $destination_file, $page_start_source, $page_end_source, $page_insert_before_desitnation);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditPdfApi->editPdfInsertPagesBatchJob: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source_file** | **\SplFileObject**| Source PDF file to copy pages from. |
+ **destination_file** | **\SplFileObject**| Destination PDF file to copy pages into. |
+ **page_start_source** | **int**| Page number (1 based) to start copying pages from (inclusive) in the Source file. |
+ **page_end_source** | **int**| Page number (1 based) to stop copying pages pages from (inclusive) in the Source file. |
+ **page_insert_before_desitnation** | **int**| Page number (1 based) to insert the pages before in the Destination file. |
+
+### Return type
+
+[**\Swagger\Client\Model\EditPdfBatchJobCreateResult**](../Model/EditPdfBatchJobCreateResult.md)
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **editPdfLinearize**
 > string editPdfLinearize($input_file)
 
@@ -658,7 +839,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **editPdfRasterize**
-> string editPdfRasterize($input_file)
+> string editPdfRasterize($input_file, $dpi)
 
 Rasterize a PDF to an image-based PDF
 
@@ -681,9 +862,10 @@ $apiInstance = new Swagger\Client\Api\EditPdfApi(
     $config
 );
 $input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+$dpi = 56; // int | Optional; configures the pixel density in Dots per Inch (DPI) (default is 300).  This parameter can only be used with Cloudmersive Managed Instance and Private Cloud.
 
 try {
-    $result = $apiInstance->editPdfRasterize($input_file);
+    $result = $apiInstance->editPdfRasterize($input_file, $dpi);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EditPdfApi->editPdfRasterize: ', $e->getMessage(), PHP_EOL;
@@ -696,10 +878,66 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+ **dpi** | **int**| Optional; configures the pixel density in Dots per Inch (DPI) (default is 300).  This parameter can only be used with Cloudmersive Managed Instance and Private Cloud. | [optional]
 
 ### Return type
 
 **string**
+
+### Authorization
+
+[Apikey](../../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **editPdfRasterizeBatchJob**
+> \Swagger\Client\Model\EditPdfBatchJobCreateResult editPdfRasterizeBatchJob($input_file)
+
+Rasterize a PDF to an image-based PDF as Batch Job
+
+Rasterize a PDF into an image-based PDF.  The output is a PDF where each page is comprised of a high-resolution image, with all text, figures and other components removed.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Apikey
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Apikey', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\EditPdfApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$input_file = "/path/to/file.txt"; // \SplFileObject | Input file to perform the operation on.
+
+try {
+    $result = $apiInstance->editPdfRasterizeBatchJob($input_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EditPdfApi->editPdfRasterizeBatchJob: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **input_file** | **\SplFileObject**| Input file to perform the operation on. |
+
+### Return type
+
+[**\Swagger\Client\Model\EditPdfBatchJobCreateResult**](../Model/EditPdfBatchJobCreateResult.md)
 
 ### Authorization
 

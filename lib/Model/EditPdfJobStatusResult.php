@@ -1,6 +1,6 @@
 <?php
 /**
- * JobStatusResult
+ * EditPdfJobStatusResult
  *
  * PHP version 5
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * JobStatusResult Class Doc Comment
+ * EditPdfJobStatusResult Class Doc Comment
  *
  * @category Class
  * @description Result of performing a batch job operation
@@ -41,7 +41,7 @@ use \Swagger\Client\ObjectSerializer;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class JobStatusResult implements ModelInterface, ArrayAccess
+class EditPdfJobStatusResult implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'JobStatusResult';
+    protected static $swaggerModelName = 'EditPdfJobStatusResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
         'successful' => 'bool',
         'async_job_status' => 'string',
         'async_job_id' => 'string',
-        'pptx_result' => '\Swagger\Client\Model\SplitPptxPresentationResult',
+        'output_file_result' => 'string',
         'error_message' => 'string'
     ];
 
@@ -74,7 +74,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
         'successful' => null,
         'async_job_status' => null,
         'async_job_id' => null,
-        'pptx_result' => null,
+        'output_file_result' => 'byte',
         'error_message' => null
     ];
 
@@ -108,7 +108,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
         'successful' => 'Successful',
         'async_job_status' => 'AsyncJobStatus',
         'async_job_id' => 'AsyncJobID',
-        'pptx_result' => 'PptxResult',
+        'output_file_result' => 'OutputFileResult',
         'error_message' => 'ErrorMessage'
     ];
 
@@ -121,7 +121,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
         'successful' => 'setSuccessful',
         'async_job_status' => 'setAsyncJobStatus',
         'async_job_id' => 'setAsyncJobId',
-        'pptx_result' => 'setPptxResult',
+        'output_file_result' => 'setOutputFileResult',
         'error_message' => 'setErrorMessage'
     ];
 
@@ -134,7 +134,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
         'successful' => 'getSuccessful',
         'async_job_status' => 'getAsyncJobStatus',
         'async_job_id' => 'getAsyncJobId',
-        'pptx_result' => 'getPptxResult',
+        'output_file_result' => 'getOutputFileResult',
         'error_message' => 'getErrorMessage'
     ];
 
@@ -201,7 +201,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
         $this->container['successful'] = isset($data['successful']) ? $data['successful'] : null;
         $this->container['async_job_status'] = isset($data['async_job_status']) ? $data['async_job_status'] : null;
         $this->container['async_job_id'] = isset($data['async_job_id']) ? $data['async_job_id'] : null;
-        $this->container['pptx_result'] = isset($data['pptx_result']) ? $data['pptx_result'] : null;
+        $this->container['output_file_result'] = isset($data['output_file_result']) ? $data['output_file_result'] : null;
         $this->container['error_message'] = isset($data['error_message']) ? $data['error_message'] : null;
     }
 
@@ -213,6 +213,10 @@ class JobStatusResult implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['output_file_result']) && !preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $this->container['output_file_result'])) {
+            $invalidProperties[] = "invalid value for 'output_file_result', must be conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.";
+        }
 
         return $invalidProperties;
     }
@@ -242,7 +246,7 @@ class JobStatusResult implements ModelInterface, ArrayAccess
     /**
      * Sets successful
      *
-     * @param bool $successful True if the operation to check the status of the job was successful, false otherwise
+     * @param bool $successful Tru eif the operation to check the status of the job was successful, false otherwise
      *
      * @return $this
      */
@@ -302,25 +306,30 @@ class JobStatusResult implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets pptx_result
+     * Gets output_file_result
      *
-     * @return \Swagger\Client\Model\SplitPptxPresentationResult
+     * @return string
      */
-    public function getPptxResult()
+    public function getOutputFileResult()
     {
-        return $this->container['pptx_result'];
+        return $this->container['output_file_result'];
     }
 
     /**
-     * Sets pptx_result
+     * Sets output_file_result
      *
-     * @param \Swagger\Client\Model\SplitPptxPresentationResult $pptx_result PowerPoint split result (if applicable)
+     * @param string $output_file_result Output file result (if applicable)
      *
      * @return $this
      */
-    public function setPptxResult($pptx_result)
+    public function setOutputFileResult($output_file_result)
     {
-        $this->container['pptx_result'] = $pptx_result;
+
+        if (!is_null($output_file_result) && (!preg_match("/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/", $output_file_result))) {
+            throw new \InvalidArgumentException("invalid value for $output_file_result when calling EditPdfJobStatusResult., must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.");
+        }
+
+        $this->container['output_file_result'] = $output_file_result;
 
         return $this;
     }
